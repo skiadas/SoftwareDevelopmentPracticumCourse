@@ -10,6 +10,7 @@ Mon
     - (Java/OOP) methods, parameters, local variables, constants/final
     - (Java/OOP) static methods
     - Activity: 1 hour coding practice: grade reading and gpa computation
+    - [Lesson Plan 1](lessonPlans/lessonPlanDay1.md)
 
 Tue
   ~ - Goals:
