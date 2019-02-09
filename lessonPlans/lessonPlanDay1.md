@@ -44,3 +44,4 @@
 1 hour
 
 - Write program to read and process list of GPAs.
+- See [programming activity 1](../activities/programmingActivity1.md)
