@@ -43,5 +43,6 @@
 
 1 hour
 
+- Have students create GitHub logins if they do not yet have one.
 - Write program to read and process list of GPAs.
 - See [programming activity 1](../activities/programmingActivity1.md)
