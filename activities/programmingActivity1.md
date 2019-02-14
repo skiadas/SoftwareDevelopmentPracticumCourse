@@ -39,6 +39,6 @@ These are further directions that we will take this program. We'll ideally want 
 
 1. Keep track of the courses and grades, and include in the final report an alphabetical listing of the courses.
 2. Allow courses to have the "IP" grade for in-progress. In-progress units are reported in the totals if present.
-3. Allow S and U courses that are pass/fail and do not contribute to GPA but can count towards graduation.
+3. Allow S and U courses that are pass/fail and do not contribute to GPA but S can count towards graduation.
 4. Add "units" to courses (0.5, 1 etc).
 5. Add "term/year" to courses to indicate when taken. Generate reports based on each term, and compute term gpas and cumulative term gpas.

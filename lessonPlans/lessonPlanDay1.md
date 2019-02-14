@@ -1,5 +1,7 @@
 # Day 1 Lesson Plan
 
+Start: Introduction Video (6 mins)
+
 ## Activity 1: Basic Java Syntax Patterns
 
 1 hour
@@ -25,6 +27,7 @@
 
 - Get Lunch
 - Watch part of videos for Tuesday
+- [Clean Code-Remake (54m)](videos/01-clean_code.md)
 
 ## Activity 4: Scope, different kinds of variables
 
