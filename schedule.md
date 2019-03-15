@@ -18,12 +18,13 @@ Tue
         - Basic refactorings: extract variable/field/method, rename, inline
         - Function size principles ("extract till you drop")
     - (Coding) variable and method naming
-        - Video: Clean Code (Remake)
-        - Video: Names++
+        - Video: [Clean Code (Remake)](videos/01-clean_code.md)
+        - Video: [Names++](videos/02-names.md)
         - Reading: Clean Code chapters 1, 2
     - (Coding) Function arguments, command-query separation
         - Video: Functions
         - Reading: Clean Code chapter 3
+    - [Lesson Plan 2](lessonPlans/lessonPlanDay2.md)
 
 Wed
   ~ - Goals:
