@@ -7,3 +7,8 @@ Web site for CS321 Software Development Practicum
 - [Schedule/Notes](schedule.md)
 - [Books](books.md)
 - [Videos](videos.md)
+
+Resources:
+
+- [List of Refactorings](refactorings.md)
+- [List of Intentions](intentions.md)

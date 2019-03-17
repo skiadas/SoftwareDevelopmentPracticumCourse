@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="refactoring-activity-1">Refactoring Activity 1</h1>
+<ul>
+<li>Access the “Prime Generator” code from Moodle, and unzip it</li>
+<li>Start an IntelliJ project from the provided sources</li>
+<li>Run the PrintPrimesTest file, and make sure it passes.</li>
+<li>Take a look at the <code>PrimePrinter</code> file and its <code>main</code> method. This is the method we will refactor and clean up.</li>
+</ul>
+<h2 id="step-1-variable-renaming">Step 1: Variable renaming</h2>
+<p>We will start by giving better name for each variable. After reading the description of the variable here, choose a better name for it and use the “Rename” refactoring on the variable. Some variables may simply need to be written in camel-case instead of all-caps.</p>
+<dl>
+<dt>M</dt>
+<dd>This is the number of primes that we will generate and print
+</dd>
+<dt>RR</dt>
+<dd>This is the number of rows to print per page
+</dd>
+<dt>CC</dt>
+<dd>This is the number of columns to print per page
+</dd>
+<dt>ORDMAX</dt>
+<dd>Leave as is, but make lower case (TODO: come back to it?)
+</dd>
+<dt>P</dt>
+<dd>The list of primes
+</dd>
+<dt>PAGENUMBER</dt>
+<dd>The current page number in the printout
+</dd>
+<dt>PAGEOFFSET</dt>
+<dd>This is the offset into the primes array that the current page would be starting at
+</dd>
+<dt>ROWOFFSET</dt>
+<dd>This is the offset into the primes array for the elements in the current row
+</dd>
+<dt>C</dt>
+<dd>The current column in the printout
+</dd>
+<dt>J</dt>
+<dd>The candidate prime number
+</dd>
+<dt>K</dt>
+<dd>The index into the prime array for the last computed prime.
+</dd>
+<dt>JPRIME</dt>
+<dd>Whether the candidate number (J) is “possibly prime” (<code>false</code> means definitely not prime).
+</dd>
+<dt>ORD</dt>
+<dd>Leave as is, just lowercase. (TODO: come back to it?)
+</dd>
+<dt>SQUARE</dt>
+<dd>the next possible prime square (TODO: come back to it?)
+</dd>
+<dt>N</dt>
+<dd>Leave as is, just lowercase (TODO: come back to it?)
+</dd>
+<dt>MULT</dt>
+<dd>An array of multiples
+</dd>
+</dl>
+<p>Next, use “Code -&gt; Reformat Code” to properly indent and space out everything.</p>
+<p>Now, use the “Move declaration closer to usages” intention an all the variables that are declared near the top without an initial value. (page number, page offset, row offset, candidate prime, current column, etd)</p>
+<p>Test (TODO: and commit?)</p>
+<h2 id="step-2-basic-method-separation">Step 2: Basic Method separation</h2>
+<p>Looking at the code, we can see that it splits in broadly two parts:</p>
+<ul>
+<li>The lines up to the end of the first <code>while</code> loop, that seem to do with computing the prime numbers.</li>
+<li>The lines after the first <code>while</code> loop, starting with the page number initialization, which seem to have to do with printing the numbers.</li>
+</ul>
+<p>Select each while loop in turn, and use <code>extract method</code> on them. One method should be called <code>generatePrimes</code> while the other should be called <code>printNumbers</code>.</p>
+<p>If there are any variables that are not being used right now (grayed out), use the “Remove variable” intention to eliminate them.</p>
+<p>Run your tests to make sure they still run.</p>
+<p>You should now have been left with about a dozen variables defined near the top of the <code>main</code> method, then passed into the two extracted methods. Let’s think about these variables. They fall broadly in two categories:</p>
+<ul>
+<li>Some variables are clearly “global constants”, settings that the user might want to adjust, namely: the number of primes to print, the number of rows per page and the number of columns per page.</li>
+<li>Others are used by the “generate primes” function in order for it to do its work. These are: ordmax, the multiples array, the candidate prime, the index into the prime array, ord, and the square. We really would like all of those to be local variables within the “generate primes” function, but they did not end up there.</li>
+</ul>
+<p>In order to get this second group of variables into the function, there are a couple of ways but the simplest is to just undo our last step:</p>
+<ul>
+<li>Use the “Inline” refactoring to inline and remove the generate primes function. We will create it again in a moment.</li>
+<li>Use the “Move declaration closer to usage” intention, or simply move line-by-line, to move all the declarations of variables that we want to go as part of the “generate primes” function right next to the corresponding while loop.</li>
+<li>Select the while loop, along with all those variable declarations, including the primes array declaration and the <code>primes[1]=2</code> part, and perform the “extract Method” refactoring. If you do this correctly, you should see only one parameter on this new method, namely the number of primes. And the method should be set to return the primes array.</li>
+</ul>
+<p>Test (TODO: and commit?)</p>
+<h2 id="step-3-extracting-classes">Step 3: Extracting Classes</h2>
+<p>The two methods we have are a good start: They each handle a specific and disjoint set of variables. But they are still quite large. It also feels like they are dealing with two completely separate tasks: One is concerned with generating a list of prime numbers, the other is concerned with simply printing out numbers.</p>
+<p>This suggests that the two methods should really belong in different classes, and perhaps should each form the basis for those new classes. We will now create these classes.</p>
+<ul>
+<li>Select the “generate primes” function call and perform the “extract Method object” refactoring. Make sure to ask it to move the method as well when asked. Call the new class <code>PrimeGenerator</code>.</li>
+<li>This was likely created as an inner class to the PrimePrinter class, but we would ideally like it to be its own class. Select the class and perform a “Move” refactoring to move it to the upper level.</li>
+<li>Now take a look at the newly created object. It has a <code>generatePrimes</code> method that is really no longer needed as its own method. We would rather keep the <code>invoke</code> method, maybe rename it later. So select the `generateNumbers function and perform the “inline” refactoring and remove the method.</li>
+<li>Now rename the <code>invoke</code> method to <code>generatePrimes</code>.</li>
+</ul>
+<p>Run the test to make sure it still works.</p>
+<p>Of course we’re far from done with that class: It still consists of one large method, we’ll need to do something about that.</p>
+<p>Now it is time to consider the number-printing function. Take a moment to look at its parameters:</p>
+<ul>
+<li>The rows per page and columns per page variable feel like they should be part of the initialization of the new class: When you create a number-printer, you should be specifying how many rows and columns you want it to print.</li>
+<li>The primes and number of primes parameters feel more elements you should be providing to the number-printer when you call its <code>invoke</code> or <code>print</code> method.</li>
+</ul>
+<p>We want to achieve this separation. For this reason, we will use a different refactoring to form the new class. Here are the steps for this:</p>
+<ul>
+<li>Select the print-numbers method call, and do the “extract Parameter object” refactoring. Select only the two rows and columns parameters for it, and put <code>NumberPrinter</code> as the class name (make sure you set it to Create New Class). This should turn the print-numbers function into a three parameter function, one of those parameters being a <code>NumberPrinter</code> instance.</li>
+<li>Perform the “Convert to instance method” refactoring, to turn the print-numbers method into an instance method of the <code>NumberPrinter</code> instance.</li>
+<li>Looking at the <code>NumberPrinter</code> class now, we see that IntelliJ has “encapsulated” the two fields behind getter methods. We don’t really need that, so select each method and perform an <code>inline</code> refactoring to remove them.</li>
+</ul>
+<p>Now our main method should look particularly simple: Initialize a few parameters, create a prime number generator and call it, and create a number printer and call it with the primes. Let’s do some refactoring to clean it up though:</p>
+<ul>
+<li>Select the <code>new NumberPrinter(...)</code> call (without the <code>printNumbers</code> part), and perform extract local variable from it to create a <code>numberPrinter</code> local variable.</li>
+<li>Select the <code>new PrimeGenerator(...)</code> call (without the <code>generatePrimes</code> part), and perform extract local variable from it to create a <code>primeGenerator</code> local variable.</li>
+<li>Select the <code>primes</code> array and choose the <code>inline</code> refactoring to inline construction into its use.</li>
+<li>Looking at it here, let’s rename the <code>printNumbers</code> method to just <code>print</code> and the <code>generatePrimes</code> method to just <code>generate</code>. Remember to use the Rename refactoring for this!</li>
+</ul>
+<p>Run your tests.</p>
+<h2 id="step-4-working-on-the-numberprinter-class">Step 4: Working on the NumberPrinter class</h2>
+<p>Let’s see if we can do some cleanup of the <code>NumberPrinter</code> class:</p>
+<ul>
+<li>The parameter to the <code>print</code> method is called <code>primes</code>, but it clearly can be any array of numbers. So perform a Rename refactoring to change the parameter to <code>numbers</code>.</li>
+<li>The other parameter is the number of numbers to print. We don’t really need that any more technically, as we can simply use the length of the <code>numbers</code> array instead. To do this in a stepwise fashion, do the following:
+<ul>
+<li>Find the first use of the number-of-primes variable, and use “Extract Variable” to create a local variable equal to it, and named <code>numberOfNumbers</code>. Make sure to replace all 3 occurences.</li>
+<li>Change the <code>numberOfNumbers = ...</code> assignment to instead be <code>numberOfNumbers = numbers.length - 1</code>. (The numbers in the array actually start at index 1) Run your tests to make sure they still work.</li>
+<li>Now the parameter in the <code>print</code> method should be grayed out as it is not being used. Use the “Safe Delete” intention on it, and run your tests again.</li>
+</ul></li>
+<li>Let’s continue with refactoring the print method into smaller parts. We start with the double for loop: Perform the Extract Method refactoring to it, to obtain a method <code>printNumbersOnPage</code>.</li>
+<li>It seems that the first group of <code>System.out</code> calls prints a header, so go ahead and extract the method <code>printHeader</code> from it.</li>
+<li>The remaining part of the <code>while</code> loops seems to update the counters as we advance through each page. It also seems that the methods we use all need those values. So we should elevate them to fields so that they can be more easily shared. Perform an “extract field” refactoring on the page number, page offset and number of numbers variables.</li>
+<li>Extract a method from the last three lines of the while loop, call it <code>moveToNextPage</code>.</li>
+<li>Now that we are using fields, the page number and number of number parameters in the <code>printHeader</code> method are no longer needed. Perform an “Inline” refactoring to them, and remove the superfluous <code>this.</code> parts that are added. Run your tests.</li>
+<li>Do the same for the <code>printNumbersOnPage</code> method, leaving just the <code>numbers</code> parameter to it.</li>
+<li>It feels that <code>numbers</code> should also be set to a field. Extract the field from the first occurence of <code>numbers</code>, in the initialization of <code>numberOfNumbers</code>. Make sure to tell it to replace all occurences.</li>
+<li>Run your tests and they should now fail. That’s because IntelliJ did not actually add a statement to initialize <code>this.numbers</code> to equal the parameter <code>numbers</code>. Do so in the <code>print</code> method, and check that your tests are back in order.</li>
+<li>The <code>numbers</code> parameter in <code>printNumbersOnPage</code> should now be redundant. Perform the “Safe delete” intention on it.</li>
+<li>The first four lines of the <code>print</code> method are all about initializing fields. Extract them to a method <code>initialize</code>.</li>
+<li>The test in the <code>while</code> loop is determining if there are still more numbers to print. Extract it into a method <code>needToPrintMore</code> (keep the original signature when asked). This make it more clear what that test does.</li>
+<li>Let’s shift our attention to the <code>printNumbersOnPage</code> method. Look at the conditional at the innermost level of the loop. Let’s extract it to a method <code>printNumberAt</code>.</li>
+<li>Notice that this new method takes two parameters but really only uses one, namely their combination as “row offset plus column offset times rows per page”. Extract parameter from that expression, and tell it to replace both occurences. It should also remove the other two parameters in this case.</li>
+<li>Let’s look at the row-offset variable of the outer loop. It seems to be initialized as page offset, then stop at a boundary similarly depending on page offset. It is only used in the index computation. Change it so that it instead starts at 0 and ends at rows-per-page minus 1, and change the index computation to include an additional page-offset. Run your tests to make sure they still pass. Maybe also perform a Rename refactoring to now call the variable <code>row</code>.</li>
+<li>Looking at the stopping tests in our for loops, we are more used to seeing them with a less than comparison, rather with a “less than or equal to the number minus 1” comparison. So fix those up, and run our tests to make sure they still pass.</li>
+</ul>
+<h2 id="step-5-reducing-the-number-of-fields">Step 5: Reducing the number of fields</h2>
+<p>It seems there are still too many fields in the NumberPrinter class. A primary example is the page offset. It should be simple enough to compute the page offset from the page number, and it is not really used in too many places. We would like to replace it with a computation. In order to achieve this, we will do the following:</p>
+<ul>
+<li>Use the “Encapsulate Fields” refactoring to encapsulate the get access for page offset. This will replace all accesses to this page offset by a call to <code>getPageOffset()</code>. Run your tests to make sure we didn’t break anything yet.</li>
+<li>Now, we can edit the <code>getPageOffset</code> method to instead compute the offset from the page number and return it. The computation should be “page number minus 1 then times rows per page and times columns per page, then add one to the result.” Run our tests to make sure this change did not break anything.</li>
+<li>Now, the page offset field should appear grayed out in its declaration point. Go ahead and do the “Safe delete” intention and run the tests again.</li>
+</ul>
+<p>Next we have the number of numbers field. It’s not used much, and we can just compute it from the numbers array instead. So let’s do that:</p>
+<ul>
+<li>Use the “Encapsulate Fields” refactoring again, this time to encapsulate the getters of the number of numbers field.</li>
+<li>Replace the body of the new getter to instead return the numbers array length minus one. Run the tests to make sure they still run.</li>
+<li>Notice that the numberOfNumbers field appears grayed out now, and perform the “Safe delete” intention. Make sure the tests still run.</li>
+</ul>
+<h2 id="step-6-parameterizing-the-title">Step 6: Parameterizing the title</h2>
+<p>The printing of the numbers includes some header information. The first part of that information is the title, the other is the page numbers. We should probably make the title into a parameter that our creators provide, as we don’t know what kinds of numbers they would want us to print. We’ll keep the page number logic as part of our work.</p>
+<p>This all will happen in the <code>printHeader</code> method, which currently is a series of <code>System.out.print</code> calls. Our first task would be to bring them together.</p>
+<ul>
+<li>Step-by-step merge each of the first two calls into the next one, by prepending its string to the front of the argument. For example after the first step the first two line should have become one call, with argument <code>&quot;The First &quot; + Integer.toString(getNumberOfNumbers())</code>. Run your tests after each step.</li>
+<li>Do the same to bring the last two calls together.</li>
+<li>Eliminate the <code>Integer.toString</code> parts (leaving their arguments intact, letting the plus operator worry about adding strings to integers.</li>
+<li>The <code>&quot;  --- Page &quot;</code> part belongs to the TODO</li>
+</ul>
+<p>TODO</p>
+</body>
+</html>

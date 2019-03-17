@@ -11,7 +11,7 @@ Naming in relation to scope
 
 Refactorings based on provided code
 
-- what is refactoring
+- what is refactoring      (use grades sample code as example)
 - renaming variables, functions
 
 ## Activity 3:
@@ -19,19 +19,23 @@ Refactorings based on provided code
 More advanced refactorings (lecture/pencil&paper):
 
 - extracting functions, inlining functions
-- extracting method object
+- extracting method object, parameter object
 
 ## Lunch
 
 - Get Lunch
-- Watch part of videos for Tuesday
 - [Refactoring screencast "2": Prime generator](videos/04-prime_gen_screencast.md)
 
 ## Activity 4:
 
-Extended refactoring session (similar or identical to prime generator video)
+Extended refactoring session (similar or identical to prime generator video), first half
+
+[Notes](activities/refactoring1.md)
 
 ## Activity 5:
 
+Second half of prime generator refactoring. (Number printer part at least)
 
 ## Activity 6:
+
+Refactoring practice on grades assignment.

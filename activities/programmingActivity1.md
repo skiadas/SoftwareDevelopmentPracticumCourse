@@ -37,6 +37,7 @@ The method you need to write, `processGrades` is given as input a "scanner". A s
 
 These are further directions that we will take this program. We'll ideally want our code to accomodate them.
 
+0. Allow for course "numbers" to include section letters.
 1. Keep track of the courses and grades, and include in the final report an alphabetical listing of the courses.
 2. Allow courses to have the "IP" grade for in-progress. In-progress units are reported in the totals if present.
 3. Allow S and U courses that are pass/fail and do not contribute to GPA but S can count towards graduation.

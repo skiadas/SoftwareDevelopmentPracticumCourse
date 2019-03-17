@@ -21,34 +21,32 @@ Tue
         - Video: [Clean Code (Remake)](videos/01-clean_code.md)
         - Video: [Names++](videos/02-names.md)
         - Reading: Clean Code chapters 1, 2
-    - (Coding) Function arguments, command-query separation
+    - (Coding) Extraction code into small functions
         - Video: Functions
-        - Reading: Clean Code chapter 3
+        - Reading: Clean Code chapter 3 ?????
     - [Lesson Plan 2](lessonPlans/lessonPlanDay2.md)
 
 Wed
   ~ - Goals:
         - Comment and Code formatting principles
+        - Function structure principles
+    - Prep:
+        - Watch [Function Structure video](videos/05-function_structure.md)
+    - (Coding) Function arguments, command-query separation
+        - Video: Function Structure
+        - Reading: Clean Code chapter 3 ?????
+    - (Coding) Comments, Formatting
+        - Video: Clean Code, Form
+        - Reading: Clean Code, chapters 4, 5
+
+Thu
+  ~ - Goals:
         - Deep dive into extension mechanisms: inheritance and delegation
         - Discussion of the concept and value of polymorphism and information hiding
         - "Tell, don't ask"
     - (Java/OOP) Inheritance vs Delegation
-    - (Coding) Comments, Formatting
-        - Video: Clean Code, Form
-        - Reading: Clean Code, chapters 4, 5
     - (Coding) Law of Demeter (Tell, don't ask)
         - Reading: Clean Code, chapter 6
-
-Thu
-  ~ - Goals:
-        - Introduction to Agile Methodologies
-        - Planning: User Stories, CRC Cards, Acceptance Tests
-    - (Practices) Principles of Agile Development
-        - Reading: ASD chapters 1-3
-        - Discussion of XP methodologies (pair programming, tests first etc)
-    - (Practices) User Stories
-        - Video: Clean Code, Architecture, Use Cases and High Level design
-    - (Practices) CRC Cards
 
 Fri
   ~ - Goals:
@@ -65,6 +63,18 @@ Fri
 ### Week 2
 
 Mon
+  ~ - Goals:
+        - Introduction to Agile Methodologies
+        - Planning: User Stories, CRC Cards, Acceptance Tests
+    - (Practices) Principles of Agile Development
+        - Reading: ASD chapters 1-3
+        - Discussion of XP methodologies (pair programming, tests first etc)
+    - (Practices) User Stories
+        - Video: Clean Code, Architecture, Use Cases and High Level design
+    - (Practices) CRC Cards
+
+
+Mon2(TODO)
   ~ - Goals:
         - Interfaces and dependency inversion (lamp example)
         - Introduction to the SOLID design principles, SRP and Open-Closed Principle
