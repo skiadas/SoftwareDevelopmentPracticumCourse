@@ -126,54 +126,6 @@
 <li>Looking at it here, let’s rename the <code>printNumbers</code> method to just <code>print</code> and the <code>generatePrimes</code> method to just <code>generate</code>. Remember to use the Rename refactoring for this!</li>
 </ul>
 <p>Run your tests.</p>
-<h2 id="step-4-working-on-the-numberprinter-class">Step 4: Working on the NumberPrinter class</h2>
-<p>Let’s see if we can do some cleanup of the <code>NumberPrinter</code> class:</p>
-<ul>
-<li>The parameter to the <code>print</code> method is called <code>primes</code>, but it clearly can be any array of numbers. So perform a Rename refactoring to change the parameter to <code>numbers</code>.</li>
-<li>The other parameter is the number of numbers to print. We don’t really need that any more technically, as we can simply use the length of the <code>numbers</code> array instead. To do this in a stepwise fashion, do the following:
-<ul>
-<li>Find the first use of the number-of-primes variable, and use “Extract Variable” to create a local variable equal to it, and named <code>numberOfNumbers</code>. Make sure to replace all 3 occurences.</li>
-<li>Change the <code>numberOfNumbers = ...</code> assignment to instead be <code>numberOfNumbers = numbers.length - 1</code>. (The numbers in the array actually start at index 1) Run your tests to make sure they still work.</li>
-<li>Now the parameter in the <code>print</code> method should be grayed out as it is not being used. Use the “Safe Delete” intention on it, and run your tests again.</li>
-</ul></li>
-<li>Let’s continue with refactoring the print method into smaller parts. We start with the double for loop: Perform the Extract Method refactoring to it, to obtain a method <code>printNumbersOnPage</code>.</li>
-<li>It seems that the first group of <code>System.out</code> calls prints a header, so go ahead and extract the method <code>printHeader</code> from it.</li>
-<li>The remaining part of the <code>while</code> loops seems to update the counters as we advance through each page. It also seems that the methods we use all need those values. So we should elevate them to fields so that they can be more easily shared. Perform an “extract field” refactoring on the page number, page offset and number of numbers variables.</li>
-<li>Extract a method from the last three lines of the while loop, call it <code>moveToNextPage</code>.</li>
-<li>Now that we are using fields, the page number and number of number parameters in the <code>printHeader</code> method are no longer needed. Perform an “Inline” refactoring to them, and remove the superfluous <code>this.</code> parts that are added. Run your tests.</li>
-<li>Do the same for the <code>printNumbersOnPage</code> method, leaving just the <code>numbers</code> parameter to it.</li>
-<li>It feels that <code>numbers</code> should also be set to a field. Extract the field from the first occurence of <code>numbers</code>, in the initialization of <code>numberOfNumbers</code>. Make sure to tell it to replace all occurences.</li>
-<li>Run your tests and they should now fail. That’s because IntelliJ did not actually add a statement to initialize <code>this.numbers</code> to equal the parameter <code>numbers</code>. Do so in the <code>print</code> method, and check that your tests are back in order.</li>
-<li>The <code>numbers</code> parameter in <code>printNumbersOnPage</code> should now be redundant. Perform the “Safe delete” intention on it.</li>
-<li>The first four lines of the <code>print</code> method are all about initializing fields. Extract them to a method <code>initialize</code>.</li>
-<li>The test in the <code>while</code> loop is determining if there are still more numbers to print. Extract it into a method <code>needToPrintMore</code> (keep the original signature when asked). This make it more clear what that test does.</li>
-<li>Let’s shift our attention to the <code>printNumbersOnPage</code> method. Look at the conditional at the innermost level of the loop. Let’s extract it to a method <code>printNumberAt</code>.</li>
-<li>Notice that this new method takes two parameters but really only uses one, namely their combination as “row offset plus column offset times rows per page”. Extract parameter from that expression, and tell it to replace both occurences. It should also remove the other two parameters in this case.</li>
-<li>Let’s look at the row-offset variable of the outer loop. It seems to be initialized as page offset, then stop at a boundary similarly depending on page offset. It is only used in the index computation. Change it so that it instead starts at 0 and ends at rows-per-page minus 1, and change the index computation to include an additional page-offset. Run your tests to make sure they still pass. Maybe also perform a Rename refactoring to now call the variable <code>row</code>.</li>
-<li>Looking at the stopping tests in our for loops, we are more used to seeing them with a less than comparison, rather with a “less than or equal to the number minus 1” comparison. So fix those up, and run our tests to make sure they still pass.</li>
-</ul>
-<h2 id="step-5-reducing-the-number-of-fields">Step 5: Reducing the number of fields</h2>
-<p>It seems there are still too many fields in the NumberPrinter class. A primary example is the page offset. It should be simple enough to compute the page offset from the page number, and it is not really used in too many places. We would like to replace it with a computation. In order to achieve this, we will do the following:</p>
-<ul>
-<li>Use the “Encapsulate Fields” refactoring to encapsulate the get access for page offset. This will replace all accesses to this page offset by a call to <code>getPageOffset()</code>. Run your tests to make sure we didn’t break anything yet.</li>
-<li>Now, we can edit the <code>getPageOffset</code> method to instead compute the offset from the page number and return it. The computation should be “page number minus 1 then times rows per page and times columns per page, then add one to the result.” Run our tests to make sure this change did not break anything.</li>
-<li>Now, the page offset field should appear grayed out in its declaration point. Go ahead and do the “Safe delete” intention and run the tests again.</li>
-</ul>
-<p>Next we have the number of numbers field. It’s not used much, and we can just compute it from the numbers array instead. So let’s do that:</p>
-<ul>
-<li>Use the “Encapsulate Fields” refactoring again, this time to encapsulate the getters of the number of numbers field.</li>
-<li>Replace the body of the new getter to instead return the numbers array length minus one. Run the tests to make sure they still run.</li>
-<li>Notice that the numberOfNumbers field appears grayed out now, and perform the “Safe delete” intention. Make sure the tests still run.</li>
-</ul>
-<h2 id="step-6-parameterizing-the-title">Step 6: Parameterizing the title</h2>
-<p>The printing of the numbers includes some header information. The first part of that information is the title, the other is the page numbers. We should probably make the title into a parameter that our creators provide, as we don’t know what kinds of numbers they would want us to print. We’ll keep the page number logic as part of our work.</p>
-<p>This all will happen in the <code>printHeader</code> method, which currently is a series of <code>System.out.print</code> calls. Our first task would be to bring them together.</p>
-<ul>
-<li>Step-by-step merge each of the first two calls into the next one, by prepending its string to the front of the argument. For example after the first step the first two line should have become one call, with argument <code>&quot;The First &quot; + Integer.toString(getNumberOfNumbers())</code>. Run your tests after each step.</li>
-<li>Do the same to bring the last two calls together.</li>
-<li>Eliminate the <code>Integer.toString</code> parts (leaving their arguments intact, letting the plus operator worry about adding strings to integers.</li>
-<li>The <code>&quot;  --- Page &quot;</code> part belongs to the TODO</li>
-</ul>
-<p>TODO</p>
+<p>This activity continues in <a href="refactoring2.html">refactoring activity 2</a>.</p>
 </body>
 </html>

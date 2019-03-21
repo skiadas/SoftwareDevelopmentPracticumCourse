@@ -22,7 +22,7 @@ Tue
         - Video: [Names++](videos/02-names.md)
         - Reading: Clean Code chapters 1, 2
     - (Coding) Extraction code into small functions
-        - Video: Functions
+        - Video: [Functions](videos/03-function_size.md)
         - Reading: Clean Code chapter 3 ?????
     - [Lesson Plan 2](lessonPlans/lessonPlanDay2.md)
 
