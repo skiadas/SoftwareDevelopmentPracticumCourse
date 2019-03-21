@@ -29,7 +29,7 @@ Comments/Form something?? Code reviews
 
 ## Activity 4:
 
-Code smells? More refactoring
+Code smells? More refactoring (From refactoring book and/or Clean code chapter 17)
 
 ## Activity 5:
 

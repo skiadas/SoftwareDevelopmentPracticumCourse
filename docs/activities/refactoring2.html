@@ -91,7 +91,32 @@
 <li>Now we hopefully have isolated all the changes of the <code>pageNumber</code> field to the <code>print</code> method. It is set to 1 at the beginning of the <code>print</code> method, then incremented later on. You can confirm that the field is not used elsewhere by moving your cursor over the field declaration and using the “Navigate -&gt; Declaration menu item”. It should show you all the usages.</li>
 <li>Now with the cursor on the field declaration, choose the “Convert to local” intention. Then run our tests again to make sure everything works fine.</li>
 </ul>
-<p>Thinking through the problem more, it almost feels like we need a separate class to capture the idea of the individual <em>pages</em>. Then that class can incorporate the logic about computing indices and knowing when it’s done, for example. Perhaps we can call this new class a <code>Page</code>.</p>
-<p>TODO</p>
+<p>Thinking through the problem more, it almost feels like we need a separate class to capture the idea of the individual <em>pages</em>. Then that class can incorporate the logic about computing indices and knowing when it’s done, for example. Perhaps we can call this new class a <code>Page</code>. Let’s think through what it would need to know:</p>
+<ul>
+<li>It needs to know its number, currently stored in <code>pageNumber</code>.</li>
+<li>It needs to know the row/column dimensions.</li>
+<li>It needs to know the actual numbers array to be able to index into it.</li>
+</ul>
+<p>So this class will kind of end up knowing almost all the same stuff as the pretty-printer (except for the title for example). But it does not concern itself with headers and footers for example, or where to output the values. And we might later consider other ways to paginate the page (e.g. numbers going row first). Let’s give this a go:</p>
+<ul>
+<li>First, turn the <code>pageNumber</code> local variable back into a field (extract field). We are about to do an “extract delegate” refactoring, which works best with fields.</li>
+<li>Now perform the “extract delegate” refactoring, which allows you to pull apart fields and methods of one class to another. Name the new class Page, and include in it all the members except for print, printHeader and printNumberOnPage. Make sure to select the “generate accessors” box.</li>
+<li>Try to run your tests now, and they should fail. It looks like the problem is that rowsPerPage and columnsPerPage are marked as final, which is correct since they should really only be set once in the constructor. But that’s not how they are set. So let’s see if we can fix that:
+<ul>
+<li>Back in the <code>NumberPrinter</code>, notice how the <code>page</code> field is initialized at its declaration. Use the “move initializer to constructor” refactoring to bring that into the initializer.</li>
+<li>Back in <code>Page</code>, go over the <code>rowsPerPage</code> field and use the “add constructor parameters” refactoring to select both fields and add them to the constructor as parameters.</li>
+<li>Back in the <code>NumberPrinter</code> constructor, eliminate the two <code>this.page.set...</code> lines.</li>
+<li>Back in <code>Page</code>, use the “Safe delete” intention to remove the various grayed out methods.</li>
+<li>Run your tests now and make sure they run.</li>
+</ul></li>
+<li>Now let’s do some more cleanup. There are some methods back in <code>NumberPrinter</code> that are not being used. Go ahead and use “Safe delete” on them as well.</li>
+<li>Now we need to do some cleanup. A number of methods in NumberPrinter are now grayed out, go ahead and use the “Safe delete” intention on them. Make sure your tests still run.</li>
+<li>There is a <code>page.setPageNumber(1)</code> call that really should not be needed, as that should be part of the initialization of the page class. Delete that call and instead initialize the <code>pageNumber</code> field in the <code>Page</code> class to 1.</li>
+<li>In the <code>Page</code> class, a number of the methods no longer need the <code>pageNumber</code> parameter.
+<ul>
+<li>Let’s start with the <code>getPageOffset</code> method. Perform the <code>Change Signature</code> refactoring to eliminate its one parameter. Run your tests to make sure they are OK.</li>
+<li>Next “Safe delete” the unnecessary parameter in <code>needToPrintMore</code>. While we are at it, perform a renaming of it to be simply called <code>hasNext</code>.</li>
+</ul></li>
+</ul>
 </body>
 </html>

@@ -44,21 +44,25 @@ Thu
         - Deep dive into extension mechanisms: inheritance and delegation
         - Discussion of the concept and value of polymorphism and information hiding
         - "Tell, don't ask"
+    - Prep:
+        - Design Patterns book: 1.6 (maybe ?)
+        - Clean Code, chapter 6
     - (Java/OOP) Inheritance vs Delegation
     - (Coding) Law of Demeter (Tell, don't ask)
-        - Reading: Clean Code, chapter 6
 
 Fri
   ~ - Goals:
-        - Project and code tracking: Version Control, issue management
+        - Code tracking with Version Control
         - Automated Testing and Test-driven development
     - (Practices) Version Control Basics
-    - (Practices) Issue Management
     - (Practices) Test-Driven Development
+    - Prep:
         - Reading: Clean Code, chapter 9
-        - Reading: ASD, chapter 4
         - Video: TDD Part 1 and 2
-        - Video: Advanced TDD Part 1?
+
+For Later
+  ~ - Reading: ASD, chapter 4
+    - Video: Advanced TDD Part 1?
 
 ### Week 2
 

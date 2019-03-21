@@ -87,6 +87,25 @@ Let's work through this refactoring:
 - Now we hopefully have isolated all the changes of the `pageNumber` field to the `print` method. It is set to 1 at the beginning of the `print` method, then incremented later on. You can confirm that the field is not used elsewhere by moving your cursor over the field declaration and using the "Navigate -> Declaration menu item". It should show you all the usages.
 - Now with the cursor on the field declaration, choose the "Convert to local" intention. Then run our tests again to make sure everything works fine.
 
-Thinking through the problem more, it almost feels like we need a separate class to capture the idea of the individual *pages*. Then that class can incorporate the logic about computing indices and knowing when it's done, for example. Perhaps we can call this new class a `Page`.
+Thinking through the problem more, it almost feels like we need a separate class to capture the idea of the individual *pages*. Then that class can incorporate the logic about computing indices and knowing when it's done, for example. Perhaps we can call this new class a `Page`. Let's think through what it would need to know:
 
-TODO
+- It needs to know its number, currently stored in `pageNumber`.
+- It needs to know the row/column dimensions.
+- It needs to know the actual numbers array to be able to index into it.
+
+So this class will kind of end up knowing almost all the same stuff as the pretty-printer (except for the title for example). But it does not concern itself with headers and footers for example, or where to output the values. And we might later consider other ways to paginate the page (e.g. numbers going row first). Let's give this a go:
+
+- First, turn the `pageNumber` local variable back into a field (extract field). We are about to do an "extract delegate" refactoring, which works best with fields.
+- Now perform the "extract delegate" refactoring, which allows you to pull apart fields and methods of one class to another. Name the new class Page, and include in it all the members except for print, printHeader and printNumberOnPage. Make sure to select the "generate accessors" box.
+- Try to run your tests now, and they should fail. It looks like the problem is that rowsPerPage and columnsPerPage are marked as final, which is correct since they should really only be set once in the constructor. But that's not how they are set. So let's see if we can fix that:
+    - Back in the `NumberPrinter`, notice how the `page` field is initialized at its declaration. Use the "move initializer to constructor" refactoring to bring that into the initializer.
+    - Back in `Page`, go over the `rowsPerPage` field and use the "add constructor parameters" refactoring to select both fields and add them to the constructor as parameters.
+    - Back in the `NumberPrinter` constructor, eliminate the two `this.page.set...` lines.
+    - Back in `Page`, use the "Safe delete" intention to remove the various grayed out methods.
+    - Run your tests now and make sure they run.
+- Now let's do some more cleanup. There are some methods back in `NumberPrinter` that are not being used. Go ahead and use "Safe delete" on them as well.
+- Now we need to do some cleanup. A number of methods in NumberPrinter are now grayed out, go ahead and use the "Safe delete" intention on them. Make sure your tests still run.
+- There is a `page.setPageNumber(1)` call that really should not be needed, as that should be part of the initialization of the page class. Delete that call and instead initialize the `pageNumber` field in the `Page` class to 1.
+- In the `Page` class, a number of the methods no longer need the `pageNumber` parameter.
+    - Let's start with the `getPageOffset` method. Perform the `Change Signature` refactoring to eliminate its one parameter. Run your tests to make sure they are OK.
+    - Next "Safe delete" the unnecessary parameter in `needToPrintMore`. While we are at it, perform a renaming of it to be simply called `hasNext`.
