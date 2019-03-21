@@ -6,21 +6,20 @@ Timing:
 
 - 00:00-00:50 introduction
 - 00:50-04:20 overview
-- 04:20-09:00 astronomy lesson (sun fusion)
-- 09:00-17:20 function arguments
+- 04:20-09:00 astronomy lesson: fusion (can skip)
+- 09:00-17:20 function arguments (a.k.a. parameters)
 - 17:20-28:20 the stepdown rule
-- 28:20-40:50 switch statements and dependency inversion
+- 28:20-40:50 switch statements and independent deployability (can skip; goes elsewhere?)
 - 40:50-43:30 functional programming
-- 43:30-47:30 side-effects, temporal coupling
+- 43:30-47:30 function side-effects, temporal coupling
 - 47:30-51:30 command-query separation
 - 51:30-56:30 tell don't ask
 - 56:30-60:00 structured programming
 - 60:00-63:00 early returns
-- 63:00-66:00 error handling
-- 66:00-75:00 exceptions
-- 75:00-80:00 special cases
-- 80:00-87:00 null is not an error. null is a value
-- 87:00-88:00 "try" is "one thing"
-- 88:00-92:10 conclusion
-- 92:10-94:30 credits
-
+- 63:00-66:00 error handling (can skip; goes elsewhere?)
+- 66:00-75:00 exceptions (can skip; goes elsewhere?)
+- 75:00-80:00 special cases (can skip; goes elsewhere?)
+- 80:00-87:00 null is not an error. null is a value (can skip; goes elsewhere?)
+- 87:00-88:00 "try" is "one thing" (can skip; goes elsewhere?)
+- 88:00-92:10 conclusion (yuck)
+- 92:10-94:30 end credits (can skip)
