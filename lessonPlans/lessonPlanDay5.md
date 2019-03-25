@@ -27,7 +27,7 @@ Git cheatsheet
 
 TDD step-by-step example for them (see web apps course lab 4)
 
-Maybe chapter 6 of ASD?
+Yes, bowling example, but like "red, green refactor" on TDD part 2 video.
 
 ## Activity 5:
 
