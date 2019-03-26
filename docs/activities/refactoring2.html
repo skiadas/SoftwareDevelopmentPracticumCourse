@@ -91,6 +91,7 @@
 <li>Now we hopefully have isolated all the changes of the <code>pageNumber</code> field to the <code>print</code> method. It is set to 1 at the beginning of the <code>print</code> method, then incremented later on. You can confirm that the field is not used elsewhere by moving your cursor over the field declaration and using the “Navigate -&gt; Declaration menu item”. It should show you all the usages.</li>
 <li>Now with the cursor on the field declaration, choose the “Convert to local” intention. Then run our tests again to make sure everything works fine.</li>
 </ul>
+<h2 id="step-8-extracting-a-page-class">Step 8: Extracting a Page class</h2>
 <p>Thinking through the problem more, it almost feels like we need a separate class to capture the idea of the individual <em>pages</em>. Then that class can incorporate the logic about computing indices and knowing when it’s done, for example. Perhaps we can call this new class a <code>Page</code>. Let’s think through what it would need to know:</p>
 <ul>
 <li>It needs to know its number, currently stored in <code>pageNumber</code>.</li>
@@ -112,11 +113,31 @@
 <li>Now let’s do some more cleanup. There are some methods back in <code>NumberPrinter</code> that are not being used. Go ahead and use “Safe delete” on them as well.</li>
 <li>Now we need to do some cleanup. A number of methods in NumberPrinter are now grayed out, go ahead and use the “Safe delete” intention on them. Make sure your tests still run.</li>
 <li>There is a <code>page.setPageNumber(1)</code> call that really should not be needed, as that should be part of the initialization of the page class. Delete that call and instead initialize the <code>pageNumber</code> field in the <code>Page</code> class to 1.</li>
-<li>In the <code>Page</code> class, a number of the methods no longer need the <code>pageNumber</code> parameter.
-<ul>
-<li>Let’s start with the <code>getPageOffset</code> method. Perform the <code>Change Signature</code> refactoring to eliminate its one parameter. Run your tests to make sure they are OK.</li>
+<li>In the <code>Page</code> class, the <code>getPageOffset</code> method no longer needs the <code>pageNumber</code> parameter. Perform the <code>Change Signature</code> refactoring to eliminate its parameter. Run your tests to make sure they are OK.</li>
 <li>Next “Safe delete” the unnecessary parameter in <code>needToPrintMore</code>. While we are at it, perform a renaming of it to be simply called <code>hasNext</code>.</li>
-</ul></li>
+<li>Now let’s shift our focus back to the <code>NumberPrinter</code>. Note the last line in the print while loop, which increments the page number by 1. This really should be a method of page. Select the whole expression and perform an “Extract method” refactoring to it, to a new method named <code>nextPage</code>. Then perform a “Move” refactoring to move it to the <code>Page</code> class. Now go to the body of this new method in the <code>Page</code> class, and perform “Inline” refactorings, selecting “this only and keep the method”.</li>
+<li>Now the <code>setPageNumber</code> method is probably grayed out. You can perform “Safe delete” on it.</li>
+<li>Let’s clean the class up a bit. There are four fields declared, move their declarations near the top, before all the methods. You can use the “Code -&gt; Move Statement Up/Down” shortcuts.</li>
+<li>Similarly, move the constructor to be right below them.</li>
+<li>There are a number of <code>get...</code> methods. Move them all close to each other below the constructor.</li>
 </ul>
+<p>Now let’s look at the <code>printNumberAt</code> method. It feels as though that method is not quite doing what this class should be doing. We want this class to be about computing, for example to compute the index. But the actual printing would be left up to the <code>NumberPrinter</code> class. So our work needs to start from the <code>print</code> method in the <code>NumberPrinter</code> class.</p>
+<ul>
+<li>Look at the index computation in the argument to the <code>printNumberAt</code> call inside the inner for loop the <code>printNumbersOnPage</code> method. select that whole argument and extract a method for it: <code>getIndexFor</code>. Then move that to the <code>page</code> method. Then inline the <code>getRowsPerPage</code> call in it.</li>
+<li>Back in the <code>printNumbersOnPage</code> method, inline the call to <code>printNumberAt</code> (and remove the method as this is its only occurence).</li>
+<li>At this point the system created an <code>index</code> local variable. Go ahead and inline it to eliminate it.</li>
+<li>Now the test inside the <code>if</code> should be its own method, so extract it to a method <code>hasEntry</code> then move that method to the <code>Page</code> class.</li>
+<li>The second argument to the <code>String.out.printf</code> call should also be its own method, called <code>getEntryAt</code>. This is a bit tricky: Select it and start the “Extract Method” refactoring, and you will see that the “Fold parameters” checkbox is checked. Go ahead and uncheck it, then refactor it and move it to the <code>Page</code> class.</li>
+<li>As a final cleanup, the <code>pageNumber</code> parameter is not needed, so perform a “Safe delete” on it.</li>
+</ul>
+<p>Let’s return to the main <code>print</code> method. Remember that our goal was to simplify that loop a bit. Let’s start by putting together the three methods in the while loop: The header printing, the page printing and the footer printing. Call the new method <code>printPage</code>.</p>
+<p>Now the <code>while</code> loop looks a lot simpler! It still feels a bit off though, we should be going to the “next page” first. So move the <code>page.nextPage()</code> line up a step. This of course will fail our tests. We will need to adjust <code>pageNumber</code> in a number of ways:</p>
+<ul>
+<li><code>pageNumber</code> should start 0 instead of 1.</li>
+<li><code>hasNext</code> should instead use <code>getNextPageOffset</code>, a new method that is like <code>getPageOffset</code> but uses <code>pageNumber</code> instead of <code>pageNumber - 1</code>.</li>
+</ul>
+<p>After you have made those changes and created the new method, your tests should again pass.</p>
+<p>One final cleanup before calling it a day: The second parameter to <code>printHeader</code> can be inlined. Do that. And the <code>System.out.println(&quot;\f&quot;);</code> line should really be a method called <code>printFooter</code>, so extract that, then rearrange the methods so that they follow the stepdown rule.</p>
+<p>This activity continues in <a href="refactoring3.html">refactoring activity 3</a>.</p>
 </body>
 </html>

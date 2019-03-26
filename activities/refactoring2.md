@@ -87,6 +87,8 @@ Let's work through this refactoring:
 - Now we hopefully have isolated all the changes of the `pageNumber` field to the `print` method. It is set to 1 at the beginning of the `print` method, then incremented later on. You can confirm that the field is not used elsewhere by moving your cursor over the field declaration and using the "Navigate -> Declaration menu item". It should show you all the usages.
 - Now with the cursor on the field declaration, choose the "Convert to local" intention. Then run our tests again to make sure everything works fine.
 
+## Step 8: Extracting a Page class
+
 Thinking through the problem more, it almost feels like we need a separate class to capture the idea of the individual *pages*. Then that class can incorporate the logic about computing indices and knowing when it's done, for example. Perhaps we can call this new class a `Page`. Let's think through what it would need to know:
 
 - It needs to know its number, currently stored in `pageNumber`.
@@ -106,6 +108,32 @@ So this class will kind of end up knowing almost all the same stuff as the prett
 - Now let's do some more cleanup. There are some methods back in `NumberPrinter` that are not being used. Go ahead and use "Safe delete" on them as well.
 - Now we need to do some cleanup. A number of methods in NumberPrinter are now grayed out, go ahead and use the "Safe delete" intention on them. Make sure your tests still run.
 - There is a `page.setPageNumber(1)` call that really should not be needed, as that should be part of the initialization of the page class. Delete that call and instead initialize the `pageNumber` field in the `Page` class to 1.
-- In the `Page` class, a number of the methods no longer need the `pageNumber` parameter.
-    - Let's start with the `getPageOffset` method. Perform the `Change Signature` refactoring to eliminate its one parameter. Run your tests to make sure they are OK.
-    - Next "Safe delete" the unnecessary parameter in `needToPrintMore`. While we are at it, perform a renaming of it to be simply called `hasNext`.
+- In the `Page` class, the `getPageOffset` method no longer needs the `pageNumber` parameter. Perform the `Change Signature` refactoring to eliminate its parameter. Run your tests to make sure they are OK.
+- Next "Safe delete" the unnecessary parameter in `needToPrintMore`. While we are at it, perform a renaming of it to be simply called `hasNext`.
+- Now let's shift our focus back to the `NumberPrinter`. Note the last line in the print while loop, which increments the page number by 1. This really should be a method of page. Select the whole expression and perform an "Extract method" refactoring to it, to a new method named `nextPage`. Then perform a "Move" refactoring to move it to the `Page` class. Now go to the body of this new method in the `Page` class, and perform "Inline" refactorings, selecting "this only and keep the method".
+- Now the `setPageNumber` method is probably grayed out. You can perform "Safe delete" on it.
+- Let's clean the class up a bit. There are four fields declared, move their declarations near the top, before all the methods. You can use the "Code -> Move Statement Up/Down" shortcuts.
+- Similarly, move the constructor to be right below them.
+- There are a number of `get...` methods. Move them all close to each other below the constructor.
+
+Now let's look at the `printNumberAt` method. It feels as though that method is not quite doing what this class should be doing. We want this class to be about computing, for example to compute the index. But the actual printing would be left up to the `NumberPrinter` class. So our work needs to start from the `print` method in the `NumberPrinter` class.
+
+- Look at the index computation in the argument to the `printNumberAt` call inside the inner for loop the `printNumbersOnPage` method. select that whole argument and extract a method for it: `getIndexFor`. Then move that to the `page` method. Then inline the `getRowsPerPage` call in it.
+- Back in the `printNumbersOnPage` method, inline the call to `printNumberAt` (and remove the method as this is its only occurence).
+- At this point the system created an `index` local variable. Go ahead and inline it to eliminate it.
+- Now the test inside the `if` should be its own method, so extract it to a method `hasEntry` then move that method to the `Page` class.
+- The second argument to the `String.out.printf` call should also be its own method, called `getEntryAt`. This is a bit tricky: Select it and start the "Extract Method" refactoring, and you will see that the "Fold parameters" checkbox is checked. Go ahead and uncheck it, then refactor it and move it to the `Page` class.
+- As a final cleanup, the `pageNumber` parameter is not needed, so perform a "Safe delete" on it.
+
+Let's return to the main `print` method. Remember that our goal was to simplify that loop a bit. Let's start by putting together the three methods in the while loop: The header printing, the page printing and the footer printing. Call the new method `printPage`.
+
+Now the `while` loop looks a lot simpler! It still feels a bit off though, we should be going to the "next page" first. So move the `page.nextPage()` line up a step. This of course will fail our tests. We will need to adjust `pageNumber` in a number of ways:
+
+- `pageNumber` should start 0 instead of 1.
+- `hasNext` should instead use `getNextPageOffset`, a new method that is like `getPageOffset` but uses `pageNumber` instead of `pageNumber - 1`.
+
+After you have made those changes and created the new method, your tests should again pass.
+
+One final cleanup before calling it a day: The second parameter to `printHeader` can be inlined. Do that. And the `System.out.println("\f");` line should really be a method called `printFooter`, so extract that, then rearrange the methods so that they follow the stepdown rule.
+
+This activity continues in [refactoring activity 3](refactoring3.md).
