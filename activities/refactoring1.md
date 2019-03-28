@@ -24,55 +24,33 @@
 
 ## Step 1: Variable renaming
 
-We will start by giving better name for each variable. After reading the description of the variable here, choose a better name for it and use the "Rename" refactoring on the variable. Some variables may simply need to be written in camel-case instead of all-caps.
+The first and easiest thing to fix are the variable names. The table below lists the variables used in the program. For each variable, read the description of what the variable represents and choose a better name for the variable. Note that for some variables, it is how the name is formatted rather than the name itself that can be improved (e.g., camel-case instead of all-caps).
 
-M
-  ~ This is the number of primes that we will generate and print
+New Name | Current Name | Description 
+-------- | ------------ | -----------
+ | M  | number of primes to generate and print
+ | RR | number of rows to print per page
+ | CC | number of columns to print per page
+ | ORDMAX | Leave as is, but make lower case  (TODO: come back to it?)
+ | P | list of primes
+ | PAGENUMBER | current page number in the printout
+ | PAGEOFFSET | offset into the primes array where the current page starts
+ | ROWOFFSET | offset into the primes array where the elements in the current row start
+ | C | current column in the printout
+ | J | candidate prime number
+ | K | index into the prime array for the last computed prime
+ | JPRIME | boolean that indicates whether the candidate number (J) is "possibly prime" (`false` means definitely not prime).
+ | ORD | Leave as is, just lowercase.   (TODO: come back to it?)
+ | SQUARE | next possible prime square (TODO: come back to it?)
+ | N | Leave as is, just lowercase   (TODO: come back to it?)
+ | MULT | an array of multiples
 
-RR
-  ~ This is the number of rows to print per page
-
-CC
-  ~ This is the number of columns to print per page
-
-ORDMAX
-  ~ Leave as is, but make lower case  (TODO: come back to it?)
-
-P
-  ~ The list of primes
-
-PAGENUMBER
-  ~ The current page number in the printout
-
-PAGEOFFSET
-  ~ This is the offset into the primes array that the current page would be starting at
-
-ROWOFFSET
-  ~ This is the offset into the primes array for the elements in the current row
-
-C
-  ~ The current column in the printout
-
-J
-  ~ The candidate prime number
-
-K
-  ~ The index into the prime array for the last computed prime.
-
-JPRIME
-  ~ Whether the candidate number (J) is "possibly prime" (`false` means definitely not prime).
-
-ORD
-  ~ Leave as is, just lowercase.   (TODO: come back to it?)
-
-SQUARE
-  ~ the next possible prime square (TODO: come back to it?)
-
-N
-  ~ Leave as is, just lowercase   (TODO: come back to it?)
-
-MULT
-  ~ An array of multiples
+Rename each variable in `PrimePrinter.java` as follows:
+1. Click on the variable name
+2. Use `<ctrl>-T` to open the "Refactor This" menu
+3. Choose `Rename` (the variable be outlined in red)
+4. Type in the new name for the variable
+5. ENTER to make the change
 
 Next, use "Code -> Reformat Code" to properly indent and space out everything.
 
