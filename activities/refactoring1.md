@@ -2,14 +2,14 @@
 
 ## Goals
 - Learn important vocabulary:
-  - intention action (a.k.a. intention)
-  - 
+	- intention action (a.k.a. intention)
+	- 
 - Learn how to accomplish the following refactorings in IntelliJ:
-  - variable renaming
-  - 
+	- variable renaming
+	-
 - Develop these habits:
-  - use <ctrl>-T to open "Refactor This" menu
-  - use <option>-ENTER to see intention actions
+	- use `<ctrl>-T` to open "Refactor This" menu
+	- use `<option>-ENTER` to see available intentions
 
 ## Getting Started
 - [ ] Download `primeGenerator.zip` from the `Refactoring Activity 1-3` folder on Moodle (right-click and save file to your CS321 directory).
@@ -19,44 +19,51 @@
 	- PrimePrinter.java
 	- PrintPrimesTest.java
 	- gold
-- [ ] Right-click on `PrintPrimesTest` (filename or tab) and select: `Run 'PrintPrimesTest'`. If the test doesn't pass, ask for help. 
+- [ ] Right-click on `PrintPrimesTest` (either the filename or the tab) and select: `Run 'PrintPrimesTest'`. If the test does not pass, ask for help. 
 - [ ] Take a look at the `PrimePrinter` file and its `main` method. This is the method we will refactor and clean up.
 
 ## Step 1: Variable renaming
 
-The first and easiest thing to fix are the variable names. The table below lists the variables used in the program. For each variable, read the description of what the variable represents and choose a better name for the variable. Note that for some variables, it is how the name is formatted rather than the name itself that can be improved (e.g., camel-case instead of all-caps).
+1. The first and easiest thing to fix are the variable names. The table below lists the variables used by the program. For each variable, read the description of what the variable represents and choose a better name for the variable. Note that for some variables, it is how the name is formatted rather than the name itself that can be improved (e.g., camel-case instead of all-caps).
 
-New Name | Current Name | Description 
--------- | ------------ | -----------
- | M  | number of primes to generate and print
- | RR | number of rows to print per page
- | CC | number of columns to print per page
- | ORDMAX | Leave as is, but make lower case  (TODO: come back to it?)
- | P | list of primes
- | PAGENUMBER | current page number in the printout
- | PAGEOFFSET | offset into the primes array where the current page starts
- | ROWOFFSET | offset into the primes array where the elements in the current row start
- | C | current column in the printout
- | J | candidate prime number
- | K | index into the prime array for the last computed prime
- | JPRIME | boolean that indicates whether the candidate number (J) is "possibly prime" (`false` means definitely not prime).
- | ORD | Leave as is, just lowercase.   (TODO: come back to it?)
- | SQUARE | next possible prime square (TODO: come back to it?)
- | N | Leave as is, just lowercase   (TODO: come back to it?)
- | MULT | an array of multiples
+|      New Name      | Current Name | Description 
+|------------------- | ------------ | --------------------------------------------------------------
+|                    | M            | number of primes to generate and print
+|                    | RR           | number of rows to print per page
+|                    | CC           | number of columns to print per page
+|                    | ORDMAX       | Leave as is, but make lower case  (TODO: come back to it?)
+|                    | P            | list of primes
+|                    | PAGENUMBER   | current page number in the printout
+|                    | PAGEOFFSET   | offset into the primes array where the current page starts
+|                    | ROWOFFSET    | offset into the primes array where the elements in the current row start
+|                    | C            | current column in the printout
+|                    | J            | candidate prime number
+|                    | K            | index into the prime array for the last computed prime
+|                    | JPRIME       | boolean that indicates whether the candidate number (J) is "possibly prime" (`false` means definitely not prime).
+|                    | ORD          | Leave as is, just lowercase.   (TODO: come back to it?)
+|                    | SQUARE       | next possible prime square (TODO: come back to it?)
+|                    | N            | Leave as is, just lowercase   (TODO: come back to it?)
+|                    | MULT         | an array of multiples
 
-Rename each variable in `PrimePrinter.java` as follows:
-1. Click on the variable name
-2. Use `<ctrl>-T` to open the "Refactor This" menu
-3. Choose `Rename` (the variable be outlined in red)
-4. Type in the new name for the variable
-5. ENTER to make the change
+2. Rename each variable in `PrimePrinter.java` as follows:
 
-Next, use "Code -> Reformat Code" to properly indent and space out everything.
+	* Click on the variable name
+	* Use `<ctrl>-T` to open "Refactor This"
+	* Choose `Rename` (the variable will then be outlined in red)
+	* Type in the new name for the variable
+	* `ENTER` to make the change
 
-Now, use the "Move declaration closer to usages" intention an all the variables that are declared near the top without an initial value. (page number, page offset, row offset, candidate prime, current column, etd)
+	Notice that all occurrences of the original variable name have been renamed.
 
-Test (TODO: and commit?)
+3. Use `Code -> Reformat Code` to automatically fix the indentation and spacing.
+
+4. The last thing to do is to move the variable declarations closer to where the variables are first used. For each variable declaration, do the following:
+
+	* Click on a variable name
+	* Use `<option>-ENTER` to show available intentions
+	* Select `Move declaration closer to usages` if that is one of the possible intentions in the list
+
+Test (TODO: add commit?)
 
 ## Step 2: Basic Method separation
 
