@@ -1,9 +1,26 @@
-# Refactoring Activity 1
+# Refactoring Activity 1: Renaming Variables an Extracting Classes
 
-- Access the "Prime Generator" code from Moodle, and unzip it
-- Start an IntelliJ project from the provided sources
-- Run the PrintPrimesTest file, and make sure it passes.
-- Take a look at the `PrimePrinter` file and its `main` method. This is the method we will refactor and clean up.
+## Goals
+- Learn important vocabulary:
+  - intention action (a.k.a. intention)
+  - 
+- Learn how to accomplish the following refactorings in IntelliJ:
+  - variable renaming
+  - 
+- Develop these habits:
+  - use <ctrl>-T to open "Refactor This" menu
+  - use <option>-ENTER to see intention actions
+
+## Getting Started
+- [ ] Download `primeGenerator.zip` from the Refactoring 1-3 folder on Moodle (right-click and save file to your CS321 directory).
+- [ ] In a terminal window, navigate to your CS321 directory and run: `unzip primeGenerator.zip`
+- [ ] Start IntelliJ and select `File -> New -> Project from Existing Sources`. Navigate to and select the `primeGenerator` folder that you just unzipped.
+- [ ] Verify that you have all three project files:
+	- PrimePrinter.java
+	- PrintPrimesTest.java
+	- gold
+- [ ] Right-click on `PrintPrimesTest` (filename or tab) and select: `Run 'PrintPrimesTest'`. If the test doesn't pass, ask for help. 
+- [ ] Take a look at the `PrimePrinter` file and its `main` method. This is the method we will refactor and clean up.
 
 ## Step 1: Variable renaming
 
