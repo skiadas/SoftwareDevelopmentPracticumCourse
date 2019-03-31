@@ -4,7 +4,7 @@ Timing:
 
 - 00:00-00:50 introduction
 - 00:50-04:45 overview
-- 03:55-10:45 astronomy lesson: birth of the moon (may skip)
+- 04:45-10:45 astronomy lesson: birth of the moon (may skip)
 - 10:45-39:05 fear and code rot
     - 20:15-37:35 demonstration (may skip, but good refactoring example)
 - 39:05-50:50 the three laws of tdd
