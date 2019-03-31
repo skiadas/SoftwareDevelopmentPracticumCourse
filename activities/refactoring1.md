@@ -2,128 +2,242 @@
 
 ## Goals
 - Learn important vocabulary:
-	- intention action (a.k.a. intention)
+	- intention (intention action) \[IntelliJ\]
 	- 
 - Learn how to accomplish the following refactorings in IntelliJ:
 	- variable renaming
 	-
 - Develop these habits:
-	- use `<ctrl>-T` to open "Refactor This" menu
+	- use `<ctrl>-T` to open the *Refactor This* menu
 	- use `<option>-ENTER` to see available intentions
 
 ## Getting Started
-- [ ] Download `primeGenerator.zip` from the `Refactoring Activity 1-3` folder on Moodle (right-click and save file to your CS321 directory).
-- [ ] In a terminal window, navigate to your CS321 directory and run: `unzip primeGenerator.zip`
-- [ ] Start IntelliJ and select `File -> New -> Project from Existing Sources`. Navigate to and select the `primeGenerator` folder that you just unzipped.
-- [ ] Verify that you have all three project files:
+- [ ] Download `primeGenerator.zip` from the **Refactoring Activity 1-3** folder on the 
+Moodle class page (right-click and save link to your directory for this class).
+
+- [ ] In a terminal window, navigate to that directory and run: `unzip primeGenerator.zip`. This will create a directory called `primeGenerator`.
+
+- [ ] Start IntelliJ and select: *File -> New -> Project from Existing Sources*. 
+
+- [ ] Navigate to and select the `primeGenerator` folder that you just unzipped.
+
+- [ ] Verify that project the project has the following three files:
+
 	- PrimePrinter.java
 	- PrintPrimesTest.java
 	- gold
-- [ ] Right-click on `PrintPrimesTest` (either the filename or the tab) and select: `Run 'PrintPrimesTest'`. If the test does not pass, ask for help. 
-- [ ] Take a look at the `PrimePrinter` file and its `main` method. This is the method we will refactor and clean up.
 
-## Step 1: Variable renaming
+- [ ] Create a git repository for the project from within IntelliJ: 
+*VCS -> Import into version control -> Share project on GitHub*
 
-1. The first and easiest thing to fix are the variable names. The table below lists the variables used by the program. For each variable, read the description of what the variable represents and choose a better name for the variable. Note that for some variables, it is how the name is formatted rather than the name itself that can be improved (e.g., camel-case instead of all-caps).
+- [ ] Right-click on "PrintPrimesTest" (either the filename or the tab) 
+and select: `Run 'PrintPrimesTest'` from the given menu. This will verify that everything
+is setup properly. Ask for help If the test fails.
 
-|      New Name      | Current Name | Description 
-|------------------- | ------------ | --------------------------------------------------------------
-|                    | M            | number of primes to generate and print
-|                    | RR           | number of rows to print per page
-|                    | CC           | number of columns to print per page
-|                    | ORDMAX       | Leave as is, but make lower case  (TODO: come back to it?)
-|                    | P            | list of primes
-|                    | PAGENUMBER   | current page number in the printout
-|                    | PAGEOFFSET   | offset into the primes array where the current page starts
-|                    | ROWOFFSET    | offset into the primes array where the elements in the current row start
-|                    | C            | current column in the printout
-|                    | J            | candidate prime number
-|                    | K            | index into the prime array for the last computed prime
-|                    | JPRIME       | boolean that indicates whether the candidate number (J) is "possibly prime" (`false` means definitely not prime).
-|                    | ORD          | Leave as is, just lowercase.   (TODO: come back to it?)
-|                    | SQUARE       | next possible prime square (TODO: come back to it?)
-|                    | N            | Leave as is, just lowercase   (TODO: come back to it?)
-|                    | MULT         | an array of multiples
+- [ ] Take a look at the `PrimePrinter.java` and its `main` method. This 
+is the method we will be refactoring.
+
+
+## Step 1: Rename Variables
+
+1. The first and easiest thing to fix are the variable names. The table below 
+lists the variables used by the program. For each variable, read the description 
+of what the variable represents and choose a better name for the variable. Note 
+that for some variables, it is how the name is formatted rather than the name 
+itself that can be improved (e.g., camel-case instead of all-caps).
+
+| New Name          | Current Name     | Description 
+|------------------ | ---------------- | ------------------------------------------------------
+| `numPrimes`         | `M`                | number of primes to generate and print
+| `rowsPerPage`       | `RR`               | number of rows to print per page
+| `colsPerPage`       | `CC`               | number of columns to print per page
+|                   | `ORDMAX`           | Leave as is; you will come back to this one later
+| `primes`            | `P`                | list of primes
+| `pageNumber`        | `PAGENUMBER`       | current page number in the printout
+| `pageOffset`        | `PAGEOFFSET`       | offset into the primes array where the current page starts
+| `rowOffset`         | `ROWOFFSET`        | offset into the primes array where the elements in the current row start
+| `col`               | `C`                | current column in the printout
+| `candidatePrime`    | `J`                | candidate prime number
+| `lastPrimeIndex`    | `K`                | index into the prime array for the last computed prime
+| `maybePrime`        | `JPRIME`           | boolean that indicates whether the candidate number (J) is "possibly prime" (`false` means definitely not prime)
+|                   | `ORD`              | Leave as is; you will come back to this one later
+| `nextPrimeSquare`   | `SQUARE`           | next possible prime square 
+|                   | `N`                | Leave as is; you will come back to this one later
+| `multiples`         | `MULT`             | an array of multiples
 
 2. Rename each variable in `PrimePrinter.java` as follows:
 
-	* Click on the variable name
-	* Use `<ctrl>-T` to open "Refactor This"
-	* Choose `Rename` (the variable will then be outlined in red)
-	* Type in the new name for the variable
-	* `ENTER` to make the change
+	a. Click on the variable name
+	#. Use `<ctrl>-T` to open the *Refactor This* menu
+	#. Choose *Rename* (the variable will become outlined in red)
+	#. Type in the new name for the variable
+	#. `ENTER` to make the change
 
 	Notice that all occurrences of the original variable name have been renamed.
 
-3. Use `Code -> Reformat Code` to automatically fix the indentation and spacing.
+#. Use *Code -> Reformat Code* to automatically fix the indentation and spacing.
 
-4. The last thing to do is to move the variable declarations closer to where the variables are first used. For each variable declaration, do the following:
+#. The last thing to do is to move the variable declarations closer to where 
+the variables are first used. For each variable declaration, do the following:
 
-	* Click on a variable name
-	* Use `<option>-ENTER` to show available intentions
-	* Select `Move declaration closer to usages` if that is one of the possible intentions in the list
+	f. Click on a variable name
+	#. Use `<option>-ENTER` to show available intentions
+	#. Select *Move declaration closer to usages* if that is one of the possible intentions in the list
 
-Test (TODO: add commit?)
+#. Commit your changes:
 
-## Step 2: Basic Method separation
+	i. 
+	#.
+	#.
 
-Looking at the code, we can see that it splits in broadly two parts:
+## Step 2: Partition Code into Basic Methods
 
-- The lines up to the end of the first `while` loop, that seem to do with computing the prime numbers.
-- The lines after the first `while` loop, starting with the page number initialization, which seem to have to do with printing the numbers.
+Looking at the structure of the PrimePrinter code, we can see that it splits broadly into two parts:
 
-Select each while loop in turn, and use `extract method` on them. One method should be called `generatePrimes` while the other should be called `printNumbers`.
+* The first `while` loop, which seems to do be doing the work of computing prime numbers.
+* The second `while` loop (after `pageNumber` and `pageOffset` are initialized), which seems 
+to have to do with printing the numbers. 
 
-If there are any variables that are not being used right now (grayed out), use the "Remove variable" intention to eliminate them.
+We want to isolate each loops by turning it into its own method. However, before doing that, we need to think about the variables being used. They fall broadly into three categories:
 
-Run your tests to make sure they still run.
+- **global constants** that represent settings that the user might want to adjust: `numPrimes`, `rowsPerPage`, `colsPerPage`
+- variables used for the prime generation work: `ORDMAX`, `primes`, `multiples`, `candidatePrime`, `lastPrimeIndex`, `ORD`, `nextPrimeSquare`, and `maybePrime`
+- variables used for printing the primes: `pageNumber`, `pageOffset`, `rowOffset`, `col`
 
-You should now have been left with about a dozen variables defined near the top of the `main` method, then passed into the two extracted methods. Let's think about these variables. They fall broadly in two categories:
+We want the second set of variables to be local variables in a function called `generatePrimes`, which we will generate from the first `while` loop. We want the third set of variables to be local variables in a function called `printNumbers`, which we will generate from the second `while` loop. 
 
-- Some variables are clearly "global constants", settings that the user might want to adjust, namely: the number of primes to print, the number of rows per page and the number of columns per page.
-- Others are used by the "generate primes" function in order for it to do its work. These are: ordmax, the multiples array, the candidate prime, the index into the prime array, ord, and the square. We really would like all of those to be local variables within the "generate primes" function, but they did not end up there.
+Follow the steps below to refactor and extract the two main `while` loops into separate methods:
 
-In order to get this second group of variables into the function, there are a couple of ways but the simplest is to just undo our last step:
+#. Extract the `generatePrimes` Method (Try 1)
 
-- Use the "Inline" refactoring to inline and remove the generate primes function. We will create it again in a moment.
-- Use the "Move declaration closer to usage" intention, or simply move line-by-line, to move all the declarations of variables that we want to go as part of the "generate primes" function right next to the corresponding while loop.
-- Select the while loop, along with all those variable declarations, including the primes array declaration and the `primes[1]=2` part, and perform the "extract Method" refactoring. If you do this correctly, you should see only one parameter on this new method, namely the number of primes. And the method should be set to return the primes array.
+	a. Select all the lines of code that make up the first main `while` loop.
+	#. Use `<ctrl>-T` to open the *Refactor This* menu.
+    #. Under *Extract* select *Method*.
+	#. In the *Extract Method* window, give it the name "generatePrimes" and take a moment to look over the proposed parameters and return type.
+    #. Click OK. 
+	#. *Run tests to verify that nothing has been broken.*
 
-Test (TODO: and commit?)
+	After this refactor, the first `while` loop and all its code should now be
+	down at the bottom of the file in a method called "generatePrimes".  In its place 
+	should be the following function call:
+
+	![generatePrimes try1](refactoring1.1.png){height=40}\
+
+	Undo and redo the method extraction a few times until you can see this is what happens.
+
+#. Extract the `generatePrimes` Method (Try 2)
+
+	Although the above refactoring gave us the method we wanted, the variables that we want
+	to be declared locally are instead being passed in as parameters. There are
+	a couple ways to fix this, but the simplest is to redo the refactoring,
+	this time making sure to include all the declarations for the variables
+	we want to be local in the new method.
+
+	g. Undo the extract method refactoring so that the while loop is back in `main`.
+	#. Check the location of the variables that we want to be part of `generatePrimes`.  They should be right above the first `while` loop, and the variables we want to be local to `printNumbers` should be directly above the second `while` loop. If not, move the variables to where they should be.
+	#. Select the code of the first `while` loop again, but this time be sure to include all the variable declarations above it, **with the exception of `numPrimesToGenerate`**.
+	#. Repeat the extract-method refactoring.
+	#. *Run tests to verify that nothing has been broken.*
+
+	Your line calling `generatePrimes` should now look like the following:
+
+	![generatePrimes try2](refactoring1.2.png){height=25px}\
+
+    There are a couple things you should note about this second try at refactoring the first `while` loop:
+
+	* It resulted in a `generatePrimes` method with a much simpler signature that requires the passing of just a single parameter: `numPrimes`.  
+	* The refactoring was smart enough when creating `generatePrimes` to have it return the the correct thing, the `primes` array.
+
+#. Extract the `printNumbers` Method
+
+	l. Select the code for the second `while` loop, including the variable declarations that we want to be local in the new method.  
+	#. Use `<ctrl>-T` to get to *Refactor This* and extract the method.
+	#. *Run tests to verify that nothing has been broken.*
+
+#. Commit your changes:
+
+After the above refactoring refactoring, your main method should short 
+and clear as to what it aims to accomplish: 
+
+![main after extract methods](refactoring1.3.png){height=90px}\
 
 ## Step 3: Extracting Classes
 
-The two methods we have are a good start: They each handle a specific and disjoint set of variables. But they are still quite large. It also feels like they are dealing with two completely separate tasks: One is concerned with generating a list of prime numbers, the other is concerned with simply printing out numbers.
+The two methods created above are a good start: each handles a specific and disjoint set 
+of variables. However, both methods are still quite large, and they deal with two mostly 
+unrelated tasks. This suggests that the two methods really belong in two different 
+classes. Let's use our two methods as the starting point for creating these classes. 
 
-This suggests that the two methods should really belong in different classes, and perhaps should each form the basis for those new classes. We will now create these classes.
+#. Create the `PrimeGenerator` class
 
-- Select the "generate primes" function call and perform the "extract Method object" refactoring. Make sure to ask it to move the method as well when asked. Call the new class `PrimeGenerator`.
-- This was likely created as an inner class to the PrimePrinter class, but we would ideally like it to be its own class. Select the class and perform a "Move" refactoring to move it to the upper level.
-- Now take a look at the newly created object. It has a `generatePrimes` method that is really no longer needed as its own method. We would rather keep the `invoke` method, maybe rename it later. So select the `generateNumbers function and perform the "inline" refactoring and remove the method.
-- Now rename the `invoke` method to `generatePrimes`.
+	a. Select the `generatePrimes` call in `main`.
+    #. Use `<ctrl>-T` to open the *Refactor This* menu.
+    #. Under *Extract* select *Method Object*.
+    #. Name the new class `PrimeGenerator`.
+	#. Keep the visibility private and double check the signature before clicking `OK`.
+	#. When asked, move the `generatePrimes` method to the extracted class.
 
-Run the test to make sure it still works.
+	The new class was created as an inner class to the `PrimePrinter` class, but ideally we would like it to be its own class.
 
-Of course we're far from done with that class: It still consists of one large method, we'll need to do something about that.
+	g. Select the name of the class from the first line of the class declaration.
+	#. Open *Refactor This* and select *Move*.
+	#. Move the inner class `PrimeGenerator` to upper level.
+	#. When asked, add `PrimeGenerator.java` to the git repository.
 
-Now it is time to consider the number-printing function. Take a moment to look at its parameters:
+	Take a look at the newly created `PrimeGenerator` class. We do not need both the `invoke` and the `generatePrimes` methods. Currently `invoke` is just a wrapper around the call to `generatePrimes`.  To clean this up, we will inline `generatePrimes` and then rename `invoke`. 
 
-- The rows per page and columns per page variable feel like they should be part of the initialization of the new class: When you create a number-printer, you should be specifying how many rows and columns you want it to print.
-- The primes and number of primes parameters feel more elements you should be providing to the number-printer when you call its `invoke` or `print` method.
+	k. Click on the first line of the `generatePrimes` method.
+	#. *Refactor This* and select *Inline* from the menu.
+	#. Accept the default, which is to "Inline all and remove the method".
 
-We want to achieve this separation. For this reason, we will use a different refactoring to form the new class. Here are the steps for this:
+	All the code from `generatePrimes` should now be part of the `inline` method, and the `generatePrimes` method shoul be gone.
 
-- Select the print-numbers method call, and do the "extract Parameter object" refactoring. Select only the two rows and columns parameters for it, and put `NumberPrinter` as the class name (make sure you set it to Create New Class). This should turn the print-numbers function into a three parameter function, one of those parameters being a `NumberPrinter` instance.
-- Perform the "Convert to instance method" refactoring, to turn the print-numbers method into an instance method of the `NumberPrinter` instance.
-- Looking at the `NumberPrinter` class now, we see that IntelliJ has "encapsulated" the two fields behind getter methods. We don't really need that, so select each method and perform an `inline` refactoring to remove them.
+	n. *Refactor This* to rename `invoke` to `generatePrimes`.
+	#. Run the test to make sure everything is still working.
+    
+	We are far from done with refactoring the `PrimeGenerator` class: It still consists of one large method, an we will need to do something about that. For now, though, let's move on to the `printNumbers` method.
 
-Now our main method should look particularly simple: Initialize a few parameters, create a prime number generator and call it, and create a number printer and call it with the primes. Let's do some refactoring to clean it up though:
+#. Create the `NumberPrinter` class
 
-- Select the `new NumberPrinter(...)` call (without the `printNumbers` part), and perform extract local variable from it to create a `numberPrinter` local variable.
-- Select the `new PrimeGenerator(...)` call (without the `generatePrimes` part), and perform extract local variable from it to create a `primeGenerator` local variable.
-- Select the `primes` array and choose the `inline` refactoring to inline construction into its use.
-- Looking at it here, let's rename the `printNumbers` method to just `print` and the `generatePrimes` method to just `generate`. Remember to use the Rename refactoring for this!
+	Back in `PrimePrinter.java`, take a moment to look at the parameters and variables at the top of `printNumbers`:
 
-Run your tests.
+	- The `colsPerPage` and `rowsPerPage` variables feel like they should be part of the initialization of the new class: When you create a number-printer, you should be specifying how many rows and columns you want it to print.
+	- The `primes` and `numPrimes` parameters feel like elements that should be provided to `printNumbers` when it is invoked. 
+
+	To get the variables and parameters where they need to be in the new class, we will first turn `colsPerPage` and `rowsPerPage` into parameters, and then extract a parameter object (instead of a method object).
+
+	a. Select `colsPerPage` and use *Refactor This* to open the *Refactoring* menu.
+	#. Extract it as a parameter
+	#. Repeat the two steps above to extract `rowsPerPage` as a parameter.
+	#. Select the `printNumbers` method call.
+	#. Use the *Refactor This* to open the *Refactoring* menu.
+	#. Under *Extract* select *Parameter Object*. 
+	#. Name the new class `NumberPrinter`. 
+	#. Under *Parameters to Extract* __unselect__ `numPrimes` and `primes`. 
+	#. Refactor.
+	#. Add the new file to the git repository when asked.
+
+	The `printNumbers` method should now have three parameters: `numPrimes`, `primes`, and `numberPrinter`, which is a `NumberPrinter` object. To change `printNumbers` to a method of the `NumberPrinter` class:
+
+	k. Select the `printNumbers` call.
+	#. *Refactor This* and select *Convert To Instance Method*
+
+	Take a look at the `NumberPrinter` class. IntelliJ has "encapsulated" the two fields behind getter methods, which we do not really need. Inline each of these getter methods one at a time to remove them:
+
+	m. Select the method name.
+	#. *Refactor This* and select *Inline*.
+	#. Inline all and remove the method.
+	#. Verify that all tests are still passing.
+
+#. Go back to `PrimePrinter.java`. The program is now nice and simple -- it initializes a few parameters, creates a prime number generator and call it, and creates a number printer and call it with the primes.  However, there is a bit more refactoring we can do to clean it up even more.
+
+	a. Select "new NumberPrinter(4, 50)" and use *Refactor This* to extract a local variable called `numberPrinter`.
+	#. Select "new PrimeGenerator(numPrimes)" and refactor to extract a local variable called `primeGenerator`.
+	#. Select the `primes` array and refactor to inline the variable, moving the construction of the array so that it now occurs inline as part of the `printNumbers` method call.
+	#. Use refactoring to rename the `printNumbers` method to just `print`, and the `generatePrimes` method to just `generate`. 
+
+#. One last time, run the tests to make sure that everything is still working.
+
+#. Commit and push changes.
 
 This activity continues in [refactoring activity 2](refactoring2.md).

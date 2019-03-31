@@ -15,8 +15,7 @@ $(HTMLFILES): docs/%.html: %.md $(TEMPLATE)
 
 $(PDFS): docs/%.pdf: %.md $(TEXTEMPLATE)
 	mkdir -p $(@D)
-	cd $(@D); pandoc -o $(CURR)/$@ --template=$(CURR)/$(TEXTEMPLATE) -t latex --listings --filter $(CURR)/makeTex.hs $(CURR)/$<; cd $(CURR)
-
+	cd $(@D); pandoc -o $(CURR)/$@ --template=$(CURR)/$(TEXTEMPLATE) -t latex --listings  --filter $(CURR)/makeTex.hs --extract-media=$(CURR)/images --resource-path=.:$(CURR)/images $(CURR)/$<; cd $(CURR)
 
 $(IMGFILES): docs/images/%.png: images/%.png
 	mkdir -p $(@D)
@@ -26,5 +25,7 @@ email:
 	open "mailto:`cat students.txt`"
 
 site: $(HTMLFILES) $(PDFS) $(IMGFILES)
+
+pdf: $(PDFS) $(IMGFILES)
 
 all: site

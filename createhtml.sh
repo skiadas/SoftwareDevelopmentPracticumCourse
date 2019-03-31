@@ -1,0 +1,1 @@
+pandoc -o docs/activities/refactoring1.html --template=template.html --mathjax --from=markdown+smart --metadata pagetitle="Refactoring Activity 1 (CS 321)" --filter ./makeHtml.hs activities/refactoring1.md

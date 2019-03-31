@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title></title>
+  <title>Refactoring Activity 1 (CS 321)</title>
   <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
 <script type="text/javascript" async
@@ -13,68 +13,163 @@
 </script>
 </head>
 <body>
-<h1 id="refactoring-activity-1">Refactoring Activity 1</h1>
+<h1 id="refactoring-activity-1-renaming-variables-and-extracting-classes">Refactoring Activity 1: Renaming Variables and Extracting Classes</h1>
+<h2 id="goals">Goals</h2>
 <ul>
-<li>Access the “Prime Generator” code from Moodle, and unzip it</li>
-<li>Start an IntelliJ project from the provided sources</li>
-<li>Run the PrintPrimesTest file, and make sure it passes.</li>
-<li>Take a look at the <code>PrimePrinter</code> file and its <code>main</code> method. This is the method we will refactor and clean up.</li>
+<li>Learn important vocabulary:
+<ul>
+<li>intention action (a.k.a. intention)</li>
+<li></li>
+</ul></li>
+<li>Learn how to accomplish the following refactorings in IntelliJ:
+<ul>
+<li>variable renaming</li>
+<li></li>
+</ul></li>
+<li>Develop these habits:
+<ul>
+<li>use <code>&lt;ctrl&gt;-T</code> to open “Refactor This” menu</li>
+<li>use <code>&lt;option&gt;-ENTER</code> to see available intentions</li>
+</ul></li>
 </ul>
-<h2 id="step-1-variable-renaming">Step 1: Variable renaming</h2>
-<p>We will start by giving better name for each variable. After reading the description of the variable here, choose a better name for it and use the “Rename” refactoring on the variable. Some variables may simply need to be written in camel-case instead of all-caps.</p>
-<dl>
-<dt>M</dt>
-<dd>This is the number of primes that we will generate and print
-</dd>
-<dt>RR</dt>
-<dd>This is the number of rows to print per page
-</dd>
-<dt>CC</dt>
-<dd>This is the number of columns to print per page
-</dd>
-<dt>ORDMAX</dt>
-<dd>Leave as is, but make lower case (TODO: come back to it?)
-</dd>
-<dt>P</dt>
-<dd>The list of primes
-</dd>
-<dt>PAGENUMBER</dt>
-<dd>The current page number in the printout
-</dd>
-<dt>PAGEOFFSET</dt>
-<dd>This is the offset into the primes array that the current page would be starting at
-</dd>
-<dt>ROWOFFSET</dt>
-<dd>This is the offset into the primes array for the elements in the current row
-</dd>
-<dt>C</dt>
-<dd>The current column in the printout
-</dd>
-<dt>J</dt>
-<dd>The candidate prime number
-</dd>
-<dt>K</dt>
-<dd>The index into the prime array for the last computed prime.
-</dd>
-<dt>JPRIME</dt>
-<dd>Whether the candidate number (J) is “possibly prime” (<code>false</code> means definitely not prime).
-</dd>
-<dt>ORD</dt>
-<dd>Leave as is, just lowercase. (TODO: come back to it?)
-</dd>
-<dt>SQUARE</dt>
-<dd>the next possible prime square (TODO: come back to it?)
-</dd>
-<dt>N</dt>
-<dd>Leave as is, just lowercase (TODO: come back to it?)
-</dd>
-<dt>MULT</dt>
-<dd>An array of multiples
-</dd>
-</dl>
-<p>Next, use “Code -&gt; Reformat Code” to properly indent and space out everything.</p>
-<p>Now, use the “Move declaration closer to usages” intention an all the variables that are declared near the top without an initial value. (page number, page offset, row offset, candidate prime, current column, etd)</p>
-<p>Test (TODO: and commit?)</p>
+<h2 id="getting-started">Getting Started</h2>
+<ul>
+<li><p><input type="checkbox" disabled="" />
+Download <code>primeGenerator.zip</code> from the <code>Refactoring Activity 1-3</code> folder on Moodle (right-click and save file to your CS321 directory).</p></li>
+<li><p><input type="checkbox" disabled="" />
+In a terminal window, navigate to your CS321 directory and run: <code>unzip primeGenerator.zip</code></p></li>
+<li><p><input type="checkbox" disabled="" />
+Start IntelliJ and select <code>File -&gt; New -&gt; Project from Existing Sources</code>. Navigate to and select the <code>primeGenerator</code> folder that you just unzipped.</p></li>
+<li><p><input type="checkbox" disabled="" />
+Verify that you have all three project files:</p><ul>
+<li>PrimePrinter.java</li>
+<li>PrintPrimesTest.java</li>
+<li>gold</li>
+</ul></li>
+<li><p><input type="checkbox" disabled="" />
+Right-click on <code>PrintPrimesTest</code> (either the filename or the tab) and select: <code>Run 'PrintPrimesTest'</code>. If the test does not pass, ask for help.</p></li>
+<li><p><input type="checkbox" disabled="" />
+Take a look at the <code>PrimePrinter</code> file and its <code>main</code> method. This is the method we will refactor and clean up.</p></li>
+</ul>
+<h2 id="step-1-variable-renaming">Step 1: Variable Renaming</h2>
+<ol>
+<li>The first and easiest thing to fix are the variable names. The table below lists the variables used by the program. For each variable, read the description of what the variable represents and choose a better name for the variable. Note that for some variables, it is how the name is formatted rather than the name itself that can be improved (e.g., camel-case instead of all-caps).</li>
+</ol>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 12%" />
+<col style="width: 66%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>New Name</th>
+<th>Current Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>M</td>
+<td>number of primes to generate and print</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>RR</td>
+<td>number of rows to print per page</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>CC</td>
+<td>number of columns to print per page</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>ORDMAX</td>
+<td>Leave as is, but make lower case (TODO: come back to it?)</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>P</td>
+<td>list of primes</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>PAGENUMBER</td>
+<td>current page number in the printout</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>PAGEOFFSET</td>
+<td>offset into the primes array where the current page starts</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>ROWOFFSET</td>
+<td>offset into the primes array where the elements in the current row start</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>C</td>
+<td>current column in the printout</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>J</td>
+<td>candidate prime number</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>K</td>
+<td>index into the prime array for the last computed prime</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>JPRIME</td>
+<td>boolean that indicates whether the candidate number (J) is “possibly prime” (<code>false</code> means definitely not prime).</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>ORD</td>
+<td>Leave as is, just lowercase. (TODO: come back to it?)</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>SQUARE</td>
+<td>next possible prime square (TODO: come back to it?)</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>N</td>
+<td>Leave as is, just lowercase (TODO: come back to it?)</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>MULT</td>
+<td>an array of multiples</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><p>Rename each variable in <code>PrimePrinter.java</code> as follows:</p>
+<ol>
+<li>Click on the variable name</li>
+<li>Use <code>&lt;ctrl&gt;-T</code> to open “Refactor This”</li>
+<li>Choose <code>Rename</code> (the variable will then be outlined in red)</li>
+<li>Type in the new name for the variable</li>
+<li><code>ENTER</code> to make the change</li>
+</ol>
+<p>Notice that all occurrences of the original variable name have been renamed.</p></li>
+<li><p>Use <code>Code -&gt; Reformat Code</code> to automatically fix the indentation and spacing.</p></li>
+<li><p>The last thing to do is to move the variable declarations closer to where the variables are first used. For each variable declaration, do the following:</p>
+<ol>
+<li>Click on a variable name</li>
+<li>Use <code>&lt;option&gt;-ENTER</code> to show available intentions</li>
+<li>Select <code>Move declaration closer to usages</code> if that is one of the possible intentions in the list</li>
+</ol></li>
+</ol>
+<p>Test (TODO: add commit?)</p>
 <h2 id="step-2-basic-method-separation">Step 2: Basic Method separation</h2>
 <p>Looking at the code, we can see that it splits in broadly two parts:</p>
 <ul>
