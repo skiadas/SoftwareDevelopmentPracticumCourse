@@ -37,7 +37,6 @@ is setup properly. Ask for help If the test fails.
 - [ ] Take a look at the `PrimePrinter.java` and its `main` method. This 
 is the method we will be refactoring.
 
-
 ## Step 1: Rename Variables
 
 1. The first and easiest thing to fix are the variable names. The table below 
@@ -67,11 +66,11 @@ itself that can be improved (e.g., camel-case instead of all-caps).
 
 2. Rename each variable in `PrimePrinter.java` as follows:
 
-	a. Click on the variable name
-	#. Use `<ctrl>-T` to open the *Refactor This* menu
-	#. Choose *Rename* (the variable will become outlined in red)
-	#. Type in the new name for the variable
-	#. `ENTER` to make the change
+	a. Click on the variable name.
+	#. Use `<ctrl>-T` to open the **Refactor This** menu.
+	#. Choose **Rename** (the variable will become outlined in red).
+	#. Type in the new name for the variable.
+	#. `ENTER` to make the change.
 
 	Notice that all occurrences of the original variable name have been renamed.
 
@@ -86,7 +85,7 @@ the variables are first used. For each variable declaration, do the following:
 
 #. Commit your changes:
 
-	i. 
+	j. 
 	#.
 	#.
 
@@ -111,9 +110,9 @@ Follow the steps below to refactor and extract the two main `while` loops into s
 #. Extract the `generatePrimes` Method (Try 1)
 
 	a. Select all the lines of code that make up the first main `while` loop.
-	#. Use `<ctrl>-T` to open the *Refactor This* menu.
-    #. Under *Extract* select *Method*.
-	#. In the *Extract Method* window, give it the name "generatePrimes" and take a moment to look over the proposed parameters and return type.
+	#. Use `<ctrl>-T` to open the **Refactor This** menu.
+    #. Under **Extract** select **Method**.
+	#. In the **Extract Method** window, give it the name "generatePrimes" and take a moment to look over the proposed parameters and return type.
     #. Click OK. 
 	#. *Run tests to verify that nothing has been broken.*
 
@@ -151,7 +150,7 @@ Follow the steps below to refactor and extract the two main `while` loops into s
 #. Extract the `printNumbers` Method
 
 	l. Select the code for the second `while` loop, including the variable declarations that we want to be local in the new method.  
-	#. Use `<ctrl>-T` to get to *Refactor This* and extract the method.
+	#. **Refactor This** (`<ctrl>-T`) and extract the method.
 	#. *Run tests to verify that nothing has been broken.*
 
 #. Commit your changes:
@@ -171,23 +170,22 @@ classes. Let's use our two methods as the starting point for creating these clas
 #. Create the `PrimeGenerator` class
 
 	a. Select the `generatePrimes` call in `main`.
-    #. Use `<ctrl>-T` to open the *Refactor This* menu.
-    #. Under *Extract* select *Method Object*.
+    #. **Refactor This** (`<ctrl>-T`) and under **Extract** select **Method Object**.
     #. Name the new class `PrimeGenerator`.
 	#. Keep the visibility private and double check the signature before clicking `OK`.
 	#. When asked, move the `generatePrimes` method to the extracted class.
 
 	The new class was created as an inner class to the `PrimePrinter` class, but ideally we would like it to be its own class.
 
-	g. Select the name of the class from the first line of the class declaration.
-	#. Open *Refactor This* and select *Move*.
+	f. Select the name of the class from the first line of the class declaration.
+	#. **Refactor This** (`<ctrl>-T`) and select **Move**.
 	#. Move the inner class `PrimeGenerator` to upper level.
 	#. When asked, add `PrimeGenerator.java` to the git repository.
 
 	Take a look at the newly created `PrimeGenerator` class. We do not need both the `invoke` and the `generatePrimes` methods. Currently `invoke` is just a wrapper around the call to `generatePrimes`.  To clean this up, we will inline `generatePrimes` and then rename `invoke`. 
 
-	k. Click on the first line of the `generatePrimes` method.
-	#. *Refactor This* and select *Inline* from the menu.
+	j. Click on the first line of the `generatePrimes` method.
+	#. **Refactor This** (`<ctrl>-T`) and select **Inline**.
 	#. Accept the default, which is to "Inline all and remove the method".
 
 	All the code from `generatePrimes` should now be part of the `inline` method, and the `generatePrimes` method shoul be gone.
@@ -206,32 +204,32 @@ classes. Let's use our two methods as the starting point for creating these clas
 
 	To get the variables and parameters where they need to be in the new class, we will first turn `colsPerPage` and `rowsPerPage` into parameters, and then extract a parameter object (instead of a method object).
 
-	a. Select `colsPerPage` and use *Refactor This* to open the *Refactoring* menu.
-	#. Extract it as a parameter
+	a. Select `colsPerPage`.
+	#. **Refactor This** (`<ctrl>-T`) and extract it as a parameter.
 	#. Repeat the two steps above to extract `rowsPerPage` as a parameter.
 	#. Select the `printNumbers` method call.
-	#. Use the *Refactor This* to open the *Refactoring* menu.
-	#. Under *Extract* select *Parameter Object*. 
+	#. Open the **Refactor This** (`<ctrl>-T`) menu.
+	#. Under **Extract** select **Parameter Object**. 
 	#. Name the new class `NumberPrinter`. 
-	#. Under *Parameters to Extract* __unselect__ `numPrimes` and `primes`. 
+	#. Under **Parameters to Extract** __unselect__ `numPrimes` and `primes`. 
 	#. Refactor.
 	#. Add the new file to the git repository when asked.
 
 	The `printNumbers` method should now have three parameters: `numPrimes`, `primes`, and `numberPrinter`, which is a `NumberPrinter` object. To change `printNumbers` to a method of the `NumberPrinter` class:
 
 	k. Select the `printNumbers` call.
-	#. *Refactor This* and select *Convert To Instance Method*
+	#. **Refactor This** (`<ctrl>-T`) and select **Convert To Instance Method**.
 
 	Take a look at the `NumberPrinter` class. IntelliJ has "encapsulated" the two fields behind getter methods, which we do not really need. Inline each of these getter methods one at a time to remove them:
 
 	m. Select the method name.
-	#. *Refactor This* and select *Inline*.
+	#. **Refactor This** (`<ctrl>-T`) and select **Inline**.
 	#. Inline all and remove the method.
 	#. Verify that all tests are still passing.
 
 #. Go back to `PrimePrinter.java`. The program is now nice and simple -- it initializes a few parameters, creates a prime number generator and call it, and creates a number printer and call it with the primes.  However, there is a bit more refactoring we can do to clean it up even more.
 
-	a. Select "new NumberPrinter(4, 50)" and use *Refactor This* to extract a local variable called `numberPrinter`.
+	a. Select "new NumberPrinter(4, 50)" and **Refactor This** to extract a local variable called `numberPrinter`.
 	#. Select "new PrimeGenerator(numPrimes)" and refactor to extract a local variable called `primeGenerator`.
 	#. Select the `primes` array and refactor to inline the variable, moving the construction of the array so that it now occurs inline as part of the `printNumbers` method call.
 	#. Use refactoring to rename the `printNumbers` method to just `print`, and the `generatePrimes` method to just `generate`. 
