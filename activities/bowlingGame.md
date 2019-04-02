@@ -70,13 +70,6 @@ These are the steps we will need to do in
 9. Score game with one strike and rest gutter balls
 10. Score a perfect game
 
-```java
-public void test(int x, int y) {
-    this.x = x;
-    this.y += y;
-}
-```
-
 ### Step 1: Getting empty test to compile
 
 `RED`
