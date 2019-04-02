@@ -204,10 +204,7 @@ Take a look at the <code>PrimePrinter.java</code> and its <code>main</code> meth
 <li>Click OK.</li>
 <li><em>Run tests to verify that nothing has been broken.</em></li>
 </ol>
-<p>After this refactor, the first <code>while</code> loop and all its code should now be down at the bottom of the file in a method called “generatePrimes”. In its place should be the following function call:</p>
-<p><img src="refactoring1.1.png" alt="generatePrimes try1" height="40" /><br />
-</p>
-<p>Undo and redo the method extraction a few times until you can see this is what happens.</p></li>
+<p>After this refactor, the first <code>while</code> loop and all its code should now be down at the bottom of the file in a method called “generatePrimes”. In its place should be the following function call: <code>java  generatePrimes(numPrimes, primes, lastPrimeIndex, ORD,            nextPrimeSquare, multiples, candidatePrime);</code> Undo and redo the method extraction a few times until you can see this is what happens.</p></li>
 <li><p>Extract the <code>generatePrimes</code> Method (Try 2)</p>
 <p>Although the above refactoring gave us the method we wanted, the variables that we want to be declared locally are instead being passed in as parameters. There are a couple ways to fix this, but the simplest is to redo the refactoring, this time making sure to include all the declarations for the variables we want to be local in the new method.</p>
 <ol start="7" type="a">
@@ -217,27 +214,25 @@ Take a look at the <code>PrimePrinter.java</code> and its <code>main</code> meth
 <li>Repeat the extract-method refactoring.</li>
 <li><em>Run tests to verify that nothing has been broken.</em></li>
 </ol>
-<p>Your line calling <code>generatePrimes</code> should now look like the following:</p>
-<p><img src="refactoring1.2.png" alt="generatePrimes try2" height="25" /><br />
-</p>
-<p>There are a couple things you should note about this second try at refactoring the first <code>while</code> loop:</p>
+<p>Your line calling <code>generatePrimes</code> should now look like the following: <code>java  int[] primes = generatePrimes(numPrimes);</code> There are a couple things you should note about this second try at refactoring the first <code>while</code> loop:</p>
 <ul>
-<li>It resulted in a <code>generatePrimes</code> method with a much simpler signature that requires the passing of just a single parameter: <code>numPrimes</code>.<br />
-</li>
+<li>It resulted in a <code>generatePrimes</code> method with a much simpler signature that requires the passing of just a single parameter: <code>numPrimes</code>.</li>
 <li>The refactoring was smart enough when creating <code>generatePrimes</code> to have it return the the correct thing, the <code>primes</code> array.</li>
 </ul></li>
 <li><p>Extract the <code>printNumbers</code> Method</p>
 <ol start="12" type="a">
-<li>Select the code for the second <code>while</code> loop, including the variable declarations that we want to be local in the new method.<br />
-</li>
+<li>Select the code for the second <code>while</code> loop, including the variable declarations that we want to be local in the new method.</li>
 <li><strong>Refactor This</strong> (<code>&lt;ctrl&gt;-T</code>) and extract the method.</li>
 <li><em>Run tests to verify that nothing has been broken.</em></li>
 </ol></li>
 <li><p>Commit your changes:</p></li>
 </ol>
-<p>After the above refactoring refactoring, your main method should short and clear as to what it aims to accomplish:</p>
-<p><img src="refactoring1.3.png" alt="main after extract methods" height="90" /><br />
-</p>
+<p>After the above refactoring, your main method should short and clear as to what it aims to accomplish:</p>
+<pre class="java"><code>public static void main(String[] args) {
+    final int numPrimes = 1000;
+    int[] primes = generatePrimes(numPrimes);
+    printNumbers(numPrimes, primes);
+}</code></pre>
 <h2 id="step-3-extracting-classes">Step 3: Extracting Classes</h2>
 <p>The two methods created above are a good start: each handles a specific and disjoint set of variables. However, both methods are still quite large, and they deal with two mostly unrelated tasks. This suggests that the two methods really belong in two different classes. Let’s use our two methods as the starting point for creating these classes.</p>
 <ol>
