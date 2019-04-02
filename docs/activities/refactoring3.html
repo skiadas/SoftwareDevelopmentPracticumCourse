@@ -2,48 +2,12 @@
 <html>
 <head>
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title></title>
+  <title>refactoring3</title>
   <style type="text/css">code{white-space: pre;}</style>
-  <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-  </style>
 <link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
 <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
@@ -219,23 +183,34 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Notice the error we are getting: <code>java.lang.IndexOutOfBoundsException: Index 0 out-of-bounds for length 0</code>. This happens due to a call to <code>nextPrimeFactor</code>. That call is trying to get to the next available prime factor, but none has been created yet!</p>
 <p>The solution is simple: We will initialize our list with the first odd prime, and also add it to the <code>primes</code> array, then start our <code>candidate</code> from 3 instead of 1.</p>
 <ul>
-<li>In the <code>PrimeGenerator</code> constructor, add lines <code>primes[2] = 3;</code> and <code>oddPrimes.add(3);</code>.</li>
-<li>In the declaration for <code>candidate</code>, initialize it at 3 rather than 1.</li>
-<li>Also <code>primeIndex</code> should start at 2 rather than 1. Run your tests to make sure they pass.</li>
-<li>Now try to replace the return in the method <code>nextPrimeFactor</code> with <code>return oddPrimes.get(multiples.size());</code> and your tests should now pass.</li>
-<li>Now we need to gradually remove uses of <code>primes</code>. The biggest use is what we return from <code>generate</code>. Perform “Extract Method” on that return to form a method <code>getPrimesArray</code> instead. Don’t change the other occurences here, we’ll end up deleting them shortly.</li>
+<li><p>In the <code>PrimeGenerator</code> constructor, add lines <code>primes[2] = 3;</code> and <code>oddPrimes.add(3);</code>.</p></li>
+<li><p>In the declaration for <code>candidate</code>, initialize it at 3 rather than 1.</p></li>
+<li><p>Also <code>primeIndex</code> should start at 2 rather than 1. Run your tests to make sure they pass.</p></li>
+<li><p>Now try to replace the return in the method <code>nextPrimeFactor</code> with <code>return oddPrimes.get(multiples.size());</code> and your tests should now pass.</p></li>
+<li><p>Now we need to gradually remove uses of <code>primes</code>. The biggest use is what we return from <code>generate</code>. Perform “Extract Method” on that return to form a method <code>getPrimesArray</code> instead. Don’t change the other occurences here, we’ll end up deleting them shortly.</p></li>
 <li><p>Now we need to implement <code>getPrimesArray</code> to instead build an array of primes from this <code>oddPrimes</code> list, together with the prime 2, and starting from index <code>1</code>. First we need to initialize the array, which must have size 2 more than the list size. Then we do the appropriate copies, and finally return the array.</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">int</span>[] primes = <span class="kw">new</span> <span class="dt">int</span>[oddPrimes.<span class="fu">size</span>() + <span class="dv">2</span>];
-primes[<span class="dv">1</span>] = <span class="dv">2</span>;
-<span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; oddPrimes.<span class="fu">size</span>(); i++) {
-  primes[i + <span class="dv">2</span>] = oddPrimes.<span class="fu">get</span>(i);
+<pre class="java"><code>int[] primes = new int[oddPrimes.size() + 2];
+primes[1] = 2;
+for (int i = 0; i &lt; oddPrimes.size(); i++) {
+  primes[i + 2] = oddPrimes.get(i);
 }
-<span class="kw">return</span> primes;</code></pre></div>
-Make sure your tests still pass.</li>
-<li>In <code>storeNextPrime</code> replace the line <code>primes[++primeIndex] = nextPrime;</code> with simply <code>++primeIndex</code>. We’ll fix that variable later, but this way we’ll keep the effect there while removing the use of the <code>primes</code> array. Make sure your tests still pass.</li>
-<li>Now, <code>primeIndex</code> is still used in one place, namely in <code>needMorePrimes</code>. We should instead be using the <code>oddPrimes</code> list size, which should be 1 less than <code>primeIndex</code>. so replace <code>primeIndex</code> in that method with <code>oddPrimes.size() + 1</code>. Make sure your tests still pass.</li>
+return primes;</code></pre>
+<p>Make sure your tests still pass.</p></li>
+<li><p>In <code>storeNextPrime</code> replace the line <code>primes[++primeIndex] = nextPrime;</code> with simply <code>++primeIndex</code>. We’ll fix that variable later, but this way we’ll keep the effect there while removing the use of the <code>primes</code> array. Make sure your tests still pass.</p></li>
+<li><p>Now, <code>primeIndex</code> is still used in one place, namely in <code>needMorePrimes</code>. We should instead be using the <code>oddPrimes</code> list size, which should be 1 less than <code>primeIndex</code>. so replace <code>primeIndex</code> in that method with <code>oddPrimes.size() + 1</code>. Make sure your tests still pass.</p></li>
 <li><p>Now you should be able to eliminate the field <code>primeIndex</code>, and also remove the <code>primes</code> field. Check that your tests still pass.</p></li>
 </ul>
 <p>And we’re done! We could maybe do something more with the <code>candidate += 2</code> bit, but this is more than good enough. The code should be easy to read at this point.</p>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
 </body>
 </html>

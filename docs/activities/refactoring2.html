@@ -2,10 +2,11 @@
 <html>
 <head>
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title></title>
+  <title>refactoring2</title>
   <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
 <script type="text/javascript" async
@@ -58,13 +59,13 @@
 <p>The printing of the numbers includes some header information. The first part of that information is the title, the other is the page numbers. We should probably make the title into a parameter that our creators provide, as we don’t know what kinds of numbers they would want us to print. We’ll keep the page number logic as part of our work.</p>
 <p>This all will happen in the <code>printHeader</code> method, which currently is a series of <code>System.out.print</code> calls. Our first task would be to bring them together.</p>
 <ul>
-<li>Step-by-step merge each of the first two calls into the next one, by prepending its string to the front of the argument. For example after the first step the first two line should have become one call, with argument <code>&quot;The First &quot; + Integer.toString(getNumberOfNumbers())</code>. Run your tests after each step.</li>
+<li>Step-by-step merge each of the first two calls into the next one, by prepending its string to the front of the argument. For example after the first step the first two line should have become one call, with argument <code>"The First " + Integer.toString(getNumberOfNumbers())</code>. Run your tests after each step.</li>
 <li>Do the same to bring the last two calls together.</li>
 <li>Eliminate the <code>Integer.toString</code> parts (leaving their arguments intact, letting the plus operator worry about adding strings to integers.</li>
-<li>The <code>&quot;  --- Page &quot;</code> part belongs with the second statement, not the first, so move it over and make sure your tests still pass.</li>
+<li>The <code>"  --- Page "</code> part belongs with the second statement, not the first, so move it over and make sure your tests still pass.</li>
 <li>You should now have two <code>System.out...</code> statements, the first one setting the document title, the other setting the page number. We now want to turn the document title into a parameter. Select it and perform “Extract Parameter”, name the parameter <code>title</code>.</li>
 <li>Going up to the <code>print</code> method, the title shows up there instead. Do another <code>Extract Parameter</code> to lift it to a parameter of the <code>print</code> method. Your tests should now be failing. Go to the <code>PrimePrinter</code> method and change the call to <code>numberPrinter.getNumberOfNumbers</code> into a reference to the <code>number of primes</code> method instead.</li>
-<li>Back in our <code>printHeader</code> method, put the two <code>String.out</code> statements into one, then go anywhere in the string and use the <code>Replace &quot;+&quot; with String.format</code> intention.</li>
+<li>Back in our <code>printHeader</code> method, put the two <code>String.out</code> statements into one, then go anywhere in the string and use the <code>Replace "+" with String.format</code> intention.</li>
 </ul>
 <h2 id="step-7-make-the-main-loop-clearer">Step 7: Make the main loop clearer</h2>
 <p>There is something bothering us about the current structure of the main loop: It is supposed to be printing the next page every time, yet somehow its current structure doesn’t allow for that. Part of the problem is that the page number is currently a field value, and getting updated in mysterious intervals: It is initialized in the <code>initialize</code> method, though nothing about the name of that method suggests that, then is updated at the end of the <code>while</code> loop, which feels a bit backwards. Ideally our loop, and print function, should say:</p>
@@ -137,7 +138,18 @@
 <li><code>hasNext</code> should instead use <code>getNextPageOffset</code>, a new method that is like <code>getPageOffset</code> but uses <code>pageNumber</code> instead of <code>pageNumber - 1</code>.</li>
 </ul>
 <p>After you have made those changes and created the new method, your tests should again pass.</p>
-<p>One final cleanup before calling it a day: The second parameter to <code>printHeader</code> can be inlined. Do that. And the <code>System.out.println(&quot;\f&quot;);</code> line should really be a method called <code>printFooter</code>, so extract that, then rearrange the methods so that they follow the stepdown rule.</p>
+<p>One final cleanup before calling it a day: The second parameter to <code>printHeader</code> can be inlined. Do that. And the <code>System.out.println("\f");</code> line should really be a method called <code>printFooter</code>, so extract that, then rearrange the methods so that they follow the stepdown rule.</p>
 <p>This activity continues in <a href="refactoring3.html">refactoring activity 3</a>.</p>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
 </body>
 </html>

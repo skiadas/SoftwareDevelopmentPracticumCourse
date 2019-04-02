@@ -2,10 +2,11 @@
 <html>
 <head>
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title></title>
+  <title>syllabus</title>
   <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
 <script type="text/javascript" async
@@ -47,7 +48,7 @@
 <h2 id="course-description">Course Description</h2>
 <p>Software Development is a complicated process. Of course you have to write code that solves a problem, but this is only a small part of the work you have to do. You will invariably have to revisit code you have written a long time ago in order to improve it or to fix bugs. You will need to maintain “development” versions of your code along with “deployment” versions. You need ways to keep track of bugs in your code and proposed enhancements, and your progress towards them. And above all, you need to work with other people’s code and they need to work with yours.</p>
 <p>This course is a survey and practicum on all of these aspects of software development. It moves on parallel across 5 categories of topics:</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li><em>Java and Object-Oriented-Programming Fundamentals</em> reviews and reinforces the key aspects of OOP with a discussion of classes, inheritance and delegation, interfaces, encapsulation etc.</li>
 <li><em>Design Concepts and Principles</em> discusses the SOLID principles whos intent is to keep large code bases clean.</li>
 <li><em>Design Patterns</em> discusses tried-and-true solutions to common design problems.</li>
@@ -86,34 +87,34 @@
 <table>
 <thead>
 <tr class="header">
-<th align="right">Component</th>
-<th align="right">Percent</th>
+<th style="text-align: right;">Component</th>
+<th style="text-align: right;">Percent</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">Participation</td>
-<td align="right">5%</td>
+<td style="text-align: right;">Participation</td>
+<td style="text-align: right;">5%</td>
 </tr>
 <tr class="even">
-<td align="right">Quizzes</td>
-<td align="right">15%</td>
+<td style="text-align: right;">Quizzes</td>
+<td style="text-align: right;">15%</td>
 </tr>
 <tr class="odd">
-<td align="right">Project</td>
-<td align="right">35%</td>
+<td style="text-align: right;">Project</td>
+<td style="text-align: right;">35%</td>
 </tr>
 <tr class="even">
-<td align="right">Worst Exam</td>
-<td align="right">10%</td>
+<td style="text-align: right;">Worst Exam</td>
+<td style="text-align: right;">10%</td>
 </tr>
 <tr class="odd">
-<td align="right">Middle Exam</td>
-<td align="right">15%</td>
+<td style="text-align: right;">Middle Exam</td>
+<td style="text-align: right;">15%</td>
 </tr>
 <tr class="even">
-<td align="right">Best Exam</td>
-<td align="right">20%</td>
+<td style="text-align: right;">Best Exam</td>
+<td style="text-align: right;">20%</td>
 </tr>
 </tbody>
 </table>
@@ -121,32 +122,43 @@
 <table>
 <thead>
 <tr class="header">
-<th align="center">Letter grade</th>
-<th align="right">Percentage Range</th>
+<th style="text-align: center;">Letter grade</th>
+<th style="text-align: right;">Percentage Range</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">A, A-</td>
-<td align="right">90%-100%</td>
+<td style="text-align: center;">A, A-</td>
+<td style="text-align: right;">90%-100%</td>
 </tr>
 <tr class="even">
-<td align="center">B+, B, B-</td>
-<td align="right">80%-90%</td>
+<td style="text-align: center;">B+, B, B-</td>
+<td style="text-align: right;">80%-90%</td>
 </tr>
 <tr class="odd">
-<td align="center">C+, C, C-</td>
-<td align="right">70%-80%</td>
+<td style="text-align: center;">C+, C, C-</td>
+<td style="text-align: right;">70%-80%</td>
 </tr>
 <tr class="even">
-<td align="center">D+, D, D-</td>
-<td align="right">60%-70%</td>
+<td style="text-align: center;">D+, D, D-</td>
+<td style="text-align: right;">60%-70%</td>
 </tr>
 <tr class="odd">
-<td align="center">F</td>
-<td align="right">0%-60%</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: right;">0%-60%</td>
 </tr>
 </tbody>
 </table>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
 </body>
 </html>

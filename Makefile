@@ -11,7 +11,7 @@ IMGFILES := $(IMGFILES:%=docs/%)
 
 $(HTMLFILES): docs/%.html: %.md $(TEMPLATE)
 	mkdir -p $(@D)
-	pandoc -o $@ --template=$(TEMPLATE) --mathjax --filter ./makeHtml.hs $<
+	pandoc -o $@ --template=$(TEMPLATE) --mathjax --filter ./makeHtml.hs --no-highlight $<
 
 $(PDFS): docs/%.pdf: %.md $(TEXTEMPLATE)
 	mkdir -p $(@D)

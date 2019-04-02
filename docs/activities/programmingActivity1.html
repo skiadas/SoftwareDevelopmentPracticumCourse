@@ -2,10 +2,11 @@
 <html>
 <head>
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title></title>
+  <title>programmingActivity1</title>
   <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
 <script type="text/javascript" async
@@ -32,8 +33,8 @@ D    1.00
 F    0
 W    The course should not count at all towards the total or the GPA calculation.</code></pre>
 <p>You are given some start code to help you get started. You will need to:</p>
-<ol style="list-style-type: decimal">
-<li>Check out (clone) the <code>grades</code> project from GitHub: <a href="https://github.com/sdp-resources/grades" class="uri">https://github.com/sdp-resources/grades</a></li>
+<ol type="1">
+<li>Check out (clone) the <code>grades</code> project from GitHub: <a href="https://github.com/sdp-resources/grades">https://github.com/sdp-resources/grades</a></li>
 <li>Start a new IntelliJ project based off of the directory where you cloned the project.</li>
 <li>Make sure to include the JUnit4 library to the classpath, by using the intention context menu on the import part of <code>Main.java</code>.</li>
 <li>There are a few tests there in the Main class, which you can run by <em>creating a new JUnit4 configuration to run all tests in the package <code>sdp</code></em>. They should all be failing right now.</li>
@@ -41,7 +42,7 @@ W    The course should not count at all towards the total or the GPA calculation
 <p>The method you need to write, <code>processGrades</code> is given as input a “scanner”. A scanner is going to skip whitespaces and return the remaining “tokens” to you when you call an appropriate <code>next...</code> method of it. Check out the <a href="https://docs.oracle.com/javase/7/docs/api/java/util/Scanner.html">Java Scanner documentation</a> for more details.</p>
 <h2 id="problem-extensions">Problem Extensions</h2>
 <p>These are further directions that we will take this program. We’ll ideally want our code to accomodate them.</p>
-<ol start="0" style="list-style-type: decimal">
+<ol start="0" type="1">
 <li>Allow for course “numbers” to include section letters.</li>
 <li>Keep track of the courses and grades, and include in the final report an alphabetical listing of the courses.</li>
 <li>Allow courses to have the “IP” grade for in-progress. In-progress units are reported in the totals if present.</li>
@@ -49,5 +50,16 @@ W    The course should not count at all towards the total or the GPA calculation
 <li>Add “units” to courses (0.5, 1 etc).</li>
 <li>Add “term/year” to courses to indicate when taken. Generate reports based on each term, and compute term gpas and cumulative term gpas.</li>
 </ol>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
 </body>
 </html>
