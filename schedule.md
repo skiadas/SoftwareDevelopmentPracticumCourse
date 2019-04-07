@@ -61,48 +61,81 @@ Fri
         - Video: TDD Part 1 and 2
 
 For Later
-  ~ - Reading: ASD, chapter 4
-    - Video: Advanced TDD Part 1?
+  ~ - Video: Advanced TDD Part 1?
 
 ### Week 2
 
 Mon
   ~ - Goals:
+		- Exam 1
         - Introduction to Agile Methodologies
-        - Planning: User Stories, CRC Cards, Acceptance Tests
+        - Introduction to the SOLID design principles and SRP
+		- Introduce User Roles/Actors in context of SOLID principles
     - (Practices) Principles of Agile Development
-        - Reading: ASD chapters 1-3
         - Discussion of XP methodologies (pair programming, tests first etc)
-    - (Practices) User Stories
-        - Video: Clean Code, Architecture, Use Cases and High Level design
-    - (Practices) CRC Cards
+    - (Principles) Single Responsibility Principle
+        - Reading: ASD chapters 8
+        - Video: In class
+	- Prep:
+        - Reading: ASD chapters 1-4
 
-
-Mon2(TODO)
+Tue
   ~ - Goals:
         - Interfaces and dependency inversion (lamp example)
-        - Introduction to the SOLID design principles, SRP and Open-Closed Principle
-    - Exam 1?
+		- Introduction to Open-Closed Principle
     - (Principles) General values and principles for coding
     - (Java/OOP) Interfaces
-    - (Principles) Single Responsibility Principle
-        - Reading: ASD chapter 8
-        - Video: In class
     - (Principles) Open-Closed Principle
         - Reading: ASD chapter 9
         - Video: In class
-
-Tue
-  ~ - (Principles) Liskov Substitution Principle
+    - (Principles) Liskov Substitution Principle
         - Video: In class
         - Reading: ASD chapter 10
+    - (Practices) SOLID Principles Use Case (as in Clean Code video #14)
+	- Prep:
+        - Reading: ASD chapters 7-8
+
+Wed
+  ~ - Goals:
+		- Dependency Inversion Principle
+		- Interface Segragation Principle
+		- SOLID Principles Wrap-up Example
     - (Principles) Dependency Inversion Principle
         - Video: In class
         - Reading: ASD chapter 11
     - (Principles) Interface Segregation Principle
         - Video: In class
         - Reading: ASD chapter 12
-Wed
+
+Thur
+  ~ - Goals:
+		- Advanced TDD
+	    - Clean Tests
+		- Test Design
+
+Fri
+  ~ - Goals:
+		- Test Process
+	    - Mocking
+		- Code Review
+
+### Week 3
+
+Design Patterns in the morning; Work on project in the afternoon
+
+Not sure where these goes:
+  ~ - (Java/OOP) Inner classes
+    - (Coding) Exception Handling
+        - Reading: Clean Code chapter 7
+
+  ~ - Goals:
+        - Planning: User Stories, CRC Cards, Acceptance Tests (Move to Later)
+    - (Practices) User Stories
+        - Video: Clean Code, Architecture, Use Cases and High Level design
+    - (Practices) CRC Cards
+
+
+Mon
   ~ - (Patterns) Command
         - Video: Clean Code: Design Patterns
         - Reading: ASD chapter 13
@@ -113,21 +146,7 @@ Wed
         - Video: Clean Code: Pattern Roundup
         - Reading: ASD chapter 15
     - (Practices) UML Class Diagrams
-    - Work on Project
-
-Thu
-  ~ - (Practices) Version Control Advanced
-    - Work on Project
-
-Fri
-  ~ - (Java/OOP) Inner classes
-    - (Coding) Exception Handling
-        - Reading: Clean Code chapter 7
-
-### Week 3
-
-Mon
-  ~ - (Patterns) Factory
+    - (Patterns) Factory
         - Video: Clean Code: Factories
         - Reading: ASD chapter 21
     - TODO: Refactoring earlier

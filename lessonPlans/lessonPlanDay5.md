@@ -16,7 +16,7 @@ Git cheatsheet
 ## Lunch
 
 - Get Lunch
-- TDD part 2?
+- TDD video part 2?
 
 ## Activity 3:
 
