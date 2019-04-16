@@ -6,7 +6,7 @@ Start: Introduction Video (6 mins)
 
 1 hour
 
-- Give Java Cheatsheet
+- Give [Java Cheatsheet](../cheatsheets/javaBasics.md)
 - Have student analyze provided code for standard patterns
 - Q/A
 

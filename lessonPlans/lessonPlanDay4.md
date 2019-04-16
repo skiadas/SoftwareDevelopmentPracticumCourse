@@ -2,7 +2,15 @@
 
 ## Activity 1:
 
+Section 1.6 of Design Patterns book
+
 Review of OOP concepts (need some examples?)
+
+methods/operations, requests/messages, encapsulation
+
+operation signatures, object interface, type, subtypes and supertypes (p 13)
+
+
 
 ## Activity 2:
 

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>javaBasics</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="java-basics-cheatsheet">Java Basics cheatsheet</h1>
+<h2 id="key-terms">Key Terms</h2>
+<ul>
+<li>Most Java programming involves calling <strong>methods</strong> of <strong>objects</strong>. The syntax for this is <code>obj.method(param1, param2)</code>.</li>
+<li>Objects are created when we <strong>instantiate classes</strong>. We do so with the <em>new</em> keyword: <code>new Cat("Ziggy")</code>. This calls the class <strong>constructor</strong>.</li>
+<li>Classes can <strong>extend</strong> other classes, which means that they inherit all the functionality from those other classes (but they can also overwrite some of it).</li>
+<li>We also have <strong>interfaces</strong> which are a set of method signatures. A class can <strong>implement</strong> an interface if it has implementations for all the methods indicated in the interface.</li>
+<li>The <code>this</code> keyword is used in an object method to refer to the object itself, and to provide access to its <strong>fields</strong>.</li>
+</ul>
+<h2 id="visibility">Visibility</h2>
+<p>Classes, Variables, and Methods etc have <em>visibility</em> indicated by a keyword:</p>
+<dl>
+<dt>public</dt>
+<dd>Can be accessed by anyone.
+</dd>
+<dt>private</dt>
+<dd>Can only be accessed from objects of the class that contains them.
+</dd>
+<dt>package-private</dt>
+<dd>Can be accessed by any classes that are within the same package. This is also the default, if no specific word is used.
+</dd>
+<dt>protected</dt>
+<dd>Can be accessed by subclasses of the class.
+</dd>
+</dl>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>
