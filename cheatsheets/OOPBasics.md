@@ -4,15 +4,18 @@
 
 - **Objects** consist of data along with the procedures that operate on that data.
     - We call this data **fields** or **instance variables**.
-    - We call the procedures **methods** or **operations**.
+    - We call the procedures **methods** or **operations** (C++ calls them **member functions**).
     - When we call the method of an object, we say that we **make a request** or **pass a message** to the object.
-- Object data is can only be altered by calling the object's methods. This is called **encapsulation**.
-- If the data is declared to be **private**, then it cannot be seen from outside the class, thus protecting these internal implementation details from leaking out. This is called **information hiding**.
+
+- **Characteristics of Objects**
+    - All objects exhibit both *encapsulation* and *information hiding*.
+    - **Encapsulation** is the property that an object's data can only be altered by calling the object's methods. 
+    - **Information hiding** is the property of protecting internal implementation details from being seen from other parts of the application, for example, by declaring data fields and methods to be **private**. 
 
 ## Types
 
 - Every operation is characterized by a name, the kinds of objects it takes as parameters, and the kind of value it returns. These elements collectively are the **signature** of the operation.
-- The selection of all the signatures for the operations that an object can handle is the object's **interface**.
+- The collection of all the signatures for the operations that an object can handle is the object's **interface**.
 - A collection of signatures is called a **type**. We say that **an object *has* a type** if it has an implementation for each operation specified in the type.
 - In Java we can express such types via the formal element called a **Java Interface**.
 
