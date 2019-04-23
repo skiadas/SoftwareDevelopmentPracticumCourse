@@ -211,14 +211,11 @@ public interface Itemizable {
     return getPrice() * getQuantity();
   }</code></pre>
 <h2 id="manual-refactorings">Manual Refactorings</h2>
-<ul>
-<li>Moving code (see new refactoring book)</li>
-</ul>
-<p>TODO</p>
-<ul>
-<li>Split loop (see new refactoring book)</li>
-</ul>
-<p>TODO</p>
+<h3 id="move-code">Move code</h3>
+<p>Some times it helps to move some lines of code elsewhere within the same method. This allows them to be grouped up with other lines of code, which might allow further refactorings (e.g. extract method).</p>
+<p>Be careful when moving code around, to make sure you preserve the code’s <em>semantics</em>.</p>
+<h3 id="split-loop">Split loop</h3>
+<p>Oftentimes a loop is doing too much. It is often possible to split it in two loops, each doing some part of the work. This again might enable further refactorings.</p>
 <script type="text/javascript">
 let els = document.getElementsByTagName("pre");
 for (const el of els) {

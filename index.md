@@ -14,3 +14,4 @@ Resources:
 - [List of Intentions](cheatsheets/intentions.md)
 - [Java Basics](cheatsheets/javaBasics.md)
 - [Object-Oriented-Programming Basics](cheatsheets/OOPBasics.md)
+- [Basics of working in iterations](cheatsheets/iterationBasics.md)

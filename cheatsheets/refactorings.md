@@ -268,10 +268,12 @@ Becomes
 
 ## Manual Refactorings
 
-- Moving code (see new refactoring book)
+### Move code
 
-TODO
+Some times it helps to move some lines of code elsewhere within the same method. This allows them to be grouped up with other lines of code, which might allow further refactorings (e.g. extract method).
 
-- Split loop (see new refactoring book)
+Be careful when moving code around, to make sure you preserve the code's *semantics*.
 
-TODO
+### Split loop
+
+Oftentimes a loop is doing too much. It is often possible to split it in two loops, each doing some part of the work. This again might enable further refactorings.
