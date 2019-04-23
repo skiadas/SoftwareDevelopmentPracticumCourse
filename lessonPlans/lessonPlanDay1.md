@@ -2,12 +2,14 @@
 
 Start: Introduction Video (6 mins)
 
-## Activity 1: Basic Java Syntax Patterns
+## Activity 1: Basic Java Syntax
 
 1 hour
 
-- Give [Java Cheatsheet](../cheatsheets/javaBasics.md)
-- Have student analyze provided code for standard patterns
+- Handout:
+	- [Java Language Overview](../cheatsheets/javaBasics.md)
+	- [code example](../activities/javaBasicSyntax.md)
+- To Do: Add questions to javaBasicSyntax.md [TW]
 - Q/A
 
 ## Activity 2: Java Classes
@@ -21,7 +23,8 @@ Start: Introduction Video (6 mins)
 
 45 mins?
 
-- Code up example from activity 2
+- Come up with example for students to code using Simple Java Graphics.
+- Have zip that students can download. 
 
 ## Lunch
 
