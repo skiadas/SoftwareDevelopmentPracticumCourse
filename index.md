@@ -12,3 +12,5 @@ Resources:
 
 - [List of Refactorings](cheatsheets/refactorings.md)
 - [List of Intentions](cheatsheets/intentions.md)
+- [Java Basics](cheatsheets/javaBasics.md)
+- [Object-Oriented-Programming Basics](cheatsheets/OOPBasics.md)
