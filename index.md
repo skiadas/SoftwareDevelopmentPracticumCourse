@@ -10,5 +10,5 @@ Web site for CS321 Software Development Practicum
 
 Resources:
 
-- [List of Refactorings](refactorings.md)
-- [List of Intentions](intentions.md)
+- [List of Refactorings](cheatsheets/refactorings.md)
+- [List of Intentions](cheatsheets/intentions.md)
