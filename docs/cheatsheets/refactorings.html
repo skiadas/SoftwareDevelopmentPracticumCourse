@@ -15,42 +15,210 @@
 </head>
 <body>
 <h1 id="important-refactorings">Important Refactorings</h1>
+<p><a href="https://www.jetbrains.com/help/idea/refactoring-source-code.html">General IntelliJ refactoring reference</a></p>
 <h2 id="rename">Rename <symbol></h2>
+<h3 id="change-variablemethod-name">Change variable/method name</h3>
+<p>Simply changes the name of a variable consistently across all its uses.</p>
+<p>For methods, this will also potentially change the name of methods defined in parent classes or interfaces.</p>
+<h3 id="change-method-signature">Change method signature</h3>
+<p>You can change a method’s signature, including:</p>
 <ul>
-<li>change variable name</li>
-<li>change method name</li>
-<li>change method signature</li>
+<li>Change the parameter names and types</li>
+<li>Add new parameters</li>
+<li>Delete existing parameters</li>
+<li>Rearrange the order of the parameters</li>
+<li>Change the return type and/or method name</li>
 </ul>
 <h2 id="extract-and-inline">Extract and Inline</h2>
 <p>Extract and inline are opposites.</p>
+<h3 id="extract-local-variable-constant-field-parameter">extract local variable / constant / field / parameter</h3>
+<p>Select an expression, and replace its usage with a newly created variable. If the expression appears multiple times, you can choose to replace all occurences.</p>
+<pre class="java"><code>totalAmount += item.price * item.quantity;
+// Extract variable on &quot;item.price * item.quantity;&quot;
+int itemTotal = item.price * item.quantity;
+totalAmount += itemTotal;</code></pre>
+<p>Use to give names to expressions and describe their intent better. Also used in preparation of extract method.</p>
+<p>Special case for “extract parameter”: If the expression contains the only way that another parameter is used, the system will offer to remove that parameter:</p>
+<pre class="java"><code>public void processItem(int[] array, int index) {
+    System.out.print(array[index]);
+}
+
+public static void main(String[] args) {
+    Processor processor = new Processor();
+    int[] items = { 1, 3, 5};
+    for (int i = 0; i &lt; items.length; i++) {
+        processor.processItem(items, i);
+    }
+}</code></pre>
+<p>When we “extract parameter” on <code>array[index]</code> we get:</p>
+<pre class="java"><code>public class Processor {
+  public void processItem(int item) {
+    System.out.print(item);
+  }
+
+  public static void main(String[] args) {
+    Processor processor = new Processor();
+    int[] items = { 1, 3, 5};
+    for (int i = 0; i &lt; items.length; i++) {
+      processor.processItem(items[i]);
+    }
+  }
+}</code></pre>
+<h3 id="extract-method">Extract method</h3>
+<p>Create a new method out of the selected statements.</p>
 <ul>
-<li>extract local variable</li>
-<li>extract constant</li>
-<li>extract parameter</li>
-<li>extract field</li>
-<li>extract method</li>
-<li>inline local variable</li>
-<li>inline constant</li>
-<li>inline field</li>
-<li>inline method</li>
+<li>The selection must not change the value of local variables.</li>
+<li>Any local variables used in the selection become parameters to the function.</li>
+<li>Return value is appropriate for the selection.</li>
 </ul>
+<pre class="java"><code>    int total = 0;
+    for (Item item : items) {
+      total += item.price * item.quantity;
+    }</code></pre>
+<p>We extract method for <code>item.price * item.quantity;</code> to get:</p>
+<pre class="java"><code>    for (Item item : items) {
+      total += getItemTotal(item);
+    }
+
+// ... elsewhere ...
+  private static int getItemTotal(Item item) {
+    return item.price * item.quantity;
+  }</code></pre>
+<h3 id="inline-local-variable-constant-field">Inline local variable / constant / field</h3>
+<p>Replace all occurences of the symbol with its value. Only works if symbol would always equal this value.</p>
+<h3 id="inline-method">Inline method</h3>
+<p>Replace one or all occurences of a method’s calls with the appropriately modified body. Optionally, delete the method.</p>
+<p>Example same as “Extract Method” in reference</p>
 <h2 id="class-creation-and-alteration">Class creation and alteration</h2>
-<ul>
-<li>extract method object</li>
-<li>extract parameter object</li>
-<li>extract delegate</li>
-<li>extract superclass/interface/subclass</li>
-<li>make method static</li>
-<li>move method</li>
-<li>move class</li>
-<li>pull members up</li>
-<li>push members down</li>
-</ul>
+<p>These refactorings create new classes out of existing features, or otherwise manipulate the class structure.</p>
+<h3 id="extract-method-object">Extract method object</h3>
+<p>Turns a whole selection into a new method in a new class. Any variables needed are passed as arguments to the class constructor.</p>
+<pre class="java"><code>    int total = 0;
+    for (Item item : items) {
+      total += item.price * item.quantity;
+    }
+    System.out.println(total);
+</code></pre>
+<p>If we “Extract method object” out of the first four lines, we get:</p>
+<pre class="java"><code>    int total = new Totaller(items).invoke();
+    System.out.println(total);
+
+    // ...  elsewhere ...
+    private static class Totaller {
+        private Item[] items;
+
+        public Totaller(Item... items) {
+          this.items = items;
+        }
+
+        public int invoke() {
+          int total = 0;
+          for (Item item : items) {
+            total += item.price * item.quantity;
+          }
+          return total;
+        }
+      }</code></pre>
+<h3 id="extract-parameter-object">Extract parameter object</h3>
+<p>Combine a number of parameters to a method into a single object of a newly created class.Useful when the same parameters appear together often, or when we just want to reduce the number of parameters to a method.</p>
+<pre class="java"><code>    total += getItemTotal(prices[i], quantities[i]);
+
+    // ...
+    private int getItemTotal(int price, int quantity) {
+      return price * quantity;
+    }</code></pre>
+<p>Extracting a parameter object from the <code>getItemTotal</code> method, gives us a new <code>Item</code> class:</p>
+<pre class="java"><code>    total += getItemTotal(new Item(prices[i], quantities[i]));
+
+    ...
+    private static int getItemTotal(Item item) {
+        return item.getPrice() * item.getQuantity();
+    }
+    ...
+    private static class Item {
+      private final int price;
+      private final int quantity;
+
+      private Item(int price, int quantity) {
+        this.price = price;
+        this.quantity = quantity;
+      }
+
+      int getPrice() {
+        return price;
+      }
+
+      int getQuantity() {
+        return quantity;
+      }
+    }</code></pre>
+<h3 id="extract-delegate">Extract delegate</h3>
+<p>Extract some fields and methods into a new class, which the current class delegates calls to.</p>
+<p>TODO: Find good example</p>
+<h3 id="extract-superclassinterfacesubclass">Extract superclass/interface/subclass</h3>
+<p>Extract certain methods and/or fields into a subclass or a superclass, or use them to form an interface.</p>
+<pre class="java"><code>private static class Item {
+    private final int price;
+    private final int quantity;
+
+    private Item(int price, int quantity) {
+      ...
+    }
+
+    int getPrice() { return price; }
+    int getQuantity() { return quantity; }
+}</code></pre>
+<p>We can extract the <code>Itemizable</code> interface from the two methods <code>getPrice</code> and <code>getQuantity</code>.</p>
+<pre class="java"><code>private static class Item implements Itemizable {
+    ...
+}
+
+...
+
+public interface Itemizable {
+  int getPrice();
+  int getQuantity();
+}</code></pre>
+<p>The system will also offer to search through all uses of the class <code>Item</code> and try to replace them with uses of the interface <code>Itemizable</code> instead.</p>
+<h2 id="movement">Movement</h2>
+<p>A number of move refactorings are available. The system automatically adjusts references for us, and warns us about problem cases.</p>
+<h3 id="convert-to-static-method-convert-to-instance-method-move-method">Convert to static method / Convert to instance method / Move method</h3>
+<p>Turn an instance method into a static method. The instance is then passed as a parameter, if needed.</p>
+<p>Conversely, you can turn a static method into an instance method of one of its parameters. The method will then automatically move to the corresponding class.</p>
+<pre class="java"><code>    private static int getItemTotal(Itemizable item) {
+      return item.getPrice() * item.getQuantity();
+    }</code></pre>
+<p>Becomes:</p>
+<pre class="java"><code>    // In class Item   (possibly interface Itemizable?)
+    int getItemTotal() {
+        return getPrice() * getQuantity();
+    }</code></pre>
+<h3 id="move-class">Move class</h3>
+<p>Move a class to be an inner class of another class or to be an outer class, or move an outer class to an inner class, or move classes from one package to another.</p>
+<h3 id="pull-members-up-push-members-down">pull members up / push members down</h3>
+<p>In the context of a class and it superclass or interface, move definitions and/or implementations “up” (towards the superclass) or “down” (towards the subclasses).</p>
+<pre class="java"><code>  // In interface Itemizable
+  default int getItemTotal() {
+    return getPrice() * getQuantity();
+  }</code></pre>
+<p>Becomes</p>
+<pre class="java"><code>  // In interface Itemizable
+  int getItemTotal();
+
+  ...
+  // In class Item
+  int getItemTotal() {
+    return getPrice() * getQuantity();
+  }</code></pre>
 <h2 id="manual-refactorings">Manual Refactorings</h2>
 <ul>
 <li>Moving code (see new refactoring book)</li>
+</ul>
+<p>TODO</p>
+<ul>
 <li>Split loop (see new refactoring book)</li>
 </ul>
+<p>TODO</p>
 <script type="text/javascript">
 let els = document.getElementsByTagName("pre");
 for (const el of els) {
