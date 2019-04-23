@@ -61,11 +61,135 @@
 <li>This can be a built-in datatype like <code>int</code> or <code>char</code>, or it can be a class or interface.</li>
 <li>When assigning a value to a variable, the type of</li>
 </ul>
-<h3 id="syntax-elements">Syntax elements:</h3>
+<h2 id="syntax-elements">Syntax elements</h2>
+<h3 id="java-files">Java files</h3>
+<p>Java files, with extension <code>.java</code>, consist of two parts:</p>
 <ul>
-<li>function definitions</li>
-<li></li>
+<li>a <em>package</em> statement indicating which package the file belongs to.</li>
+<li><em>import</em> statements that load public elements from other packages.</li>
+<li>a class or interface definition.</li>
 </ul>
+<p><strong>Import statements</strong> are used to avoid having to refer to packages by their fully qualified names. Here are some examples, considering an imaginary package <code>graphics</code> that contains a <code>Rectangle</code> class:</p>
+<pre class="java"><code>import graphics.Rectangle;
+import graphics.*;
+import graphics.Rectangle.*;</code></pre>
+<p>Without an import, we can use a class by referring to it with its <strong>qualified name</strong>, for example <code>graphics.Rectangle</code>.</p>
+<p>The first import line above allows us to refer to the <code>Rectangle</code> class directly in our code from now on. The second import line does the same for <em>all</em> files within the <code>graphics</code> package.</p>
+<p>The third import line will make every inner class and method within the <code>Rectangle</code> class available directly. For example, if <code>Rectangle</code> had a static <code>make</code> method, then with the first two imports we can refer to it as <code>Rectangle.make(...)</code>, while with the last import we can do <code>make(...)</code> instead.</p>
+<h3 id="class-definitions">Class definitions</h3>
+<p>Class Definitions have the keyword <code>class</code>, possibly preceded by a <em>visibility modifier</em>, followed by the class name (capitalized). It may be followed by <code>extends ...</code> and/or <code>implements ...</code> clauses, if the class is a subclass of another class or if it implements a certain interface.</p>
+<pre class="java"><code>public class Circle extends AbstractShape implements drawable. {
+    ...
+}</code></pre>
+<p>The interior of a class definition may contain any of the following, in any order:</p>
+<ul>
+<li>field declarations</li>
+<li>zero or more constructor definitions</li>
+<li>method definitions</li>
+<li>inner class definitions</li>
+</ul>
+<p><strong>Interface</strong> definitions are similar, except that they cannot contain an <code>extends</code> part, cannot have constructors, and instead of method definitions they have <strong>method declarations</strong>, containing a semicolon instead of a body.</p>
+<p><strong>Abstract class</strong> definitions are similar, except that they cannot have constructors, they contain the <code>abstract</code> modifier to their definition, and they can contain both method definitions and method declarations. Methods that are simply declared must contain the <code>abstract</code> modifier.</p>
+<h3 id="field-declarations">Field declarations</h3>
+<p>A field declaration specifies the visibility and type of the field, and possibly an initial value for the field. Some examples</p>
+<pre class="java"><code>private String firstName;
+static final int MAX_CAPACITY = 40;
+public static String hostname;</code></pre>
+<p>The first example specifies a private field of type <code>String</code> and called <code>firstName</code>. This field will be likely initialized in the constructor.</p>
+<p>The second example specifies what is effectively a <em>constant</em>: A static variable, visible within the package (hence no modifier in front), of type <code>int</code>, and set to be <strong>final</strong>, meaning its value cannot change.</p>
+<p>The third example is a public static field, so visible everywhere and with a value independent of the specific instance.</p>
+<h3 id="method-definitions">Method definitions</h3>
+<p>Method definitions consist of a number of <em>modifiers</em> followed by the method’s <em>return type</em>, the method name, and a parenthesized parameter list, with their types specified. The body of the method follows inside curly braces.</p>
+<p>For example:</p>
+<pre class="java"><code>public void setFirstName(String newFirstName) {
+    ...
+}
+
+public String getFirstName() {
+    ...
+}
+
+private static boolean isValidName(firstName, lastName) {
+    ...
+}</code></pre>
+<p>An important example is the <strong>main method</strong> that your program can have, which has a specific required signature:</p>
+<pre class="java"><code>public static void main(String[] args) {
+    System.out.println(&quot;Hello world!&quot;);
+}</code></pre>
+<h3 id="constructors">Constructors</h3>
+<p>Constructors are similar to method definitions. They combine the return type and name onto one thing, namely the class name. They cannot be static, and they don’t return any values in their body (the newly created object is what is being returned).</p>
+<p>A class can have multiple constructors, provided they take different kinds of arguments. It is customary in this case for all constructors to eventually call the same constructor, the one with the most complete set of arguments.</p>
+<p>By default, a class with no specific constructors has a <em>default constructor</em> <code>public void ClassName() {}</code>.</p>
+<p>Example:</p>
+<pre class="java"><code>public Person(String firstName, String lastName, int age) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+}
+
+// This constructor simply calls the longer constructor.
+public Person(String firstName, String lastName) {
+    this(firstName, lastName, 0);
+}</code></pre>
+<p>Constructors are called using the <code>new</code> keyword: <code>Person p = new Person("Peter", "Doe", 26);</code></p>
+<h3 id="control-flow">Control Flow</h3>
+<p>Java contains many of the standard control flow elements you may have seen in other languages:</p>
+<ul>
+<li>conditionals</li>
+<li>while loops</li>
+<li>for loops</li>
+<li>switch statements</li>
+</ul>
+<h4 id="conditionals">Conditionals</h4>
+<p>Java conditionals follow a standard <code>if-then-else</code> pattern:</p>
+<pre class="java"><code>if (thisIsTrue) {
+    ...  true case code
+}
+
+if (thisIsTrue) {
+    ...  true case code
+} else {
+    ... false case code
+}
+
+if (thisIsTrue) {
+    ...  true case code
+} else if (thatIsTrue) {
+    ... case where thatIsTrue is true but thisIsTrue is false
+} else {
+    ... both false
+}</code></pre>
+<p>There is also the <strong>ternary operator</strong>, which <em>returns a value</em>:</p>
+<pre class="java"><code>int x = (y &gt; 5) ? 5 : y;</code></pre>
+<p>In this example, x will have the same value as y unless that is more than 5, in which case it is scaled down to a 5.</p>
+<h4 id="while-loops">While loops</h4>
+<p>Java implements the familiar while loops, that execute a block of code as long as a specific condition is true:</p>
+<pre class="java"><code>while (account.hasMoney()) {
+    account.withdraw();
+}</code></pre>
+<p>This loop will keep executing the <code>account.withdraw()</code> method as long as <code>account.hasMoney()</code> is true.</p>
+<h4 id="for-loops">For loops</h4>
+<p>Java provides two kinds of for loops. The standard <em>counter loop</em> and a <em>foreach loop</em> for iterating over a collection.</p>
+<pre class="java"><code>for (int i = 0; i &lt; names.length; i++) {
+    System.out.println(names[i]);
+}
+
+for (String name : names) {
+    System.out.println(names);
+}</code></pre>
+<p>If you are simply looping over the elements of a collection, you should always prefer the second way.</p>
+<h4 id="switch-statements">Switch statements</h4>
+<p>A switch statement compares a value against a series of constant values presented in <code>case</code> expressions, and executes the corresponding statements. It will fall through to the next case unless you remember to use <code>break</code>.</p>
+<pre class="java"><code>switch (person.getType()) {
+    case &quot;faculty&quot;:
+        doSomething();
+        break;
+    case &quot;student&quot;:
+        doSomethingElse();
+        break;
+    default:
+        // We don&#39;t do anything otherwise
+}</code></pre>
 <script type="text/javascript">
 let els = document.getElementsByTagName("pre");
 for (const el of els) {
