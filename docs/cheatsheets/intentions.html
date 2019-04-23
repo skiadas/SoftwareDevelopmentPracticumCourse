@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>intentions</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="intentions">Intentions</h1>
+<p>Intentions are triggered in IntelliJ when you use option/alt+enter over some code element. The available options differ depending on the code element. You can see all available intentions in the <code>Editor -&gt; Intentions</code> section of the IntelliJ preferences/settings.</p>
+<p>Here are the most important categories:</p>
+<ul>
+<li>Boolean (expand boolean to if statements, flip or negate comparisons, …)</li>
+<li>Conditional/ternary operator (flip conditional, replace if-else with conditional)</li>
+<li>Control flow:
+<ul>
+<li>Create enum switch branches, create switch statement</li>
+<li>Extract if conditions</li>
+<li>Invert if, merge else if, split if, swap ifs</li>
+<li>Iterate</li>
+<li>Replace for-each loop with indexed or iterator for loop</li>
+</ul></li>
+<li>Declarations
+<ul>
+<li>Assign parameter to field, bind parameters to fields, create field for parameter</li>
+<li>Convert interface to abstract class</li>
+<li>Join/split declaration and assignment, move initializer to constructor/setup</li>
+<li>Create test class for a class</li>
+<li>Generate overloaded method with default parameter values</li>
+<li>Implement abstract class</li>
+</ul></li>
+<li>Imports
+<ul>
+<li>Add on-demand static import, expand static import</li>
+<li>Add single member static import</li>
+</ul></li>
+<li>Visibility/scope (make package-private/private/protected/public)</li>
+<li>Various
+<ul>
+<li>Add clarifying parens</li>
+<li>Compute constant value</li>
+<li>Call chain &lt;—-&gt; call sequence</li>
+</ul></li>
+<li>Refactorings
+<ul>
+<li>Introduce local variable</li>
+<li>Encapsulate field</li>
+</ul></li>
+<li>Strings
+<ul>
+<li>Break string at newlines</li>
+<li>Join concatenated literals</li>
+<li>Replace + with StringBuilder</li>
+<li>String concat &lt;—–&gt; String.format</li>
+</ul></li>
+</ul>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>
