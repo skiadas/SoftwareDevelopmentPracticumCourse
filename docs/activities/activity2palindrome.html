@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity2palindrome</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="activity-2---introduction-to-intellij-coding-the-palindrome">Activity 2 - Introduction to IntelliJ: Coding the palindrome</h1>
+<p>In this activity we will walk through the basic steps for creating a new project in IntelliJ.</p>
+<h2 id="starting-up">Starting up</h2>
+<ul>
+<li>Create a directory for your CS321 work.</li>
+<li>Start the IntelliJ application (under Development).</li>
+<li>The license server is <code>https://alpha.hanover.edu</code>.</li>
+<li>Follow through the startup process.</li>
+<li>Select <em>File -&gt; New -&gt; Project</em>, follow the Next buttons until you can choose a project name and location. Navigate to the CS321 directory you created. Call the project “WordPalindrome”.</li>
+<li>Click Finish.</li>
+</ul>
+<p>You are now looking at the main IntelliJ window. The left side has what we call the <strong>project structure</strong>.</p>
+<h2 id="creating-your-first-class-file">Creating your first class file</h2>
+<ul>
+<li>Expand the arrow next to WordPalindrome in the project structure. You should see a blue source folder (<code>src</code>). You’ll also see two other items there, the <code>WordPalindrome.iml</code> file and the <code>.idea</code> folder. Both of these hold IntelliJ’s information about your project.</li>
+<li>Right-click on the <code>src</code> folder to bring up the <strong>context menu</strong>. Choose <em>New -&gt; Java Class</em> and name your class <code>PalindromeChecker</code>. A new tab will open with the new class file <code>PalindromeChecker.java</code>, and with a basic class definition.</li>
+<li>Starting with the <code>import java.util.Scanner;</code> line, type in the code from the handout we discussed earlier. One person can be reading out while the other one is typing. Switch halfway between.</li>
+</ul>
+<h2 id="testing-it-out">Testing it out</h2>
+<ul>
+<li>Save your file if it is not saved already.</li>
+<li>Right-click the class and choose “Run”. This will bring up a “Run” window at the bottom.</li>
+<li>If there were errors during compilation, you will instead see them under a Messages tab. Fix them and run again.</li>
+<li>Click in the “Run” window to shift your focus there.</li>
+<li>You should now be able to type in a phrase and press Enter, and the program will tell you if it is a word palindrome or not.</li>
+<li>To end, click the red Stop button on the left.</li>
+</ul>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>

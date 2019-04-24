@@ -6,25 +6,25 @@ Start: Introduction Video (6 mins)
 
 1 hour
 
+- [Brief intro to classes and objects](../activities/activity1warmup.md)
 - Handout:
 	- [Java Language Overview](../cheatsheets/javaBasics.md)
 	- [code example](../activities/javaBasicSyntax.md)
 - To Do: Add questions to javaBasicSyntax.md [TW]
 - Q/A
 
-## Activity 2: Java Classes
+## Activity 2: Introduction to IntelliJ
 
-1 hour
+30 mins
 
-- Combine Java POGIL activities 11, 12 (class design, constructors)
-- Questions/Review
+- [Activity 2: Start on IntelliJ with the palindrome example](../activities/activity2palindrome.md)
 
-## Activity 3: Introduction to IntelliJ
+## Activity 3: More practice with IntelliJ and Java
 
-45 mins?
+45 mins
 
 - Come up with example for students to code using Simple Java Graphics.
-- Have zip that students can download. 
+- Have zip that students can download.
 
 ## Lunch
 
