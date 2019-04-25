@@ -3,16 +3,17 @@
 ## General Info
 
 Course
-  ~ CS321 Data Wrangling and Management and CS328 Data Management and Web Services
+  ~ CS321 Software Development Practicum
 
-Instructor
-  ~ Charilaos Skiadas (skiadas at hanover dot edu)
+Instructors
+  ~ - Charilaos Skiadas (skiadas at hanover dot edu)
+    - Theresa Wilson (wilsont at hanover dot edu)
 
 Term
   ~ Spring 2018-2019
 
-Office
-  ~ LYN 108
+Offices
+  ~ LYN 102
 
 Office Hours
   ~ By appointment
@@ -22,10 +23,11 @@ Book
     - [online ACM resources](http://learning.acm.org)
 
 Websites
-  ~ [for notes](https://skiadas.github.io/SoftwareDevelopmentPracticumCourse/)
+  ~ - [Notes etc](https://skiadas.github.io/SoftwareDevelopmentPracticumCourse/)
+    - [Moodle](https://moodle.hanover.edu/course/view.php?id=825)
 
 Class times
-  ~ MTWRF 10:15am-12:30pm, 2:40pm-5:00pm, in LYN120A
+  ~ MTWRF 10:15am-5:00pm, in LYN120A, with break for lunch
 
 ## Course Description
 
@@ -49,7 +51,6 @@ The second is a list of electronic resources available through the ACM (Associat
 
 A catered list of reading material from electronic resources will be provided, and it will cover the remaining topics of *Java programming and OOP Fundamentals*, *Development Practices* and *Coding Practices*. Sections from the following books will be covered:
 
-- *Java, a beginner's guide*, by H. Schildt
 - *Clean Code*, by R. Martin
 - *Clean Code* Video Series, by R. Martin
 - *Design Patterns* Video Series, by R. Martin
@@ -60,39 +61,51 @@ A catered list of reading material from electronic resources will be provided, a
 
 ### Reading Assignments
 
-In the [class schedule page](skiadas.github.io/DataWranglingCourse/site/schedule.html) you will find, for each class day, a list of links to reading assignments. Your homework will require you to have a solid understanding of the material covered there, so I strongly encourage you not to get behind.
+In the [class schedule page](skiadas.github.io/SoftwareDevelopmentPracticumCourse/site/schedule.html) for each class day you will find a list of links "prep" items. These may be videos to watch or book sections to read, possibly with a short assignment to help you learn the material. You are expected to do this prep work before coming to the next class.
 
 ### Class Participation
 
-You are expected to attend every class meeting, morning and afternoon. The accelerated nature of Spring term and the collaborative nature of the programming project require constant engagement with the material. You are only allowed to miss 1 period without excuse. From that point on, every missed period will result in a reduction of your final score by one percentage point, up to a total of 5 points. Excused absences should be arranged in advance, and backed by appropriate documentation. Emergencies will be dealt with on an individual basis. There are very few reasons that would qualify as an excuse for an absence.
+You are expected to attend every class meeting. The accelerated nature of Spring term and the collaborative nature of the programming project require constant engagement with the material and your classmates. The class is typically divided in 5-6 *activities*. Missing an activity will result in a reduction of your final score by one percentage point, up to a total of 10 points. Emergencies will be dealt with on an individual basis. There are very few reasons that would qualify as an excuse for an absence. If you have known conflicts discuss them with us by the end of the first day.
 
 ### Exams
 
-There will be frequent quizzes based on the reading, as well as three midterms, on Friday 5/3, Friday 5/10 and Friday 5/17. In terms of your final grade, the exams you did better on will weigh more.
+There will be three midterms, on Monday 5/6, Monday 5/13 and Wednesday 5/22.
 
 ### Project
 
-For a large part of the course you will be engaged in a collaborative project with a group of your classmates.
+For a large part of the course you will be engaged in a collaborative project with a group of your classmates. Project work will typically be as follows:
 
+- We will be working on 2-3 day "development iterations" during which the group will be working on a set of features for the project.
+- Each feature is "owned" by one student, who sees it through to its completion.
+- At any given time, you will be either developing the feature you own, or you will be pairing up with another student to help them on their feature.
+- Your grade is not determined by the "number of features you have completed" (beyond a minimum requirement). A large part of the grade is based on the success of the project as a whole. So assisting others with their features is just as important as working on your own features. Paired programming is both required and expected.
 
-### Getting Help
+The project will overall count for 45% of the final grade, broken down as follows:
 
-- You should never hesitate to ask me questions. I will never think any less of anyone for asking a question. Stop by my office hours or just email me your question, which has the great benefit of forcing you to write it down in clear terms, which often helps you understand it better.
-- You are allowed, and in fact encouraged, to work together and help each other regarding the class material, as well as the topics related to the lab assignments. However, you may NOT directly help each other with your lab assignments.
+- Group Assessment
+    - Evaluation of the overall quality of the project's codebase, based on a development rubric. (20%)
+    - Assessement of the project success based on the delivered functionality. (10%)
+- Individual Assessment
+    - Leading development of a required number of features. (5%)
+    - Effective paired programming with teammates on their features. (5%)
+    - Peer assessment of your contribution to the team. (5%)
+
+## Phone policy
+
+Your phone is required to be in your bag, set to silent, at all times, except during scheduled breaks (there will be at least one 5-minute break every hour). This includes both lecture and other in-class activities as well as programming/development time. If phone use becomes a problem, we will confiscate your phone until the end of the class day.
 
 ## Grading
 
-Your final grade depends on class attendance, homework, midterms and the final, as follows:
+Your final grade depends on class participation, work on project, and three exams, as follows:
 
-
-     Component   Percent
---------------  --------
- Participation        5%
-       Quizzes       15%
-       Project       35%
-    Worst Exam       10%
-   Middle Exam       15%
-     Best Exam       20%
+Components             Percent
+--------------------  --------
+Participation              10%
+Project (Group)            30%
+Project (Individual)       15%
+Exam 1                     15%
+Exam 2                     15%
+Exam 3                     15%
 
 
 

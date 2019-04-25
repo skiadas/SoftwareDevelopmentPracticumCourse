@@ -18,16 +18,19 @@
 <h2 id="general-info">General Info</h2>
 <dl>
 <dt>Course</dt>
-<dd>CS321 Data Wrangling and Management and CS328 Data Management and Web Services
+<dd>CS321 Software Development Practicum
 </dd>
-<dt>Instructor</dt>
-<dd>Charilaos Skiadas (skiadas at hanover dot edu)
+<dt>Instructors</dt>
+<dd><ul>
+<li>Charilaos Skiadas (skiadas at hanover dot edu)</li>
+<li>Theresa Wilson (wilsont at hanover dot edu)</li>
+</ul>
 </dd>
 <dt>Term</dt>
 <dd>Spring 2018-2019
 </dd>
-<dt>Office</dt>
-<dd>LYN 108
+<dt>Offices</dt>
+<dd>LYN 102
 </dd>
 <dt>Office Hours</dt>
 <dd>By appointment
@@ -39,10 +42,13 @@
 </ul>
 </dd>
 <dt>Websites</dt>
-<dd><a href="https://skiadas.github.io/SoftwareDevelopmentPracticumCourse/">for notes</a>
+<dd><ul>
+<li><a href="https://skiadas.github.io/SoftwareDevelopmentPracticumCourse/">Notes etc</a></li>
+<li><a href="https://moodle.hanover.edu/course/view.php?id=825">Moodle</a></li>
+</ul>
 </dd>
 <dt>Class times</dt>
-<dd>MTWRF 10:15am-12:30pm, 2:40pm-5:00pm, in LYN120A
+<dd>MTWRF 10:15am-5:00pm, in LYN120A, with break for lunch
 </dd>
 </dl>
 <h2 id="course-description">Course Description</h2>
@@ -61,7 +67,6 @@
 <p>The second is a list of electronic resources available through the ACM (Association for Computing Machinery) membership, which I am asking students to get. The ACM delivers resources that advance computing as a science and a profession, and this includes the <a href="https://learning.acm.org/">ACM Learning Center</a> which provides you access to hundreds of online books and videos related to computing. The annual student membership fee for the ACM is around $20, a fairly modest amount given the resources it provides. I encourage you to continue your membership every year and to take advantage of the opportunities and resources it offers.</p>
 <p>A catered list of reading material from electronic resources will be provided, and it will cover the remaining topics of <em>Java programming and OOP Fundamentals</em>, <em>Development Practices</em> and <em>Coding Practices</em>. Sections from the following books will be covered:</p>
 <ul>
-<li><em>Java, a beginner’s guide</em>, by H. Schildt</li>
 <li><em>Clean Code</em>, by R. Martin</li>
 <li><em>Clean Code</em> Video Series, by R. Martin</li>
 <li><em>Design Patterns</em> Video Series, by R. Martin</li>
@@ -70,51 +75,68 @@
 </ul>
 <h2 id="course-components">Course Components</h2>
 <h3 id="reading-assignments">Reading Assignments</h3>
-<p>In the <a href="skiadas.github.io/DataWranglingCourse/site/schedule.html">class schedule page</a> you will find, for each class day, a list of links to reading assignments. Your homework will require you to have a solid understanding of the material covered there, so I strongly encourage you not to get behind.</p>
+<p>In the <a href="skiadas.github.io/SoftwareDevelopmentPracticumCourse/site/schedule.html">class schedule page</a> for each class day you will find a list of links “prep” items. These may be videos to watch or book sections to read, possibly with a short assignment to help you learn the material. You are expected to do this prep work before coming to the next class.</p>
 <h3 id="class-participation">Class Participation</h3>
-<p>You are expected to attend every class meeting, morning and afternoon. The accelerated nature of Spring term and the collaborative nature of the programming project require constant engagement with the material. You are only allowed to miss 1 period without excuse. From that point on, every missed period will result in a reduction of your final score by one percentage point, up to a total of 5 points. Excused absences should be arranged in advance, and backed by appropriate documentation. Emergencies will be dealt with on an individual basis. There are very few reasons that would qualify as an excuse for an absence.</p>
+<p>You are expected to attend every class meeting. The accelerated nature of Spring term and the collaborative nature of the programming project require constant engagement with the material and your classmates. The class is typically divided in 5-6 <em>activities</em>. Missing an activity will result in a reduction of your final score by one percentage point, up to a total of 10 points. Emergencies will be dealt with on an individual basis. There are very few reasons that would qualify as an excuse for an absence. If you have known conflicts discuss them with us by the end of the first day.</p>
 <h3 id="exams">Exams</h3>
-<p>There will be frequent quizzes based on the reading, as well as three midterms, on Friday 5/3, Friday 5/10 and Friday 5/17. In terms of your final grade, the exams you did better on will weigh more.</p>
+<p>There will be three midterms, on Monday 5/6, Monday 5/13 and Wednesday 5/22.</p>
 <h3 id="project">Project</h3>
-<p>For a large part of the course you will be engaged in a collaborative project with a group of your classmates.</p>
-<h3 id="getting-help">Getting Help</h3>
+<p>For a large part of the course you will be engaged in a collaborative project with a group of your classmates. Project work will typically be as follows:</p>
 <ul>
-<li>You should never hesitate to ask me questions. I will never think any less of anyone for asking a question. Stop by my office hours or just email me your question, which has the great benefit of forcing you to write it down in clear terms, which often helps you understand it better.</li>
-<li>You are allowed, and in fact encouraged, to work together and help each other regarding the class material, as well as the topics related to the lab assignments. However, you may NOT directly help each other with your lab assignments.</li>
+<li>We will be working on 2-3 day “development iterations” during which the group will be working on a set of features for the project.</li>
+<li>Each feature is “owned” by one student, who sees it through to its completion.</li>
+<li>At any given time, you will be either developing the feature you own, or you will be pairing up with another student to help them on their feature.</li>
+<li>Your grade is not determined by the “number of features you have completed” (beyond a minimum requirement). A large part of the grade is based on the success of the project as a whole. So assisting others with their features is just as important as working on your own features. Paired programming is both required and expected.</li>
 </ul>
+<p>The project will overall count for 45% of the final grade, broken down as follows:</p>
+<ul>
+<li>Group Assessment
+<ul>
+<li>Evaluation of the overall quality of the project’s codebase, based on a development rubric. (20%)</li>
+<li>Assessement of the project success based on the delivered functionality. (10%)</li>
+</ul></li>
+<li>Individual Assessment
+<ul>
+<li>Leading development of a required number of features. (5%)</li>
+<li>Effective paired programming with teammates on their features. (5%)</li>
+<li>Peer assessment of your contribution to the team. (5%)</li>
+</ul></li>
+</ul>
+<h2 id="phone-policy">Phone policy</h2>
+<p>Your phone is required to be in your bag, set to silent, at all times, except during scheduled breaks (there will be at least one 5-minute break every hour). This includes both lecture and other in-class activities as well as programming/development time. If phone use becomes a problem, we will confiscate your phone until the end of the class day.</p>
 <h2 id="grading">Grading</h2>
-<p>Your final grade depends on class attendance, homework, midterms and the final, as follows:</p>
+<p>Your final grade depends on class participation, work on project, and three exams, as follows:</p>
 <table>
 <thead>
 <tr class="header">
-<th style="text-align: right;">Component</th>
+<th style="text-align: left;">Components</th>
 <th style="text-align: right;">Percent</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">Participation</td>
-<td style="text-align: right;">5%</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">Quizzes</td>
-<td style="text-align: right;">15%</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">Project</td>
-<td style="text-align: right;">35%</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">Worst Exam</td>
+<td style="text-align: left;">Participation</td>
 <td style="text-align: right;">10%</td>
 </tr>
+<tr class="even">
+<td style="text-align: left;">Project (Group)</td>
+<td style="text-align: right;">30%</td>
+</tr>
 <tr class="odd">
-<td style="text-align: right;">Middle Exam</td>
+<td style="text-align: left;">Project (Individual)</td>
 <td style="text-align: right;">15%</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">Best Exam</td>
-<td style="text-align: right;">20%</td>
+<td style="text-align: left;">Exam 1</td>
+<td style="text-align: right;">15%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Exam 2</td>
+<td style="text-align: right;">15%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Exam 3</td>
+<td style="text-align: right;">15%</td>
 </tr>
 </tbody>
 </table>

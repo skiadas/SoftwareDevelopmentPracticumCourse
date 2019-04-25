@@ -23,8 +23,8 @@
 <li>We also have <strong>interfaces</strong> which are a set of method signatures. A class can <strong>implement</strong> an interface if it has implementations for all the methods indicated in the interface.</li>
 <li>The <code>this</code> keyword is used in an object method to refer to the object itself, and to provide access to its <strong>fields</strong>.</li>
 </ul>
-<h2 id="visibility">Visibility</h2>
-<p>Classes, Variables, and Methods etc have <em>visibility</em> indicated by a keyword:</p>
+<h2 id="access-modifiers">Access Modifiers</h2>
+<p>The scope of a class, variable, or method is specified by using an <strong>access modifier</strong>. Below are the four types of access:</p>
 <dl>
 <dt>public</dt>
 <dd>Can be accessed by anyone.
@@ -33,12 +33,13 @@
 <dd>Can only be accessed from objects of the class that contains them.
 </dd>
 <dt>package-private</dt>
-<dd>Can be accessed by any classes that are within the same package. This is also the default, if no specific word is used.
+<dd>Can be accessed by any classes within the same package. This is also the default, if no specific access modifier is given.
 </dd>
 <dt>protected</dt>
-<dd>Can be accessed by subclasses of the class.
+<dd>Can be accessed only by subclasses of the class.
 </dd>
 </dl>
+<p>See <a href="https://www.geeksforgeeks.org/access-modifiers-java/">www.geeksforgeeks.org/access-moifiers-java</a> for more details on access modifiers.</p>
 <h2 id="variables">Variables</h2>
 <p>Methods and objects work with a number of different “variable” symbols. They vary in their <strong>scope</strong>, i.e. the specification of all the parts of the code where they exist.</p>
 <dl>

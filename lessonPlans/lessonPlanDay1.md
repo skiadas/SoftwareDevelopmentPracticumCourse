@@ -19,12 +19,12 @@ Start: Introduction Video (6 mins)
 
 - [Activity 2: Start on IntelliJ with the palindrome example](../activities/activity2palindrome.md)
 
-## Activity 3: More practice with IntelliJ and Java
+## Activity 3: Scope, different kinds of variables
 
-45 mins
+1 hour
 
-- Come up with example for students to code using Simple Java Graphics.
-- Have zip that students can download.
+- Designing a class for a circle (assuming a point class).
+- Questions/Review
 
 ## Lunch
 
@@ -32,20 +32,13 @@ Start: Introduction Video (6 mins)
 - Watch part of videos for Tuesday
 - [Clean Code-Remake (54m)](videos/01-clean_code.md)
 
-## Activity 4: Scope, different kinds of variables
-
-1 hour
-
-- POGIL activity 13 (scope)
-- Questions/Review
-
-## Activity 5: IntelliJ practice
+## Activity 4: IntelliJ practice
 
 30 mins
 
-- Code up example from Activity 4
+- Code up example from Activity 3
 
-## Activity 6: Coding Exercise
+## Activity 5: Coding Exercise
 
 1 hour
 
