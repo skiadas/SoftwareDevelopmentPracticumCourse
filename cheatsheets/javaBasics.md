@@ -8,9 +8,9 @@
 - We also have **interfaces** which are a set of method signatures. A class can **implement** an interface if it has implementations for all the methods indicated in the interface.
 - The `this` keyword is used in an object method to refer to the object itself, and to provide access to its **fields**.
 
-## Visibility
+## Access Modifiers
 
-Classes, Variables, and Methods etc have *visibility* indicated by a keyword:
+The scope of a class, variable, or method is specified by using an **access modifier**. Below are the four types of access:
 
 public
   ~ Can be accessed by anyone.
@@ -19,10 +19,12 @@ private
   ~ Can only be accessed from objects of the class that contains them.
 
 package-private
-  ~ Can be accessed by any classes that are within the same package. This is also the default, if no specific word is used.
+  ~ Can be accessed by any classes within the same package. This is also the default, if no specific access modifier is given.
 
 protected
-  ~ Can be accessed by subclasses of the class.
+  ~ Can be accessed only by subclasses of the class.
+
+See [www.geeksforgeeks.org/access-moifiers-java](https://www.geeksforgeeks.org/access-modifiers-java/) for more details on access modifiers.
 
 ## Variables
 
