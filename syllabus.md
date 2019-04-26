@@ -56,7 +56,7 @@ There are two main sources of material for the course. The first is the main cou
 
 The second source is a list of electronic resources available to members of the ACM (Association for Computing Machinery). The ACM delivers resources that advance computing as a science and a profession. This includes the [ACM Learning Center](https://learning.acm.org/), which provides access to hundreds of online books and videos related to computing. To access these electronic resources, you will need to purchase an ACM student membership (about $20 per year). The cost of a student membership is modest given the weath of resources it provides access to. We encourage you to continue your membership every year and to take advantage of the opportunities and resources it offers.
 
-A catered list of readings and videos from the ACM digital library will be provided. These will cover the remaining topics: *Java programming and OOP Fundamentals*, *Development Practices* and *Coding Practices*. Sections from the following books will be covered:
+A catered list of readings and videos from the ACM digital library will be provided. These will cover the remaining topics: *Java programming and OOP Fundamentals*, *Development Practices* and *Coding Practices*. Sections from the following will be covered:
 
 - *Clean Code*, by R. Martin
 - *Clean Code* Video Series, by R. Martin

@@ -6,59 +6,65 @@ Mon
   ~ - Goals:
         - Basic comfort with Java
         - Basic setup with IntelliJ
-    - (Java/OOP) Classes, fields, constructors, encapsulation
-    - (Java/OOP) methods, parameters, local variables, constants/final
-    - (Java/OOP) static methods
-    - Activity: 1 hour coding practice: grade reading and gpa computation
-    - [Lesson Plan 1](lessonPlans/lessonPlanDay1.md)
+    - Topics:
+    	- (Java/OOP) classes, fields, constructors, encapsulation
+    	- (Java/OOP) methods, parameters, local variables, constants/final
+    	- (Java/OOP) static methods
+	- [Activities for Day 1](lessonPlans/lessonPlanDay1.md)
+    - Lunchtime Video: [Clean Code-Remake (54m)](videos/01-clean_code.md)
 
 Tue
   ~ - Goals:
         - Variable and function basic principles
         - Basic refactorings: extract variable/field/method, rename, inline
-        - Function size principles ("extract till you drop")
-    - (Coding) variable and method naming
-        - Video: [Clean Code (Remake)](videos/01-clean_code.md)
-        - Video: [Names++](videos/02-names.md)
-        - Reading: Clean Code chapters 1, 2
-    - (Coding) Extraction code into small functions
-        - Video: [Functions](videos/03-function_size.md)
-        - Reading: Clean Code chapter 3 ?????
-    - [Lesson Plan 2](lessonPlans/lessonPlanDay2.md)
+        - Function size principles ("extract till you drop")	
+	- Prep:
+        - Read [*Clean Code*](https://learning.oreilly.com/library/view/clean-code/9780136083238/), chapters 1-3
+		- Watch [Names++](videos/02-names.md)
+	- Topics:
+    	- (Coding) naming variables and methods
+    	- (Coding) extracting code into small functions
+    - [Activities for Day 2](lessonPlans/lessonPlanDay2.md)
+    - Lunchtime Video: [Functions](videos/03-function_size.md)
 
 Wed
   ~ - Goals:
         - Comment and Code formatting principles
         - Function structure principles
-    - Prep:
+	- Prep:
+        - Read [*Clean Code*](https://learning.oreilly.com/library/view/clean-code/9780136083238/), chapters 4, 5
         - Watch [Function Structure video](videos/05-function_structure.md)
-    - (Coding) Function arguments, command-query separation
-        - Video: Function Structure
-        - Reading: Clean Code chapter 3 ?????
-    - (Coding) Comments, Formatting
-        - Video: Clean Code, Form
-        - Reading: Clean Code, chapters 4, 5
+	- Topics:
+    	- (Coding) function parameters, command-query separation
+    	- (Coding) comments and formatting
+    - [Activities for Day 3](lessonPlans/lessonPlanDay3.md)
+    - Lunchtime Video: [Form](videos/06-form.md)
 
 Thu
   ~ - Goals:
         - Deep dive into extension mechanisms: inheritance and delegation
         - Discussion of the concept and value of polymorphism and information hiding
         - "Tell, don't ask"
-    - Prep:
-        - Design Patterns book: 1.6 (maybe ?)
-        - Clean Code, chapter 6
-    - (Java/OOP) Inheritance vs Delegation
-    - (Coding) Law of Demeter (Tell, don't ask)
+	- Prep:
+        - Read *Design Patterns*, chapter 1.6 
+        - Read [*Clean Code*](https://learning.oreilly.com/library/view/clean-code/9780136083238/), chapter 6
+	- Topics:
+    	- (Java/OOP) Inheritance vs Delegation
+	    - (Coding) Law of Demeter (Tell, don't ask)
+    - [Activities for Day 4](lessonPlans/lessonPlanDay4.md)
+    - Lunchtime Video: [TDD Part 1](07-tdd_part1.md)
 
 Fri
   ~ - Goals:
         - Code tracking with Version Control
         - Automated Testing and Test-driven development
-    - (Practices) Version Control Basics
-    - (Practices) Test-Driven Development
-    - Prep:
-        - Reading: Clean Code, chapter 9
-        - Video: TDD Part 1 and 2
+	- Prep:
+        - Read [*Clean Code*](https://learning.oreilly.com/library/view/clean-code/9780136083238/), chapter 9
+	- Topics:
+    	- (Practices) Version Control Basics
+	    - (Practices) Test-Driven Development
+    - [Activities for Day 5](lessonPlans/lessonPlanDay5.md)
+    - Lunchtime Video: [TDD Part 2](07-tdd_part2.md)
 
 For Later
   ~ - Video: Advanced TDD Part 1?
