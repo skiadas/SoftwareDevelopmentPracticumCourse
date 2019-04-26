@@ -104,9 +104,11 @@ The project will overall count for 45% of the final grade, broken down as follow
     - Effective paired programming with teammates on their features. (5%)
     - Peer assessment of your contribution to the team. (5%)
 
-## Phone policy
+## Phone and laptop policy
 
 Your phone is required to be in your bag, set to silent, at all times, except during scheduled breaks (there will be at least one 5-minute break every hour). This includes both lecture and other in-class activities as well as programming/development time. If phone use becomes a problem, we will confiscate your phone until the end of the class day.
+
+Similar policy applies to laptops and tablet devices. They are not to be used except during breaks or unless otherwise instructed.
 
 ## Grading
 

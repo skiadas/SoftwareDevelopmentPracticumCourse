@@ -13,6 +13,8 @@ Refactorings based on provided code
 
 - what is refactoring      (use grades sample code as example)
 - renaming variables, functions
+- [Activity 2-2 notes](../activities/activity2-2refactoringIntro.md)
+- [Activity 2-2 handout](../activities/activity2-2refactoringHandout.md)
 
 ## Activity 3:
 
