@@ -37,6 +37,7 @@ Start: Introduction Video (6 mins)
 30 mins
 
 - Code up example from Activity 3
+- Link to repository: https://github.com/sdp-resources/basicGraphing/releases/tag/WritingCircleAssignment
 
 ## Activity 5: Coding Exercise
 
