@@ -9,19 +9,15 @@ Naming in relation to scope
 
 ## Activity 2:
 
-Refactorings based on provided code
+Introduction to refactoring.
 
-- what is refactoring      (use grades sample code as example)
-- renaming variables, functions
 - [Activity 2-2 notes](../activities/activity2-2refactoringIntro.md)
 - [Activity 2-2 handout](../activities/activity2-2refactoringHandout.md)
 
 ## Activity 3:
 
-More advanced refactorings (lecture/pencil&paper):
+Refactoring practice.
 
-- extracting functions, inlining functions
-- extracting method object, parameter object
 - [Activity 2-3](../activities/activity2-3refactoring.md)
 
 ## Lunch
@@ -31,14 +27,13 @@ More advanced refactorings (lecture/pencil&paper):
 
 ## Activity 4:
 
-Extended refactoring session (similar or identical to prime generator video), first half
-
-[Notes](activities/refactoring1.md)
+- [Extended refactoring session, first part](activities/refactoring1.md)
 
 ## Activity 5:
 
-Second half of prime generator refactoring. (Number printer part at least)
+- [Second part of prime generator refactoring.](activities/refactoring2.md)
+- [Third part of prime generator refactoring.](activities/refactoring3.md)
 
 ## Activity 6:
 
-Refactoring practice on grades assignment.
+Refactoring practice on grades assignment: Work with your partner from day 1 to carry out a refactoring of your solution to the grading-processing assignment.
