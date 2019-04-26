@@ -20,6 +20,7 @@ More advanced refactorings (lecture/pencil&paper):
 
 - extracting functions, inlining functions
 - extracting method object, parameter object
+- [Activity 2-3](../activities/activity2-3refactoring.md)
 
 ## Lunch
 
