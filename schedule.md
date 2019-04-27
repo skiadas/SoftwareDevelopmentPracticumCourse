@@ -52,7 +52,7 @@ Thu
     	- (Java/OOP) Inheritance vs Delegation
 	    - (Coding) Law of Demeter (Tell, don't ask)
     - [Activities for Day 4](lessonPlans/lessonPlanDay4.md)
-    - Lunchtime Video: [TDD Part 1](07-tdd_part1.md)
+    - Lunchtime Video: [TDD Part 1](videos/07-tdd_part1.md)
 
 Fri
   ~ - Goals:
@@ -64,7 +64,7 @@ Fri
     	- (Practices) Version Control Basics
 	    - (Practices) Test-Driven Development
     - [Activities for Day 5](lessonPlans/lessonPlanDay5.md)
-    - Lunchtime Video: [TDD Part 2](07-tdd_part2.md)
+    - Lunchtime Video: [TDD Part 2](videos/08-tdd_part2.md)
 
 For Later
   ~ - Video: Advanced TDD Part 1?

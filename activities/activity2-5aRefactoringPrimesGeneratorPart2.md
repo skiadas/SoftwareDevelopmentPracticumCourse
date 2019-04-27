@@ -136,4 +136,4 @@ After you have made those changes and created the new method, your tests should 
 
 One final cleanup before calling it a day: The second parameter to `printHeader` can be inlined. Do that. And the `System.out.println("\f");` line should really be a method called `printFooter`, so extract that, then rearrange the methods so that they follow the stepdown rule.
 
-This activity continues in [refactoring activity 3](refactoring3.md).
+This activity continues in [refactoring activity 3](activity2-5bRefactoringPrimesGeneratorPart3.md).

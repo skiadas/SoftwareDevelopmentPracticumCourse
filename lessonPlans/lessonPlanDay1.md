@@ -30,7 +30,7 @@
 
 - Get Lunch
 - Watch part of videos for Tuesday
-- [Clean Code-Remake (54m)](videos/01-clean_code.md)
+- [Clean Code-Remake (54m)](../videos/01-clean_code.md)
 
 ## Activity 4: More Practice with IntelliJ
 

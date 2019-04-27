@@ -12,7 +12,7 @@ Refactoring can therefore be thought of as serving two main uses:
 
 Refactoring takes many forms, and a more precise list of these refactorings is described [on this page](../cheatsheets/refactorings.md) as well as the [refactoring book](https://learning.oreilly.com/library/view/refactoring-improving-the/9780134757681/).
 
-As an example of this process, consider the following extremely straightforward but quite long-winded solution to the grade-processing activity. A more printable version of the code for this can also be found [at this link](../activity2-2refactoringHandout.md)
+As an example of this process, consider the following extremely straightforward but quite long-winded solution to the grade-processing activity. A more printable version of the code for this can also be found [at this link](activity2-2refactoringHandout.md)
 ```java
 public class Main {
   private static String processGrades(Scanner scanner) {

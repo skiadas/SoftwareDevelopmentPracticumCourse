@@ -29,7 +29,7 @@
 <li>Preparing the code for the addition of some future elements. We must be careful with this second one, and not do it willy-nilly without a concrete idea of what new elements we want to implement. Trying to anticipate all future requirements and preparing the code ready for it results in overly convoluted code that is hard to work with; and it turns out at the end of the day that most of the features you thought would be added were in fact not added. This situation is typically described by the acronym <a href="https://martinfowler.com/bliki/Yagni.html">YAGNI</a> for “you aren’t gonna need it”. The key underlying goal should always be to <em>keep the design simple</em>.</li>
 </ol>
 <p>Refactoring takes many forms, and a more precise list of these refactorings is described <a href="../cheatsheets/refactorings.html">on this page</a> as well as the <a href="https://learning.oreilly.com/library/view/refactoring-improving-the/9780134757681/">refactoring book</a>.</p>
-<p>As an example of this process, consider the following extremely straightforward but quite long-winded solution to the grade-processing activity. A more printable version of the code for this can also be found <a href="../activity2-2refactoringHandout.html">at this link</a></p>
+<p>As an example of this process, consider the following extremely straightforward but quite long-winded solution to the grade-processing activity. A more printable version of the code for this can also be found <a href="activity2-2refactoringHandout.html">at this link</a></p>
 <pre class="java"><code>public class Main {
   private static String processGrades(Scanner scanner) {
     double t = 0;

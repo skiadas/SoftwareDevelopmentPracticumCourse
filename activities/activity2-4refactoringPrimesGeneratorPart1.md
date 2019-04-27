@@ -244,4 +244,4 @@ classes. Let's use our two methods as the starting point for creating these clas
 
 #. Commit and push changes.
 
-This activity continues in [refactoring activity 2](refactoring2.md).
+This activity continues in [refactoring activity 2](activity2-5aRefactoringPrimesGeneratorPart2.md).

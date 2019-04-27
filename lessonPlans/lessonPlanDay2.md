@@ -23,16 +23,16 @@ Refactoring practice.
 ## Lunch
 
 - Get Lunch
-- [Refactoring screencast "2": Prime generator](videos/04-prime_gen_screencast.md)
+- [Refactoring screencast "2": Prime generator](../videos/04-prime_gen_screencast.md)
 
 ## Activity 4:
 
-- [Extended refactoring session, first part](activities/refactoring1.md)
+- [Extended refactoring session, first part](../activities/activity2-4refactoringPrimesGeneratorPart1.md)
 
 ## Activity 5:
 
-- [Second part of prime generator refactoring.](activities/refactoring2.md)
-- [Third part of prime generator refactoring.](activities/refactoring3.md)
+- [Second part of prime generator refactoring.](../activities/activity2-5aRefactoringPrimesGeneratorPart2.md)
+- [Third part of prime generator refactoring.](../activities/activity2-5bRefactoringPrimesGeneratorPart3.md)
 
 ## Activity 6:
 
