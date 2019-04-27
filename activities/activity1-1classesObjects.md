@@ -1,10 +1,10 @@
-# Activity 1 - Classes and Objects
+# Activity 1 - Classes and Objects 
 
 ## Classes and Objects
 
 Classes and objects are the two main aspects of **object oriented programming**. A **class**
-defines a new data type, whereas an **object** is an *instance* of a particular clas. Objects
-store *data* belonging to the object in **fields** defined by its class. Objects also have
+defines a new data type, whereas an **object** is an *instance* of a particular class. Objects
+store their *data* in **fields** defined by the object's class. Objects also have
 *functionality* that can be activated by calling the **methods** that belong to its class.
 
 A **UML diagram** is a graphical summary of the data and methods in a class.  Below is the
@@ -14,8 +14,7 @@ UML diagram for the Retangle class from the Simple Java Graphics[^1] library wri
 
 ### Critical Thinking Questions
 
-1. Identify one example of a data field given in the above UML diagram for the Rectangle class.
-
+1. Identify one example of a data field for the Rectangle class from the above UML diagram.
 
 	a. What is the variable name of the data field?
 

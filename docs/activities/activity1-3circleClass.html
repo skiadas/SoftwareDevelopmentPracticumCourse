@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity1-3circleClass</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="java-variables">Java Variables</h1>
+<p>THERESA IS STILL WORKING ON THIS</p>
+<pre class="java"><code>public class Point {
+  private int x;
+  private int y;
+
+  public Point (int x, int y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  public int getX() {
+    return x;
+  }
+
+  public int getY() {
+    return y;
+  }
+
+  public void shift(int xChange, int yChange) {
+    x += xChange;
+    y += yChange;
+  }
+}</code></pre>
+<p>Part 1: Static variables</p>
+<p>Sometimes there are variables that can or should be shared between all the objects in the class. These are called class variables or static variables.</p>
+<p>Need examples.</p>
+<p>Goal: Design a class to represent circles. What would we want our circle to be able to do? - create new circle given radius and center - calculate area - calculate perimeter - given a point, determine if point is inside the circle - shift circle to have a new center - scale radius - getCenter - getRadius</p>
+<p>What instance variables would we need to have? center radius</p>
+<p>Write constructor: What parameters should the constructor have?</p>
+<p>What are the accessors? Write those methods.</p>
+<p>Question: Aside from the accessors, which methods can do their job just using the instance variables?</p>
+<p>==&gt; Should lead to a discussion of needing pi for calculating area and perimeter. - How &amp; where should we declare a variable for pi? - What sort of variable should pi be?</p>
+<p>==&gt; Talk about keywords “static” and “final”. “final” here means the value of the variable cannot be changed, i.e., it’s a constant.</p>
+<p>Write the signatures for remaining methods. Have groups compare answers. This will hopefully raise questions.</p>
+<p>REPORT OUT: - Were there disagreements in the name for methods? Names for parameters? - Were there disagreements about what should be returned. For example, shift and rescale. - Decide as a class on final signatures for our methods.</p>
+<p>Write the implementations (at the board)</p>
+<p>Questions: - Could the center or the radius be declare final? Should they? - How would you do the shift for the circle if the point class didn’t have a shift method? Would that cause any problems. - What if the shift method was returning a new point instead of changing it’s own fields. How would your Circle implementation need to change? - Suppose we change shift and rescale to return a new Circle, instead of changing the existing circle. Could the fields for the Circle be changed to final? What would be the implications of doing this, assuming it is possible?</p>
+<p>REPORT OUT: - Go over questions.</p>
+<p>Consi</p>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>

@@ -6,24 +6,24 @@ Start: Introduction Video (6 mins)
 
 1 hour
 
-- [Brief intro to classes and objects](../activities/activity1warmup.md)
-- Handout:
-	- [Java Language Overview](../cheatsheets/javaBasics.md)
-	- [code example](../activities/javaBasicSyntax.md)
-- To Do: Add questions to javaBasicSyntax.md [TW]
+- [Brief introduction to classes and objects](../activities/activity1-1classesObjects.md)
+- Short lecture with handouts:
+	- [Java Language Overriew](../cheatsheets/javaBasics.md)
+	- [Example program](../activities/activity1-1basicJavaSyntax.md)
 - Q/A
 
 ## Activity 2: Introduction to IntelliJ
 
 30 mins
 
-- [Activity 2: Start on IntelliJ with the palindrome example](../activities/activity2palindrome.md)
+- [Code up the palindrome example in IntelliJ](../activities/activity1-2palindrome.md)
 
-## Activity 3: Scope, different kinds of variables
+## Activity 3: Variables and Scope
 
 1 hour
 
-- Designing a class for a circle (assuming a point class).
+- [Example program](../activities/activity1-3circleClass.md)
+- Design a Circle class
 - Questions/Review
 
 ## Lunch
@@ -32,11 +32,11 @@ Start: Introduction Video (6 mins)
 - Watch part of videos for Tuesday
 - [Clean Code-Remake (54m)](videos/01-clean_code.md)
 
-## Activity 4: IntelliJ practice
+## Activity 4: More Practice with IntelliJ
 
 30 mins
 
-- Code up example from Activity 3
+- Code up the `Circle` and `Point` classes from Activity 3
 
 ## Activity 5: Coding Exercise
 
@@ -44,5 +44,5 @@ Start: Introduction Video (6 mins)
 
 - Have students create GitHub logins if they do not yet have one.
 - Write program to read and process list of GPAs.
-- See [programming activity 1](../activities/programmingActivity1.md)
+- See [programming activity 1](../activities/activity1-5gpaCalculator.md)
 - Make sure students commit at the end of the day.

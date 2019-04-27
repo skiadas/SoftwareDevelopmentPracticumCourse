@@ -1,84 +1,117 @@
-# Java Basics cheatsheet
+# Java Language Overview
 
-## Key Terms
+## Key Terms and Concepts
 
-- Most Java programming involves calling **methods** of **objects**. The syntax for this is `obj.method(param1, param2)`.
-- Objects are created when we **instantiate classes**. We do so with the *new* keyword: `new Cat("Ziggy")`. This calls the class **constructor**.
+- Java is an Object Oriented Programming (OOP) language. 
+- Programs in Java are organized around **classes**, with related classes being grouped together in **packages**.
+- An **object** is created when we **instantiate** a class. We do this using the keyword "new", which calls the class **constructor**.
+	- For example, `new Cat("Ziggy")` would call the constructor for the `Cat` class. Doing this *instantiates* a new `Cat` object.
+	- **instantiate** - to make an instance of
 - Classes can **extend** other classes, which means that they inherit all the functionality from those other classes (but they can also overwrite some of it).
-- We also have **interfaces** which are a set of method signatures. A class can **implement** an interface if it has implementations for all the methods indicated in the interface.
-- The `this` keyword is used in an object method to refer to the object itself, and to provide access to its **fields**.
+- An **interface** is a set of method signatures (i.e., function prototypes). A class can **implement** an interface if it has implementations for all the methods indicated in the interface.
+- The keyword `this` can be used in a method to refer to the object itself, and to provide access to the object's **data fields**.
+- As an OOP language, much of Java programming boils down to calling object **methods**. 
 
 ## Access Modifiers
 
-The scope of a class, variable, or method is specified by using an **access modifier**. Below are the four types of access:
+The **scope** of a class, method, or variable refers to the part of the program where 
+the class/method/variable is *visible* and can be accessed. In Java, the scope of a class
+and the scope of each class attribute (method or data field) is specified using the 
+following **access modifiers**:
 
 public
-  ~ Can be accessed by anyone.
+  ~ Can be accessed anywhere.
 
 private
-  ~ Can only be accessed from objects of the class that contains them.
+  ~ Can be accessed only by objects of the class that contains them.
 
 package-private
-  ~ Can be accessed by any classes within the same package. This is also the default, if no specific access modifier is given.
+  ~ Can be accessed by classes within the same package; also the default, if no access modifier is given.
 
 protected
   ~ Can be accessed only by subclasses of the class.
 
-See [www.geeksforgeeks.org/access-moifiers-java](https://www.geeksforgeeks.org/access-modifiers-java/) for more details on access modifiers.
+The scope is the first thing specified when a class or class attribute is being defined.
+In the example below, objects of type `Foo` can be created anywhere in the program. 
+The `Foo` class methods are also public, which means these methods can be called on 
+`Foo` objects anywhere in the in the program.  However, The variable `xBar` is private,
+so the only place this variable can be accessed is inside of class `Foo`.
+
+```java
+package fragle;
+public class Foo {
+
+  private int xBar = 42;
+
+  public int getXBar() {
+    return xBar;
+  }
+
+  public void addToXBar(int y) {
+    xBar += y;
+  }
+}
+```
 
 ## Variables
 
-Methods and objects work with a number of different "variable" symbols. They vary in their **scope**, i.e. the specification of all the parts of the code where they exist.
+Java employs several different kinds of **variables**, which vary in terms of their scope.
 
 **Instance variables**
-  ~ also called **fields**, are unique to each object, typically created when the object is instantiated. Their values are shared amongst all the methods of the object.
+  ~ Typically called **data fields** or just **fields**. Instance variables  are part of a class's definition. They are created when an object is instantiated; each *object* is created with its own independent copy of the instance variables. All methods of an object can access the object's instance variables. If needed, instance variables may be referenced through the `self` keyword. 
 
 **Static variables**
-  ~ or **static fields** are properties associated with a class and are shared amongst all object instances of that class. Similarly static methods can be called just using the class name and without requiring a class instance.
-
-**Parameters**
-  ~ or **arguments** are passed to the method from its caller. Their value only extends to the end of the specific function call.
+  ~ Typically called **static fields**. They are part of a class's definition. Static variables are used to represent properties associated with a *class*. A single copy of each static variable is shared amongst all object instances of that class. Static variables can be used even if no class instances have been created; they are always referenced through the name of the class.  
 
 **Local variables**
-  ~ or simply **variables** are defined within a function and exist only within the innermost set of curly braces that contains their declaration.
+  ~ Typically just called **variables**. Local variables are variables defined inside of methods. They may only be referenced within the innermost set of curly braces that contains their declaration. 
+
+**Parameters**
+  ~ Sometimes called **arguments**. Parameters are declared in a method's signature. The values for parameters are passed to the method from its caller. A parameter may be referenced anywhere inside the method where it is defined, and its value only extends to the end of the specific method call.
 
 ### Type of a variable
 
-- Each variable has a *type* specified at the moment of its declaration.
+- Each variable has a **type** specified at the moment of its declaration.
 - This can be a built-in datatype like `int` or `char`, or it can be a class or interface.
-- When assigning a value to a variable, the type of
+- When assigning a value to a variable, the type of the value must match the type of the variable.
 
 ## Syntax elements
 
-### Java files
+### Java program files
 
-Java files, with extension `.java`, consist of two parts:
+Java files use the extension `.java`. They consist of the following:
 
-- a *package* statement indicating which package the file belongs to.
-- *import* statements that load public elements from other packages.
-- a class or interface definition.
+- *package* statement indicating which package the file belongs to
+- *import* statements that load public elements from other packages
+- class or interface definition
 
-**Import statements** are used to avoid having to refer to packages by their fully qualified names. Here are some examples, considering an imaginary package `graphics` that contains a `Rectangle` class:
+**Import statements** are used to avoid having to refer to classes by their fully qualified names.
+For example, suppose you want to use the `Rectangle` class from an imaginary package called `graphics`. Below are three possible import statements that could be used to import the `Rectangle` class.
 ```java
 import graphics.Rectangle;
 import graphics.*;
 import graphics.Rectangle.*;
 ```
 
-Without an import, we can use a class by referring to it with its  **qualified name**, for example `graphics.Rectangle`.
+- The first import line above allows us to refer to the `Rectangle` class directly in our code, e.g., ``new Rectangle``. 
+- The second import line does the same for *all* classes within the `graphics` package.
+- The third import line will make every inner class and method within the `Rectangle` class available directly. 
 
-The first import line above allows us to refer to the `Rectangle` class directly in our code from now on. The second import line does the same for *all* files within the `graphics` package.
+As an example, if `Rectangle` had a static `make` method, then with the first two imports we can refer to it as `Rectangle.make(...)`, while with the last import we can do `make(...)` instead.
 
-The third import line will make every inner class and method within the `Rectangle` class available directly. For example, if `Rectangle` had a static `make` method, then with the first two imports we can refer to it as `Rectangle.make(...)`, while with the last import we can do `make(...)` instead.
+Classes can be used without being imported by **fully qualifying** the class name. For example, 
+`graphics.Rectangle` is how the `Rectangle` class would need to be referred to if the class was not imported.  
 
 ### Class definitions
 
-Class Definitions have the keyword `class`, possibly preceded by a *visibility modifier*, followed by the class name (capitalized). It may be followed by `extends ...` and/or `implements ...` clauses, if the class is a subclass of another class or if it implements a certain interface.
+Class definitions have the keyword `class`, possibly preceded by an *access modifier* and followed by the class name. In Java, it is convention to *capitalize* class names. The class name may be followed by `extends ...` and/or `implements ...` clauses, if the class is a subclass of another class or if it implements a certain interface. For example,
+
 ```java
-public class Circle extends AbstractShape implements drawable. {
+public class Circle extends AbstractShape implements drawable {
     ...
 }
 ```
+
 The interior of a class definition may contain any of the following, in any order:
 
 - field declarations
@@ -86,29 +119,47 @@ The interior of a class definition may contain any of the following, in any orde
 - method definitions
 - inner class definitions
 
-**Interface** definitions are similar, except that they cannot contain an `extends` part, cannot have constructors, and instead of method definitions they have **method declarations**, containing a semicolon instead of a body.
+**Interface** definitions are similar to class definitions with the following exceptions:
 
-**Abstract class** definitions are similar, except that they cannot have constructors, they contain the `abstract` modifier to their definition, and they can contain both method definitions and method declarations. Methods that are simply declared must contain the `abstract` modifier.
+- They cannot contain an `extends` part.
+- They cannot have constructors. 
+- They have **method declarations** instead of method definitions.
+
+Method declarations have no body; instead, a method declaration end with a semicolon.
+
+**Abstract class** definitions are similar regular class definitions with the following 
+
+- They cannot have constructors.
+- They use the `abstract` modifier in their definitions. 
+- they can contain both method definitions and method declarations. 
+
+Methods that are simply declared *must* contain the `abstract` keyword modifier.
 
 ### Field declarations
 
-A field declaration specifies the visibility and type of the field, and possibly an initial value for the field. Some examples
-```java
-private String firstName;
-static final int MAX_CAPACITY = 40;
-public static String hostname;
-```
-The first example specifies a private field of type `String` and called `firstName`. This field will be likely initialized in the constructor.
+A field declaration specifies the visibility of the field, its data type, and possibly an 
+initial value, Below are some examples:
 
-The second example specifies what is effectively a *constant*: A static variable, visible within the package (hence no modifier in front), of type `int`, and set to be **final**, meaning its value cannot change.
+- `private String firstName;`
+  - Specifies a private field called `firstname` thaqt is of type `String`. This field
+    will likely be initialized in the constructor.	
 
-The third example is a public static field, so visible everywhere and with a value independent of the specific instance.
+- `static final int MAX_CAPACITY = 40;`
+  - Specifies what is effectively a *class constant*. `MAX_CAPACITY` is visible within the package
+    (hence no access modifier in front). It is of type `int` and has been declared **final**,
+    meaning its value cannot be change.
+
+- `public static String hostname;`
+  - Specifies a field called `hostname` that is visible everywhere. Using the `static` keyword
+modifier indicates that `hostname` is a *class* variable, with one copy of the variable being
+shared among all class objects.. 
 
 ### Method definitions
 
-Method definitions consist of a number of *modifiers* followed by the method's *return type*, the method name, and a parenthesized parameter list, with their types specified. The body of the method follows inside curly braces.
+Method definitions begin with *modifiers* followed by the method's *return type*, the method name, and a parenthesized list of parameter declaration. The body of the method then follows, enclosed in curly braces. 
 
-For example:
+Below are some examples:
+
 ```java
 public void setFirstName(String newFirstName) {
     ...
@@ -123,7 +174,7 @@ private static boolean isValidName(firstName, lastName) {
 }
 ```
 
-An important example is the **main method** that your program can have, which has a specific required signature:
+Note that if your program has a **main method**, this method has a specific required signature. For example:
 ```java
 public static void main(String[] args) {
     System.out.println("Hello world!");
@@ -132,11 +183,12 @@ public static void main(String[] args) {
 
 ### Constructors
 
-Constructors are similar to method definitions. They combine the return type and name onto one thing, namely the class name. They cannot be static, and they don't return any values in their body (the newly created object is what is being returned).
+Constructors are similar to method definitions. The name of a class also functions as the name
+for the class constructor.  *Contructors cannot be static,* They also do not explicitly return a value from within their boy. Instead, the newly created object is automatically returned. 
 
-A class can have multiple constructors, provided they take different kinds of arguments. It is customary in this case for all constructors to eventually call the same constructor, the one with the most complete set of arguments.
+A class can have multiple constructors as long as the constructors have differences in their parameter lists. When a class has multiple constructors, it is customary for all constructors to eventually call the same constructor, the one with the most complete set of arguments.
 
-By default, a class with no specific constructors has a *default constructor* `public void ClassName() {}`.
+A class implemented without a constructor will be given the following *default constructor*: `public void ClassName() {}`.
 
 Example:
 ```java
@@ -151,11 +203,12 @@ public Person(String firstName, String lastName) {
     this(firstName, lastName, 0);
 }
 ```
-Constructors are called using the `new` keyword: `Person p = new Person("Peter", "Doe", 26);`
+Constructors are called when the keyword `new` is used to create a  class instance. For example, `Person p = new Person("Peter", "Doe", 26);` will automatically call the `Person` class constructor.
 
-### Control Flow
+### Control structures
 
-Java contains many of the standard control flow elements you may have seen in other languages:
+Java contains many of the standard control elements you may have seen in other languages to
+control the flow of execution:
 
 - conditionals
 - while loops
@@ -185,21 +238,22 @@ if (thisIsTrue) {
 }
 ```
 
-There is also the **ternary operator**, which *returns a value*:
+There is also the **ternary operator**, which *returns a value*. For example,
 ```java
 int x = (y > 5) ? 5 : y;
 ```
-In this example, x will have the same value as y unless that is more than 5, in which case it is scaled down to a 5.
+This can be translated as "if y > 5 then return 5; otherwise, return the value of y". 
 
 #### While loops
 
-Java implements the familiar while loops, that execute a block of code as long as a specific  condition is true:
+Java implements the familiar while loop that executes a block of code as long as a specific  
+condition is true. For example, 
 ```java
 while (account.hasMoney()) {
     account.withdraw();
 }
 ```
-This loop will keep executing the `account.withdraw()` method  as long as `account.hasMoney()` is true.
+This loop will continue executing the `account.withdraw()` method  as long as `account.hasMoney()` is true.
 
 #### For loops
 
@@ -213,7 +267,8 @@ for (String name : names) {
     System.out.println(names);
 }
 ```
-If you are simply looping over the elements of a collection, you should always prefer the second way.
+The second for loop will loop over all the items in `names` using the variable `name` as its loop variable.
+This kind of for loop is preferred if you simply need to loop over the elements of a collection.
 
 #### Switch statements
 
