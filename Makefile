@@ -26,8 +26,12 @@ checklinks:
 	while read -r file ref link; do \
 		 test -e "$$link" || echo "BROKEN LINK $$ref\nIN $$file"; \
 	done < tempfile.txt
+	rm tempfile.txt
 
 check: checklinks
+
+clean:
+	./deleteOldFiles.sh
 
 email:
 	open "mailto:`cat students.txt`"
