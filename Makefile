@@ -21,6 +21,14 @@ $(IMGFILES): docs/images/%.png: images/%.png
 	mkdir -p $(@D)
 	cp $< $@
 
+checklinks:
+	grep --include=*.md -E -r "\[.*?\]\(.*?md\)" . | sed -E 's/((.*\/)?[^\/]*\.md):.*\[.*\]\((.*md)\).*/\1 \3 \2\/\3/g' > tempfile.txt
+	while read -r file ref link; do \
+		 test -e "$$link" || echo "BROKEN LINK $$ref\nIN $$file"; \
+	done < tempfile.txt
+
+check: checklinks
+
 email:
 	open "mailto:`cat students.txt`"
 
