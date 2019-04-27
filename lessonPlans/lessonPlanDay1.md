@@ -1,6 +1,6 @@
 # Day 1 Lesson Plan
 
-[Clean Code Introduction (6 mins)](https://learning.oreilly.com/videos/clean-code/9780134661742/9780134661742-CODE_01_00_00)] 
+[Clean Code Introduction (6 mins)](https://learning.oreilly.com/videos/clean-code/9780134661742/9780134661742-CODE_01_00_00)
 
 ## Activity 1: Basic Java Syntax
 
