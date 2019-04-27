@@ -31,13 +31,13 @@ Class times
 
 ## Course Description
 
-Software Development is a complicated process. Of course you must write code that solves a 
-problem, but this is only a small part of the work when bringing a software product 
+Software Development is a complicated process. Of course you must write code that solves a
+problem, but this is only a small part of the work when bringing a software product
 from initial idea to releasable application. As part of the process, you will invariably have
-to revisit code written in the past in order to improve it or to fix bugs. You will need to 
-maintain "development" versions of your code along with "production" versions. You will need 
-ways to keep track of bugs in your code as well as proposed enhancements, and you will need 
-to track your progress as you work towards make these changes. Above all, you need will to work 
+to revisit code written in the past in order to improve it or to fix bugs. You will need to
+maintain "development" versions of your code along with "production" versions. You will need
+ways to keep track of bugs in your code as well as proposed enhancements, and you will need
+to track your progress as you work towards make these changes. Above all, you need will to work
 with other people's code, and they will need to work with yours.
 
 This course is a survey and practicum on all of these aspects of software development. It moves on parallel across 5 categories of topics:
@@ -56,7 +56,7 @@ There are two main sources of material for the course. The first is the main cou
 
 The second source is a list of electronic resources available to members of the ACM (Association for Computing Machinery). The ACM delivers resources that advance computing as a science and a profession. This includes the [ACM Learning Center](https://learning.acm.org/), which provides access to hundreds of online books and videos related to computing. To access these electronic resources, you will need to purchase an ACM student membership (about $20 per year). The cost of a student membership is modest given the weath of resources it provides access to. We encourage you to continue your membership every year and to take advantage of the opportunities and resources it offers.
 
-A catered list of readings and videos from the ACM digital library will be provided. These will cover the remaining topics: *Java programming and OOP Fundamentals*, *Development Practices* and *Coding Practices*. Sections from the following will be covered:
+A catered list of readings and videos from the ACM Learning Center will be provided. These will cover the remaining topics: *Java programming and OOP Fundamentals*, *Development Practices* and *Coding Practices*. Sections from the following will be covered:
 
 - *Clean Code*, by R. Martin
 - *Clean Code* Video Series, by R. Martin
@@ -72,9 +72,13 @@ In the [class schedule page](skiadas.github.io/SoftwareDevelopmentPracticumCours
 
 ### Class Participation
 
-You are expected to attend every class meeting. The accelerated nature of Spring term and the collaborative nature of the team development project require constant engagement with the material and your classmates. 
+You are expected to attend every class meeting. The accelerated nature of Spring term and the collaborative nature of the team development project require constant engagement with the material and your classmates.
 
 Each class day is typically divided into 5-6 *activities*. Missing an activity will result in a reduction of your final score by one percentage point, up to a total of 10 points. Emergencies will be dealt with on an individual basis. There are very few reasons that would qualify as an excuse for an absence. If you have known conflicts discuss them with us by the end of the first day.
+
+#### Class meeting times
+
+The class meets for 10am to 5pm with a break for lunch. This is the required amount of time expected of a student for a 1-unit course. You will do *most* of the work for the class during class time, including *all* the work on the project.
 
 ### Exams
 
@@ -84,10 +88,11 @@ There will be three midterms: Monday 5/6, Monday 5/13 and Wednesday 5/22.
 
 For a large part of the course you will be engaged in a collaborative project with a group of your classmates. Project work will typically be as follows:
 
+- All work on the project will be done during the class meeting times, in the 10am-5pm block. We expect that you will NOT work on the project when out of class.
 - We will be working in 2-3 day "development iterations" during which the group will work to implement a set of features for the project.
-- Each feature is "owned" by one student; that stuent is in charge of seeing the feature through to its completion.
+- Each feature is "owned" by one student; that student is in charge of seeing the feature through to its completion.
 - At any given time, you will be either developing a feature you own or pairing up with another student to help with their feature.
-- Your grade is not determined by the "number of features you have completed" (beyond a minimum requirement). A large part of the grade is based on the success of the project as a whole. So assisting others with their features is just as important as working on your own features. Paired programming is both required and expected.
+- Your grade is not determined by the "number of features *you* have completed" (beyond a minimum requirement). A large part of the grade is based on the success of the project as a whole. So assisting others with their features is just as important as working on your own features. Paired programming is both required and expected.
 
 The project will overall count for 45% of the final grade, broken down as follows:
 
@@ -99,9 +104,11 @@ The project will overall count for 45% of the final grade, broken down as follow
     - Effective paired programming with teammates on their features. (5%)
     - Peer assessment of your contribution to the team. (5%)
 
-## Phone policy
+## Phone and laptop policy
 
 Your phone is required to be in your bag, set to silent, at all times, except during scheduled breaks (there will be at least one 5-minute break every hour). This includes both lecture and other in-class activities as well as programming/development time. If phone use becomes a problem, we will confiscate your phone until the end of the class day.
+
+Similar policy applies to laptops and tablet devices. They are not to be used except during breaks or unless otherwise instructed.
 
 ## Grading
 

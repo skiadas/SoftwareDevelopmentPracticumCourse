@@ -17,7 +17,7 @@ Tue
   ~ - Goals:
         - Variable and function basic principles
         - Basic refactorings: extract variable/field/method, rename, inline
-        - Function size principles ("extract till you drop")	
+        - Function size principles ("extract till you drop")
 	- Prep:
         - Read [*Clean Code*](https://learning.oreilly.com/library/view/clean-code/9780136083238/), chapters 1-3
 		- Watch [Names++](videos/02-names.md)
@@ -46,7 +46,7 @@ Thu
         - Discussion of the concept and value of polymorphism and information hiding
         - "Tell, don't ask"
 	- Prep:
-        - Read *Design Patterns*, chapter 1.6 
+        - Read *Design Patterns*, chapter 1.6
         - Read [*Clean Code*](https://learning.oreilly.com/library/view/clean-code/9780136083238/), chapter 6
 	- Topics:
     	- (Java/OOP) Inheritance vs Delegation
@@ -162,10 +162,10 @@ Mon
     - Work on Project
 
 Tue
-    - (Patterns) Null Object
+  ~ - (Patterns) Null Object
         - Video: Clean Code: Pile O'Patterns
         - Reading: ASD chapter 16
-  ~ - (Patterns) Singleton, Monostate
+    - (Patterns) Singleton, Monostate
         - Video: Clean Code: Pile O'Patterns
         - Reading: ASD chapter 17
     - (Coding) Refactoring: Moving, signature change
