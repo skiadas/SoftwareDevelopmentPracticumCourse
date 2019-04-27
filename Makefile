@@ -9,6 +9,11 @@ PDFS := $(MDFILES:./%.md=docs/%.pdf)
 IMGFILES := $(shell find images -name \*.png)
 IMGFILES := $(IMGFILES:%=docs/%)
 
+help:
+	@echo "make all: Builds all html/pdf pages and moves images around"
+	@echo "make clean: Deletes html/pdf pages whose corresponding md files are gone"
+	@echo "make check: Checks for bad links within md files"
+
 $(HTMLFILES): docs/%.html: %.md $(TEMPLATE)
 	mkdir -p $(@D)
 	pandoc -o $@ --template=$(TEMPLATE) --mathjax --filter ./makeHtml.hs --no-highlight $<
