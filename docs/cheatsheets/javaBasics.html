@@ -24,7 +24,7 @@
 <li>For example, <code>new Cat("Ziggy")</code> would call the constructor for the <code>Cat</code> class. Doing this <em>instantiates</em> a new <code>Cat</code> object.</li>
 <li><strong>instantiate</strong> - to make an instance of</li>
 </ul></li>
-<li>Classes can <strong>extend</strong> other classes, which means that they inherit all the functionality from those other classes (but they can also overwrite some of it).</li>
+<li>Classes can <strong>extend</strong> other classes, which means that they inherit all the functionality from those other classes (but they can also overwrite some of it). In this case we call the extended class the <em>superclass</em> and the extending class the <em>subclass</em>.</li>
 <li>An <strong>interface</strong> is a set of method signatures (i.e., function prototypes). A class can <strong>implement</strong> an interface if it has implementations for all the methods indicated in the interface.</li>
 <li>The keyword <code>this</code> can be used in a method to refer to the object itself, and to provide access to the object’s <strong>data fields</strong>.</li>
 <li>As an OOP language, much of Java programming boils down to calling object <strong>methods</strong>.</li>
@@ -45,7 +45,7 @@
 <dd>Can be accessed only by subclasses of the class.
 </dd>
 </dl>
-<p>The scope is the first thing specified when a class or class attribute is being defined. In the example below, objects of type <code>Foo</code> can be created anywhere in the program. The <code>Foo</code> class methods are also public, which means these methods can be called on <code>Foo</code> objects anywhere in the in the program. However, The variable <code>xBar</code> is private, so the only place this variable can be accessed is inside of class <code>Foo</code>.</p>
+<p>The scope is the first thing specified when a class or class attribute is being defined. In the example below, objects of type <code>Foo</code> can be created anywhere in the program. The <code>Foo</code> class methods are also public, which means these methods can be called on <code>Foo</code> objects anywhere in the program. However, The variable <code>xBar</code> is private, so the only place this variable can be accessed is inside of class <code>Foo</code>.</p>
 <pre class="java"><code>package fragle;
 public class Foo {
 
@@ -60,10 +60,10 @@ public class Foo {
   }
 }</code></pre>
 <h2 id="variables">Variables</h2>
-<p>Java employs several different kinds of <strong>variables</strong>, which vary in terms of their scope.</p>
+<p><strong>Variables</strong> are identifiers in a program that hold values. Java employs several different kinds of <strong>variables</strong>, which vary in terms of their scope.</p>
 <dl>
 <dt><strong>Instance variables</strong></dt>
-<dd>Typically called <strong>data fields</strong> or just <strong>fields</strong>. Instance variables are part of a class’s definition. They are created when an object is instantiated; each <em>object</em> is created with its own independent copy of the instance variables. All methods of an object can access the object’s instance variables. If needed, instance variables may be referenced through the <code>self</code> keyword.
+<dd>Typically called <strong>data fields</strong> or just <strong>fields</strong>. Instance variables are part of a class’s definition. They are created when an object is instantiated; each <em>object</em> is created with its own independent copy of the instance variables. All methods of an object can access the object’s instance variables. If needed, instance variables may be referenced within an object through the <code>this</code> keyword; for example <code>this.x = x</code> where the <code>x</code> in the left is the field while the <code>x</code> on the right is a parameter or local variable.
 </dd>
 <dt><strong>Static variables</strong></dt>
 <dd>Typically called <strong>static fields</strong>. They are part of a class’s definition. Static variables are used to represent properties associated with a <em>class</em>. A single copy of each static variable is shared amongst all object instances of that class. Static variables can be used even if no class instances have been created; they are always referenced through the name of the class.
@@ -77,8 +77,8 @@ public class Foo {
 </dl>
 <h3 id="type-of-a-variable">Type of a variable</h3>
 <ul>
-<li>Each variable has a <strong>type</strong> specified at the moment of its declaration.</li>
-<li>This can be a built-in datatype like <code>int</code> or <code>char</code>, or it can be a class or interface.</li>
+<li>Every variable needs to be <strong>declared</strong> before it can be used. This declaration specifies the type and scope of the variable.</li>
+<li>This <strong>type</strong> can be a built-in datatype like <code>int</code> or <code>char</code>, or it can be a class or interface.</li>
 <li>When assigning a value to a variable, the type of the value must match the type of the variable.</li>
 </ul>
 <h2 id="syntax-elements">Syntax elements</h2>
@@ -89,19 +89,21 @@ public class Foo {
 <li><em>import</em> statements that load public elements from other packages</li>
 <li>class or interface definition</li>
 </ul>
-<p><strong>Import statements</strong> are used to avoid having to refer to classes by their fully qualified names. For example, suppose you want to use the <code>Rectangle</code> class from an imaginary package called <code>graphics</code>. Below are three possible import statements that could be used to import the <code>Rectangle</code> class.</p>
+<p><strong>Import statements</strong> are used to avoid having to refer to classes by their fully qualified names. For example, suppose you want to use the <code>Rectangle</code> class from an imaginary package called <code>graphics</code>.</p>
+<p>Classes can be used without being imported by <strong>fully qualifying</strong> the class name. For example, <code>graphics.Rectangle</code> is how the <code>Rectangle</code> class would need to be referred to if the class was not imported.</p>
+<p>But you can include import statements in your file which will allow you to use shorter forms. Below are three possible import statements that could be used to import the <code>Rectangle</code> class.</p>
 <pre class="java"><code>import graphics.Rectangle;
 import graphics.*;
 import graphics.Rectangle.*;</code></pre>
 <ul>
 <li>The first import line above allows us to refer to the <code>Rectangle</code> class directly in our code, e.g., <code>new Rectangle</code>.</li>
 <li>The second import line does the same for <em>all</em> classes within the <code>graphics</code> package.</li>
-<li>The third import line will make every inner class and method within the <code>Rectangle</code> class available directly.</li>
+<li>The third import line will make every <em>static</em> inner class and <em>static</em> method within the <code>Rectangle</code> class available directly.</li>
 </ul>
 <p>As an example, if <code>Rectangle</code> had a static <code>make</code> method, then with the first two imports we can refer to it as <code>Rectangle.make(...)</code>, while with the last import we can do <code>make(...)</code> instead.</p>
-<p>Classes can be used without being imported by <strong>fully qualifying</strong> the class name. For example, <code>graphics.Rectangle</code> is how the <code>Rectangle</code> class would need to be referred to if the class was not imported.</p>
 <h3 id="class-definitions">Class definitions</h3>
-<p>Class definitions have the keyword <code>class</code>, possibly preceded by an <em>access modifier</em> and followed by the class name. In Java, it is convention to <em>capitalize</em> class names. The class name may be followed by <code>extends ...</code> and/or <code>implements ...</code> clauses, if the class is a subclass of another class or if it implements a certain interface. For example,</p>
+<p>Class definitions have the keyword <code>class</code>, possibly preceded by an <em>access modifier</em> and followed by the class name. In Java, it is conventional to <em>capitalize</em> class names. <em>Top-level classes must be contained in a file that has the same name as the class</em>.</p>
+<p>The class name may be followed by <code>extends ...</code> and/or <code>implements ...</code> clauses, if the class is a subclass of another class or if it implements a certain interface. For example,</p>
 <pre class="java"><code>public class Circle extends AbstractShape implements drawable {
     ...
 }</code></pre>
@@ -119,7 +121,7 @@ import graphics.Rectangle.*;</code></pre>
 <li>They have <strong>method declarations</strong> instead of method definitions.</li>
 </ul>
 <p>Method declarations have no body; instead, a method declaration end with a semicolon.</p>
-<p><strong>Abstract class</strong> definitions are similar regular class definitions with the following</p>
+<p><strong>Abstract class</strong> definitions are similar to regular class definitions with the following</p>
 <ul>
 <li>They cannot have constructors.</li>
 <li>They use the <code>abstract</code> modifier in their definitions.</li>
@@ -143,8 +145,7 @@ import graphics.Rectangle.*;</code></pre>
 </ul></li>
 </ul>
 <h3 id="method-definitions">Method definitions</h3>
-<p>Method definitions begin with <em>modifiers</em> followed by the method’s <em>return type</em>, the method name, and a parenthesized list of parameter declaration. The body of the method then follows, enclosed in curly braces.</p>
-<p>Below are some examples:</p>
+<p>Method definitions begin with <em>modifiers</em> followed by the method’s <em>return type</em>, the method name, and a parenthesized list of parameter declarations. The body of the method then follows, enclosed in curly braces. Below are some examples:</p>
 <pre class="java"><code>public void setFirstName(String newFirstName) {
     ...
 }
@@ -161,7 +162,7 @@ private static boolean isValidName(firstName, lastName) {
     System.out.println(&quot;Hello world!&quot;);
 }</code></pre>
 <h3 id="constructors">Constructors</h3>
-<p>Constructors are similar to method definitions. The name of a class also functions as the name for the class constructor. <em>Contructors cannot be static,</em> They also do not explicitly return a value from within their boy. Instead, the newly created object is automatically returned.</p>
+<p>Constructors are similar to method definitions. The name of a class also functions as the name for the class constructor. <em>Contructors cannot be static</em>. They also do not explicitly return a value from within their body. Instead, the newly created object is automatically returned.</p>
 <p>A class can have multiple constructors as long as the constructors have differences in their parameter lists. When a class has multiple constructors, it is customary for all constructors to eventually call the same constructor, the one with the most complete set of arguments.</p>
 <p>A class implemented without a constructor will be given the following <em>default constructor</em>: <code>public void ClassName() {}</code>.</p>
 <p>Example:</p>
@@ -205,10 +206,9 @@ if (thisIsTrue) {
 }</code></pre>
 <p>There is also the <strong>ternary operator</strong>, which <em>returns a value</em>. For example,</p>
 <pre class="java"><code>int x = (y &gt; 5) ? 5 : y;</code></pre>
-<p>This can be translated as “if y &gt; 5 then return 5; otherwise, return the value of y”.</p>
+<p>This can be translated as “if y is greater than 5 then return 5; otherwise, return the value of y”.</p>
 <h4 id="while-loops">While loops</h4>
-<p>Java implements the familiar while loop that executes a block of code as long as a specific<br />
-condition is true. For example,</p>
+<p>Java implements the familiar while loop that executes a block of code as long as a specific condition is true. For example,</p>
 <pre class="java"><code>while (account.hasMoney()) {
     account.withdraw();
 }</code></pre>
@@ -222,7 +222,7 @@ condition is true. For example,</p>
 for (String name : names) {
     System.out.println(names);
 }</code></pre>
-<p>The second for loop will loop over all the items in <code>names</code> using the variable <code>name</code> as its loop variable. This kind of for loop is preferred if you simply need to loop over the elements of a collection.</p>
+<p>The second for loop will iterate over all the items in <code>names</code> using the variable <code>name</code> as its loop variable. This kind of for loop is preferred if you simply need to loop over the elements of a collection and you have no need for the loop index <code>i</code>. And as an extra benefit, it works for all sorts of <em>iterables</em> and not just for arrays. Any object whose class implements the <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Iterable.html">Iterable interface</a> can be used in this so-called <strong>for-each loop</strong>.</p>
 <h4 id="switch-statements">Switch statements</h4>
 <p>A switch statement compares a value against a series of constant values presented in <code>case</code> expressions, and executes the corresponding statements. It will fall through to the next case unless you remember to use <code>break</code>.</p>
 <pre class="java"><code>switch (person.getType()) {
