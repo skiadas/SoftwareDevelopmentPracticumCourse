@@ -27,16 +27,16 @@ $(IMGFILES): docs/images/%.png: images/%.png
 	cp $< $@
 
 checklinks:
-	grep --include=*.md -E -r "\[.*?\]\(.*?md\)" . | sed -E 's/((.*\/)?[^\/]*\.md):.*\[.*\]\((.*md)\).*/\1 \3 \2\/\3/g' > tempfile.txt
-	while read -r file ref link; do \
+	@grep --include=*.md -E -r "\[.*?\]\(.*?md\)" . | sed -E 's/((.*\/)?[^\/]*\.md):.*\[.*\]\((.*md)\).*/\1 \3 \2\/\3/g' > tempfile.txt
+	@while read -r file ref link; do \
 		 test -e "$$link" || echo "BROKEN LINK $$ref\nIN $$file"; \
 	done < tempfile.txt
-	rm tempfile.txt
+	@rm tempfile.txt
 
 check: checklinks
 
 clean:
-	./deleteOldFiles.sh
+	@./deleteOldFiles.sh
 
 email:
 	open "mailto:`cat students.txt`"
