@@ -40,40 +40,34 @@ public class Point {
 
 ## Design Questions
 
-As a team, discuss and come to a consensus on your answers to each of the following questions.
+As a team, discuss and come to a consensus on your answers to the questions below.
 
-1. What data fields would the `Circle` class need to have?
+1. What data fields does the `Circle` class need to have?
 
-#. What values should be passed to the constructor so that it can initialize the fields of a newly created `Circle`object? 
+#. What values should be passed to the constructor so that it can initialize the fields of a newly created `Circle` object? 
 
-#. In the list of `Circle` class functionality (top of page), which items describe accessor methods?  
+#. Which items in the list of `Circle` functionality given above describe accessors?
 
-#. Decide on names for your accessor methods, then write the complete definition for each method.
+#. Decide on names for your accessors, then write the complete definition for each method.
 
-#. Pi is need when calculating the area and perimeter of a circle. Of the four possible kinds of variablews, what should pi be?
+#. The value of $\pi$ is need to calculate the area and perimeter of a circle. Of the four possible kinds of Java variables, what should $\pi$ be?
 
-#. Write the *signatures only* for the methods needed to complete the remainder of the `Circle` class functionality. Once you are done, compare your method signatures with another team's.
-Is there disagreement on any of the following??
+#. Write the **signatures only** for the methods needed to complete the `Circle` class functionality. Once you are done, compare your method signatures with those of another team.  Is there disagreement on any of the following?
+    a. method names
+    b. parameter names
+    c. return values
 
-  a. method names
-  b. parameter names
-  c. return values
+    **Together as a class:** report out on ageements/disagreements and decide on the final signature for each `Circle` class method.
 
-  **Report out** on ageements/disagreements. As a class, decide on the final signature for each `Circle` method.
+7. **At the board**, work out the implementation for each `Circle` class method. When you are done discuss the following:
 
-# At the board, work out the complete definition for each `Circle` method. When you are done discuss the following:
+    - *Could* the variables for the circle's center and radius be declared final? *Should* they be declared final?
+    - If the `Point` class did not have a `shift` method, would this cause any problems for your `Circle` class implementation? 
+    - Suppose that intead of changing the fields of the existing object, calling `shift` on a `Point` returned a new `Point` at the shifted location. How would your `Circle` class implementation need to change?
+    - Suppose that instead of changing the existing object, the `shift` and `rescale` methods for the `Circle` class are changed so that they return a new `Circle` object.
+      - Could the fields for the `Circle` class  be changed to *final*? 
+      - What would be the implications of this change, assuming it is possible?
 
-  - **Could** the variables for the circle's center and radius be declare final? **Should** they be declared final?
-  - If the `Point` class did not have a `shift` method, would this cause any problems for your `Circle` class implementation? 
-  - Suppose calling `shift` on a point returned a new `Point` object at the shifted location instead of having changing the fields for the existing point. How would your `Circle` class implementation need to change?
-  - Suppose the `shift` and `rescale` of the `Circle` class were changed to return a new `Circle` object instead of changing the existing circle. 
-    - Could the fields for the `Circle` class  be changed to *final*? 
-    - What would be the implications of this change, assuming it is possible?
-
-  **Report out** and dicuss answers to questions.R
-
-
-
- 
+    **Together as a class:** report out and discuss answers to questions.
 
 

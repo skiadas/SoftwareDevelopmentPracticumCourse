@@ -14,8 +14,19 @@
 </script>
 </head>
 <body>
-<h1 id="java-variables">Java Variables</h1>
-<p>THERESA IS STILL WORKING ON THIS</p>
+<h1 id="variables-and-designing-a-java-class">Variables and Designing a Java Class</h1>
+<p>Your team has been tasked with designing a simple <code>Circle</code> class. After some back and forth, your agree that <code>Circle</code> objects should be able to do the following:</p>
+<ul>
+<li>create new circle given radius and center</li>
+<li>calculate area</li>
+<li>calculate perimeter</li>
+<li>given a point, determine if point is inside the circle</li>
+<li>shift circle to have a new center</li>
+<li>scale radius</li>
+<li>give center</li>
+<li>give radius</li>
+</ul>
+<p>You may assume the existance of the <code>Point</code> class below as you work on your <code>Circle</code> class definition.</p>
 <pre class="java"><code>public class Point {
   private int x;
   private int y;
@@ -38,22 +49,34 @@
     y += yChange;
   }
 }</code></pre>
-<p>Part 1: Static variables</p>
-<p>Sometimes there are variables that can or should be shared between all the objects in the class. These are called class variables or static variables.</p>
-<p>Need examples.</p>
-<p>Goal: Design a class to represent circles. What would we want our circle to be able to do? - create new circle given radius and center - calculate area - calculate perimeter - given a point, determine if point is inside the circle - shift circle to have a new center - scale radius - getCenter - getRadius</p>
-<p>What instance variables would we need to have? center radius</p>
-<p>Write constructor: What parameters should the constructor have?</p>
-<p>What are the accessors? Write those methods.</p>
-<p>Question: Aside from the accessors, which methods can do their job just using the instance variables?</p>
-<p>==&gt; Should lead to a discussion of needing pi for calculating area and perimeter. - How &amp; where should we declare a variable for pi? - What sort of variable should pi be?</p>
-<p>==&gt; Talk about keywords “static” and “final”. “final” here means the value of the variable cannot be changed, i.e., it’s a constant.</p>
-<p>Write the signatures for remaining methods. Have groups compare answers. This will hopefully raise questions.</p>
-<p>REPORT OUT: - Were there disagreements in the name for methods? Names for parameters? - Were there disagreements about what should be returned. For example, shift and rescale. - Decide as a class on final signatures for our methods.</p>
-<p>Write the implementations (at the board)</p>
-<p>Questions: - Could the center or the radius be declare final? Should they? - How would you do the shift for the circle if the point class didn’t have a shift method? Would that cause any problems. - What if the shift method was returning a new point instead of changing it’s own fields. How would your Circle implementation need to change? - Suppose we change shift and rescale to return a new Circle, instead of changing the existing circle. Could the fields for the Circle be changed to final? What would be the implications of doing this, assuming it is possible?</p>
-<p>REPORT OUT: - Go over questions.</p>
-<p>Consi</p>
+<h2 id="design-questions">Design Questions</h2>
+<p>As a team, discuss and come to a consensus on your answers to the questions below.</p>
+<ol type="1">
+<li><p>What data fields does the <code>Circle</code> class need to have?</p></li>
+<li><p>What values should be passed to the constructor so that it can initialize the fields of a newly created <code>Circle</code> object?</p></li>
+<li><p>Which items in the list of <code>Circle</code> functionality given above describe accessors?</p></li>
+<li><p>Decide on names for your accessors, then write the complete definition for each method.</p></li>
+<li><p>The value of <span class="math inline">\(\pi\)</span> is need to calculate the area and perimeter of a circle. Of the four possible kinds of Java variables, what should <span class="math inline">\(\pi\)</span> be?</p></li>
+<li><p>Write the <strong>signatures only</strong> for the methods needed to complete the <code>Circle</code> class functionality. Once you are done, compare your method signatures with those of another team. Is there disagreement on any of the following?</p>
+<ol type="a">
+<li>method names</li>
+<li>parameter names</li>
+<li>return values</li>
+</ol>
+<p><strong>Together as a class:</strong> report out on ageements/disagreements and decide on the final signature for each <code>Circle</code> class method.</p></li>
+<li><p><strong>At the board</strong>, work out the implementation for each <code>Circle</code> class method. When you are done discuss the following:</p>
+<ul>
+<li><em>Could</em> the variables for the circle’s center and radius be declared final? <em>Should</em> they be declared final?</li>
+<li>If the <code>Point</code> class did not have a <code>shift</code> method, would this cause any problems for your <code>Circle</code> class implementation?</li>
+<li>Suppose that intead of changing the fields of the existing object, calling <code>shift</code> on a <code>Point</code> returned a new <code>Point</code> at the shifted location. How would your <code>Circle</code> class implementation need to change?</li>
+<li>Suppose that instead of changing the existing object, the <code>shift</code> and <code>rescale</code> methods for the <code>Circle</code> class are changed so that they return a new <code>Circle</code> object.
+<ul>
+<li>Could the fields for the <code>Circle</code> class be changed to <em>final</em>?</li>
+<li>What would be the implications of this change, assuming it is possible?</li>
+</ul></li>
+</ul>
+<p><strong>Together as a class:</strong> report out and discuss answers to questions.</p></li>
+</ol>
 <script type="text/javascript">
 let els = document.getElementsByTagName("pre");
 for (const el of els) {

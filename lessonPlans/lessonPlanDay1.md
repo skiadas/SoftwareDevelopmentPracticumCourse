@@ -6,7 +6,7 @@
 
 1 hour
 
-- [Brief introduction to classes and objects](../activities/activity1-1classesObjects.md)
+- [Brief introduction to classes and objects](../activities/activity1-1classesObjects.md) [work with neighbor(s)]
 - Short lecture with handouts:
 	- [Java Language Overriew](../cheatsheets/javaBasics.md)
 	- [Example program](../activities/activity1-1basicJavaSyntax.md)
@@ -16,15 +16,13 @@
 
 30 mins
 
-- [Code up the palindrome example in IntelliJ](../activities/activity1-2palindrome.md)
+- [Code up the palindrome example in IntelliJ](../activities/activity1-2palindrome.md) (work in pairs)
 
-## Activity 3: Variables and Scope
+## Activity 3: Variables and Designing a Java Class
 
 1 hour
 
-- [Example program](../activities/activity1-3circleClass.md)
-- Design a Circle class
-- Questions/Review
+- [Design a Circle class](../activities/activity1-3circleClass.md) (work in groups)
 
 ## Lunch
 
@@ -43,7 +41,7 @@
 
 1 hour
 
-- Have students create GitHub logins if they do not yet have one.
+- Students: create GitHub login if you do not yet have one.
 - Write program to read and process list of GPAs.
 - See [programming activity 1](../activities/activity1-5gpaCalculator.md)
-- Make sure students commit at the end of the day.
+- Students: Make sure students commit at the end of the day.
