@@ -3,7 +3,7 @@
 ## Key Terms and Concepts
 
 - Java is an Object Oriented Programming (OOP) language.
-- Programs in Java are organized around **classes**, with related classes being grouped together in **packages**.
+- Programs in Java are organized around **classes**, with related classes being grouped together into **packages**.
 - An **object** is created when we **instantiate** a class. We do this using the keyword "new", which calls the class **constructor**.
 	- For example, `new Cat("Ziggy")` would call the constructor for the `Cat` class. Doing this *instantiates* a new `Cat` object.
 	- **instantiate** - to make an instance of
@@ -55,13 +55,13 @@ public class Foo {
 
 ## Variables
 
-**Variables** are identifiers in a program that hold values. Java employs several different kinds of **variables**, which vary in terms of their scope.
+**Variables** are identifiers in a program that hold values. Java employs several different kinds of variables, which vary in terms of their scope.
 
 **Instance variables**
-  ~ Typically called **data fields** or just **fields**. Instance variables are part of a class's definition. They are created when an object is instantiated; each *object* is created with its own independent copy of the instance variables. All methods of an object can access the object's instance variables. If needed, instance variables may be referenced within an object through the `this` keyword; for example `this.x = x` where the `x` in the left is the field while the `x` on the right is a parameter or local variable.
+  ~ Typically called **data fields** or just **fields**. Instance variables are part of a class's definition. They are created when an object is instantiated; each *object* is created with its own independent copy of the instance variables. All methods of an object can access the object's instance variables. If needed, instance variables may be referenced within an object through the `this` keyword; for example, `this.x = x` where the `x` on the left is the instance variable and the `x` on the right is a parameter or local variable.
 
 **Static variables**
-  ~ Typically called **static fields**. They are part of a class's definition. Static variables are used to represent properties associated with a *class*. A single copy of each static variable is shared amongst all object instances of that class. Static variables can be used even if no class instances have been created; they are always referenced through the name of the class.
+  ~ Typically called **static fields**. Static variables are part of a class's definition. They are used to represent properties associated with a *class*. A single copy of each static variable is shared amongst all object instances of that class. Static variables can be used even if no class instances have been created; they are always referenced through the name of the class. For example, if class `Zip` has a static variable called `numObjects`, throughout the class the variable would be referenced as `Zip.numObjects`.
 
 **Local variables**
   ~ Typically just called **variables**. Local variables are variables defined inside of methods. They may only be referenced within the innermost set of curly braces that contains their declaration.
@@ -85,11 +85,11 @@ Java files use the extension `.java`. They consist of the following:
 - *import* statements that load public elements from other packages
 - class or interface definition
 
-**Import statements** are used to avoid having to refer to classes by their fully qualified names. For example, suppose you want to use the `Rectangle` class from an imaginary package called `graphics`.
+**Import statements** are used to avoid having to refer to classes by their fully qualified names. 
 
 Classes can be used without being imported by **fully qualifying** the class name. For example, `graphics.Rectangle` is how the `Rectangle` class would need to be referred to if the class was not imported.
 
-But you can include import statements in your file which will allow you to use shorter forms. Below are three possible import statements that could be used to import the `Rectangle` class.
+Using import statements in your file allows you to use shorter forms to reference classes. Below are three possible import statements that could be used to import the `Rectangle` class.
 ```java
 import graphics.Rectangle;
 import graphics.*;
@@ -100,7 +100,7 @@ import graphics.Rectangle.*;
 - The second import line does the same for *all* classes within the `graphics` package.
 - The third import line will make every *static* inner class and *static* method within the `Rectangle` class available directly.
 
-As an example, if `Rectangle` had a static `make` method, then with the first two imports we can refer to it as `Rectangle.make(...)`, while with the last import we can do `make(...)` instead.
+As an example, if `Rectangle` had a static `draw` method, then with the first two imports we can refer to this method as `Rectangle.draw(...)`, while with the last import we can do `draw(...)` instead.
 
 ### Class definitions
 
@@ -126,23 +126,24 @@ The interior of a class definition may contain any of the following, in any orde
 - They cannot have constructors.
 - They have **method declarations** instead of method definitions.
 
-Method declarations have no body; instead, a method declaration end with a semicolon.
+Method declarations have no body; instead, a method declaration ends with a semicolon.
 
 **Abstract class** definitions are similar to regular class definitions with the following
+exceptions.
 
 - They cannot have constructors.
 - They use the `abstract` modifier in their definitions.
-- they can contain both method definitions and method declarations.
+- They can contain both method definitions and method declarations.
 
 Methods that are simply declared *must* contain the `abstract` keyword modifier.
 
 ### Field declarations
 
 A field declaration specifies the visibility of the field, its data type, and possibly an
-initial value, Below are some examples:
+initial value. Below are some examples:
 
 - `private String firstName;`
-  - Specifies a private field called `firstname` thaqt is of type `String`. This field
+  - Specifies a private field called `firstname` that is of type `String`. This field
     will likely be initialized in the constructor.
 
 - `static final int MAX_CAPACITY = 40;`
@@ -153,7 +154,7 @@ initial value, Below are some examples:
 - `public static String hostname;`
   - Specifies a field called `hostname` that is visible everywhere. Using the `static` keyword
 modifier indicates that `hostname` is a *class* variable, with one copy of the variable being
-shared among all class objects..
+shared by all class objects.
 
 ### Method definitions
 
@@ -201,6 +202,7 @@ public Person(String firstName, String lastName) {
     this(firstName, lastName, 0);
 }
 ```
+
 Constructors are called when the keyword `new` is used to create a class instance. For example, `Person p = new Person("Peter", "Doe", 26);` will automatically call the `Person` class constructor.
 
 ### Control structures

@@ -18,7 +18,7 @@
 <h2 id="key-terms-and-concepts">Key Terms and Concepts</h2>
 <ul>
 <li>Java is an Object Oriented Programming (OOP) language.</li>
-<li>Programs in Java are organized around <strong>classes</strong>, with related classes being grouped together in <strong>packages</strong>.</li>
+<li>Programs in Java are organized around <strong>classes</strong>, with related classes being grouped together into <strong>packages</strong>.</li>
 <li>An <strong>object</strong> is created when we <strong>instantiate</strong> a class. We do this using the keyword “new”, which calls the class <strong>constructor</strong>.
 <ul>
 <li>For example, <code>new Cat("Ziggy")</code> would call the constructor for the <code>Cat</code> class. Doing this <em>instantiates</em> a new <code>Cat</code> object.</li>
@@ -60,13 +60,13 @@ public class Foo {
   }
 }</code></pre>
 <h2 id="variables">Variables</h2>
-<p><strong>Variables</strong> are identifiers in a program that hold values. Java employs several different kinds of <strong>variables</strong>, which vary in terms of their scope.</p>
+<p><strong>Variables</strong> are identifiers in a program that hold values. Java employs several different kinds of variables, which vary in terms of their scope.</p>
 <dl>
 <dt><strong>Instance variables</strong></dt>
-<dd>Typically called <strong>data fields</strong> or just <strong>fields</strong>. Instance variables are part of a class’s definition. They are created when an object is instantiated; each <em>object</em> is created with its own independent copy of the instance variables. All methods of an object can access the object’s instance variables. If needed, instance variables may be referenced within an object through the <code>this</code> keyword; for example <code>this.x = x</code> where the <code>x</code> in the left is the field while the <code>x</code> on the right is a parameter or local variable.
+<dd>Typically called <strong>data fields</strong> or just <strong>fields</strong>. Instance variables are part of a class’s definition. They are created when an object is instantiated; each <em>object</em> is created with its own independent copy of the instance variables. All methods of an object can access the object’s instance variables. If needed, instance variables may be referenced within an object through the <code>this</code> keyword; for example, <code>this.x = x</code> where the <code>x</code> on the left is the instance variable and the <code>x</code> on the right is a parameter or local variable.
 </dd>
 <dt><strong>Static variables</strong></dt>
-<dd>Typically called <strong>static fields</strong>. They are part of a class’s definition. Static variables are used to represent properties associated with a <em>class</em>. A single copy of each static variable is shared amongst all object instances of that class. Static variables can be used even if no class instances have been created; they are always referenced through the name of the class.
+<dd>Typically called <strong>static fields</strong>. Static variables are part of a class’s definition. They are used to represent properties associated with a <em>class</em>. A single copy of each static variable is shared amongst all object instances of that class. Static variables can be used even if no class instances have been created; they are always referenced through the name of the class. For example, if class <code>Zip</code> has a static variable called <code>numObjects</code>, throughout the class the variable would be referenced as <code>Zip.numObjects</code>.
 </dd>
 <dt><strong>Local variables</strong></dt>
 <dd>Typically just called <strong>variables</strong>. Local variables are variables defined inside of methods. They may only be referenced within the innermost set of curly braces that contains their declaration.
@@ -89,9 +89,9 @@ public class Foo {
 <li><em>import</em> statements that load public elements from other packages</li>
 <li>class or interface definition</li>
 </ul>
-<p><strong>Import statements</strong> are used to avoid having to refer to classes by their fully qualified names. For example, suppose you want to use the <code>Rectangle</code> class from an imaginary package called <code>graphics</code>.</p>
+<p><strong>Import statements</strong> are used to avoid having to refer to classes by their fully qualified names.</p>
 <p>Classes can be used without being imported by <strong>fully qualifying</strong> the class name. For example, <code>graphics.Rectangle</code> is how the <code>Rectangle</code> class would need to be referred to if the class was not imported.</p>
-<p>But you can include import statements in your file which will allow you to use shorter forms. Below are three possible import statements that could be used to import the <code>Rectangle</code> class.</p>
+<p>Using import statements in your file allows you to use shorter forms to reference classes. Below are three possible import statements that could be used to import the <code>Rectangle</code> class.</p>
 <pre class="java"><code>import graphics.Rectangle;
 import graphics.*;
 import graphics.Rectangle.*;</code></pre>
@@ -100,7 +100,7 @@ import graphics.Rectangle.*;</code></pre>
 <li>The second import line does the same for <em>all</em> classes within the <code>graphics</code> package.</li>
 <li>The third import line will make every <em>static</em> inner class and <em>static</em> method within the <code>Rectangle</code> class available directly.</li>
 </ul>
-<p>As an example, if <code>Rectangle</code> had a static <code>make</code> method, then with the first two imports we can refer to it as <code>Rectangle.make(...)</code>, while with the last import we can do <code>make(...)</code> instead.</p>
+<p>As an example, if <code>Rectangle</code> had a static <code>draw</code> method, then with the first two imports we can refer to this method as <code>Rectangle.draw(...)</code>, while with the last import we can do <code>draw(...)</code> instead.</p>
 <h3 id="class-definitions">Class definitions</h3>
 <p>Class definitions have the keyword <code>class</code>, possibly preceded by an <em>access modifier</em> and followed by the class name. In Java, it is conventional to <em>capitalize</em> class names. <em>Top-level classes must be contained in a file that has the same name as the class</em>.</p>
 <p>The class name may be followed by <code>extends ...</code> and/or <code>implements ...</code> clauses, if the class is a subclass of another class or if it implements a certain interface. For example,</p>
@@ -120,20 +120,20 @@ import graphics.Rectangle.*;</code></pre>
 <li>They cannot have constructors.</li>
 <li>They have <strong>method declarations</strong> instead of method definitions.</li>
 </ul>
-<p>Method declarations have no body; instead, a method declaration end with a semicolon.</p>
-<p><strong>Abstract class</strong> definitions are similar to regular class definitions with the following</p>
+<p>Method declarations have no body; instead, a method declaration ends with a semicolon.</p>
+<p><strong>Abstract class</strong> definitions are similar to regular class definitions with the following exceptions.</p>
 <ul>
 <li>They cannot have constructors.</li>
 <li>They use the <code>abstract</code> modifier in their definitions.</li>
-<li>they can contain both method definitions and method declarations.</li>
+<li>They can contain both method definitions and method declarations.</li>
 </ul>
 <p>Methods that are simply declared <em>must</em> contain the <code>abstract</code> keyword modifier.</p>
 <h3 id="field-declarations">Field declarations</h3>
-<p>A field declaration specifies the visibility of the field, its data type, and possibly an initial value, Below are some examples:</p>
+<p>A field declaration specifies the visibility of the field, its data type, and possibly an initial value. Below are some examples:</p>
 <ul>
 <li><code>private String firstName;</code>
 <ul>
-<li>Specifies a private field called <code>firstname</code> thaqt is of type <code>String</code>. This field will likely be initialized in the constructor.</li>
+<li>Specifies a private field called <code>firstname</code> that is of type <code>String</code>. This field will likely be initialized in the constructor.</li>
 </ul></li>
 <li><code>static final int MAX_CAPACITY = 40;</code>
 <ul>
@@ -141,7 +141,7 @@ import graphics.Rectangle.*;</code></pre>
 </ul></li>
 <li><code>public static String hostname;</code>
 <ul>
-<li>Specifies a field called <code>hostname</code> that is visible everywhere. Using the <code>static</code> keyword modifier indicates that <code>hostname</code> is a <em>class</em> variable, with one copy of the variable being shared among all class objects..</li>
+<li>Specifies a field called <code>hostname</code> that is visible everywhere. Using the <code>static</code> keyword modifier indicates that <code>hostname</code> is a <em>class</em> variable, with one copy of the variable being shared by all class objects.</li>
 </ul></li>
 </ul>
 <h3 id="method-definitions">Method definitions</h3>

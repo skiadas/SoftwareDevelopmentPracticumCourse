@@ -17,7 +17,6 @@ UML diagram for the Retangle class from the Simple Java Graphics[^1] library wri
 1. Identify one example of a data field for the Rectangle class from the above UML diagram.
 
 	a. What is the variable name of the data field?
-
 	b. What is the data type of the data field?
 
 #. Identify one example of a Rectangle class method that takes no arguments.
