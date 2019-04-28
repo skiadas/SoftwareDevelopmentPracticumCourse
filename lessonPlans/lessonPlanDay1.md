@@ -23,7 +23,7 @@
 
 30 mins
 
-- [Code up the palindrome example in IntelliJ](../activities/activity1-2palindrome.md) (work in pairs)
+- [Code palindrome example in IntelliJ](../activities/activity1-2palindrome.md) (work in pairs)
 
 ## Lunch
 
@@ -40,7 +40,7 @@
 
 30 mins
 
-- [Implement Circle class from Activity 3](../activities/activity1-4codeCircleClass.md) (work individually)
+- [Code Circle class from Activity 3](../activities/activity1-4codeCircleClass.md) (work individually)
 - [source code](https://github.com/sdp-resources/basicGraphing/releases/tag/WritingCircleAssignment)
 
 ## Activity 5: Coding Exercise
