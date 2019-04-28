@@ -15,7 +15,7 @@
 
 - [Brief introduction to classes and objects](../activities/activity1-1classesObjects.md) (work with neighbor(s))
 - Short lecture with handouts:
-	- [Java Language Overriew](../cheatsheets/javaBasics.md)
+	- [Java Language Overview](../cheatsheets/javaBasics.md)
 	- [Example program](../activities/activity1-1basicJavaSyntax.md)
 - Q/A
 
