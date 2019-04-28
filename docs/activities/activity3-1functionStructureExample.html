@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity3-1functionStructureExample</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="function-structure-example">Function Structure Example</h1>
+<p>Consider the following implementation for a <code>RangeCombiner</code> class.</p>
+<ul>
+<li>A “range” is two numbers “min” and “max” and it represents all the numbers from min to max.</li>
+<li>Our <code>RangeCombiner</code> class has methods for adding a new range: <code>combiner.addRange(2.4, 3.5)</code> will add a new range that represents all numbers from 2.4 to 3.5.</li>
+<li>The combiner is supposed to combine ranges that overlap. So for example if it already has the range from 2.4 to 3.5, and we add a range from 3.3 to 3.7, the two overlap and we should combine them to one range, from 2.4 to 3.7.</li>
+<li>Our implementation holds two arraylists, one for the minimums of the ranges and one for the maximums. They start out empty.</li>
+<li>Our implementation will hold these ranges in increasing order. For example the first range ends before the second range starts, the second range ends before the third range starts and so on. A method <code>isRangeOrderValid()</code> checks this property for us.</li>
+<li>When given a new range, our code searches through the list to find if this range overlaps with an existing range. If it does not, then it places the range at the end.</li>
+</ul>
+<p><strong>Group discussion</strong></p>
+<p>Look over the implementation in the <a href="activity3-1functionStructureHandout.html">handout</a>, it should appear complicated.</p>
+<ol type="1">
+<li>What do you think are the characteristics of this code that make it hard to understand?</li>
+<li>What could we do to make this class easier to understand? Work out some of the details of the change (are you introducing new methods, a new class, renaming things?).</li>
+</ol>
+<p>Don’t read further until you have thoroughly discussed the two questions above.</p>
+<p>In order to address the problems, we are going to have a small refactoring session, and we will use the <em>incremental replacement</em> method that we saw earlier: Incrementally replace existing features with the new functionality. Recall the overall steps:</p>
+<ul>
+<li>Introduction:
+<ul>
+<li>Introduce a new class for the new structure, possibly via a refactoring step.</li>
+<li>Introduce new fields to hold the new structure if needed.</li>
+</ul></li>
+<li>Scaffolding:
+<ul>
+<li>Systematically update the new structure whereever the corresponding old structure elements are updated.</li>
+<li>Systematically introduce extra parameters passing the new structure around along with the old structure.</li>
+</ul></li>
+<li>Teardown:
+<ul>
+<li>Systermatically replace accesses to the old structures with accesses to the new structure, until there are no accesses of the old structures.</li>
+<li>Systematically eliminate no-longer-used parameters that refer to the old structures.</li>
+<li>Systematically eliminate old structure updates.</li>
+<li>Eliminate the old no-longer-used structures.</li>
+</ul></li>
+<li>Cleanup:
+<ul>
+<li>There are probably many places in the code where old structure values are needlessly produced, and we clean them up.</li>
+<li>A number of methods probably need some refactoring, possibly moving to methods of the new class.</li>
+</ul></li>
+</ul>
+<p>Here are the steps in detail:</p>
+<ul>
+<li>Introduction: We introduce a new <code>Range</code> class.
+<ul>
+<li>We start with a “Extract Method” on the entire body of the <code>addRange</code> method. We want to internally change the behavior of our methods but to maintain the same external interface. We will call the new method <code>addRangeInternal</code>, we’ll worry about the name later.</li>
+<li>Perform “Extract Parameter Object” on the new <code>addRangeInternal</code> method to a new inner class named <code>Range</code> with fields <code>min</code> and <code>max</code>.</li>
+<li>We “Extract Method” on the first conditional, <code>range.getMax() &lt; range.getMin()</code>, into an <code>isEmpty</code> method, which we then move to the <code>range</code> instance and inline its <code>getMax()</code> and <code>getMin()</code> calls.</li>
+<li>We now create a new <code>ArrayList</code> instance named <code>ranges</code> to hold the ranges we are working with. This will slowly supplant the <code>mins</code> and <code>maxs</code> lists.</li>
+</ul></li>
+<li>Scaffolding: We gradually also add to <code>ranges</code> wherever we add to <code>mins</code> and <code>maxs</code>.
+<ul>
+<li>In the second conditional, which adds a range if it should go to the beginning, we add a <code>ranges.add(0, range)</code> before the return.</li>
+<li>We also add a <code>ranges.add(range)</code> at the end of <code>addRangeInternal</code> method, where we are supposed to append the range to the end.</li>
+<li>We now look at the call to <code>insertValueAtIndexAndFixForward</code>. Right before it, we need to create a <code>newRange</code> entry by putting together the <code>newMin</code> and <code>newMax</code>: <code>Range newRange = new Range(newMin, newMax);</code>. Later on we’ll make a nice function for merging two ranges instead of having to compute the ends points ourselves.</li>
+<li>We add a new <code>currRange</code> parameter to <code>insertValueAtIndexAndFixForward</code> and pass the <code>newRange</code> value in at the call. We now proceed to look at the <code>insertValueAtIndexAndFixForward</code> method.</li>
+<li>We add <code>ranges.set(i, currRange);</code> to the initial part of <code>insertValueAtIndexAndFixForward</code>.</li>
+<li>Within the if conditional, we must also change the value of <code>currRange</code> to a newly created new range with the <code>currMax</code> and <code>currMin</code> values, and set it with <code>ranges.set(i, currRange);</code>. We also must remove the i+1 entry from ranges when we do so from min and max.</li>
+</ul></li>
+<li>Teardown: We gradually remove dependence on <code>mins</code> and <code>maxs</code>.
+<ul>
+<li>Our first step is the <code>rangesOverlap</code> method. It should be comparing ranges, not mins and maxes. We start at <code>addRangeInternal</code> and replace the <code>mins.get(i), maxs.get(i)</code> arguments with <code>ranges.get(i).getMin(), ranges.get(i).getMax()</code>.</li>
+<li>In the next call to <code>rangesOverlap</code>, we first add right before it a new <code>Range nextRange = ranges.get(i+1);</code> line. we replace the arguments to <code>rangesOverlap(currMin, currMax, nextMin, nextMax)</code> with uses of <code>currRange.getMin()/getMax()</code> and <code>nextRange.getMin()/getMax()</code>.</li>
+<li>We now want to make <code>rangesOverlap</code> use the ranges as parameters. To do that, we pick one of the uses, and perform “Extract Method” to a new method called <code>rangesOverlap</code> again, with parameter names <code>range1</code> and <code>range2</code>. We tell the system to replace both instances.</li>
+<li>Next we inline the old <code>rangesOverlap</code> method, we move it to be an instance of <code>range1</code> and change its name to <code>overlapsWith</code>, change the remaining parameter’s name to <code>range2</code>, and inline the various <code>getMin</code> and <code>getMax</code> uses. The method could still use some work, maybe we’ll return to it later.</li>
+<li>Now it is time to eliminate the <code>mins</code> and <code>maxs</code> uses. We do this as follows: Find a <code>mins.get(i)</code> use, then extract method on it call it <code>tempMin</code> for now, then change the body of <code>tempMin</code> from <code>return mins.get(i);</code> to <code>return ranges.get(i).getMin();</code> then inline the <code>tempMin</code> method back and remove it. Repeat for max.</li>
+<li>The only remaining issue is the usage of <code>mins.size()</code>. We can replace those with <code>ranges.size()</code>.</li>
+<li>We now need to eliminate the methods that were changing the <code>mins</code> and <code>maxs</code> lists. We have three kinds of methods: two kinds of add, a set, and a remove. We start by eliminating the <code>set</code> calls to both <code>mins</code> and <code>maxs</code>.</li>
+<li>Next we eliminate the <code>remove</code> calls. Then the <code>add</code> calls.</li>
+<li>Now we can remove the <code>mins</code> and <code>maxs</code> variables.</li>
+<li>We still need to eliminate some parameters that are no longer really used. We look at <code>insertValueAtIndexAndFixForward</code>, and the <code>currMin</code> and <code>currMax</code> parameters there. We would like to eliminate them in favor of <code>currRange</code>. We look at where they are used, and find that their values get updated in the conditional. We change that update from <code>currMin = Math.min(currMin, nextMin);</code> to <code>currMin = Math.min(currRange.getMin(), nextMin);</code> and similarly for max.</li>
+<li>Now we convert the <code>currMin</code> and <code>currMax</code> parameters to local variables, and further we inline their one use.</li>
+<li>It seems <code>nextMin</code> and <code>nextMax</code> are only used to construct the new <code>currRange</code>, so we replace their usage there with <code>nextRange.getMin()</code> and <code>nextRange.getMax()</code> respectively and eliminate them.</li>
+<li>Back in <code>addRangeInternal</code> we extract a local variable <code>currRange</code> for <code>ranges.get(i)</code>, then inline the <code>newMin</code> and <code>newMax</code> uses.</li>
+</ul></li>
+<li>Cleanup: We simplify the resulting code to better use the new structures.
+<ul>
+<li>We examine the code for instances where min and max concepts are needlessly created. One part that remains messy is the creation of the merge of two ranges. Right now it is an extremely long call to the <code>Range</code> constructor with suitably computed endpoints. We extract this constructor call to a new method <code>mergeRanges</code> and replace both occurences. We then move the new method to be an instance method of <code>range1</code>, rename it to <code>mergedWith</code>, rename its remaining parameter to <code>range</code>, and inline the <code>getMin</code> and <code>getMax</code> calls.</li>
+<li>We find a single use of the <code>newRange</code> local variable in <code>addRangeInternal</code> and decide to inline it.</li>
+<li>Looking at the beginning of <code>addRangeInternal</code>, there is a call <code>range.getMax() &lt; ranges.get(0).getMin()</code>. This seems to compare ranges to see if one precedes the other. We first create a local variable <code>other</code> out of <code>ranges.get(0)</code>, then extract a method <code>precedes</code> out of <code>range.getMax() &lt; other.getMin()</code>, move it to an instance of its first argument, change the remaining parameter to <code>range</code> and inline the <code>getMax</code> and <code>getMin</code> calls, then inline the local variable we had created.</li>
+<li>Searching for other mentions of min and max outside of the <code>Range</code> class, we see the <code>isRangeOrderValid</code> method. The conditional seems to check exactly whether the range at index <code>i</code> does not precede the range at index <code>i+1</code>, so we replace that conditional with <code>!ranges.get(i).precedes(ranges.get(i+1))</code>.</li>
+<li>Lastly, in <code>printRanges</code> we find the use <code>String.format("%.2f--%.2f", ranges.get(i).getMin(), ranges.get(i).getMax())</code> and extract it to a method of <code>Range</code>, after creating a temporary local variable for <code>ranges.get(i)</code>. We further replace the loop in <code>printRanges</code> with a <code>foreach</code> loop.</li>
+<li>Now we eliminate the <code>getMin</code> and <code>getMax</code> method altogether and feel better about the fact that the rest of the application does not need to know about min and max.</li>
+</ul></li>
+<li>Now for some more high-level cleanup.
+<ul>
+<li>We start with the <code>overlapsWith</code> method. Thinking about it, two ranges will overlap as long as one does not precede the other, so we can simply write the test as: <code>!precedes(range) &amp;&amp; !follows(range);</code> where <code>follows</code> is a new method that is somewhat symmetric to <code>precedes</code>.</li>
+<li>Next we look at the <code>while</code> loop in <code>insertValueAtIndexAndFixForward</code>. The <code>nextRange</code> variable is used in two places but it is a simple list lookup, so we inline it. TODO</li>
+</ul></li>
+</ul>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>

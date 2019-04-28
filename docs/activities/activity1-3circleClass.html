@@ -67,7 +67,12 @@
 <li><strong>At the board</strong>, work out the implementation for each <code>Circle</code> class method. When you are done discuss the following:
 <ul>
 <li><em>Could</em> the variables for the circle’s center and radius be declared final? <em>Should</em> they be declared final?</li>
-<li>Your constructor can reuse the provided center point, or create a new point of its own. Discuss the advantages and disadvantages of each approach.</li>
+<li>The <code>Circle</code> constructor can be implemented in two ways:
+<ol type="1">
+<li>reuse the provided <code>Point</code> object for its center, or</li>
+<li>create a new <code>Point</code> object of its own based on the provided <code>Point</code> object.</li>
+</ol>
+What are the advantages and disadvantages of each approach?</li>
 <li>If the <code>Point</code> class did not have a <code>shift</code> method, would this cause any problems for your <code>Circle</code> class implementation?</li>
 <li>Suppose that instead of changing the fields of the existing object, calling <code>shift</code> on a <code>Point</code> returned a new <code>Point</code> at the shifted location. How would your <code>Circle</code> class implementation need to change?</li>
 <li>Suppose that instead of changing the existing object, the <code>shift</code> and <code>rescale</code> methods for the <code>Circle</code> class are changed so that they return a new <code>Circle</code> object.

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity3-2functionStructure</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="function-structure">Function Structure</h1>
+<p>In this section we discuss issues related to the form of functions: Their number of arguments etc.</p>
+<h2 id="function-arguments">Function arguments</h2>
+<p>The fewer arguments a function has, the simpler it is to know what will happen when we call the function. For example, consider a comparison function:</p>
+<pre class="java"><code>isGreater(a, b);</code></pre>
+<p>Is this function supposed to return <code>true</code> if <code>a</code> is greater than <code>b</code>, or if <code>b</code> is greater than <code>a</code>? Even though we might guess that it is the former, it is not possible to know for sure without reading the code. On the other hand, if the method was structured instead as follows, there is no doubt:</p>
+<pre class="java"><code>a.isGreaterThan(b);</code></pre>
+<p>Another way to resolve the case of multiple arguments is to perform an “Extract Parameter Object” refactoring; if those parameters tend to often be used together, maybe their common usage can be codified in this new class.</p>
+<p>Here is another example. Imagine a class for an HVAC system managing a heating unit, a cooling unit, and a fan. What would the following function do with such a unit?</p>
+<pre class="java"><code>hvac.set(true, false, true);</code></pre>
+<p>Instead, the following 3 lines are much more clear, if a bit longer:</p>
+<pre class="java"><code>hvac.turnHeaterOn();
+hvac.turnCoolerOff();
+hvac.turnFanOff();</code></pre>
+<p>We will see an alternative that does it in one line in a more readable form in a bit.</p>
+<p>Another example. Consider the following line:</p>
+<pre class="java"><code>person.setScoreIfHigher(42, 35, true);</code></pre>
+<p>This method is supposed to set a person’s score to a specific value if it was exceeding another specific value. But which value is which? And oh by the way, that <code>true</code> means that we also set it to this value if the score was missing. How are we supposed to know that however?</p>
+<p>Imagine if we instead had a “filter” class, and we could do something like this:</p>
+<pre class="java"><code>person.setScore(35, Filter.ifValueIsHigherThan(42), true);</code></pre>
+<p>Still not perfect, but it’s start. We could also use a boolean variable name to help out:</p>
+<pre class="java"><code>boolean shouldSetNull = true;
+person.setScore(35, Filter.ifValueIsHigherThan(42), shouldSetNull);</code></pre>
+<h2 id="boolean-arguments">Boolean arguments</h2>
+<p>The two last examples showcase a problem with boolean arguments. When those arguments are present, it is very unclear what each value is meant to represent. Furthermore, it is almost certain that the function will need to do at least two different things in order to respond to the two possibilities, violating one of the function rules.</p>
+<p>There are typically two effective ways of dealing with boolean arguments:</p>
+<ol type="1">
+<li><p>Create two separate functions. In the above example, we could have one function named <code>setScoreIncludingNullCase</code> and one function named <code>setScoreExcludingNullCase</code>.</p></li>
+<li><p>Use a custom enum type to represent the boolean cases. In the example above we could do:</p>
+<pre class="java"><code>person.setScore(35, Filter.ifValueIsHigherThan(42), NullCase.SET);
+person.setScore(35, Filter.ifValueIsHigherThan(42), NullCase.IGNORE);
+
+// Definition of the enum:
+enum NullCase {
+    IGNORE, SET;
+}</code></pre>
+<p>In the HVAC system we can use three enums: <code>HeaterSetting.HEATER_ON/HEATER_OFF</code>, <code>CoolerSetting.COOLER_ON/COOLER_OFF</code> etc. Then the call would look like this: <code>java  hvac.set(HEATER_ON, COOLER_OFF, FAN_ON);</code> Furthermore, Java’s type-checking will make sure that we enter those values in the correct order, as we cannot use <code>HEATER_ON</code> where a <code>CoolerSetting</code> constant is expected.</p></li>
+</ol>
+<h2 id="command-query-separation">Command-Query separation</h2>
+<p>Methods broadly fall into two categories:</p>
+<ol type="1">
+<li>Methods that have what we call <strong>side-effects</strong>. For example, they could be setting an object’s state, printing something to the console, opening up a file etc. We call these <strong>commands</strong>. These are methods that if called repeatedly may cause problems.</li>
+<li>Methods that return a value but otherwise have no side-effects. These could simply be returning the value of a field, or perform some computation. We call these methods <strong>queries</strong>. In theory one should be able to call a query multiple times and not expect anything to change.</li>
+</ol>
+<p>The <strong>command-query separation</strong> principle says that every method should do play one of those two roles, but not both:</p>
+<ul>
+<li>A method that returns a value should not have side-effects.</li>
+<li>A method that has side-effects should not return a value.</li>
+</ul>
+<p><strong>Group activity</strong>: Think back on the methods we implemented for the <code>Circle</code> class (the names might not match exactly what we used then). Which of these are queries, and which are commands? Do any of them act as both queries and commands?</p>
+<ul>
+<li><code>getCenter()</code></li>
+<li><code>getRadius()</code></li>
+<li><code>getArea()</code></li>
+<li><code>getPerimeter()</code></li>
+<li><code>contains(Point point)</code></li>
+<li><code>shiftTo(Point newCenter)</code></li>
+<li><code>multiplyRadiusBy(int value)</code></li>
+</ul>
+<p><strong>Group activity</strong>: The following methods are part of the <code>ArrayList&lt;E&gt;</code> class. <code>E</code> here is a <em>class variable</em> which stands for the class of the elements to be stored in the list. Which of these methods are pure queries, which are pure commands, and which violate the command-query separation rule?</p>
+<ul>
+<li><code>boolean add(E e)</code> Appends the specified element to the end of this list. Returns <code>true</code>.</li>
+<li><code>void add(int index, E element)</code> Inserts the specified element at the specified position in this list.</li>
+<li><code>boolean addAll(Collection&lt;? extends E&gt; c)</code> Appends all of the elements in the specified collection to the end of this list, in the order that they are returned by the specified collection’s Iterator. Returns <code>true</code> if the list changed as a result of the operation, and <code>false</code> otherwise.</li>
+<li><code>void clear()</code> Removes all of the elements from this list.</li>
+<li><code>Object clone()</code> Returns a shallow copy of this ArrayList instance.</li>
+<li><code>boolean contains(Object o)</code> Returns true if this list contains the specified element.</li>
+<li><code>void ensureCapacity(int minCapacity)</code> Increases the capacity of this ArrayList instance, if necessary, to ensure that it can hold at least the number of elements specified by the minimum capacity argument.</li>
+<li><code>void forEach(Consumer&lt;? super E&gt; action)</code> Performs the given action for each element of the Iterable until all elements have been processed or the action throws an exception.</li>
+<li><code>E get(int index)</code> Returns the element at the specified position in this list.</li>
+<li><code>int indexOf(Object o)</code> Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element.</li>
+<li><code>boolean isEmpty()</code> Returns true if this list contains no elements.</li>
+<li><code>Iterator&lt;E&gt; iterator()</code> Returns an iterator over the elements in this list in proper sequence.</li>
+<li><code>E remove(int index)</code> Removes the element at the specified position in this list. Returns the removed element.</li>
+<li><code>boolean remove(Object o)</code> Removes the first occurrence of the specified element from this list, if it is present. Returns <code>true</code> if the list contained the specified element.</li>
+<li><code>boolean removeAll(Collection&lt;?&gt; c)</code> Removes from this list all of its elements that are contained in the specified collection.</li>
+<li><code>protected void removeRange(int fromIndex, int toIndex)</code> Removes from this list all of the elements whose index is between fromIndex, inclusive, and toIndex, exclusive.</li>
+<li><code>void replaceAll(UnaryOperator&lt;E&gt; operator)</code> Replaces each element of this list with the result of applying the operator to that element.</li>
+<li><code>E set(int index, E element)</code> Replaces the element at the specified position in this list with the specified element. Returns the element previously at the specified position.</li>
+<li><code>int size()</code> Returns the number of elements in this list.</li>
+<li><code>void sort(Comparator&lt;? super E&gt; c)</code> Sorts this list according to the order induced by the specified Comparator.</li>
+<li><code>Spliterator&lt;E&gt;  spliterator()</code> Creates a late-binding and fail-fast Spliterator over the elements in this list.</li>
+<li><code>List&lt;E&gt; subList(int fromIndex, int toIndex)</code> Returns a view of the portion of this list between the specified fromIndex, inclusive, and toIndex, exclusive.</li>
+<li><code>Object[] toArray()</code> Returns an array containing all of the elements in this list in proper sequence (from first to last element).</li>
+<li><code>void trimToSize()</code> Trims the capacity of this ArrayList instance to be the list’s current size.</li>
+</ul>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>

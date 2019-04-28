@@ -55,7 +55,11 @@ As a team, discuss and come to a consensus on your answers to the questions belo
     **Together as a class:** report out on agreements/disagreements and decide on the final signature for each `Circle` class method.
 7. **At the board**, work out the implementation for each `Circle` class method. When you are done discuss the following:
     - *Could* the variables for the circle's center and radius be declared final? *Should* they be declared final?
-    - Your constructor can reuse the provided center point, or create a new point of its own. Discuss the advantages and disadvantages of each approach.
+    - The `Circle` constructor can be implemented in two ways:
+        1. reuse the provided `Point` object for its center, or
+        2. create a new `Point` object of its own based on the provided `Point` object.
+
+        What are the advantages and disadvantages of each approach?
     - If the `Point` class did not have a `shift` method, would this cause any problems for your `Circle` class implementation?
     - Suppose that instead of changing the fields of the existing object, calling `shift` on a `Point` returned a new `Point` at the shifted location. How would your `Circle` class implementation need to change?
     - Suppose that instead of changing the existing object, the `shift` and `rescale` methods for the `Circle` class are changed so that they return a new `Circle` object.
