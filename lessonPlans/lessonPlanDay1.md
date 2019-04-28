@@ -28,8 +28,7 @@
 ## Lunch
 
 - Get Lunch
-- Watch part of videos for Tuesday
-- [Clean Code-Remake (54m)](../videos/01-clean_code.md)
+- Watch [Clean Code-Remake (54m)](../videos/01-clean_code.md)
 
 ## Activity 3: Variables and Designing a Java Class
 
@@ -41,7 +40,7 @@
 
 30 mins
 
-- [Implement `Circle` class from Activity 3](../activities/activity1-4codeCircleClass.md) (work individually)
+- [Implement Circle class from Activity 3](../activities/activity1-4codeCircleClass.md) (work individually)
 - [source code](https://github.com/sdp-resources/basicGraphing/releases/tag/WritingCircleAssignment)
 
 ## Activity 5: Coding Exercise
