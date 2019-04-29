@@ -8,7 +8,7 @@
 	- For example, `new Cat("Ziggy")` would call the constructor for the `Cat` class. Doing this *instantiates* a new `Cat` object.
 	- **instantiate** - to make an instance of
 - Classes can **extend** other classes, which means that they inherit all the functionality from those other classes (but they can also overwrite some of it). In this case we call the extended class the *superclass* and the extending class the *subclass*.
-- An **interface** is a set of method signatures (i.e., function prototypes). A class can **implement** an interface if it has implementations for all the methods indicated in the interface.
+- An **interface** is a set of **method signatures** (i.e., function prototypes). A class can **implement** an interface if it has implementations for all the methods indicated in the interface.
 - The keyword `this` can be used in a method to refer to the object itself, and to provide access to the object's **data fields**.
 - As an OOP language, much of Java programming boils down to calling object **methods**.
 
