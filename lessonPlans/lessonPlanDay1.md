@@ -19,16 +19,16 @@
 	- [Example program](../activities/activity1-1basicJavaSyntax.md)
 - Q/A
 
+## Lunch
+
+- Get Lunch
+- Watch [Clean Code-Remake (54m)](../videos/01-clean_code.md)
+
 ## Activity 2: Introduction to IntelliJ
 
 30 mins
 
 - [Code palindrome example in IntelliJ](../activities/activity1-2palindrome.md) (work in pairs)
-
-## Lunch
-
-- Get Lunch
-- Watch [Clean Code-Remake (54m)](../videos/01-clean_code.md)
 
 ## Activity 3: Variables and Designing a Java Class
 
