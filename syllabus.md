@@ -64,6 +64,11 @@ A catered list of readings and videos from the ACM Learning Center will be provi
 - *Test-driven development, by example*, by K. Beck
 - *Implementation Patterns*, by K. Beck
 
+The various resources are organized in two playlists:
+
+- [Books](https://learning.oreilly.com/playlists/2d79b8e9-46cf-416d-bb55-f6dcdc03ef6d/)
+- [Videos](https://learning.oreilly.com/playlists/433af86f-9749-4061-99fe-1eca2e70ab35/)
+
 ## Course Components
 
 ### Class Preparation
