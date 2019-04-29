@@ -5,7 +5,7 @@
 30 min
 
 - Introductions
-- Syllabus
+- [Syllabus](../syllabus.md)
 - [Clean Code Introduction (6 mins)](https://learning.oreilly.com/videos/clean-code/9780134661742/9780134661742-CODE_01_00_00)
 - Questions?
 
