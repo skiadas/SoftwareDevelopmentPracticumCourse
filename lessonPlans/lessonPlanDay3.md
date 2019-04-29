@@ -6,7 +6,6 @@ Pencil+Paper? POGIL activity to introduce function structure concepts:
 
 - Number of arguments kept small
 - Avoiding boolean arguments
-- Output arguments (consider skipping)
 - Null?
 - Command-query separation
 
@@ -17,7 +16,6 @@ Discussion of basic function structure concepts and reasons behind them:
 
 - Number of arguments kept small
 - Avoiding boolean arguments
-- Output arguments (consider skipping)
 - Command-query separation
 - Null?
 - [notes](../activities/activity3-2functionStructure.md)
