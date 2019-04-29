@@ -85,7 +85,7 @@ Java files use the extension `.java`. They consist of the following:
 - *import* statements that load public elements from other packages
 - class or interface definition
 
-**Import statements** are used to avoid having to refer to classes by their fully qualified names. 
+**Import statements** are used to avoid having to refer to classes by their fully qualified names.
 
 Classes can be used without being imported by **fully qualifying** the class name. For example, `graphics.Rectangle` is how the `Rectangle` class would need to be referred to if the class was not imported.
 
@@ -259,12 +259,12 @@ This loop will continue executing the `account.withdraw()` method as long as `ac
 
 Java provides two kinds of for loops. The standard *counter loop* and a *foreach loop* for iterating over a collection.
 ```java
-for (int i = 0; i < names.length; i++) {
-    System.out.println(names[i]);
+for (int i = 0; i < allNames.length; i++) {
+    System.out.println(allNames[i]);
 }
 
 for (String name : names) {
-    System.out.println(names);
+    System.out.println(name);
 }
 ```
 The second for loop will iterate over all the items in `names` using the variable `name` as its loop variable.
