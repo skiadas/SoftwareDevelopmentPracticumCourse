@@ -7,9 +7,9 @@
 - Learn how to accomplish the following refactorings in IntelliJ:
     - variable renaming
     -
-- Develop these habits:
-    - use `<ctrl>-T` to open the *Refactor This* menu
-    - use `<option>-ENTER` to see available intentions
+- Develop these habits (shortcuts differ by system):
+    - use `<ctrl>-T` or `<ctrl>-<alt>-<shift>-T` to open the *Refactor This* menu
+    - use `<option>-ENTER` or `<alt>-ENTER` to see available intentions
 
 ## Getting Started
 
@@ -118,10 +118,12 @@ Follow the steps below to refactor and extract the two main `while` loops into s
     After this refactor, the first `while` loop and all its code should now be
     down at the bottom of the file in a method called "generatePrimes".  In its place
     should be the following function call:
+
     ```java
     generatePrimes(numPrimes, primes, lastPrimeIndex, ORD,
               nextPrimeSquare, multiples, candidatePrime);
     ```
+
     Undo and redo the method extraction a few times until you can see this is what happens.
 
 #. Extract the `generatePrimes` Method (Try 2)

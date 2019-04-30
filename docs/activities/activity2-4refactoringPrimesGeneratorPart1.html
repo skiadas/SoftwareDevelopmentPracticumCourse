@@ -27,10 +27,10 @@
 <li>variable renaming</li>
 <li></li>
 </ul></li>
-<li>Develop these habits:
+<li>Develop these habits (shortcuts differ by system):
 <ul>
-<li>use <code>&lt;ctrl&gt;-T</code> to open the <em>Refactor This</em> menu</li>
-<li>use <code>&lt;option&gt;-ENTER</code> to see available intentions</li>
+<li>use <code>&lt;ctrl&gt;-T</code> or <code>&lt;ctrl&gt;-&lt;alt&gt;-&lt;shift&gt;-T</code> to open the <em>Refactor This</em> menu</li>
+<li>use <code>&lt;option&gt;-ENTER</code> or <code>&lt;alt&gt;-ENTER</code> to see available intentions</li>
 </ul></li>
 </ul>
 <h2 id="getting-started">Getting Started</h2>
@@ -204,7 +204,10 @@ Take a look at the <code>PrimePrinter.java</code> and its <code>main</code> meth
 <li>Click OK.</li>
 <li><em>Run tests to verify that nothing has been broken.</em></li>
 </ol>
-<p>After this refactor, the first <code>while</code> loop and all its code should now be down at the bottom of the file in a method called “generatePrimes”. In its place should be the following function call: <code>java  generatePrimes(numPrimes, primes, lastPrimeIndex, ORD,            nextPrimeSquare, multiples, candidatePrime);</code> Undo and redo the method extraction a few times until you can see this is what happens.</p></li>
+<p>After this refactor, the first <code>while</code> loop and all its code should now be down at the bottom of the file in a method called “generatePrimes”. In its place should be the following function call:</p>
+<pre class="java"><code>generatePrimes(numPrimes, primes, lastPrimeIndex, ORD,
+          nextPrimeSquare, multiples, candidatePrime);</code></pre>
+<p>Undo and redo the method extraction a few times until you can see this is what happens.</p></li>
 <li><p>Extract the <code>generatePrimes</code> Method (Try 2)</p>
 <p>Although the above refactoring gave us the method we wanted, the variables that we want to be declared locally are instead being passed in as parameters. There are a couple ways to fix this, but the simplest is to redo the refactoring, this time making sure to include all the declarations for the variables we want to be local in the new method.</p>
 <ol start="7" type="a">
