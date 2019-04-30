@@ -25,7 +25,7 @@ Tue
     	- (Coding) naming variables and methods
     	- (Coding) extracting code into small functions
     - [Activities for Day 2](lessonPlans/lessonPlanDay2.md)
-    - Lunchtime Video: [Functions](videos/03-function_size.md)
+    - Lunchtime Video: [Refactoring screencast "2": Prime generator](../videos/04-prime_gen_screencast.md)
 
 Wed
   ~ - Goals:
@@ -33,7 +33,7 @@ Wed
         - Function structure principles
 	- Prep:
         - Read [*Clean Code*](https://learning.oreilly.com/library/view/clean-code/9780136083238/), chapters 4, 5
-        - Watch [Function Structure video](videos/05-function_structure.md)
+        - Watch [Function Structure video selected parts](videos/05-function_structure.md)
 	- Topics:
     	- (Coding) function parameters, command-query separation
     	- (Coding) comments and formatting

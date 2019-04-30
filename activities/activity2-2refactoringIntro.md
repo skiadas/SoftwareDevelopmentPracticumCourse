@@ -80,17 +80,17 @@ public class Main {
 So let's list a number of problems here:
 
 - The variable names are really not very descriptive at all. Most of them are single letters, and they don't make it clear what is going on. So we will want to rename them. **Renaming** is probably the simplest of all the refactorings.
-- There is a large switch statement, whose goal seems to be to figure out what numeric value should correspond to a particular letter grade. This part have a very clear logic of its own, so it should probably be a separate function. **Extracting** a piece of code to create a new method or a new local variable is another fairly simple but extremely important form of refactoring.
-- There are various bits and pieces of computations and calls to the `scanner` class that are by themselves somewhat obscure. We could use a comment for them, or we can also extract them into methods and use the method name to describe them.
-- Thinking about it, we possibly want to have a separate class that represents a grade, and it knows about the corresponding value for each letter etc.
+- There is a large switch statement, whose goal seems to be to figure out what numeric value should correspond to a particular letter grade. This part has a very clear logic of its own, so it should probably be a separate function. **Extracting** a piece of code to create a new method or a new local variable is another fairly simple but extremely important form of refactoring.
+- There are various bits and pieces of computations and calls to the `scanner` class that are by themselves somewhat obscure. We could use a comment for them, or we can also extract them into methods and use the method names to describe their intent.
+- Thinking about it, we possibly want to have a separate class that represents a grade, and it knows about the corresponding value for each letter, which letters count for credit, etc.
 
 ## Phase 1: Renaming and method extraction
 
 We can start with some simple changes:
 
-- Rename the variable `t` to `total`. We need to do this consistently, and also to make sure there isn't already a variable named `total`. Note how many places this had to change in!
-- Rename the variable  `c` to `courses`. This counts the number of courses that we count towards the gpa.
-- It seems that `l` stands for a `letter` grade so we'll use that name instead.
+- Rename the variable `t` to `total`. We need to do this consistently, and also to make sure there isn't already a variable named `total`. A good rule of thumb if you do it manually is this: Change its name in its declaration, then find all the places that the compiler complains about. Note how many places this had to change in, phew lots of work!
+- Rename the variable `c` to `courses`. This counts the number of courses that we count towards the gpa.
+- It seems that `l` stands for a `letter` grade so we'll use that name instead. We do this using the automated refactoring menu.
 - We now select that whole `switch` statement, and extract it into a separate method. Since the switch statement changes the `total` value, we will need to make it return an `int`. And really if we notice the various statements like `t += 1.33;` we probably want our function to simply return the `1.33`, and do the addition at the end. So our code will say something like: `total += getGradeForLetter(letter);`
 - The statement `!letter.equals("W")` is really meant to determine if the letter grade should count for credit. we therefore want to replace it with a method call: `countsForCredit(letter)`
 - It seems that the line `courses == 0 ? 0 : total / courses` computes the total gpa, so we'll extract it into a function `computeGPA`.

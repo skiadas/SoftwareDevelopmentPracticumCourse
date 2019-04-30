@@ -35,4 +35,4 @@ Code smells? More refactoring (From refactoring book and/or Clean code chapter 1
 
 ## Activity 5:
 
-Maybe extend on the grade assignment?
+Maybe extend on the grade assignment? Make that a bit more precise

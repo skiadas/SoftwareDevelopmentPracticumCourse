@@ -6,7 +6,7 @@ In this activity we will walk through the basic steps for creating a new project
 
 - Create a directory for your CS321 work.
 - Start the IntelliJ application (under Development).
-- The license server is `https://alpha.hanover.edu`.
+- The license server is `http://alpha.hanover.edu`.
 - Follow through the startup process.
 - Select *File -> New -> Project*; follow the Next buttons until you can choose a project name and location. Navigate to the CS321 directory you created. Call the project "WordPalindrome".
 - Click Finish.

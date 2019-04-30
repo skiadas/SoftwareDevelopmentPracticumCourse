@@ -7,15 +7,15 @@ Timing:
 - 00:00-00:50 introduction
 - 00:50-04:20 overview
 - 04:20-09:00 astronomy lesson: fusion (can skip)
-- 09:00-17:20 function arguments (a.k.a. parameters)
-- 17:20-28:20 the stepdown rule
+- **09:00-17:20 function arguments (a.k.a. parameters) (MUST WATCH)**
+- **17:20-28:20 the stepdown rule  (MUST WATCH)**
 - 28:20-40:50 switch statements and independent deployability (can skip; goes elsewhere?)
-- 40:50-43:30 functional programming
-- 43:30-47:30 function side-effects, temporal coupling
-- 47:30-51:30 command-query separation
-- 51:30-56:30 tell don't ask
-- 56:30-60:00 structured programming
-- 60:00-63:00 early returns
+- **40:50-43:30 functional programming  (MUST WATCH)**
+- **43:30-47:30 function side-effects, temporal coupling  (MUST WATCH)**
+- **47:30-51:30 command-query separation  (MUST WATCH)**
+- **51:30-56:30 tell don't ask  (MUST WATCH)**
+- **56:30-60:00 structured programming  (MUST WATCH)**
+- **60:00-63:00 early returns  (MUST WATCH)**
 - 63:00-66:00 error handling (can skip; goes elsewhere?)
 - 66:00-75:00 exceptions (can skip; goes elsewhere?)
 - 75:00-80:00 special cases (can skip; goes elsewhere?)

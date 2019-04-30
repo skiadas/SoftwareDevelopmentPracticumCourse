@@ -93,16 +93,16 @@
 <p>So let’s list a number of problems here:</p>
 <ul>
 <li>The variable names are really not very descriptive at all. Most of them are single letters, and they don’t make it clear what is going on. So we will want to rename them. <strong>Renaming</strong> is probably the simplest of all the refactorings.</li>
-<li>There is a large switch statement, whose goal seems to be to figure out what numeric value should correspond to a particular letter grade. This part have a very clear logic of its own, so it should probably be a separate function. <strong>Extracting</strong> a piece of code to create a new method or a new local variable is another fairly simple but extremely important form of refactoring.</li>
-<li>There are various bits and pieces of computations and calls to the <code>scanner</code> class that are by themselves somewhat obscure. We could use a comment for them, or we can also extract them into methods and use the method name to describe them.</li>
-<li>Thinking about it, we possibly want to have a separate class that represents a grade, and it knows about the corresponding value for each letter etc.</li>
+<li>There is a large switch statement, whose goal seems to be to figure out what numeric value should correspond to a particular letter grade. This part has a very clear logic of its own, so it should probably be a separate function. <strong>Extracting</strong> a piece of code to create a new method or a new local variable is another fairly simple but extremely important form of refactoring.</li>
+<li>There are various bits and pieces of computations and calls to the <code>scanner</code> class that are by themselves somewhat obscure. We could use a comment for them, or we can also extract them into methods and use the method names to describe their intent.</li>
+<li>Thinking about it, we possibly want to have a separate class that represents a grade, and it knows about the corresponding value for each letter, which letters count for credit, etc.</li>
 </ul>
 <h2 id="phase-1-renaming-and-method-extraction">Phase 1: Renaming and method extraction</h2>
 <p>We can start with some simple changes:</p>
 <ul>
-<li>Rename the variable <code>t</code> to <code>total</code>. We need to do this consistently, and also to make sure there isn’t already a variable named <code>total</code>. Note how many places this had to change in!</li>
+<li>Rename the variable <code>t</code> to <code>total</code>. We need to do this consistently, and also to make sure there isn’t already a variable named <code>total</code>. A good rule of thumb if you do it manually is this: Change its name in its declaration, then find all the places that the compiler complains about. Note how many places this had to change in, phew lots of work!</li>
 <li>Rename the variable <code>c</code> to <code>courses</code>. This counts the number of courses that we count towards the gpa.</li>
-<li>It seems that <code>l</code> stands for a <code>letter</code> grade so we’ll use that name instead.</li>
+<li>It seems that <code>l</code> stands for a <code>letter</code> grade so we’ll use that name instead. We do this using the automated refactoring menu.</li>
 <li>We now select that whole <code>switch</code> statement, and extract it into a separate method. Since the switch statement changes the <code>total</code> value, we will need to make it return an <code>int</code>. And really if we notice the various statements like <code>t += 1.33;</code> we probably want our function to simply return the <code>1.33</code>, and do the addition at the end. So our code will say something like: <code>total += getGradeForLetter(letter);</code></li>
 <li>The statement <code>!letter.equals("W")</code> is really meant to determine if the letter grade should count for credit. we therefore want to replace it with a method call: <code>countsForCredit(letter)</code></li>
 <li>It seems that the line <code>courses == 0 ? 0 : total / courses</code> computes the total gpa, so we’ll extract it into a function <code>computeGPA</code>.</li>
