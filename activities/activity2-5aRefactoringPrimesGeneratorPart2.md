@@ -1,4 +1,4 @@
-# Refactoring Activity 2
+# Activity 2-5a Refactoring
 
 Here we are continuing the work we started in refactoring activity 1. We will spend some time working on the `NumberPrinter` class and breaking it in various ways.
 

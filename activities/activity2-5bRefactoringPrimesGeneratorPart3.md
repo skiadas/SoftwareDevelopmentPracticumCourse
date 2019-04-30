@@ -1,4 +1,4 @@
-# Refactoring Activity 3
+# Activity 2-5b Refactoring
 
 In this activity we will work with the `PrimeGenerator` class. Currently this class consists of one big method, and obviously we will want to break it down into smaller pieces. In order to do that, we'll need to understand the algorithm a bit more.
 

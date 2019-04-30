@@ -1,4 +1,4 @@
-# Refactoring Activity 1: Renaming Variables and Extracting Classes
+# Activity 2-4 Refactoring: Renaming Variables and Extracting Classes
 
 ## Goals
 - Learn important vocabulary:
