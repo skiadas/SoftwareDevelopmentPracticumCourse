@@ -1,7 +1,7 @@
 # Activity 2-4 Refactoring: Renaming Variables and Extracting Classes
 
 ## Some IntelliJ Keyboard Shortcuts
-- *Refactor This* menu: `<ctrl + alt + shift>-T` 
+- *Refactor This* menu: `<ctrl + alt + shift>-T`
 - *Show available intentions*:  `<alt>-ENTER`
 
 ## Getting Started
@@ -36,9 +36,9 @@ is the method we will be refactoring.
 1. The first and easiest thing to fix are the variable names. The second and
 third columns of the table below gives the variables used by the program and
 a description of what the variable represents. The first column gives a
-new-and-improved name for most of the variables. 
+new-and-improved name for most of the variables.
 
-Take a look through the list of variables names. Note that for some variables, 
+Take a look through the list of variables names. Note that for some variables,
 it is how the name is formatted rather than the name itself that needed to be
 improved (e.g., camel-case instead of all-caps).
 
@@ -132,7 +132,7 @@ Follow the steps below to refactor and extract the two main `while` loops into s
 
     a. Undo the extract method refactoring so that the while loop is back in `main`.
     #. Check the location of the variables that we want to be part of `generatePrimes`.  They should be right above the first `while` loop, and the variables we want to be local to `printNumbers` should be directly above the second `while` loop. If not, move the variables to where they should be.
-    #. Select the code of the first `while` loop again, but this time be sure to include all the variable declarations above it, **with the exception of `numPrimesToGenerate`**.
+    #. Select the code of the first `while` loop again, but this time be sure to include all the variable declarations above it, **with the exception of `numPrimes`**.
     #. Repeat the extract-method refactoring.
     #. *Run tests to verify that nothing has been broken.*
 
@@ -149,7 +149,7 @@ Follow the steps below to refactor and extract the two main `while` loops into s
 
 #. Extract the `printNumbers` Method
 
-    a. Select the code for the second `while` loop, including the variable declarations that we want to be local in the new method.
+    a. Select the code for the remaining `while` loop in main, including all the variable declarations after the call to `generatePrimes`.
     #. **Refactor This** (`<ctrl+alt+shift>-T`) and extract the method.
     #. *Run tests to verify that nothing has been broken.*
 
@@ -159,7 +159,7 @@ Follow the steps below to refactor and extract the two main `while` loops into s
     #. *VCS -> Commit* to open the **Commit Changes** window
     #. Add the commit message, "extract generatePrimes and printNumbers methods", and commit your changes.
 
-After the above refactoring, your main method should short
+After the above refactoring, your main method should be short
 and clear as to what it aims to accomplish:
 
 ```java
@@ -187,7 +187,7 @@ classes. Let's use our two methods as the starting point for creating these clas
 
     The new class was created as an inner class to the `PrimePrinter` class, but ideally we would like it to be its own class.
 
-    f. Select the name of the class from the first line of the class declaration.
+    f. Select the name of the `PrimeGenerator` class from the first line of the class definition.
     #. **Refactor This** (`<ctrl+alt+shift>-T`) and select **Move**.
     #. Move the inner class `PrimeGenerator` to upper level.
     #. When asked, add `PrimeGenerator.java` to the git repository.
@@ -198,7 +198,7 @@ classes. Let's use our two methods as the starting point for creating these clas
     #. **Refactor This** (`<ctrl+alt+shift>-T`) and select **Inline**.
     #. Accept the default, which is to "Inline all and remove the method".
 
-    All the code from `generatePrimes` should now be part of the `inline` method, and the `generatePrimes` method shoul be gone.
+    All the code from `generatePrimes` should now be part of the `invoke` method, and the `generatePrimes` method should be gone.
 
     n. *Refactor This* to rename `invoke` to `generatePrimes`.
     #. Run the test to make sure everything is still working.
@@ -216,6 +216,7 @@ classes. Let's use our two methods as the starting point for creating these clas
 
     a. Select `colsPerPage`.
     #. **Refactor This** (`<ctrl+alt+shift>-T`) and extract it as a parameter.
+    #. Hit Enter to keep the parameter name the same as the variable name.
     #. Repeat the two steps above to extract `rowsPerPage` as a parameter.
     #. Select the `printNumbers` method call.
     #. Open the **Refactor This** (`<ctrl+alt+shift>-T`) menu.

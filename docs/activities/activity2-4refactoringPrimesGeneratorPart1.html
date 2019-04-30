@@ -201,7 +201,7 @@ Take a look at the <code>PrimePrinter.java</code> and its <code>main</code> meth
 <ol type="a">
 <li>Undo the extract method refactoring so that the while loop is back in <code>main</code>.</li>
 <li>Check the location of the variables that we want to be part of <code>generatePrimes</code>. They should be right above the first <code>while</code> loop, and the variables we want to be local to <code>printNumbers</code> should be directly above the second <code>while</code> loop. If not, move the variables to where they should be.</li>
-<li>Select the code of the first <code>while</code> loop again, but this time be sure to include all the variable declarations above it, <strong>with the exception of <code>numPrimesToGenerate</code></strong>.</li>
+<li>Select the code of the first <code>while</code> loop again, but this time be sure to include all the variable declarations above it, <strong>with the exception of <code>numPrimes</code></strong>.</li>
 <li>Repeat the extract-method refactoring.</li>
 <li><em>Run tests to verify that nothing has been broken.</em></li>
 </ol>
@@ -214,7 +214,7 @@ Take a look at the <code>PrimePrinter.java</code> and its <code>main</code> meth
 </ul></li>
 <li><p>Extract the <code>printNumbers</code> Method</p>
 <ol type="a">
-<li>Select the code for the second <code>while</code> loop, including the variable declarations that we want to be local in the new method.</li>
+<li>Select the code for the remaining <code>while</code> loop in main, including all the variable declarations after the call to <code>generatePrimes</code>.</li>
 <li><strong>Refactor This</strong> (<code>&lt;ctrl+alt+shift&gt;-T</code>) and extract the method.</li>
 <li><em>Run tests to verify that nothing has been broken.</em></li>
 </ol></li>
@@ -225,7 +225,7 @@ Take a look at the <code>PrimePrinter.java</code> and its <code>main</code> meth
 <li>Add the commit message, “extract generatePrimes and printNumbers methods”, and commit your changes.</li>
 </ol></li>
 </ol>
-<p>After the above refactoring, your main method should short and clear as to what it aims to accomplish:</p>
+<p>After the above refactoring, your main method should be short and clear as to what it aims to accomplish:</p>
 <pre class="java"><code>public static void main(String[] args) {
     final int numPrimes = 1000;
     int[] primes = generatePrimes(numPrimes);
@@ -244,7 +244,7 @@ Take a look at the <code>PrimePrinter.java</code> and its <code>main</code> meth
 </ol>
 <p>The new class was created as an inner class to the <code>PrimePrinter</code> class, but ideally we would like it to be its own class.</p>
 <ol start="6" type="a">
-<li>Select the name of the class from the first line of the class declaration.</li>
+<li>Select the name of the <code>PrimeGenerator</code> class from the first line of the class definition.</li>
 <li><strong>Refactor This</strong> (<code>&lt;ctrl+alt+shift&gt;-T</code>) and select <strong>Move</strong>.</li>
 <li>Move the inner class <code>PrimeGenerator</code> to upper level.</li>
 <li>When asked, add <code>PrimeGenerator.java</code> to the git repository.</li>
@@ -255,7 +255,7 @@ Take a look at the <code>PrimePrinter.java</code> and its <code>main</code> meth
 <li><strong>Refactor This</strong> (<code>&lt;ctrl+alt+shift&gt;-T</code>) and select <strong>Inline</strong>.</li>
 <li>Accept the default, which is to “Inline all and remove the method”.</li>
 </ol>
-<p>All the code from <code>generatePrimes</code> should now be part of the <code>inline</code> method, and the <code>generatePrimes</code> method shoul be gone.</p>
+<p>All the code from <code>generatePrimes</code> should now be part of the <code>invoke</code> method, and the <code>generatePrimes</code> method should be gone.</p>
 <ol start="14" type="a">
 <li><em>Refactor This</em> to rename <code>invoke</code> to <code>generatePrimes</code>.</li>
 <li>Run the test to make sure everything is still working.</li>
@@ -271,6 +271,7 @@ Take a look at the <code>PrimePrinter.java</code> and its <code>main</code> meth
 <ol type="a">
 <li>Select <code>colsPerPage</code>.</li>
 <li><strong>Refactor This</strong> (<code>&lt;ctrl+alt+shift&gt;-T</code>) and extract it as a parameter.</li>
+<li>Hit Enter to keep the parameter name the same as the variable name.</li>
 <li>Repeat the two steps above to extract <code>rowsPerPage</code> as a parameter.</li>
 <li>Select the <code>printNumbers</code> method call.</li>
 <li>Open the <strong>Refactor This</strong> (<code>&lt;ctrl+alt+shift&gt;-T</code>) menu.</li>

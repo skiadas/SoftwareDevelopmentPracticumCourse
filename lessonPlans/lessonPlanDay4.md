@@ -14,7 +14,7 @@ operation signatures, object interface, type, subtypes and supertypes (p 13)
 
 ## Activity 2:
 
-Case study POGIL-style
+Case study POGIL-style (my grades version?)
 
 ## Lunch
 
