@@ -14,6 +14,7 @@
 </script>
 </head>
 <body>
+<<<<<<< HEAD
 <h1 id="activity-2-4-refactoring-renaming-variables-and-extracting-classes">Activity 2-4 Refactoring: Renaming Variables and Extracting Classes</h1>
 <h2 id="goals">Goals</h2>
 <ul>
@@ -32,6 +33,13 @@
 <li>use <code>&lt;ctrl&gt;-T</code> or <code>&lt;ctrl&gt;-&lt;alt&gt;-&lt;shift&gt;-T</code> to open the <em>Refactor This</em> menu</li>
 <li>use <code>&lt;option&gt;-ENTER</code> or <code>&lt;alt&gt;-ENTER</code> to see available intentions</li>
 </ul></li>
+=======
+<h1 id="refactoring-activity-1-renaming-variables-and-extracting-classes">Refactoring Activity 1: Renaming Variables and Extracting Classes</h1>
+<h2 id="some-intellij-keyboard-shortcuts">Some IntelliJ Keyboard Shortcuts</h2>
+<ul>
+<li><em>Refactor This</em> menu: <code>&lt;ctrl + alt + shift&gt;-T</code></li>
+<li><em>Show available intentions</em>: <code>&lt;alt&gt;-ENTER</code></li>
+>>>>>>> minor edits
 </ul>
 <h2 id="getting-started">Getting Started</h2>
 <ul>
@@ -52,14 +60,15 @@ Verify that project the project has the following three files:</p><ul>
 <li><p><input type="checkbox" disabled="" />
 Create a git repository for the project from within IntelliJ: <em>VCS -&gt; Import into version control -&gt; Share project on GitHub</em></p></li>
 <li><p><input type="checkbox" disabled="" />
-Right-click on “PrintPrimesTest” (either the filename or the tab) and select: <code>Run 'PrintPrimesTest'</code> from the given menu. This will verify that everything is setup properly. Ask for help If the test fails.</p></li>
+Right-click on “PrintPrimesTest” (either the filename or the tab) and select: <code>Run 'PrintPrimesTest'</code> from the given menu. This will verify that everything is setup properly. Ask for help if the test fails.</p></li>
 <li><p><input type="checkbox" disabled="" />
 Take a look at the <code>PrimePrinter.java</code> and its <code>main</code> method. This is the method we will be refactoring.</p></li>
 </ul>
 <h2 id="step-1-rename-variables">Step 1: Rename Variables</h2>
 <ol type="1">
-<li>The first and easiest thing to fix are the variable names. The table below lists the variables used by the program. For each variable, read the description of what the variable represents and choose a better name for the variable. Note that for some variables, it is how the name is formatted rather than the name itself that can be improved (e.g., camel-case instead of all-caps).</li>
+<li>The first and easiest thing to fix are the variable names. The second and third columns of the table below gives the variables used by the program and a description of what the variable represents. The first column gives a new-and-improved name for most of the variables.</li>
 </ol>
+<p>Take a look through the list of variables names. Note that for some variables, it is how the name is formatted rather than the name itself that needed to be improved (e.g., camel-case instead of all-caps).</p>
 <table>
 <colgroup>
 <col style="width: 20%" />
@@ -160,7 +169,7 @@ Take a look at the <code>PrimePrinter.java</code> and its <code>main</code> meth
 <li><p>Rename each variable in <code>PrimePrinter.java</code> as follows:</p>
 <ol type="a">
 <li>Click on the variable name.</li>
-<li>Use <code>&lt;ctrl&gt;-T</code> to open the <strong>Refactor This</strong> menu.</li>
+<li>Use <code>&lt;ctrl+alt+shift&gt;-T</code> to open the <strong>Refactor This</strong> menu.</li>
 <li>Choose <strong>Rename</strong> (the variable will become outlined in red).</li>
 <li>Type in the new name for the variable.</li>
 <li><code>ENTER</code> to make the change.</li>
@@ -168,16 +177,16 @@ Take a look at the <code>PrimePrinter.java</code> and its <code>main</code> meth
 <p>Notice that all occurrences of the original variable name have been renamed.</p></li>
 <li><p>Use <em>Code -&gt; Reformat Code</em> to automatically fix the indentation and spacing.</p></li>
 <li><p>The last thing to do is to move the variable declarations closer to where the variables are first used. For each variable declaration, do the following:</p>
-<ol start="6" type="a">
+<ol type="a">
 <li>Click on a variable name</li>
-<li>Use <code>&lt;option&gt;-ENTER</code> to show available intentions</li>
+<li>Use <code>&lt;alt&gt;-ENTER</code> to show available intentions</li>
 <li>Select <em>Move declaration closer to usages</em> if that is one of the possible intentions in the list</li>
 </ol></li>
-<li><p>Commit your changes:</p>
-<ol start="10" type="a">
-<li></li>
-<li></li>
-<li></li>
+<li><p>Commit changes to your local GitHub:</p>
+<ol type="a">
+<li><em>VCS -&gt; Git -&gt; Add</em></li>
+<li><em>VCS -&gt; Commit</em> to open the <strong>Commit Changes</strong> window</li>
+<li>Add the commit message, “rename variables”, and commit your changes.</li>
 </ol></li>
 </ol>
 <h2 id="step-2-partition-code-into-basic-methods">Step 2: Partition Code into Basic Methods</h2>
@@ -198,7 +207,7 @@ Take a look at the <code>PrimePrinter.java</code> and its <code>main</code> meth
 <li><p>Extract the <code>generatePrimes</code> Method (Try 1)</p>
 <ol type="a">
 <li>Select all the lines of code that make up the first main <code>while</code> loop.</li>
-<li>Use <code>&lt;ctrl&gt;-T</code> to open the <strong>Refactor This</strong> menu.</li>
+<li>Use <code>&lt;ctrl+alt+shift&gt;-T</code> to open the <strong>Refactor This</strong> menu.</li>
 <li>Under <strong>Extract</strong> select <strong>Method</strong>.</li>
 <li>In the <strong>Extract Method</strong> window, give it the name “generatePrimes” and take a moment to look over the proposed parameters and return type.</li>
 <li>Click OK.</li>
@@ -210,25 +219,32 @@ Take a look at the <code>PrimePrinter.java</code> and its <code>main</code> meth
 <p>Undo and redo the method extraction a few times until you can see this is what happens.</p></li>
 <li><p>Extract the <code>generatePrimes</code> Method (Try 2)</p>
 <p>Although the above refactoring gave us the method we wanted, the variables that we want to be declared locally are instead being passed in as parameters. There are a couple ways to fix this, but the simplest is to redo the refactoring, this time making sure to include all the declarations for the variables we want to be local in the new method.</p>
-<ol start="7" type="a">
+<ol type="a">
 <li>Undo the extract method refactoring so that the while loop is back in <code>main</code>.</li>
 <li>Check the location of the variables that we want to be part of <code>generatePrimes</code>. They should be right above the first <code>while</code> loop, and the variables we want to be local to <code>printNumbers</code> should be directly above the second <code>while</code> loop. If not, move the variables to where they should be.</li>
 <li>Select the code of the first <code>while</code> loop again, but this time be sure to include all the variable declarations above it, <strong>with the exception of <code>numPrimesToGenerate</code></strong>.</li>
 <li>Repeat the extract-method refactoring.</li>
 <li><em>Run tests to verify that nothing has been broken.</em></li>
 </ol>
-<p>Your line calling <code>generatePrimes</code> should now look like the following: <code>java  int[] primes = generatePrimes(numPrimes);</code> There are a couple things you should note about this second try at refactoring the first <code>while</code> loop:</p>
+<p>Your line calling <code>generatePrimes</code> should now look like the following:</p>
+<pre class="java"><code>int[] primes = generatePrimes(numPrimes);</code></pre>
+<p>There are a couple things you should note about this second try at refactoring the first <code>while</code> loop:</p>
 <ul>
 <li>It resulted in a <code>generatePrimes</code> method with a much simpler signature that requires the passing of just a single parameter: <code>numPrimes</code>.</li>
 <li>The refactoring was smart enough when creating <code>generatePrimes</code> to have it return the the correct thing, the <code>primes</code> array.</li>
 </ul></li>
 <li><p>Extract the <code>printNumbers</code> Method</p>
-<ol start="12" type="a">
+<ol type="a">
 <li>Select the code for the second <code>while</code> loop, including the variable declarations that we want to be local in the new method.</li>
-<li><strong>Refactor This</strong> (<code>&lt;ctrl&gt;-T</code>) and extract the method.</li>
+<li><strong>Refactor This</strong> (<code>&lt;ctrl+alt+shift&gt;-T</code>) and extract the method.</li>
 <li><em>Run tests to verify that nothing has been broken.</em></li>
 </ol></li>
-<li><p>Commit your changes:</p></li>
+<li><p>Commit your changes:</p>
+<ol type="a">
+<li><em>VCS -&gt; Git -&gt; Add</em></li>
+<li><em>VCS -&gt; Commit</em> to open the <strong>Commit Changes</strong> window</li>
+<li>Add the commit message, “extract generatePrimes and printNumbers methods”, and commit your changes.</li>
+</ol></li>
 </ol>
 <p>After the above refactoring, your main method should short and clear as to what it aims to accomplish:</p>
 <pre class="java"><code>public static void main(String[] args) {
@@ -242,7 +258,7 @@ Take a look at the <code>PrimePrinter.java</code> and its <code>main</code> meth
 <li><p>Create the <code>PrimeGenerator</code> class</p>
 <ol type="a">
 <li>Select the <code>generatePrimes</code> call in <code>main</code>.</li>
-<li><strong>Refactor This</strong> (<code>&lt;ctrl&gt;-T</code>) and under <strong>Extract</strong> select <strong>Method Object</strong>.</li>
+<li><strong>Refactor This</strong> (<code>&lt;ctrl+alt+shift&gt;-T</code>) and under <strong>Extract</strong> select <strong>Method Object</strong>.</li>
 <li>Name the new class <code>PrimeGenerator</code>.</li>
 <li>Keep the visibility private and double check the signature before clicking <code>OK</code>.</li>
 <li>When asked, move the <code>generatePrimes</code> method to the extracted class.</li>
@@ -250,14 +266,14 @@ Take a look at the <code>PrimePrinter.java</code> and its <code>main</code> meth
 <p>The new class was created as an inner class to the <code>PrimePrinter</code> class, but ideally we would like it to be its own class.</p>
 <ol start="6" type="a">
 <li>Select the name of the class from the first line of the class declaration.</li>
-<li><strong>Refactor This</strong> (<code>&lt;ctrl&gt;-T</code>) and select <strong>Move</strong>.</li>
+<li><strong>Refactor This</strong> (<code>&lt;ctrl+alt+shift&gt;-T</code>) and select <strong>Move</strong>.</li>
 <li>Move the inner class <code>PrimeGenerator</code> to upper level.</li>
 <li>When asked, add <code>PrimeGenerator.java</code> to the git repository.</li>
 </ol>
 <p>Take a look at the newly created <code>PrimeGenerator</code> class. We do not need both the <code>invoke</code> and the <code>generatePrimes</code> methods. Currently <code>invoke</code> is just a wrapper around the call to <code>generatePrimes</code>. To clean this up, we will inline <code>generatePrimes</code> and then rename <code>invoke</code>.</p>
 <ol start="10" type="a">
 <li>Click on the first line of the <code>generatePrimes</code> method.</li>
-<li><strong>Refactor This</strong> (<code>&lt;ctrl&gt;-T</code>) and select <strong>Inline</strong>.</li>
+<li><strong>Refactor This</strong> (<code>&lt;ctrl+alt+shift&gt;-T</code>) and select <strong>Inline</strong>.</li>
 <li>Accept the default, which is to “Inline all and remove the method”.</li>
 </ol>
 <p>All the code from <code>generatePrimes</code> should now be part of the <code>inline</code> method, and the <code>generatePrimes</code> method shoul be gone.</p>
@@ -275,10 +291,10 @@ Take a look at the <code>PrimePrinter.java</code> and its <code>main</code> meth
 <p>To get the variables and parameters where they need to be in the new class, we will first turn <code>colsPerPage</code> and <code>rowsPerPage</code> into parameters, and then extract a parameter object (instead of a method object).</p>
 <ol type="a">
 <li>Select <code>colsPerPage</code>.</li>
-<li><strong>Refactor This</strong> (<code>&lt;ctrl&gt;-T</code>) and extract it as a parameter.</li>
+<li><strong>Refactor This</strong> (<code>&lt;ctrl+alt+shift&gt;-T</code>) and extract it as a parameter.</li>
 <li>Repeat the two steps above to extract <code>rowsPerPage</code> as a parameter.</li>
 <li>Select the <code>printNumbers</code> method call.</li>
-<li>Open the <strong>Refactor This</strong> (<code>&lt;ctrl&gt;-T</code>) menu.</li>
+<li>Open the <strong>Refactor This</strong> (<code>&lt;ctrl+alt+shift&gt;-T</code>) menu.</li>
 <li>Under <strong>Extract</strong> select <strong>Parameter Object</strong>.</li>
 <li>Name the new class <code>NumberPrinter</code>.</li>
 <li>Under <strong>Parameters to Extract</strong> <strong>unselect</strong> <code>numPrimes</code> and <code>primes</code>.</li>
@@ -288,12 +304,12 @@ Take a look at the <code>PrimePrinter.java</code> and its <code>main</code> meth
 <p>The <code>printNumbers</code> method should now have three parameters: <code>numPrimes</code>, <code>primes</code>, and <code>numberPrinter</code>, which is a <code>NumberPrinter</code> object. To change <code>printNumbers</code> to a method of the <code>NumberPrinter</code> class:</p>
 <ol start="11" type="a">
 <li>Select the <code>printNumbers</code> call.</li>
-<li><strong>Refactor This</strong> (<code>&lt;ctrl&gt;-T</code>) and select <strong>Convert To Instance Method</strong>.</li>
+<li><strong>Refactor This</strong> (<code>&lt;ctrl+alt+shift&gt;-T</code>) and select <strong>Convert To Instance Method</strong>.</li>
 </ol>
 <p>Take a look at the <code>NumberPrinter</code> class. IntelliJ has “encapsulated” the two fields behind getter methods, which we do not really need. Inline each of these getter methods one at a time to remove them:</p>
 <ol start="13" type="a">
 <li>Select the method name.</li>
-<li><strong>Refactor This</strong> (<code>&lt;ctrl&gt;-T</code>) and select <strong>Inline</strong>.</li>
+<li><strong>Refactor This</strong> (<code>&lt;ctrl+alt+shift&gt;-T</code>) and select <strong>Inline</strong>.</li>
 <li>Inline all and remove the method.</li>
 <li>Verify that all tests are still passing.</li>
 </ol></li>
@@ -305,7 +321,13 @@ Take a look at the <code>PrimePrinter.java</code> and its <code>main</code> meth
 <li>Use refactoring to rename the <code>printNumbers</code> method to just <code>print</code>, and the <code>generatePrimes</code> method to just <code>generate</code>.</li>
 </ol></li>
 <li><p>One last time, run the tests to make sure that everything is still working.</p></li>
-<li><p>Commit and push changes.</p></li>
+<li><p>Commit and push changes.</p>
+<ol type="a">
+<li><em>VCS -&gt; Git -&gt; Add</em></li>
+<li><em>VCS -&gt; Commit</em> to open the <strong>Commit Changes</strong> window</li>
+<li>Add the commit message, “refactor to create PrimeGenerator an NumberPrinter classes”, and commit your changes.</li>
+<li><em>VCS -&gt; Git -&gt; Push</em></li>
+</ol></li>
 </ol>
 <p>This activity continues in <a href="activity2-5aRefactoringPrimesGeneratorPart2.html">refactoring activity 2</a>.</p>
 <script type="text/javascript">
