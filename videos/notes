@@ -1,0 +1,42 @@
+Every time you choose a name it should ______________________ of the thing you're trying to name.
+
+	reveal the intent
+
+
+int d; // elapsed time in days 
+v. 
+int elapsedTimeInDays;
+
+
+A variable should describe itself, act as its own comment.
+
+Reveal intent using explanatory variables.
+
+Names that describe implementation details do/do not decribe intent?
+
+Whenever you have to read the code to understand a name, the name has pretty much failed to communicate.
+
+Names are your primary vehicle for communicating intent.
+
+Disinformation
+
+A name should say what it means and mean what it says.
+
+Pronounceable names.
+
+Classes and variables are nouns, methods are verbs.
+
+Boolean variables and methods that return booleans should be written like predicates. 
+
+predicate - states or affirms something
+
+Accessors - use 'get', not the name of the field
+
+The scope length rule: 
+  - For variables, the longer the scope, the longer the name.
+  - For classes and functions, the longer the scope, the shorter the name.
+Functions that are called from many places and have big long scopes should have short convenient names.
+
+Functions that are private with short little scopes should have long explanatory names.
+
+
