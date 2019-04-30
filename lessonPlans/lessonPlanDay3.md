@@ -27,6 +27,8 @@ Discussion of basic function structure concepts and reasons behind them:
 
 ## Activity 3:
 
+- [code smells](../activities/activity3-3codeSmells.md)
+
 Comments/Form something?? Code reviews
 
 ## Activity 4:
