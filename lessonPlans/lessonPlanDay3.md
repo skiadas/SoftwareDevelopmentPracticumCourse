@@ -2,6 +2,11 @@
 
 ## Activity 1:
 
+- [Second part of prime generator refactoring.](../activities/activity2-5aRefactoringPrimesGeneratorPart2.md)
+- [Third part of prime generator refactoring.](../activities/activity2-5bRefactoringPrimesGeneratorPart3.md)
+
+TODO
+
 Pencil+Paper? POGIL activity to introduce function structure concepts:
 
 - Number of arguments kept small

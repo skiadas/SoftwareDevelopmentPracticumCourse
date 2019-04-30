@@ -11,7 +11,7 @@ Naming in relation to scope
 
 ## Activity 2:
 
-Introduction to refactoring.
+Introduction to refactoring. Part 1
 
 - [Activity 2-2 notes](../activities/activity2-2refactoringIntro.md)
 - [Activity 2-2 handout](../activities/activity2-2refactoringHandout.md)
@@ -29,9 +29,11 @@ Refactoring practice.
 
 ## Activity 4:
 
-- [Extended refactoring session, first part](../activities/activity2-4refactoringPrimesGeneratorPart1.md)
+Introduction to refactoring. Parts 2, 3
+
+- [Activity 2-2 notes](../activities/activity2-2refactoringIntro.md)
+- [Activity 2-2 handout](../activities/activity2-2refactoringHandout.md)
 
 ## Activity 5:
 
-- [Second part of prime generator refactoring.](../activities/activity2-5aRefactoringPrimesGeneratorPart2.md)
-- [Third part of prime generator refactoring.](../activities/activity2-5bRefactoringPrimesGeneratorPart3.md)
+- [Extended refactoring session, first part](../activities/activity2-4refactoringPrimesGeneratorPart1.md)
