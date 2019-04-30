@@ -14,7 +14,7 @@
 </script>
 </head>
 <body>
-<h1 id="activity-2-day-2-introduction-to-refactoring">Activity 2 (Day 2) Introduction to refactoring</h1>
+<h1 id="activity-2-2-introduction-to-refactoring">Activity 2-2 Introduction to refactoring</h1>
 <ul>
 <li>Refactoring is a change in the structure of the code, without changing the behavior of the code.</li>
 <li>Its intent is primarily to make the code:
@@ -103,8 +103,8 @@
 <li>Rename the variable <code>t</code> to <code>total</code>. We need to do this consistently, and also to make sure there isn’t already a variable named <code>total</code>. A good rule of thumb if you do it manually is this: Change its name in its declaration, then find all the places that the compiler complains about. Note how many places this had to change in, phew lots of work!</li>
 <li>Rename the variable <code>c</code> to <code>courses</code>. This counts the number of courses that we count towards the gpa.</li>
 <li>It seems that <code>l</code> stands for a <code>letter</code> grade so we’ll use that name instead. We do this using the automated refactoring menu.</li>
-<li>We now select that whole <code>switch</code> statement, and extract it into a separate method. Since the switch statement changes the <code>total</code> value, we will need to make it return an <code>int</code>. And really if we notice the various statements like <code>t += 1.33;</code> we probably want our function to simply return the <code>1.33</code>, and do the addition at the end. So our code will say something like: <code>total += getGradeForLetter(letter);</code></li>
-<li>The statement <code>!letter.equals("W")</code> is really meant to determine if the letter grade should count for credit. we therefore want to replace it with a method call: <code>countsForCredit(letter)</code></li>
+<li>We now select that whole <code>switch</code> statement, and extract it into a separate method. Since the switch statement changes the <code>total</code> value, we will need to make it return an <code>int</code>. And really if we notice the various statements like <code>t += 1.33;</code> we probably want our function to simply return the <code>1.33</code>, and do the addition at the end. So our code will say something like: <code>total += getGradeForLetter(letter);</code>. We do these changes gradually: First we create the new method, copy the code over and fix any syntax errors. Then we replace the original code, and make sure the tests still pass.</li>
+<li>The statement <code>!letter.equals("W")</code> is really meant to determine if the letter grade should count for credit. We therefore want to replace it with a method call: <code>countsForCredit(letter)</code></li>
 <li>It seems that the line <code>courses == 0 ? 0 : total / courses</code> computes the total gpa, so we’ll extract it into a function <code>computeGPA</code>.</li>
 <li>There are some <code>scanner.next("\\s*\\w+\\s*");</code> lines at the beginning. Actually these two lines serve different purposes: The first reads the course department prefix, while the other reads the course number and letter grade. We extract them in two function <code>readPrefix</code> and <code>readCourseNo</code>. In the future, the code for these might no longer be the same.</li>
 <li>The <code>scanner.next("[ABCDFW][+-]?");</code> pattern reads a letter grade. We again extract it to a <code>readLetterGrade</code> method.</li>

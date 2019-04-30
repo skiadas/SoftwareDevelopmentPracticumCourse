@@ -1,4 +1,4 @@
-# Activity 2 (Day 2) Introduction to refactoring
+# Activity 2-2 Introduction to refactoring
 
 - Refactoring is a change in the structure of the code, without changing the behavior of the code.
 - Its intent is primarily to make the code:
@@ -91,8 +91,8 @@ We can start with some simple changes:
 - Rename the variable `t` to `total`. We need to do this consistently, and also to make sure there isn't already a variable named `total`. A good rule of thumb if you do it manually is this: Change its name in its declaration, then find all the places that the compiler complains about. Note how many places this had to change in, phew lots of work!
 - Rename the variable `c` to `courses`. This counts the number of courses that we count towards the gpa.
 - It seems that `l` stands for a `letter` grade so we'll use that name instead. We do this using the automated refactoring menu.
-- We now select that whole `switch` statement, and extract it into a separate method. Since the switch statement changes the `total` value, we will need to make it return an `int`. And really if we notice the various statements like `t += 1.33;` we probably want our function to simply return the `1.33`, and do the addition at the end. So our code will say something like: `total += getGradeForLetter(letter);`
-- The statement `!letter.equals("W")` is really meant to determine if the letter grade should count for credit. we therefore want to replace it with a method call: `countsForCredit(letter)`
+- We now select that whole `switch` statement, and extract it into a separate method. Since the switch statement changes the `total` value, we will need to make it return an `int`. And really if we notice the various statements like `t += 1.33;` we probably want our function to simply return the `1.33`, and do the addition at the end. So our code will say something like: `total += getGradeForLetter(letter);`. We do these changes gradually: First we create the new method, copy the code over and fix any syntax errors. Then we replace the original code, and make sure the tests still pass.
+- The statement `!letter.equals("W")` is really meant to determine if the letter grade should count for credit. We therefore want to replace it with a method call: `countsForCredit(letter)`
 - It seems that the line `courses == 0 ? 0 : total / courses` computes the total gpa, so we'll extract it into a function `computeGPA`.
 - There are some `scanner.next("\\s*\\w+\\s*");` lines at the beginning. Actually these two lines serve different purposes: The first reads the course department prefix, while the other reads the course number and letter grade. We extract them in two function `readPrefix` and `readCourseNo`. In the future, the code for these might no longer be the same.
 - The `scanner.next("[ABCDFW][+-]?");` pattern reads a letter grade. We again extract it to a `readLetterGrade` method.

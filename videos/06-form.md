@@ -7,8 +7,8 @@ Timing:
 - 00:00-00:50 introduction
 - 00:50-03:55 overview
 - 03:55-11:10 astronomy lesson: Sol's Pyre (can skip)
-- 11:10-33:20 comments
-- 33:20-45:45 formatting
+- **11:10-33:20 comments (MUST WATCH)**
+- **33:20-45:45 formatting (MUST WATCH)**
 - 45:45-53:30 classes (skip, goes later?)
 - 53:30-59:45 data structures (skip, goes later?)
 - 59:45-63:50 boundaries

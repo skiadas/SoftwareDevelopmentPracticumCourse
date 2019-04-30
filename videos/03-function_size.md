@@ -7,8 +7,8 @@ Timing:
 - 00:00-00:40 intro sequence
 - 00:40-02:50 overview
 - 02:50-09:20 astronomy lecture: the sun's power (can skip)
-- 09:20-18:20 the first rule of functions
-- 18:30-28:00 small, well-named functions are code signposts and a code filing system
+- **09:20-18:20 the first rule of functions**
+- **18:30-28:00 small, well-named functions are code signposts and a code filing system**
 - 28:00-35:50 long functions are where the classes go to hide
     - 28:00 overview
     - 31:25 prime number report refactoring example (can skip)

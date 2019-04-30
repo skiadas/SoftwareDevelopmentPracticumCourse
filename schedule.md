@@ -25,7 +25,7 @@ Tue
     	- (Coding) naming variables and methods
     	- (Coding) extracting code into small functions
     - [Activities for Day 2](lessonPlans/lessonPlanDay2.md)
-    - Lunchtime Video: [Refactoring screencast "2": Prime generator](../videos/04-prime_gen_screencast.md)
+    - Lunchtime Video: [Refactoring screencast "2": Prime generator](videos/04-prime_gen_screencast.md)
 
 Wed
   ~ - Goals:
