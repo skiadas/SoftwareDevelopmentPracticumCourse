@@ -26,7 +26,7 @@ Look over the implementation in the [handout](activity3-1functionStructureHandou
 
 Don't read further until you have thoroughly discussed the two questions above.
 
-In order to address the problems, we are going to have a small refactoring session, and we will use the *incremental replacement* method that we saw earlier: Incrementally replace existing features with the new functionality. Recall the overall steps:
+In order to address the problems, we are going to have a small refactoring session, and we will use the *incremental replacement* method: Incrementally replace existing features with the new functionality. Recall the overall steps:
 
 - Introduction:
     - Introduce a new class for the new structure, possibly via a refactoring step.

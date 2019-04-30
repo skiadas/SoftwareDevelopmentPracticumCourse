@@ -2,20 +2,27 @@
 
 ## Activity 1:
 
+Introduction to refactoring. Part 3
+
+- [Activity 2-2 notes](../activities/activity2-2refactoringIntro.md)
+- [Activity 2-2 handout](../activities/activity2-2refactoringHandout.md)
+
+## Activity 2:
+
+- [Activity 3-1](../activities/activity3-1functionStructureExample.md)
+- [Activity 3-1 handout](../activities/activity3-1functionStructureHandout.md)
+
+## Lunch
+
+- Get Lunch
+- Video (Comments/Form)
+
+## Activity 3:
+
 - [Second part of prime generator refactoring.](../activities/activity2-5aRefactoringPrimesGeneratorPart2.md)
 - [Third part of prime generator refactoring.](../activities/activity2-5bRefactoringPrimesGeneratorPart3.md)
 
-TODO
-
-Pencil+Paper? POGIL activity to introduce function structure concepts:
-
-- Number of arguments kept small
-- Avoiding boolean arguments
-- Null?
-- Command-query separation
-
-
-## Activity 2:
+## Activity 4:
 
 Discussion of basic function structure concepts and reasons behind them:
 
@@ -25,21 +32,6 @@ Discussion of basic function structure concepts and reasons behind them:
 - Null?
 - [notes](../activities/activity3-2functionStructure.md)
 
-## Lunch
-
-- Get Lunch
-- Video (Comments/Form)
-
-## Activity 3:
-
-- [code smells](../activities/activity3-3codeSmells.md)
-
-Comments/Form something?? Code reviews
-
-## Activity 4:
-
-Code smells? More refactoring (From refactoring book and/or Clean code chapter 17)
-
 ## Activity 5:
 
-Maybe extend on the grade assignment? Make that a bit more precise
+- [code smells](../activities/activity3-3codeSmells.md)

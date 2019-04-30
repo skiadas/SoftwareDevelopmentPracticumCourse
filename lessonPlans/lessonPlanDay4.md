@@ -29,4 +29,3 @@ Maybe design of grades application?
 
 
 ## Activity 5:
-

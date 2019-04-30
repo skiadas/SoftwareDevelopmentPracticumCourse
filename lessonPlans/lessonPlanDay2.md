@@ -29,11 +29,12 @@ Refactoring practice.
 
 ## Activity 4:
 
-Introduction to refactoring. Parts 2, 3
+- [Extended refactoring session, first part](../activities/activity2-4refactoringPrimesGeneratorPart1.md)
+
+## Activity 5:
+
+Introduction to refactoring. Part 2
 
 - [Activity 2-2 notes](../activities/activity2-2refactoringIntro.md)
 - [Activity 2-2 handout](../activities/activity2-2refactoringHandout.md)
 
-## Activity 5:
-
-- [Extended refactoring session, first part](../activities/activity2-4refactoringPrimesGeneratorPart1.md)
