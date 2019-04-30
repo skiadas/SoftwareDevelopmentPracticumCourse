@@ -7,7 +7,7 @@
 Naming (variables, functions,interfaces)
 Naming in relation to scope
 
-- [Functions Video, parts](videos/03-function_size.md)
+- [Functions Video, parts](../videos/03-function_size.md)
 
 ## Activity 2:
 
