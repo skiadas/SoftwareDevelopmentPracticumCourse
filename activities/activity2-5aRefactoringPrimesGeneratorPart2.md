@@ -1,55 +1,142 @@
-# Activity 2-5a Refactoring
+# Activity 2-5a Refactoring: The `NumberPrinter` Class
 
-Here we are continuing the work we started in refactoring activity 1. We will spend some time working on the `NumberPrinter` class and breaking it in various ways.
+This activity continues the refactoring of `primeGenerator` that you began in Activity 2-4. 
 
-## Step 4: Working on the NumberPrinter class
+## Step 4: Refactor the `print` method
 
-Let's see if we can do some cleanup of the `NumberPrinter` class:
+1. The first thing to clean up are the parameters for the `print` method: `int numPrimes` and 
+`int[] primes`.  
 
-- The parameter to the `print` method is called `primes`, but it clearly can be any array of numbers. So perform a Rename refactoring to change the parameter to `numbers`.
-- The other parameter is the number of numbers to print. We don't really need that any more technically, as we can simply use the length of the `numbers` array instead. To do this in a stepwise fashion, do the following:
-    - Find the first use of the number-of-primes variable, and use "Extract Variable" to create a local variable equal to it, and named `numberOfNumbers`. Make sure to replace all 3 occurences.
-    - Change the `numberOfNumbers = ...` assignment to instead be `numberOfNumbers = numbers.length - 1`.  (The numbers in the array actually start at index 1) Run your tests to make sure they still work.
-    - Now the parameter in the `print` method should be grayed out as it is not being used. Use the "Safe Delete" intention on it, and run your tests again.
-- Let's continue with refactoring the print method into smaller parts. We start with the double for loop: Perform the Extract Method refactoring to it, to obtain a method `printNumbersOnPage`.
-- It seems that the first group of `System.out` calls prints a header, so go ahead and extract the method `printHeader` from it.
-- The remaining part of the `while` loops seems to update the counters as we advance through each page. It also seems that the methods we use all need those values. So we should elevate them to fields so that they can be more easily shared. Perform an "extract field" refactoring on the page number, page offset and number of numbers variables.
-- Extract a method from the last three lines of the while loop, call it `moveToNextPage`.
-- Now that we are using fields, the page number and number of number parameters in the `printHeader` method are no longer needed. Perform an "Inline" refactoring to them, and remove the superfluous `this.` parts that are added. Run your tests.
-- Do the same for the `printNumbersOnPage` method, leaving just the `numbers` parameter to it.
-- It feels that `numbers` should also be set to a field. Extract the field from the first occurence of `numbers`, in the initialization of `numberOfNumbers`. Make sure to tell it to replace all occurences.
-- Run your tests and they should now fail. That's because IntelliJ did not actually add a statement to initialize `this.numbers` to equal the parameter `numbers`. Do so in the `print` method, and check that your tests are back in order.
-- The `numbers` parameter in  `printNumbersOnPage` should now be redundant. Perform the "Safe delete" intention on it.
-- The first four lines of the `print` method are all about initializing fields. Extract them to a method `initialize`.
-- The test in the `while` loop is determining if there are still more numbers to print. Extract it into a method `needToPrintMore` (keep the original signature when asked). This make it more clear what that test does.
-- Let's shift our attention to the `printNumbersOnPage` method. Look at the conditional at the innermost level of the loop. Let's extract it to a method `printNumberAt`.
+    a. Although the second parameters is called `primes`, in theory it could be any array of 
+numbers.  Perform a **Rename** refactoring to change the name of `primes` to `numbers`.
+
+    b. The parameter `numPrimes` indicates how many numbers to print. We can just use the length of the `numbers` array instead, which makes the `numPrimes` parameter unnecessary. Fix this in a stepwise fashion as follows:
+        - Find the first use of the `numPrimes` variable.
+        - Use **Extract Variable** refactoring to create a local variable called `numberOfNumbers`. When asked, be sure to replace all 3 occurences.  Also, renaming the variable will be the last thing you do.
+        - Change the `numberOfNumbers = ...` assignment to instead be 
+
+          ```java
+          numberOfNumbers = numbers.length - 1
+          ```
+
+          (Note: the numbers in the array actually start at index 1.) 
+        - Run the tests to make sure they still work.
+
+    c. The `numPrimes` parameter should now be grayed out as it is no longer being used. Use **Safe Delete** to remove it.
+        - Select the parameter.
+        - Use `<alt>-ENTER` to show the available intentions and select **Safe Delete**.
+        - Run tests again.
+
+2. The next thing to do is simplify the `while` loop by extracting various methods.
+
+    a. The first five lines of the `while` loop are `System.out` calls. Together these lines print the header for a page. Select these lines and extract them into a method called `printHeader`.
+
+    b. Next inside the `while` loop is the double for loop that is responsible for actually printing the numbers on the page. Extract a method called `printNumbersOnPage` from the double for loop.
+
+    c. The last three lines of the `while` loop update the `pageNumber` and `pageOffset` counters as we advance through each page. These three lines also need to be turned into a method, but you notice that, `pageNumber` is being used by the `printHeader` method, and `pageOffset` is being used by the `printNumbersOnPage` method. Also, the variable `numberOfNumbers` is being used by both those methods. Before turning the last three lines into a method, `pageNumber`, `pageOffset`, and `numberOfNumbers` need to beneed to be elevated from local variables into class fields.
+        - Select any one of the `pageNumber` references and refactor to **Extract Field**. Keep the same name for the name of the field.
+        - Repeat the process to extract `pageOffset` and `numberOfNumbers` into fields as well.
+
+    d. Now extract a method called `moveToNextPage` from the last three lines of the while loop.
+
+3. Clean up the parameters of the newly created methods.
+
+    a. Because `pageNumber` and `numberOfNumbers` are now fields, they no longer nee to be passed into the `printHeader` method. 
+        - Go down to where the `printHeader` method is being defined. 
+        - Select `pageNumber` in the parameter list.
+        - Use refactoring to **Inline** the parameter.
+        - Repeat this process to inline the `numberOfNumbers` parameter.
+        - Remove the superfluous `this` that was added to the `pageNumber` and `numberOfNumbers` references in `printHeader`.
+        - Run tests.
+
+    b. Repeat the steps above to inline the `pageOffset` and `numberOfNumbers` parameters used by the `printNumbersOnPage` method. If a line is created initializing `pageOffset` as a local variable, delete this line.
+
+    c. `numbers` is now the only parameter that remains for `printNumbersOfPage`, an it makes sense to also extract `numbers` into a field.
+        - Go back to the `print` method. 
+        - Select `numbers` in the line initializing `numberOfNumbers`, and extract it as a field. Be sure to check the box to replace all occurences.
+        - Now if you run your tests, they should now fail, because IntelliJ did not actually add a statement to initialize `this.numbers` to equal the parameter `numbers`. Add the line `this.numbers = numbers` to the top of the `print` method.
+        - Run tests to verify they are again passing.
+        - Back in the `printNumbersOnPage` method, use **Safe Delete** to delete `numbers` from the parameter list, and remove the superfluous `self.` in the next-to-last line of the method.
+
+4.  The first four lines of the `print` method are now all about initializing fields. Extract these lines into a method called `initialize`.
+
+5. The boolean expression in the `while` loop is determining if there are still more numbers to print. Select this expresssion an extract it into a metho called `needToPrintMore`. Keep the original signature when asked, and *do not* replace other occurrences when asked.
+
+6. The last thing to do is to clean up the `printNumbersOnPage` method. 
+
+    a. Down to the `printNumbersOnPage` method, select the conditional inside the nested for loop and extract it as a method called `printNumberAt`.
+
+    b. To to the newly created `printNumbersAt` method. **NOT SURE WHAT TO DO HERE**
 - Notice that this new method takes two parameters but really only uses one, namely their combination as "row offset plus column offset times rows per page". Extract parameter from that expression, and tell it to replace both occurences. It should also remove the other two parameters in this case.
-- Let's look at the row-offset variable of the outer loop. It seems to be initialized as page offset, then stop at a boundary similarly depending on page offset. It is only used in the index computation. Change it so that it instead starts at 0 and ends at rows-per-page minus 1, and change the index computation to include an additional page-offset. Run your tests to make sure they still pass. Maybe also perform a Rename refactoring to now call the variable `row`.
-- Looking at the stopping tests in our for loops, we are more used to seeing them with a less than comparison, rather with a "less than or equal to the number minus 1" comparison. So fix those up, and run our tests to make sure they still pass.
+
+    c. Let's look at the row-offset variable of the outer loop. It seems to be initialized as page offset, then stop at a boundary similarly depending on page offset. It is only used in the index computation. Change it so that it instead starts at 0 and ends at rows-per-page minus 1, and change the index computation to include an additional page-offset. Run your tests to make sure they still pass. Maybe also perform a Rename refactoring to now call the variable `row`.
+
+    d. Looking at the stopping tests in our for loops, we are more used to seeing them with a less than comparison, rather with a "less than or equal to the number minus 1" comparison. So fix those up, and run our tests to make sure they still pass.
 
 ## Step 5: Reducing the number of fields
 
-It seems there are still too many fields in the NumberPrinter class. A primary example is the page offset. It should be simple enough to compute the page offset from the page number, and it is not really used in too many places. We would like to replace it with a computation. In order to achieve this, we will do the following:
+The `NumberPrinter` class has quite a few fields. Some of these, like `pageOffset`, are not used in too many places and could be replaced by a simple calculation, e.g., calculating `pageOffset` from `pageNumber`. 
 
-- Use the "Encapsulate Fields" refactoring to encapsulate the get access for page offset. This will replace all accesses to this page offset by a call to `getPageOffset()`. Run your tests to make sure we didn't break anything yet.
-- Now, we can edit the `getPageOffset` method to instead compute the offset from the page number and return it. The computation should be "page number minus 1 then times rows per page and times columns per page, then add one to the result." Run our tests to make sure this change did not break anything.
-- Now, the page offset field should appear grayed out in its declaration point. Go ahead and do the "Safe delete" intention and run the tests again.
+1. Encapsulate `pageOffset` so that it is only accessible through an accessor method. 
 
-Next we have the number of numbers field. It's not used much, and we can just compute it from the numbers array instead. So let's do that:
+    a. Select `pageOffset` and refactor to **Encapsulate Fields**.
 
-- Use the "Encapsulate Fields" refactoring again, this time to encapsulate the getters of the number of numbers field.
-- Replace the body of the new getter to instead return the numbers array length minus one. Run the tests to make sure they still run.
-- Notice that the numberOfNumbers field appears grayed out now, and perform the "Safe delete" intention. Make sure the tests still run.
+    b. Unckeck *Set access*. (The goal is to eliminate the need for this field, so it makes no sense to be creating a setter.) 
+
+    c. Refactor to replace all accesses to this field with a call to `getPageOffset()`. 
+
+    d. Run tests to make sure nothing was broken.
+
+    
+2. Change the `getPageOffset` method so that it computes `pageOffset` from `pageNumber` and return it. 
+
+    a. The computation should be:
+
+       ```java
+       (pageNumber - 1) * rowsPerPage * colsPerPage + 1
+       ```
+
+    b. Run our tests to make sure this change did not break anything.
+
+    c. Up at the top of the class, the `pageOffset` field should now be grayed out where it is being declared. Use **Safe delete** to remove the field.
+
+       **`pageOffset` being used in `moveToNextPage`!**
+
+    d. Run the tests again.
+
+3. The `numberOfNumbers` field can also be removed with a bit of refactoring. It is not used much, an it can be computed easily from the `numbers` array. 
+
+    a. Use refactoring on `numberOfNumbers` to encapsulate the field. Again, you only need to create a getter for this field, not a setter. 
+
+    b.  Replace the body of the new getter to instead return the length of the numbers array minus one. 
+
+    c. Run the tests to make sure nothing is broken.
+
+    d. Remove the `numberOfNumbers` field from the class using **Safe Delete**.
+
+    e. Run tests.
 
 ## Step 6: Parameterizing the title
 
-The printing of the numbers includes some header information. The first part of that information is the title, the other is the page numbers. We should probably make the title into a parameter that our creators provide, as we don't know what kinds of numbers they would want us to print. We'll keep the page number logic as part of our work.
+Printing the numbers includes printing some header information for each page, specifically the title and page number. The title should be a parameter that the caller of the method can provide -- there is no way of knowing what *kinds* of numbers the method will be asked to print.  The logic for calculating the page number can remain unchanged. 
 
-This all will happen in the `printHeader` method, which currently is a series of `System.out.print` calls. Our first task would be to bring them together.
+1. In the `printHeader` method, bring all the `System.out.print` calls together step-by-step by repeatedly merging together the first two calls by prepending the argument of the first call to the argument for the second. For example, 
 
-- Step-by-step merge each of the first two calls into the next one, by prepending its string to the front of the argument. For example after the first step the first two line should have become one call, with argument `"The First " + Integer.toString(getNumberOfNumbers())`. Run your tests after each step.
-- Do the same to bring the last two calls together.
-- Eliminate the `Integer.toString` parts (leaving their arguments intact, letting the plus operator worry about adding strings to integers.
+    ```java
+    System.out.print("The First ");
+    System.out.print(Integer.toString(getNumberOfNumbers()));
+    ```
+
+will become
+
+    ```java
+    System.out.print("The First " + Integer.toString(getNumberOfNumbers()));
+    ```
+
+Repeat this process, rerunning the tests after each change,  until there is a single `System.out.print` to merge with the last line of the method, `System.out.println'. Complete this last merge.
+
+2. Eliminate the `Integer.toString` method calls (leaving their arguments intact). The plus operator can deal with adding strings and integers.
+3. Break the single `System.out.println` line into two separate lines. 
 - The `"  --- Page "` part belongs with the second statement, not the first, so move it over and make sure your tests still pass.
 - You should now have two `System.out...` statements, the first one setting the document title, the other setting the page number. We now want to turn the document title into a parameter. Select it and perform "Extract Parameter", name the parameter `title`.
 - Going up to the `print` method, the title shows up there instead. Do another `Extract Parameter` to lift it to a parameter of the `print` method. Your tests should now be failing. Go to the `PrimePrinter` method and change the call to `numberPrinter.getNumberOfNumbers` into a reference to the `number of primes` method instead.
