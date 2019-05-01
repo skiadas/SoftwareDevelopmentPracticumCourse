@@ -20,23 +20,28 @@
 <li><strong>Objects</strong> consist of data along with the procedures that operate on that data.
 <ul>
 <li>We call this data <strong>fields</strong> or <strong>instance variables</strong>.</li>
-<li>We call the procedures <strong>methods</strong> or <strong>operations</strong>.</li>
+<li>We call the procedures <strong>methods</strong> or <strong>operations</strong> (C++ calls them <strong>member functions</strong>).</li>
 <li>When we call the method of an object, we say that we <strong>make a request</strong> or <strong>pass a message</strong> to the object.</li>
 </ul></li>
-<li>Object data is can only be altered by calling the object’s methods. This is called <strong>encapsulation</strong>.</li>
-<li>If the data is declared to be <strong>private</strong>, then it cannot be seen from outside the class, thus protecting these internal implementation details from leaking out. This is called <strong>information hiding</strong>.</li>
+<li><strong>Characteristics of Objects</strong>
+<ul>
+<li>All objects exhibit both <em>encapsulation</em> and <em>information hiding</em>.</li>
+<li><strong>Encapsulation</strong> is the property that an object’s data can only be altered by calling the object’s methods.</li>
+<li><strong>Information hiding</strong> is the property of protecting internal implementation details from being seen from other parts of the application, for example, by declaring data fields and methods to be <strong>private</strong>.</li>
+</ul></li>
 </ul>
 <h2 id="types">Types</h2>
 <ul>
 <li><p>Every operation is characterized by a name, the kinds of objects it takes as parameters, and the kind of value it returns. These elements collectively are the <strong>signature</strong> of the operation.</p></li>
-<li><p>The selection of all the signatures for the operations that an object can handle is the object’s <strong>interface</strong>.</p></li>
+<li><p>The collection of all the signatures for the operations that an object can handle is the object’s <strong>interface</strong>.</p></li>
 <li><p>A collection of signatures is called a <strong>type</strong>. We say that <strong>an object <em>has</em> a type</strong> if it has an implementation for each operation specified in the type.</p></li>
 <li><p>In Java we can express such types via the formal element called a <strong>Java Interface</strong>.</p>
 <blockquote>
 <p>Interfaces specify <em>what</em> an object can do, and NOT <em>how</em> to do it. The latter is the job of classes.</p>
 </blockquote></li>
-<li><p>Objects can have the same interface, but different implementations. A call like <code>o.draw()</code> sends the <code>draw</code> message to the <code>o</code> object. Therefore <code>o</code> must implement an interface that contains a <code>draw</code> method, but we don’t know what specific implementation of <code>draw</code> is executed until runtime. At runtime, the implementation of <code>draw</code> that the specific object <code>o</code> has will be executed. This is known as <strong>dynamic binding</strong>.</p></li>
-<li><p>Dynamic binding allows us to write programs based on an object’s interface, then swap objects at runtime, as long as they have the same interface. This allows us to vary the implementation without changing the code, so that the result of <code>o.draw()</code> can vary depending on which specific method is executed. This ability to substitute an object with a given interface for another object with the same interface is called <strong>polymorphism</strong>.</p></li>
+<li><p>Objects can have the same interface/type, but different implementations. A call like <code>o.draw()</code> sends the <code>draw</code> message to the <code>o</code> object. Therefore <code>o</code> must implement an interface that contains a <code>draw</code> method, but we don’t know what specific implementation of <code>draw</code> is executed until runtime. At runtime, the implementation of <code>draw</code> that the specific object <code>o</code> has will be executed. This is known as <strong>dynamic binding</strong>.</p></li>
+<li><p>Dynamic binding allows us to write programs based on an object’s interface, then swap objects at runtime, as long as they have the same interface. This allows us to vary the implementation without changing the code, so that the result of <code>o.draw()</code> can vary depending on which specific method is executed. This ability to substitute an object with a given interface for another object with the same interface is called <strong>polymorphism</strong>.</p>
+<p>Example: We can defined two different classes for “points”: A <code>XYPoint</code> class, which defines a point via its x,y coordinates, and a <code>PolarPoint</code> class, which defines a point via polar coordinates, namely the distance <code>r</code> from the origin and the angle <code>theta</code> that the point forms with the x-axis. <em>But</em> both points have a <code>getX()</code> method that returns the x coordinate of the point. For the <code>XYPoint</code> instances it simply returns the stored <code>x</code> value, for the <code>PolarPoint</code> instances in computes <code>r * Math.cos(theta)</code>. Both classes implement the same <code>Point</code> interface. A user who has received an object that implements the Point interface knows that they can do <code>p.getX()</code>, but they don’t know nor care whether it is the <code>XYPoint</code>’s method that gets executed or the <code>PolarPoint</code>’s method.</p></li>
 </ul>
 <h2 id="classes">Classes</h2>
 <ul>
@@ -45,6 +50,79 @@
 <li>An <strong>abstract class</strong> contains methods that are possibly not implemented, but simply declared to have a specific signature. Abstract classes cannot be instantiated. They can thus be used to express a <em>type</em>.</li>
 <li><strong>Concrete classes</strong> contain implementations of any abstract methods from the abstract classes, and they may also <strong>override</strong> implementations provided by the parent class.</li>
 </ul>
+<h2 id="extension-mechanisms">Extension Mechanisms</h2>
+<p>There are numerous mechanisms that allow us to <strong>extend</strong> the functionality provided by a certain class. The main two mechanisms are the following:</p>
+<ul>
+<li><strong>class inheritance</strong>, in which we extend the functionality offered by a class via creating a subclass of it. This is often described as an <em>is-a</em> relationship.</li>
+<li><strong>object composition</strong>, in which we use objects of other classes via fields in our new class. This is often described as a <em>has-a</em> relationship.</li>
+</ul>
+<p>Example: Consider a simple <code>Grade</code> class:</p>
+<pre class="java"><code>class Grade {
+    private final String letter;
+
+    public Grade(String letter) {
+        throwExceptionIfInvalidLetter();
+        this.letter = letter;
+    }
+
+    public int getPoints() { ... }
+    public boolean countsForCredit() { ... }
+    public String getLetter() { return letter; }
+}</code></pre>
+<p>We now want to create a <code>UnitGrade</code> class. It needs to allow for both a letter grade and also the amount of units that the class is worth 1, 0.5 etc. We have fundamentally two options for the design of this new class:</p>
+<ol type="1">
+<li><p>The <em>inheritance</em> approach says that we should create a new <em>subclass</em> of the <code>Grade</code> class which also contains a new field, for the units:</p>
+<pre class="java"><code>class UnitGrade extends Grade {
+    private final double units;
+
+    public UnitGrade(String letter, double units) {
+        super(letter);   // Call Grade constructor
+        this.units = units;
+    }
+
+    public double getUnits() { return units; }
+    // countsForCredit is inherited
+    // getLetter is inherited
+    public int getPoints() {
+        return units * super.getPoints();
+    }
+}</code></pre>
+<p>We have to use the <code>super</code> keyword whenever we have to refer to the superclass. In this instance we automatically get for free the <code>countsForCredit</code> and <code>getLetter</code> methods. We have to modify the implementation of <code>getPoints</code> because it has to take into account the <code>units</code>.</p></li>
+<li><p>The <em>composition</em> approach says that we should create a new class that has a <code>grade</code> field in it and a <code>units</code> field in it.</p>
+<pre class="java"><code>class UnitGrade {
+    private Grade grade;
+    private double units;
+
+    public UnitGrade(String letter, double units) {
+        grade = new Grade(letter);
+        this.units = units;
+    }
+    // other possible constructor, receiving an external grade
+    public UnitGrade(Grade grade, double units) {
+        this.grade = grade;
+        this.units = units;
+    }
+
+    // Delegations
+    public boolean countsForCredit() { return grade.countsForCredit(); }
+    public String getLetter() { return grade.getLetter(); }
+
+    public getUnits() {
+        return units * grade.getUnits();
+    }
+}</code></pre>
+<p>In this case a <code>UnitGrade</code> instance contains a <code>Grade</code> instance as a field, and it can refer to it for information. In particular, some of the methods of <code>UnitGrade</code> simply return a corresponding call to <code>grade</code>. This is called <strong>delegation</strong>.</p></li>
+</ol>
+<p>Let’s discuss advantages and disadvantages of the two approaches:</p>
+<ul>
+<li>Inheritance is a bit easier to understand, and requires less code to implement. Composition on the other hand requires more work, via delegation for example.</li>
+<li>Inheritance fixes the implementation of Grade at compile-time. If we wanted to instead use a subclass of the <code>Grade</code> class, we cannot do that. On the other hand with composition, the field <code>grade</code> can be long to any subclass of <code>Grade</code>. <em>Composition allows the determination of which specific class is used to happen at runtime, and to even change in the lifetime of an application.</em></li>
+</ul>
+<p>Essentially, <em>inheritance is a static compile-time source-code dependency, while composition is a dynamic run-time dependency</em>.</p>
+<p>In UML notation, these two dependencies are drawn differently: inheritance is a hollow-point arrow, often drawn in a consistent vertical direction, while composition is a filled-point arrow, often drawn in a horizontal direction.</p>
+<figure>
+<img src="../images/inheritanceVsComposition.png" alt="Inheritance vs Composition" /><figcaption>Inheritance vs Composition</figcaption>
+</figure>
 <script type="text/javascript">
 let els = document.getElementsByTagName("pre");
 for (const el of els) {
