@@ -288,7 +288,7 @@ This class will kind of end up knowing almost all the same stuff as the pretty-p
 6. There are still some things off about the order things are happening in the new `printPage` method. We should be going to the "next page" first. Move the `page.nextPage()` line up a step so that it is the first line in the method body. This change, unfortunately, causes the tests to fail. To fix this requires `pageNumber` to be adjuted in a number of ways:
 
 - `pageNumber` should start 0 instead of 1; fix this in the field declaraction at the top of the `Page` class.
-- `hasNext` should use a new method called `getNextPageOffset` instead of `getPageOffset; this new method is like `getPageOffset` but uses `pageNumber` instead of `pageNumber - 1`.
+- `hasNext` should use a new method called `getNextPageOffset` instead of `getPageOffset`; this new method is like `getPageOffset` but uses `pageNumber` instead of `pageNumber - 1`.
 
 After you have made those changes and created the new method, your tests should again pass.
 
