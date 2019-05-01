@@ -198,49 +198,61 @@ for (int page : getPages())
 <li><p>Name the new class <code>Page</code>.</p></li>
 <li><p>Include all members in the <code>Page</code> class except for <code>print</code>, <code>printHeader</code> and <code>printNumberOnPage</code>. Make sure to select the “generate accessors” box.</p></li>
 </ol></li>
-<li><p>If you run your tests now, they hould fail, complaining that <code>rowsPerPage</code> and <code>columnsPerPage</code> are marked as final. This is actually correct, since these fields should really only be set once in the constructor. However, that is now how these fields are current set.</p>
+<li><p>If you run your tests now, they should fail, complaining that <code>rowsPerPage</code> and <code>columnsPerPage</code> are marked as final. This is actually correct, since these fields should really only be set once in the constructor. However, that is not how these fields are currently being set.</p>
 <ol type="a">
-<li><p>Go to <code>NumberPrinter.java</code>. At the top of the class you will find that the <code>page</code> field is being initialized as part of its declaration. Use the “move initializer to constructor” refactoring to bring that into the initializer. <strong>???????</strong></p></li>
-<li><p>Back in <code>Page.java</code>, select the <code>rowsPerPage</code> field and use the “add constructor parameters” refactoring to select both fields and add them to the constructor as parameters. <strong>?????</strong></p></li>
-<li><p>Back in the <code>NumberPrinter</code> constructor, delete the two <code>this.page.set...</code> lines.</p></li>
+<li><p>Go to <code>NumberPrinter.java</code>. At the top of the class you will find that the <code>page</code> field is being initialized as part of its declaration. Click anywhere in that line then view available intentions. Select <strong>Move initializer to constructor</strong> to move the initialization of <code>page</code> into the constructor.</p></li>
+<li><p>Back in <code>Page.java</code>, select the <code>rowsPerPage</code> field and view available intentions.</p>
+<ul>
+<li>Select the <strong>Add constructor parameters</strong> intention.</li>
+<li>In the window that opens, select both <code>rowsPerPage</code> and <code>colsPerPage</code> to add as parameters.</li>
+<li>Click “Refactor” to change the signature of the <code>Page</code> constructor.</li>
+</ul></li>
+<li><p>The methods <code>setRowsPerPage</code>, <code>setColsPerPage</code>, and <code>getNumbers</code> are now no longer being used; remove them using <strong>Safe Delete</strong>.</p></li>
+<li><p>Go to the <code>NumberPrinter</code> constructor, delete the two <code>this.page.set...</code> lines.</p></li>
 <li><p>Run tests to verify that everything is once again working.</p></li>
 </ol></li>
 <li><p>Finish up this part of the refactoring process with some cleaning up.</p>
 <ol type="a">
-<li><p>In both the <code>Page</code> and <code>NumberPrinter</code> classes. There are a few methods that grayed out because they are no longer being used. Use <strong>Safe delete</strong> to remove them.</p></li>
-<li><p>There is a <code>page.setPageNumber(1)</code> call that really should not be needed, as that should be part of the initialization of the page class. Delete that call and instead initialize the <code>pageNumber</code> field in the <code>Page</code> class to 1.</p></li>
-<li><p>In the <code>Page</code> class, the <code>getPageOffset</code> method no longer needs the <code>pageNumber</code> parameter. Use the <code>Change Signature</code> refactoring to eliminate its parameter. (Run tests!)</p></li>
-<li><p>Rename the <code>needToPrintMore</code> method to <code>hasNext</code>, then <strong>Safe delete</strong> the unnecessary parameter.</p></li>
-<li><p>Go back to <code>NumberPrinter.java</code>. Note the last line in the print while loop, which increments the page number by 1. This really should be a method of the <code>Page</code> class.</p>
+<li><p>Use <strong>Safe delete</strong> to remove the methods in the <code>NumberPrinter</code> class that are no longer being used.</p></li>
+<li><p>Inside the <code>print</code> method, there is a <code>page.setPageNumber(1)</code> call that really should be part of the initialization of the <code>Page</code> class. Delete that call in <code>print</code>, then go to the <code>Page</code> class and instead initialize the <code>pageNumber</code> to 1.</p></li>
+<li><p><code>pageNumber</code> is now a field for the <code>Page</code> class, which means the <code>getPageOffset</code> method no longer needs the <code>pageNumber</code> parameter.</p>
 <ul>
-<li>Select the whole expression and use “Extract method” refactoring to it into a new method called <code>nextPage</code>.</li>
-<li>Refactor using <strong>Move</strong> to move the <code>nextPage</code> method to the <code>Page</code> class.</li>
-<li>Go to the <code>Page</code> class to the body of <code>nextPage</code>. Now go to the body of this new method in the <code>Page</code> class, and perform “Inline” refactorings, selecting “this only and keep the method”.</li>
+<li>Refactor and use <strong>Change signature</strong> to eliminate this parameter.</li>
+<li>Ignore the problem that is detected and continue.</li>
+<li>Run tests!</li>
 </ul></li>
-<li><p>The <code>setPageNumber</code> method is probably grayed out; use “Safe delete” to remove it.</p></li>
-<li><p>Let’s further clean up the <code>Page</code> class.</p>
+<li><p>Use the <strong>Safe delete</strong> intention to remove <code>pageNumber as a parameter for the</code>needToPrintMore<code>method, then use refactoring to rename the method to</code>hasNext`.</p></li>
+<li><p>Go back to <code>NumberPrinter.java</code>. Note the last line of the while loop in <code>print</code> is using the <code>setPageNumber</code> method to increments the page number by 1. This really should be a method of the <code>Page</code> class.</p>
 <ul>
-<li>There are four fields declared, move their declarations near the top, before all the methods. You can use the <em>Code -&gt; Move Statement Up/Down</em> shortcuts.</li>
-<li>Similarly, move the constructor to be right below the field declarations..</li>
-<li>There are a number of <code>get...</code> methods. Move these all close to each other below the constructor.</li>
+<li>Select the whole expression (<code>page.setPageNumber(page.getPageNumber() + 1)</code>) and use “Extract method” refactoring turn it into a new method called <code>nextPage</code>.</li>
+<li>Accept the suggested signature change and the change to the line of code.</li>
+<li>Go to the <code>nextPage</code> method that was just created, and use refactoring to move the method into the <code>Page</code> class.</li>
+<li>Go find <code>nextPage</code> in the <code>Page</code> class. In the body of this function, select <code>setPageNumber</code>. Use refactoring to inline <strong>this only and keep the method</strong>.</li>
 </ul></li>
-<li><p>Go to the <code>printNumberAt</code> method. It feels as though this method is not quite doing what this class should be doing. We want this class to be about computing, for example to compute the index, leaving the actual printing to the <code>NumberPrinter</code> class. So our work needs to start from the <code>print</code> method in the <code>NumberPrinter</code> class.</p>
+<li><p>Use the <strong>Safe delete</strong> intention to remove the <code>setPageNumber</code> method, which is no longer being used.</p></li>
+<li><p>To further clean up the <code>Page</code> class:</p>
 <ul>
-<li>Look at the index computation in the argument to the <code>printNumberAt</code> call inside the inner for loop the <code>printNumbersOnPage</code> method. Select that whole argument and extract a method called <code>getIndexFor</code>.</li>
-<li>Move the <code>getIndexFor</code> method to the <code>Page</code> class. Inline the <code>getRowsPerPage</code> call once you have moved the function.</li>
+<li>Move the four field declarations so that they are together at the top of the class. (You can use the <em>Code -&gt; Move Statement Up/Down</em> shortcuts.)</li>
+<li>Move the constructor to be right below the field declarations.</li>
+<li>Move the various <code>get...</code> methods so that they are together below the constructor.</li>
+</ul></li>
+<li><p>Go to the <code>printNumberAt</code> method. This method is not quite doing what it should be doing for this class. We want this class to be about computing, for example to compute the index, leaving the actual printing to the <code>NumberPrinter</code> class. To fix this you need to start at the <code>print</code> method in the <code>NumberPrinter</code> class.</p>
+<ul>
+<li>The <code>print</code> method calls <code>printNumbersOfPage</code>. Go to the <code>printNumbersOnPage</code> method and Look at the index computation in the argument to the <code>printNumberAt</code> call inside the inner for loop. Select that whole argument and extract a method called <code>getIndexFor</code>.</li>
+<li>Move the <code>getIndexFor</code> method to the <code>Page</code> class; inline the call to <code>getRowsPerPage</code> after you have moved the function.</li>
 <li>Back in the <code>printNumbersOnPage</code> method, inline the call to <code>printNumberAt</code> (which will remove the method as this is its only occurence).</li>
-<li>At this point the system created an <code>index</code> local variable. Go ahead and inline this variable to eliminate it.</li>
-<li>The test inside the <code>if</code> should be its own method; extract it to a method called <code>hasEntry</code> and move that new method to the <code>Page</code> class.</li>
+<li>At this point the system created a local variable (<code>i</code> or possibly <code>index</code>). Inline this variable to eliminate it.</li>
+<li>The boolean expression inside the <code>if</code> should be its own method; extract it to a method called <code>hasEntry</code> and move that new method to the <code>Page</code> class.</li>
 <li>The second argument to the <code>String.out.printf</code> call should also be its own method, called <code>getEntryAt</code>. This is a bit tricky: Select it and start the “Extract Method” refactoring, and you will see that the “Fold parameters” box is checked. Uncheck it, then refactor it and move it to the <code>Page</code> class.</li>
-<li>As a final cleanup, the <code>pageNumber</code> parameter is no longer needed, so perform a “Safe delete” on it.</li>
+<li>As a final cleanup, <strong>Safe delete</strong> the <code>pageNumber</code> parameter in the <code>printNumbersOnPage</code> method.</li>
 </ul></li>
 </ol></li>
-<li><p>Let’s return to the main <code>print</code> method. Remember that our goal was to simplify that loop a bit. Let’s start by creating a new method out of the the three function calls in the <code>while</code> loop. Call the new method <code>printPage</code>.</p></li>
-<li><p>The <code>while</code> loop does looks a lot simpler! It still feels a bit off, though. We should be going to the “next page” first. Move the <code>page.nextPage()</code> line up a step. This of course will fail our tests. We will need to adjust <code>pageNumber</code> in a number of ways:</p></li>
+<li><p>Go back to the <code>print</code> method. Remember that the goal was to simplify the loop in this method. Start by extracting a new method out of the the function calls that make up the body of the <code>while</code> loop. Call the new method <code>printPage</code>. The <code>while</code> loop should looke much simpler!</p></li>
+<li><p>There are still some things off about the order things are happening in the new <code>printPage</code> method. We should be going to the “next page” first. Move the <code>page.nextPage()</code> line up a step so that it is the first line in the method body. This change, unfortunately, causes the tests to fail. To fix this requires <code>pageNumber</code> to be adjuted in a number of ways:</p></li>
 </ol>
 <ul>
-<li><code>pageNumber</code> should start 0 instead of 1.</li>
-<li><code>hasNext</code> should instead use <code>getNextPageOffset</code>, a new method that is like <code>getPageOffset</code> but uses <code>pageNumber</code> instead of <code>pageNumber - 1</code>.</li>
+<li><code>pageNumber</code> should start 0 instead of 1; fix this in the field declaraction at the top of the <code>Page</code> class.</li>
+<li><code>hasNext</code> should use a new method called <code>getNextPageOffset</code> instead of <code>getPageOffset; this new method is like</code>getPageOffset<code>but uses</code>pageNumber<code>instead of</code>pageNumber - 1`.</li>
 </ul>
 <p>After you have made those changes and created the new method, your tests should again pass.</p>
 <ol start="7" type="1">
