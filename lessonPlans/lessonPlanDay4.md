@@ -2,19 +2,11 @@
 
 ## Activity 1:
 
-Section 1.6 of Design Patterns book
-
-Review of OOP concepts (need some examples?)
-
-methods/operations, requests/messages, encapsulation
-
-operation signatures, object interface, type, subtypes and supertypes (p 13)
-
-
+- [OOP Basics notes](../cheatsheets/OOPBasics.md)
 
 ## Activity 2:
 
-Case study POGIL-style (my grades version?)
+- [OOP Design Case Study 1](../activities/activity4-2oopDesign.md)
 
 ## Lunch
 

@@ -20,9 +20,15 @@ Introduction to refactoring. Part 3
 ## Activity 3:
 
 - [Second part of prime generator refactoring.](../activities/activity2-5aRefactoringPrimesGeneratorPart2.md)
-- [Third part of prime generator refactoring.](../activities/activity2-5bRefactoringPrimesGeneratorPart3.md)
 
 ## Activity 4:
+
+- [Third part of prime generator refactoring.](../activities/activity2-5bRefactoringPrimesGeneratorPart3.md)
+
+
+## Activity 5:
+
+These items postponed.
 
 Discussion of basic function structure concepts and reasons behind them:
 
@@ -31,7 +37,5 @@ Discussion of basic function structure concepts and reasons behind them:
 - Command-query separation
 - Null?
 - [notes](../activities/activity3-2functionStructure.md)
-
-## Activity 5:
 
 - [code smells](../activities/activity3-3codeSmells.md)
