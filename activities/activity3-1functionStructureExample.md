@@ -100,11 +100,16 @@ Here are the steps in detail (REMEMBER to CHECK your tests after each step):
         - Create a temporary local variable `range` out of `ranges.get(i)` (replace both occurrences).
         -  Extract the whole `String.format(...)` expression to a method `getSimpleFormat` with parameter `range`, then move it to be an instance method of `range`.
         - Back in the `printRange` method, perform the "Replace with foreach" intention to replace it with a simpler for-each loop.
-    - Now we inline and eliminate the `getMin` and `getMax` methods altogether and feel better about the fact that the rest of the application does not need to know about min and max.
+    - Finally we inline and eliminate the `getMin` and `getMax` methods altogether and feel better about the fact that the rest of the application does not need to know about min and max.
 - Now for some more high-level cleanup.
-    - We start with the `overlapsWith` method. Thinking about it, two ranges will overlap as long as they don't follow each other, so we can simply write the test as: `this.doesNotFollow(range) && range.doesNotFollow(this);`
-    - Next we look at the `while` loop in `insertValueAtIndexAndFixForward`. The `nextRange` variable is used in two places but it is a simple list lookup, so we inline it.
-    - Now it would be nice if the `while` loop no longer had to worry about the `range` variable: Once we insert the value in the `i`-th index, we should be able to use `ranges.get(i)` instead. In order to do that, let's see what we do with `range`: We merge it with the next range, then put the result into the `i`-th index. So if we replace the usage of `range`in the conditional check with `ranges.get(i)`, and we replace its usage in `ranges.set(i, range)` with `ranges.set(i, ranges.get(i).mergedWith(ranges.get(i + 1)));`, it will all still work. Now we can remove the line that was reassigning to the `range` variable.
-    - Now the while loop can be extracted into a method `fixForwardFromIndex`, and the old `insertValueAtIndexAndFixForward` can be inlined and removed.
-    - Looking at the while loop in `fixForwardFromIndex`, we can see that instead of breaking out of the else case, we can add the test in the conditional as part of the `while` loop's condition. Then we don't need the if conditional at all.
+    - We start with the `overlapsWith` method. Thinking about it, two ranges will overlap as long as they don't follow each other, so replace the return value with: `this.doesNotFollow(range) && range.doesNotFollow(this);` and check your tests.
+    - Next we look at the `while` loop in `insertValueAtIndexAndFixForward`. The `nextRange` variable is used in two places but it is a simple list lookup, so inline it.
+    - Now it would be nice if the `while` loop no longer had to worry about the `range` variable: Once we insert the value in the `i`-th index, we should be able to use `ranges.get(i)` instead. In order to do that, let's see what the code currently does with `range`: We merge it with the next range, then put the result into the `i`-th index. So do the following changes:
+        - Replace the `range` in `range.overlapsWith(...)` with `ranges.get(i).overlapsWith(...)`.
+        - Replace the `range` in `range.mergedWith(...)` with `ranges.get(i).mergedWith(...)`.
+        - Replace the `range` in `ranges.set(i, range);` with its value from the previous line, namely `ranges.get(i).mergedWith(ranges.get(i + 1))`.
+        - Make sure your tests still work, then remove the `range = ...` line which is now grayed out.
+    - Now extract while loop into a method `fixForwardFromIndex`.
+    - Inline the `insertValueAtIndexAndFixForward` method that is currently doing very little.
+    - Looking at the while loop in `fixForwardFromIndex`, we can see that instead of breaking out of the else case, we can add the test in the conditional as part of the `while` loop's condition. Then we don't need the if conditional at all. Do that.
     - We could go on with some more cosmetic refactorings, but the main part of the rewrite is now completed.
