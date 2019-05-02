@@ -2,16 +2,21 @@
 
 ## Activity 1:
 
+40 min
+
 - [Refactoring review](../activities/activity4-1refactoringReview.md)
 
 ## Activity 2:
+
+1 hr
 
 - Concepts review
 
 ## Lunch
 
+30 min
+
 - Get Lunch
-- Video (TDD part 1?)
 
 ## Activity 3:
 
