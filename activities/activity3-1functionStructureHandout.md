@@ -6,7 +6,7 @@ public class RangeCombiner {
   public void addRange(double min, double max) {
     if (max < min) { return; }
     for (int i = 0; i < mins.size(); i++) {
-      if (max <= mins.get(i) || min <= maxs.get(i)) {
+      if (min <= maxs.get(i)) {
         insertValueAtIndexAndFixForward(min, max, i);
         return;
       }
@@ -74,7 +74,7 @@ public class RangeCombiner {
   private void addRangeInternal(Range range) {
     if (range.isEmpty()) { return; }
     for (int i = 0; i < ranges.size(); i++) {
-      if (range.precedes(ranges.get(i)) || range.doesNotFollow(ranges.get(i))) {
+      if (range.doesNotFollow(ranges.get(i))) {
         ranges.add(i, range);
         fixForwardFromIndex(i);
         return;
@@ -128,7 +128,6 @@ public class RangeCombiner {
       return new Range(Math.min(min, range.min), Math.max(max, range.max));
     }
     private boolean isEmpty() { return max < min; }
-    private boolean precedes(Range range) { return max <= range.min; }
     private boolean doesNotFollow(Range range) { return min <= range.max; }
     private String format() { return String.format("%.2f--%.2f", min, max); }
   }
