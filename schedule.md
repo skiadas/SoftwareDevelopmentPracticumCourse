@@ -49,7 +49,7 @@ Thu
         - Read *Design Patterns*, chapter 1.6
         - Read [*Clean Code*](https://learning.oreilly.com/library/view/clean-code/9780136083238/), chapter 6
 	- Topics:
-    	- (Java/OOP) Inheritance vs Delegation
+    	- (Java/OOP) Inheritance vs Composition
 	    - (Coding) Law of Demeter (Tell, don't ask)
     - [Activities for Day 4](lessonPlans/lessonPlanDay4.md)
     - Lunchtime Video: [TDD Part 1](videos/07-tdd_part1.md)

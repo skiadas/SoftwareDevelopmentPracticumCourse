@@ -20,12 +20,12 @@
 
 ## Activity 3:
 
-- [OOP Basics notes](../cheatsheets/OOPBasics.md)
+- [Introduction to TDD](../activities/activity4-3tddIntro.md)
 
 ## Activity 4:
 
-- [OOP Design Case Study 1](../activities/activity4-2oopDesign.md)
+- [OOP Basics notes](../cheatsheets/OOPBasics.md)
 
 ## Activity 5:
 
-- Video (TDD) followed by discussion.
+- [OOP Design Case Study 1](../activities/activity4-4oopDesign.md)
