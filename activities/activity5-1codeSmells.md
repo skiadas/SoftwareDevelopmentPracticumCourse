@@ -108,3 +108,9 @@ Form
     - Temporary field. A field that is not always set/used.
 
         Remedy: It may belong to a different class.
+
+    - Null checks all over the code.
+
+        Remedy: Separate your public methods from your internal methods, and only allow null inputs from outside calls.
+
+        Consider creating a "Null Object" class, to represent meaningful functionality for a "null object" and pass it around.

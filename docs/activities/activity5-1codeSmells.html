@@ -101,6 +101,9 @@
 <p>Remedy: Extract Methods for them to make them more readable. And find ways to simplify the code.</p></li>
 <li><p>Temporary field. A field that is not always set/used.</p>
 <p>Remedy: It may belong to a different class.</p></li>
+<li><p>Null checks all over the code.</p>
+<p>Remedy: Separate your public methods from your internal methods, and only allow null inputs from outside calls.</p>
+<p>Consider creating a “Null Object” class, to represent meaningful functionality for a “null object” and pass it around.</p></li>
 </ul>
 </dd>
 </dl>
