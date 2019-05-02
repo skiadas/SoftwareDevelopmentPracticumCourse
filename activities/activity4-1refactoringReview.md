@@ -1,7 +1,7 @@
 # Activity 4-1: Refactoring Review
 
-For each problem below, read through the given code and explain what refactoring should be done
-to improve the code.
+For each problem below, read through the given code. With your team, discuss what refactoring should be done to improve the code.  Write down the refactorings that your team agrees on in the space below the code.
+
 
 1. ```java
    public class FindNumberProperties {
