@@ -23,7 +23,9 @@
 - Objects can have the same interface/type, but different implementations. A call like `o.draw()` sends the `draw` message to the `o` object. Therefore `o` must implement an interface that contains a `draw` method, but we don't know what specific implementation of `draw` is executed until runtime. At runtime, the implementation of `draw` that the specific object `o` has will be executed. This is known as **dynamic binding**.
 - Dynamic binding allows us to write programs based on an object's interface, then swap objects at runtime, as long as they have the same interface. This allows us to vary the implementation without changing the code, so that the result of `o.draw()` can vary depending on which specific method is executed. This ability to substitute an object with a given interface for another object with the same interface is called **polymorphism**.
 
-    Example: We can defined two different classes for "points": A `XYPoint` class, which defines a point via its x,y coordinates, and a `PolarPoint` class, which defines a point via polar coordinates, namely the distance `r` from the origin and the angle `theta` that the point forms with the x-axis. *But* both points have a `getX()` method that returns the x coordinate of the point. For the `XYPoint` instances it simply returns the stored `x` value, for the `PolarPoint` instances in computes `r * Math.cos(theta)`. Both classes implement the same `Point` interface. A user who has received an object that implements the Point interface knows that they can do `p.getX()`, but they don't know nor care whether it is the `XYPoint`'s method that gets executed or the `PolarPoint`'s method.
+    Example: We can define two different classes for "points": A `XYPoint` class, which defines a point via its x,y coordinates, and a `PolarPoint` class, which defines a point via polar coordinates, namely the distance `r` from the origin and the angle `theta` that the point forms with the x-axis. *But* both points have a `getX()` method that returns the x coordinate of the point. For the `XYPoint` instances it simply returns the stored `x` value, for the `PolarPoint` instances in computes `r * Math.cos(theta)`. Both classes implement the same `Point` interface. A user who has received an object that implements the Point interface knows that they can do `p.getX()`, but they don't know nor care whether it is the `XYPoint`'s method that gets executed or the `PolarPoint`'s method.
+
+    Such a user can for example be given two points `p1` and `p2`, and can compute their `x`-distance by doing `p1.getX() - p2.getX()`, without needing to know whether the points are both `XYPoint` instances, or both `PolarPoint` instances, or one of each, or some competely different kind of points altogether.
 
 ## Classes
 
@@ -36,10 +38,10 @@
 
 There are numerous mechanisms that allow us to **extend** the functionality provided by a certain class. The main two mechanisms are the following:
 
-- **class inheritance**, in which we extend the functionality offered by a class via creating a subclass of it. This is often described as an *is-a* relationship.
+- **class inheritance**, in which we extend the functionality offered by a class by creating a subclass of it. This is often described as an *is-a* relationship.
 - **object composition**, in which we use objects of other classes via fields in our new class. This is often described as a *has-a* relationship.
 
-Example: Consider a simple `Grade` class:
+Example. Consider a simple `Grade` class:
 ```java
 class Grade {
     private final String letter;
@@ -76,7 +78,7 @@ We now want to create a `UnitGrade` class. It needs to allow for both a letter g
     }
     ```
 
-    We have to use the `super` keyword whenever we have to refer to the superclass. In this instance we automatically get for free the `countsForCredit` and `getLetter` methods. We have to modify the implementation of `getPoints` because it has to take into account the `units`.
+    We use the term `extends Grade` to indicate that this is a subclass of `Grade`, and will therefore inherit everything that `Grade` has. In this instance we automatically get for free the `countsForCredit` and `getLetter` methods. We have to modify the implementation of `getPoints` because it has to take into account the `units`. We can use the `super` keyword whenever we have to refer to the superclass.
 2. The *composition* approach says that we should create a new class that has a `grade` field in it and a `units` field in it.
 
     ```java
@@ -85,7 +87,7 @@ We now want to create a `UnitGrade` class. It needs to allow for both a letter g
         private double units;
 
         public UnitGrade(String letter, double units) {
-            grade = new Grade(letter);
+            this.grade = new Grade(letter);
             this.units = units;
         }
         // other possible constructor, receiving an external grade
@@ -109,7 +111,7 @@ We now want to create a `UnitGrade` class. It needs to allow for both a letter g
 Let's discuss advantages and disadvantages of the two approaches:
 
 - Inheritance is a bit easier to understand, and requires less code to implement. Composition on the other hand requires more work, via delegation for example.
-- Inheritance fixes the implementation of Grade at compile-time. If we wanted to instead use a subclass of the `Grade` class, we cannot do that. On the other hand with composition, the field `grade` can be long to any subclass of `Grade`. *Composition allows the determination of which specific class is used to happen at runtime, and to even change in the lifetime of an application.*
+- Inheritance fixes the implementation of Grade at compile-time. If we wanted to instead use a subclass of the `Grade` class (maybe some specialized "pass/fail grade subclass", we cannot do that. On the other hand with composition, the field `grade` can belong to any subclass of `Grade`. *Composition allows the specific class that is used to be determined at runtime, and to even change in the lifetime of an application.*
 
 Essentially, *inheritance is a static compile-time source-code dependency, while composition is a dynamic run-time dependency*.
 

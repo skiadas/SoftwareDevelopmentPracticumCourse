@@ -41,7 +41,8 @@
 </blockquote></li>
 <li><p>Objects can have the same interface/type, but different implementations. A call like <code>o.draw()</code> sends the <code>draw</code> message to the <code>o</code> object. Therefore <code>o</code> must implement an interface that contains a <code>draw</code> method, but we don’t know what specific implementation of <code>draw</code> is executed until runtime. At runtime, the implementation of <code>draw</code> that the specific object <code>o</code> has will be executed. This is known as <strong>dynamic binding</strong>.</p></li>
 <li><p>Dynamic binding allows us to write programs based on an object’s interface, then swap objects at runtime, as long as they have the same interface. This allows us to vary the implementation without changing the code, so that the result of <code>o.draw()</code> can vary depending on which specific method is executed. This ability to substitute an object with a given interface for another object with the same interface is called <strong>polymorphism</strong>.</p>
-<p>Example: We can defined two different classes for “points”: A <code>XYPoint</code> class, which defines a point via its x,y coordinates, and a <code>PolarPoint</code> class, which defines a point via polar coordinates, namely the distance <code>r</code> from the origin and the angle <code>theta</code> that the point forms with the x-axis. <em>But</em> both points have a <code>getX()</code> method that returns the x coordinate of the point. For the <code>XYPoint</code> instances it simply returns the stored <code>x</code> value, for the <code>PolarPoint</code> instances in computes <code>r * Math.cos(theta)</code>. Both classes implement the same <code>Point</code> interface. A user who has received an object that implements the Point interface knows that they can do <code>p.getX()</code>, but they don’t know nor care whether it is the <code>XYPoint</code>’s method that gets executed or the <code>PolarPoint</code>’s method.</p></li>
+<p>Example: We can define two different classes for “points”: A <code>XYPoint</code> class, which defines a point via its x,y coordinates, and a <code>PolarPoint</code> class, which defines a point via polar coordinates, namely the distance <code>r</code> from the origin and the angle <code>theta</code> that the point forms with the x-axis. <em>But</em> both points have a <code>getX()</code> method that returns the x coordinate of the point. For the <code>XYPoint</code> instances it simply returns the stored <code>x</code> value, for the <code>PolarPoint</code> instances in computes <code>r * Math.cos(theta)</code>. Both classes implement the same <code>Point</code> interface. A user who has received an object that implements the Point interface knows that they can do <code>p.getX()</code>, but they don’t know nor care whether it is the <code>XYPoint</code>’s method that gets executed or the <code>PolarPoint</code>’s method.</p>
+<p>Such a user can for example be given two points <code>p1</code> and <code>p2</code>, and can compute their <code>x</code>-distance by doing <code>p1.getX() - p2.getX()</code>, without needing to know whether the points are both <code>XYPoint</code> instances, or both <code>PolarPoint</code> instances, or one of each, or some competely different kind of points altogether.</p></li>
 </ul>
 <h2 id="classes">Classes</h2>
 <ul>
@@ -53,10 +54,10 @@
 <h2 id="extension-mechanisms">Extension Mechanisms</h2>
 <p>There are numerous mechanisms that allow us to <strong>extend</strong> the functionality provided by a certain class. The main two mechanisms are the following:</p>
 <ul>
-<li><strong>class inheritance</strong>, in which we extend the functionality offered by a class via creating a subclass of it. This is often described as an <em>is-a</em> relationship.</li>
+<li><strong>class inheritance</strong>, in which we extend the functionality offered by a class by creating a subclass of it. This is often described as an <em>is-a</em> relationship.</li>
 <li><strong>object composition</strong>, in which we use objects of other classes via fields in our new class. This is often described as a <em>has-a</em> relationship.</li>
 </ul>
-<p>Example: Consider a simple <code>Grade</code> class:</p>
+<p>Example. Consider a simple <code>Grade</code> class:</p>
 <pre class="java"><code>class Grade {
     private final String letter;
 
@@ -87,14 +88,14 @@
         return units * super.getPoints();
     }
 }</code></pre>
-<p>We have to use the <code>super</code> keyword whenever we have to refer to the superclass. In this instance we automatically get for free the <code>countsForCredit</code> and <code>getLetter</code> methods. We have to modify the implementation of <code>getPoints</code> because it has to take into account the <code>units</code>.</p></li>
+<p>We use the term <code>extends Grade</code> to indicate that this is a subclass of <code>Grade</code>, and will therefore inherit everything that <code>Grade</code> has. In this instance we automatically get for free the <code>countsForCredit</code> and <code>getLetter</code> methods. We have to modify the implementation of <code>getPoints</code> because it has to take into account the <code>units</code>. We can use the <code>super</code> keyword whenever we have to refer to the superclass.</p></li>
 <li><p>The <em>composition</em> approach says that we should create a new class that has a <code>grade</code> field in it and a <code>units</code> field in it.</p>
 <pre class="java"><code>class UnitGrade {
     private Grade grade;
     private double units;
 
     public UnitGrade(String letter, double units) {
-        grade = new Grade(letter);
+        this.grade = new Grade(letter);
         this.units = units;
     }
     // other possible constructor, receiving an external grade
@@ -116,7 +117,7 @@
 <p>Let’s discuss advantages and disadvantages of the two approaches:</p>
 <ul>
 <li>Inheritance is a bit easier to understand, and requires less code to implement. Composition on the other hand requires more work, via delegation for example.</li>
-<li>Inheritance fixes the implementation of Grade at compile-time. If we wanted to instead use a subclass of the <code>Grade</code> class, we cannot do that. On the other hand with composition, the field <code>grade</code> can be long to any subclass of <code>Grade</code>. <em>Composition allows the determination of which specific class is used to happen at runtime, and to even change in the lifetime of an application.</em></li>
+<li>Inheritance fixes the implementation of Grade at compile-time. If we wanted to instead use a subclass of the <code>Grade</code> class (maybe some specialized “pass/fail grade subclass”, we cannot do that. On the other hand with composition, the field <code>grade</code> can belong to any subclass of <code>Grade</code>. <em>Composition allows the specific class that is used to be determined at runtime, and to even change in the lifetime of an application.</em></li>
 </ul>
 <p>Essentially, <em>inheritance is a static compile-time source-code dependency, while composition is a dynamic run-time dependency</em>.</p>
 <p>In UML notation, these two dependencies are drawn differently: inheritance is a hollow-point arrow, often drawn in a consistent vertical direction, while composition is a filled-point arrow, often drawn in a horizontal direction.</p>
