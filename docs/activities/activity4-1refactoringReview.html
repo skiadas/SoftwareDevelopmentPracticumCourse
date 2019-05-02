@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity4-1refactoringReview</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="activity-4-1---refactoring-review">Activity 4-1 - Refactoring Review</h1>
+<p>For each problem below, read through the given code and explain what refactoring should be done to improve the code.</p>
+<ol type="1">
+<li><pre class="java"><code>public class FindNumberProperties {
+  private int number;
+
+  public FindNumberProperties(int n) {
+    number = n;
+  }
+
+  public void getProperties() {
+    if ((number % 2) == 0)
+      System.out.println(number + &quot; is even&quot;);
+    else
+      System.out.println(number + &quot; is odd&quot;);
+
+    if (number &lt; 0)
+      System.out.println(number + &quot; is negative&quot;);
+    else if (number &gt; 1)
+      System.out.println(number + &quot; is positive&quot;);
+    else
+      System.out.println(number + &quot; is neither positive or negative&quot;);
+
+    if (number &gt; 12 &amp;&amp; number &lt; 20)
+      System.out.println(number + &quot; is a teen number&quot;);
+  }
+}
+</code></pre></li>
+</ol>
+
+<ol start="2" type="1">
+<li><pre class="java"><code>public class MiniCalculator {
+
+  private String[] parseTokens(String s) {
+    return s.trim().split(&quot;\\s+&quot;);
+  }
+
+  public double calculate(String strToParse) {
+    String[] tokens = parseTokens(strToParse);
+    double n1 = Double.parseDouble(tokens[0]);
+    String op = tokens[1];
+    double n2 = Double.parseDouble(tokens[2]);
+
+    if (op.equals(&quot;+&quot;))
+      return add(n1, n2);
+    else if (op.equals(&quot;-&quot;))
+      return subtract(n1, n2);
+    else if (op.equals(&quot;*&quot;))
+      return multiply(n1, n2);
+    else
+      return divide(n1, n2);
+    }
+
+  private double add(double n1, double n2) {
+    return n1 + n2;
+  }
+
+  private double subtract(double n1, double n2) {
+    return n1 - n2;
+  }
+
+  private double multiply(double n1, double n2) {
+    return n1 * n2;
+  }
+
+  private double divide(double n1, double n2) {
+    return n1 / n2;
+  }
+}</code></pre></li>
+</ol>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>
