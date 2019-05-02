@@ -37,5 +37,3 @@ Discussion of basic function structure concepts and reasons behind them:
 - Command-query separation
 - Null?
 - [notes](../activities/activity3-2functionStructure.md)
-
-- [code smells](../activities/activity3-3codeSmells.md)

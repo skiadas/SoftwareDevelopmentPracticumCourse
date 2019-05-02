@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity5-1codeSmells</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="code-smells">Code Smells</h1>
+<p>A <strong>code smell</strong> is a feature of the code that suggests something is wrong. They were introduced in the <a href="https://learning.oreilly.com/library/view/refactoring-improving-the/9780134757681/ch03.xhtml">refactoring</a> book (chapter 3), and also extended and discussed in the <a href="https://learning.oreilly.com/library/view/clean-code/9780136083238/chapter17.html">clean code</a> book, chapter 17.</p>
+<p>Typically we would remedy a code smell through a series of refactoring steps.</p>
+<dl>
+<dt>Comment smells</dt>
+<dd><ul>
+<li><p>Obsolete comments or comments that hold information better maintained by other means like a version control system. For example information about when changes were made, or the version number.</p>
+<p>Remedy: Delete them! Give Git a chance!</p></li>
+<li><p>Redundant comments that do little more than restate what the code says. Not useful, and might not change when the code changes, resulting to misleading comments.</p>
+<p>Remedy: Delete them!</p></li>
+<li><p>Commented-out code. By now probably totally out of sync with the system.</p>
+<p>Remedy: Terminate with extreme prejudice!</p></li>
+</ul>
+</dd>
+<dt>Naming smells</dt>
+<dd><ul>
+<li><p>Non-descriptive names.</p></li>
+<li><p>Names at wrong levels of abstractions.</p></li>
+<li><p>Ambiguous names.</p></li>
+<li><p>Type encoding in names.</p></li>
+<li><p>Names that hide side-effects.</p></li>
+<li><p>Function names that don’t correctly say what the functions do.</p>
+<p>Remedy for all: Rename them, until you find a good name.</p></li>
+</ul>
+</dd>
+<dt>Function smells</dt>
+<dd><ul>
+<li><p>Too many arguments on a function.</p>
+<p>Remedy: If some arguments often go together, extract them into a parameter object.</p></li>
+<li><p>Flag arguments (booleans). These suggest a function is doing too many things.</p>
+<p>Remedy: Possibly create separate functions. Maybe convert the booleans to some kind of enum if that is more appropriate?</p></li>
+<li><p>Wrong Levels of Abstraction. The code in each method should be at the same level of abstraction.</p>
+<p>Remedy: Extract method, giving suitable names to the new methods.</p></li>
+<li><p>Feature Envy. A function that uses more methods from another class than its own possibly belongs to that other class.</p>
+<p>Remedy: Move the function to the other class.</p></li>
+<li><p>Inappropriate Static functions. When creating static functions, make sure they would not more naturally be housed in the class of one of their parameters.</p>
+<p>Remedy: Move the function to the other class.</p></li>
+<li><p>Long function. Probably means it is doing way too much.</p>
+<p>Remedy: Extract till you drop!</p></li>
+</ul>
+</dd>
+<dt>Behavioral smells</dt>
+<dd><ul>
+<li><p>Obvious behavior not implemented: Functions should implement reasonably expected behavior.</p>
+<p>Remedy: Add tests for this behavior and change your function to match.</p></li>
+<li><p>Incorrect Behavior at the Boundaries.</p>
+<p>Remedy: Add tests for this behavior and change your function to match.</p></li>
+<li><p>Code Duplication should be avoided (Don’t Repeat Yourself)</p>
+<p>Remedy: Extract Method.</p></li>
+<li><p>Parts of the code that have too much knowledge.</p>
+<p>Remedy: Find ways to reduce the coupling between classes!</p></li>
+<li><p>Dead code. It cannot be reached. IntelliJ will actually complain about that.</p>
+<p>Remedy: Figure out what’s wrong!</p></li>
+<li><p>Artificial Coupling. Don’t make parts of your application know about each other if they don’t have to.</p>
+<p>Remedy: Remove the unnecessary dependencies. Might require moving some functions around.</p></li>
+<li><p>Misplaced Responsibility. Code should go where it is most expected to be found, not where it is most convenient for the programmer.</p>
+<p>Remedy: Move functions around, or extract methods to create new wrappers. And keep thinking of your user.</p></li>
+<li><p>Hidden temporal couplings. A sequence of statements needs to happen in a particular order, but nothing in the code forces this to happen.</p>
+<p>Remedy: Make each statement depend on some output from the previous statement.</p></li>
+<li><p>Transitive Navigation / Train wrecks. A sequence of getting calls, like: <code>o.getA().getB().getC().doSomething()</code>. The object <code>o</code> needs to know too much about the system that way.</p>
+<p>Remedy: Hide the chain behind a method that expresses more directly what you are doing, and/or make some of the classes in the middle do the same.</p></li>
+<li><p>Divergent Change. When a module changes for many different reasons. It is a sign that this module is doing too many disparate things.</p>
+<p>Remedy: Find a subset of the methods that have common functionality, and extract them as a delegate or a superclass.</p></li>
+<li><p>Shotgun Surgery. When we have to change many modules to effect a single behavioral change. This means that functionality that changes for the same reasons has been needlessly spread across many classes.</p>
+<p>Remedy: Move the relevant functionality around to where it should be.</p></li>
+<li><p>Data Clumps. Data that tends to stick together should be in a class.</p>
+<p>Remedy: Extract a new class out of those common elements.</p></li>
+<li><p>Primitive Obsession. The overuse of primitive types.</p>
+<p>Remedy: Create a new class to host the functionality related to those primitive types.</p></li>
+<li><p>Speculative Generality. Unneeded abstractions that make the code harder to read.</p>
+<p>Remedy: Eliminate with Extreme Prejudice! YAGNI!</p></li>
+</ul>
+</dd>
+<dt>Form</dt>
+<dd><ul>
+<li><p>Vertical Separation. Variables and functions should be close to their use.</p>
+<p>Remedy: Move them closer to each other.</p></li>
+<li><p>Inconsistency. Similar tasks are performed differently, or similar variables are named differently.</p>
+<p>Remedy: Use Rename, Extract Method and other refactorings to do things in similar ways when possible.</p></li>
+<li><p>Obscured Intent. Various aspects of the code make it hard to discern the code’s intent. Lack of Explanatory Variables.</p>
+<p>Remedy: Extract Methods/Variables to give names to things, and renaming to give them better names.</p></li>
+<li><p>Magic constants. Used as is in the text, without clear meaning.</p>
+<p>Remedy: Extract Constant. Choose a good name for it.</p></li>
+<li><p>Complex conditional tests.</p>
+<p>Remedy: Extract Methods for them to make them more readable. And find ways to simplify the code.</p></li>
+<li><p>Temporary field. A field that is not always set/used.</p>
+<p>Remedy: It may belong to a different class.</p></li>
+</ul>
+</dd>
+</dl>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>

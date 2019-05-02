@@ -2,10 +2,11 @@
 
 ## Activity 1:
 
-Version control basics, git
+- [code smells](../activities/activity5-1codeSmells.md)
 
 ## Activity 2:
 
+Version control basics, git
 Activities with git "stuff"
 
 git scavenger hunt?
