@@ -1,4 +1,4 @@
-# Activity 4-1 - Refactoring Review
+# Activity 4-1: Refactoring Review
 
 For each problem below, read through the given code and explain what refactoring should be done
 to improve the code.
