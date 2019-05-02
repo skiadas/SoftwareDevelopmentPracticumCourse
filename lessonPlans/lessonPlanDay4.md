@@ -2,11 +2,11 @@
 
 ## Activity 1:
 
-- [OOP Basics notes](../cheatsheets/OOPBasics.md)
+- [Refactoring review](../activities/activity4-1refactoringReview.md)
 
 ## Activity 2:
 
-- [OOP Design Case Study 1](../activities/activity4-2oopDesign.md)
+- Concepts review
 
 ## Lunch
 
@@ -15,9 +15,12 @@
 
 ## Activity 3:
 
-Maybe design of grades application?
+- [OOP Basics notes](../cheatsheets/OOPBasics.md)
 
 ## Activity 4:
 
+- [OOP Design Case Study 1](../activities/activity4-2oopDesign.md)
 
 ## Activity 5:
+
+- Video (TDD) followed by discussion.
