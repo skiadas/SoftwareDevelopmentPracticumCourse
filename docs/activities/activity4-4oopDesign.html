@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity4-4oopDesign</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="activity-4-2-design-case-study">Activity 4-2 Design Case Study</h1>
+<p>In this case we will think through a small design problem and build the main structure of a small application.</p>
+<h2 id="setup">Setup</h2>
+<p>You are hired by the registrar’s office of a certain college to create a record-keeping application for the college. Here is a description of its features:</p>
+<ul>
+<li>We manage the records of students as they take courses.</li>
+<li>We need to be able to add new students, and to enroll students to classes.</li>
+<li>Classes are determined by the department prefix, the course number, a section letter and the term when they were offered (we operate on three semesters, Fall, Winter and Spring).</li>
+<li>Each class counts for a number of units. 1 is the typical number, but we also have 0.5 and 0.25 units.</li>
+<li>Students may not enroll in a class that is the same as a class they have already taken (same department and number, possibly different section and term).</li>
+<li>Students who enroll in at least 3 units in Fall or Winter, or in 0.25 units in the Spring semester are considered “full time”. Otherwise they are considered “part-time”.</li>
+<li>Students may take up to 4 units in Fall or Winter, and up to 1 unit in the Spring.</li>
+<li>Students receive a grade for each class. It can be one of the normal grades, or an IP indicating a course that is “in-progress”. Students may also receive “transfer credit” for a class, which means they have passed the class but there is no grade associated to it (and it’s not part of a normal academic term).</li>
+<li>We need to be able to compute the GPA of students both overall as well as within a particular department, and also within a particular term.</li>
+<li>We need to be able to generate two kinds of reports:
+<ul>
+<li>A term-by-term report of the courses a student took each term and the number of units and gpa for that term, as well as overall number of units and gpa.</li>
+<li>A department report listing the courses a student took in a particular department as well as computing total units and gpa.</li>
+</ul></li>
+<li>We need to be able to determine if a student can graduate. In order to graduate, a student must have (keeping it simple):
+<ul>
+<li>A declared major in their record, which is simply a choice of a department.</li>
+<li>At least 10 units of credit in that department, including transfer courses and courses that the student has passed.</li>
+<li>An overall GPA within the declared major of at least 2.0.</li>
+<li>At least 36 units of credit overall.</li>
+<li>An overall GPA of at least 2.0.</li>
+</ul></li>
+</ul>
+<p>Our task for today will be to design some of the classes and interfaces that would support this functionality.</p>
+<h2 id="first-steps">First steps</h2>
+<p>We start by considering a class that represents a term, we’ll call it <code>Term</code>.</p>
+<ol type="1">
+<li>What data fields might this <code>Term</code> class contain? What are their types?</li>
+<li>Do we need any other classes in order to be able to define the <code>Term</code> class?</li>
+<li>What public methods might the <code>Term</code> class have?</li>
+<li>Is your class handling limits on how many units a student can take in a semester and what the limit for “full-time” is, or will these happen somewhere else?</li>
+</ol>
+<p>Now we consider a class to represent a particular course offering, we’ll call it <code>Section</code>.</p>
+<ol type="1">
+<li>What data fields might this <code>Section</code> class contain? What are their types?</li>
+<li>Do we need any other classes in order to be able to define the <code>Section</code> class?</li>
+<li>What public methods might the <code>Section</code> class have?</li>
+</ol>
+<p>Now we consider a class to represent a student, we’ll call it <code>Student</code>.</p>
+<ol type="1">
+<li>What data fields might this <code>Student</code> class contain? What are their types?</li>
+<li>Do we need any other classes in order to be able to define the <code>Student</code> class?</li>
+<li>What public methods might the <code>Student</code> class have?</li>
+</ol>
+<p>Now we want to somehow represent the act of a student taking a specific class. We’ll represent this with an <code>Enrollment</code> class.</p>
+<ol type="1">
+<li>What data fields might this <code>Enrollment</code> class contain? What are their types?</li>
+<li>Do we need any other classes in order to be able to define the <code>Enrollment</code> class?</li>
+<li>What public methods might the <code>Enrollment</code> class have?</li>
+</ol>
+<p>Imagine we also have a class that represents our connection to the database. We’ll call it <code>Database</code>.</p>
+<ol type="1">
+<li>What data fields might this <code>Database</code> class contain? What are their types?</li>
+<li>Do we need any other classes in order to be able to define the <code>Database</code> class?</li>
+<li>What public methods might the <code>Database</code> class have?</li>
+<li>Should this actually be an <em>interface</em> instead of a class?</li>
+</ol>
+<p>Now we want classes to represent the various requests that might come to our system.</p>
+<ol type="1">
+<li>What are all the different requests that might come?</li>
+<li>What pieces of information does each request need to hold?</li>
+<li>Is there any common behavior that all these requests share?</li>
+</ol>
+<p>What other classes would we need in our system?</p>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>
