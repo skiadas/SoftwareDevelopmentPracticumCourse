@@ -26,6 +26,3 @@
 
 - [OOP Basics notes](../cheatsheets/OOPBasics.md)
 
-## Activity 5:
-
-- [OOP Design Case Study 1](../activities/activity4-4oopDesign.md)

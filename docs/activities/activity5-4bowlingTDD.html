@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity5-4bowlingTDD</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="activity-5-1-tdd-practice-1---bowling-game-scorer">Activity 5-1: TDD Practice 1 - Bowling Game Scorer</h1>
+<h2 id="practicing-test-driven-development-tdd">Practicing test-driven development (TDD)</h2>
+<p><em>This is a paired-programming exercise.</em></p>
+<p>The goal of this activity is to practice the red-green-refactor cycle:</p>
+<ul>
+<li><code>RED</code>: You must add a new test or some new code to an ongoing test, which causes the test to fail.</li>
+<li><code>GREEN</code>: You must add the code needed to make the failing test pass.</li>
+<li><code>REFACTOR</code>: You must clean up the code, including test code, to make them more readable; must do before moving on to writing the next test.</li>
+</ul>
+<p>Use the red-green-refactor prop as you work through this activity to help you internalize the process.</p>
+<p><strong>General Rules to follow (TDD Rules)</strong>:</p>
+<ol type="1">
+<li>You are not allowed to write any production code unless it is to make a failing unit test pass.</li>
+<li>You are not allowed to write any more of a unit test than is sufficient to fail; and not compiling is failing.</li>
+<li>You are not allowed to write any more production code than is sufficient to pass the failing test.</li>
+</ol>
+<h2 id="bowling-game-scoring-rules">Bowling game scoring rules</h2>
+<ol type="1">
+<li>A bowling game consists of 10 <strong>frames</strong>.</li>
+<li>On each frame the player makes up to two <strong>throws</strong>.</li>
+<li>Each throw/roll knocks down a number of <strong>pins</strong>. Each pin knocked down scores a point.</li>
+<li>There is a total of 10 pins that can be knocked down on each frame.</li>
+<li>Knocking all 10 pins down with the two rolls of the frame is called a <strong>spare</strong>.</li>
+<li>The pins in the next roll after the spare are added to the spare frame’s score.</li>
+<li>Knocking all 10 pins down with the first of the frame rolls (and subsequently NOT doing a second roll) is called a <strong>strike</strong>.</li>
+<li>The pins in the next two rolls after a strike are added to the strike frame’s score.</li>
+<li>More rolls may occur after all 10 frames are completed, to account for the extra points allotted to spares/strikes on the last frame.</li>
+<li>Your score is the sum of your scores in all the frames.</li>
+</ol>
+<p> </p>
+<h4 id="example-typical-game">Example: Typical game</h4>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Frame</th>
+<th style="text-align: right;">Roll 1</th>
+<th style="text-align: right;">Roll 2</th>
+<th style="text-align: center;">Special</th>
+<th style="text-align: right;">Extra Points</th>
+<th style="text-align: right;">Frame Score</th>
+<th style="text-align: right;">Game Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: center;"></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: center;"></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: center;">Spare</td>
+<td style="text-align: right;"><strong>5</strong></td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">29</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: right;"><strong>5</strong></td>
+<td style="text-align: right;">5</td>
+<td style="text-align: center;">Spare</td>
+<td style="text-align: right;"><strong>10</strong></td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">49</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: right;"><strong>10</strong></td>
+<td style="text-align: right;"></td>
+<td style="text-align: center;">Strike</td>
+<td style="text-align: right;"><strong>1</strong></td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">60</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td style="text-align: right;"><strong>1</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">61</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: center;">Spare</td>
+<td style="text-align: right;"><strong>6</strong></td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">77</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: right;"><strong>6</strong></td>
+<td style="text-align: right;">4</td>
+<td style="text-align: center;">Spare</td>
+<td style="text-align: right;"><strong>10</strong></td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">97</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td style="text-align: right;"><strong>10</strong></td>
+<td style="text-align: right;"></td>
+<td style="text-align: center;">Strike</td>
+<td style="text-align: right;"><strong>10</strong></td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">117</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10</td>
+<td style="text-align: right;"><strong>2</strong></td>
+<td style="text-align: right;"><strong>8</strong></td>
+<td style="text-align: center;">Spare</td>
+<td style="text-align: right;"><strong>6</strong></td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">133</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: right;"><strong>6</strong></td>
+<td style="text-align: right;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">133</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<h4 id="example-perfect-game">Example: Perfect game</h4>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Frame</th>
+<th style="text-align: right;">Roll 1</th>
+<th style="text-align: right;">Roll 2</th>
+<th style="text-align: center;">Special</th>
+<th style="text-align: right;">Extra Points</th>
+<th style="text-align: right;">Frame Score</th>
+<th style="text-align: right;">Game Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;"></td>
+<td style="text-align: center;">Strike</td>
+<td style="text-align: right;"><strong>20</strong></td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">30</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: right;"><strong>10</strong></td>
+<td style="text-align: right;"></td>
+<td style="text-align: center;">Strike</td>
+<td style="text-align: right;"><strong>20</strong></td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">60</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: right;"><strong>10</strong></td>
+<td style="text-align: right;"></td>
+<td style="text-align: center;">Strike</td>
+<td style="text-align: right;"><strong>20</strong></td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">90</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: right;"><strong>10</strong></td>
+<td style="text-align: right;"></td>
+<td style="text-align: center;">Strike</td>
+<td style="text-align: right;"><strong>20</strong></td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">120</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: right;"><strong>10</strong></td>
+<td style="text-align: right;"></td>
+<td style="text-align: center;">Strike</td>
+<td style="text-align: right;"><strong>20</strong></td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">150</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: right;"><strong>10</strong></td>
+<td style="text-align: right;"></td>
+<td style="text-align: center;">Strike</td>
+<td style="text-align: right;"><strong>20</strong></td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">180</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: right;"><strong>10</strong></td>
+<td style="text-align: right;"></td>
+<td style="text-align: center;">Strike</td>
+<td style="text-align: right;"><strong>20</strong></td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">210</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: right;"><strong>10</strong></td>
+<td style="text-align: right;"></td>
+<td style="text-align: center;">Strike</td>
+<td style="text-align: right;"><strong>20</strong></td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">240</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td style="text-align: right;"><strong>10</strong></td>
+<td style="text-align: right;"></td>
+<td style="text-align: center;">Strike</td>
+<td style="text-align: right;"><strong>20</strong></td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">270</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10</td>
+<td style="text-align: right;"><strong>10</strong></td>
+<td style="text-align: right;"></td>
+<td style="text-align: center;">Strike</td>
+<td style="text-align: right;"><strong>20</strong></td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">300</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: right;"><strong>10</strong></td>
+<td style="text-align: right;"><strong>10</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">300</td>
+</tr>
+</tbody>
+</table>
+<h2 id="development-steps">Development Steps</h2>
+<p>These are the steps (as represented by test cases) that you will be going through to develop the bowling game scorer.</p>
+<ol type="1">
+<li>Getting empty test to compile</li>
+<li>Can create game</li>
+<li>Can roll</li>
+<li>Score a gutter game</li>
+<li>Score all ones game</li>
+<li>Score game with one spare and rest gutter balls</li>
+<li>Score game with one strike and rest gutter balls</li>
+<li>Score a perfect game</li>
+</ol>
+<h3 id="step-1-getting-empty-test-to-compile">Step 1: Getting empty test to compile</h3>
+<dl>
+<dt><code>RED</code></dt>
+<dd><ul>
+<li>Start a new IntelliJ project.</li>
+<li>Create a test directory, and mark it as “Test Source Directory”</li>
+<li>Create a <code>BowlingTest.java</code> class in the test directory.</li>
+<li>Create a <code>nothing()</code> test with the <code>@Test</code> annotation.</li>
+</ul>
+</dd>
+<dt><code>GREEN</code></dt>
+<dd><ul>
+<li>Use intention on the red-marked words to add JUnit 4 to the classpath if needed, and to import <code>org.junit.test</code>.</li>
+<li>Make sure you can run your test.</li>
+</ul>
+</dd>
+<dt><code>REFACTOR</code></dt>
+<dd><ul>
+<li>Nothing to do.</li>
+</ul>
+</dd>
+</dl>
+<h3 id="step-2-can-create-game">Step 2: Can create game</h3>
+<dl>
+<dt><code>RED</code></dt>
+<dd><ul>
+<li>Change the <code>nothing</code> test to <code>canCreateGame</code>.</li>
+<li>Add a <code>Game g = new Game();</code> line to the test.</li>
+</ul>
+</dd>
+<dt><code>GREEN</code></dt>
+<dd><ul>
+<li>Use intention on the red-marked words to create a new class <code>Game</code>.</li>
+<li>Check that tests pass.</li>
+</ul>
+</dd>
+<dt><code>REFACTOR</code></dt>
+<dd><ul>
+<li>Nothing to do.</li>
+</ul>
+</dd>
+</dl>
+<h3 id="step-3-can-roll">Step 3: Can roll</h3>
+<dl>
+<dt><code>RED</code></dt>
+<dd><ul>
+<li>Change the <code>canCreateGame</code> test to <code>canRoll</code>.</li>
+<li>Add a <code>g.roll(0);</code> to the test.</li>
+</ul>
+</dd>
+<dt><code>GREEN</code></dt>
+<dd><ul>
+<li>Use intention on the red-marked word to create the method <code>roll</code> in <code>Game</code>.</li>
+<li>Make sure the parameter to that method is <code>pins</code>.</li>
+<li>Check that tests pass.</li>
+</ul>
+</dd>
+<dt><code>REFACTOR</code></dt>
+<dd><ul>
+<li>Nothing to do.</li>
+</ul>
+</dd>
+</dl>
+<h3 id="step-4-score-a-gutter-game">Step 4: Score a gutter game</h3>
+<dl>
+<dt><code>RED</code></dt>
+<dd><ul>
+<li>Make a new <code>gutterGame</code> test.</li>
+<li>In the body create a new game <code>g</code>, then roll twenty zeroes (for loop).</li>
+<li>Finish up with `assertEquals(0, g.score());</li>
+</ul>
+</dd>
+<dt><code>GREEN</code></dt>
+<dd><ul>
+<li>Use intention on <code>assertEquals</code> to import the static method from <code>org.junit</code>.</li>
+<li>Use intention on <code>score</code> to create a score method in <code>Game</code>.</li>
+<li>Make the method return -1 and run the test to see it fail.</li>
+<li>Make the method return 0 and run the test to see it pass.</li>
+</ul>
+</dd>
+<dt><code>REFACTOR</code></dt>
+<dd><ul>
+<li>Extract Field from the <code>Game g</code> variable, and have it initialized in the <code>setUp</code> method.</li>
+<li>Remove the local <code>g</code> variable from any of the tests, so that the field variable is used.</li>
+<li>Eliminate the no-longer-relevant <code>canRoll</code> test.</li>
+<li>Use intention on <code>Exception</code> to remove the unneeded <code>throws Exception</code>.</li>
+</ul>
+</dd>
+</dl>
+<h3 id="step-5-score-all-ones-game">Step 5: Score all ones game</h3>
+<dl>
+<dt><code>RED</code></dt>
+<dd><ul>
+<li>Add a <code>allOnes</code> test.</li>
+<li>In its body roll twenty ones in a loop.</li>
+<li>Finish up with <code>assertEquals(20, g.score());</code>.</li>
+<li>Watch the test fail.</li>
+</ul>
+</dd>
+<dt><code>GREEN</code></dt>
+<dd><ul>
+<li>In <code>Game</code>, create a field <code>score</code>, initialize it to 0, and return it in the <code>score</code> method.</li>
+<li>In the <code>roll</code> method, increment the <code>score</code> by the <code>pins</code>.</li>
+<li>Watch the test pass.</li>
+</ul>
+</dd>
+<dt><code>REFACTOR</code></dt>
+<dd><ul>
+<li>In <code>gutterGame</code> test, perform Extract Variable on the <code>0</code> within the <code>roll</code>, to variable <code>pins</code>. Move it above the loop.</li>
+<li>Perform Extract Variable on the <code>20</code> in the loop, to variable <code>n</code>.</li>
+<li>Perform Extract Method on the loop, to method <code>rollMany</code>, place parameters in order <code>n</code>, <code>pins</code>, and replace duplicates.</li>
+<li>In <code>gutterGame</code> test, perform Inline on the local variables <code>n</code> and <code>pins</code>.</li>
+<li>Perform a Move refactoring on the <code>rollMany</code> method, to the <code>Game</code> class.</li>
+<li>Confirm tests still pass.</li>
+</ul>
+</dd>
+</dl>
+<h3 id="step-8-score-game-with-one-spare-and-rest-gutter-balls">Step 8: Score game with one spare and rest gutter balls</h3>
+<dl>
+<dt><code>PRE-REFACTOR</code></dt>
+<dd><ul>
+<li>Create field <code>rolls</code> in <code>Game</code>, to store array of ints. Initialize it to an array of length 21.</li>
+<li>Create field <code>currentRoll</code> in <code>Game</code>, initialized to 0. Delete the <code>score</code> field.</li>
+<li>In <code>roll</code> method, add the <code>pins</code> to the <code>currentRoll</code> spot in the <code>rolls</code> array, and increment <code>currentRoll</code>. Remove the <code>score</code> increment.</li>
+<li>In <code>score</code> method, loop over the <code>rolls</code> array up to the <code>currentRoll</code>, and accumulate the values in a local variable <code>score</code>, then return that variable.</li>
+<li>Confirm that your tests still pass.</li>
+<li>Change <code>for</code> loop in <code>score</code> so that it loops over 10 frames. Create a local <code>firstInFrame</code> variable starting at 0. For each <code>frame</code> add to the score the value of <code>rolls</code> at <code>firstInFrame</code> and <code>firstInFrame + 1</code>, then increment <code>firstInFrame</code> by 2.</li>
+<li>Confirm that your tests still pass.</li>
+</ul>
+</dd>
+<dt><code>RED</code></dt>
+<dd><ul>
+<li>Add a <code>oneSpare</code> test, on which you roll 5, 5 and 3, then roll 17 zeroes (using <code>rollMany</code>).</li>
+<li>Assert that the score should equal 16.</li>
+<li>Watch the test fail.</li>
+</ul>
+</dd>
+<dt><code>GREEN</code></dt>
+<dd><ul>
+<li>At the start of the loop, add an if test for whether <code>rolls[firstInFrame] + rolls[firstInFrame + 1]</code> equals 10. If it is, increment the <code>score</code> by <code>10 + rolls[firstInFrame + 2]</code> then increment <code>firstInFrame</code> by 2.</li>
+<li>Place the remaining body of the loop into an else clause.</li>
+<li>Watch the tests pass.</li>
+</ul>
+</dd>
+<dt><code>REFACTOR</code></dt>
+<dd><ul>
+<li>Extract the test in the <code>if</code> into a method <code>isSpare</code>.</li>
+<li>Extract the two 5 rolls in the test method into a <code>rollSpare</code> method.</li>
+</ul>
+</dd>
+</dl>
+<h3 id="step-9-score-game-with-one-strike-and-rest-gutter-balls">Step 9: Score game with one strike and rest gutter balls</h3>
+<dl>
+<dt><code>RED</code></dt>
+<dd><ul>
+<li>Add a <code>oneStrike</code> test, on which you roll 10, then 3 and 4, then 17 zeroes.</li>
+<li>Assert that the score should equal 24.</li>
+<li>Watch the test fail.</li>
+</ul>
+</dd>
+<dt><code>GREEN</code></dt>
+<dd><ul>
+<li>Add a new if to the beginning of the for loop, testing if <code>rolls[firstInFrame]</code> equals 10. Place an else before the next if.</li>
+<li>In the body of the new if, increment the <code>score</code> by 10 plus <code>rolls[firstInFrame + 1] + rolls[firstInFrame + 2]</code>, then increment <code>firstInFrame</code> by 1.</li>
+<li>Watch the test pass.</li>
+</ul>
+</dd>
+<dt><code>REFACTOR</code></dt>
+<dd><ul>
+<li>Extract the conditional test for a strike into an <code>isStrike</code> method (don’t fold parameters).</li>
+<li>Extract the <code>rolls[firstInFrame + 1] + rolls[firstInFrame + 2]</code> part of the strike conditional branch into a <code>nextTwoBallsForStrike</code> method.</li>
+<li>Extract the <code>rolls[firstInFrame + 2]</code> part of the spare conditional branch into a <code>nextBallForSpare</code> method (don’t process duplicates).</li>
+<li>Extract the <code>rolls[firstInFrame] + rolls[firstInFrame + 1];</code> part of the normal frame part into a <code>twoBallsInFrame</code> method.</li>
+</ul>
+</dd>
+</dl>
+<h3 id="step-10-score-a-perfect-game">Step 10: Score a perfect game</h3>
+<dl>
+<dt><code>RED</code></dt>
+<dd><ul>
+<li>Add a <code>perfectGame</code> test, on which you roll twelve 10s.</li>
+<li>Assert that the score equals 300.</li>
+<li>Watch the test actually pass.</li>
+</ul>
+</dd>
+<dt><code>GREEN</code></dt>
+<dd><ul>
+<li>We’re done!</li>
+</ul>
+</dd>
+<dt><code>REFACTOR</code></dt>
+<dd><ul>
+<li>Nothing to do.</li>
+</ul>
+</dd>
+</dl>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>

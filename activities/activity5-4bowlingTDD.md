@@ -1,12 +1,18 @@
-# TDD Practice 1: Building the bowling game scoring system
+# Activity 5-1: TDD Practice 1 - Bowling Game Scorer
+
+## Practicing test-driven development (TDD)
+
+*This is a paired-programming exercise.*
 
 The goal of this activity is to practice the red-green-refactor cycle:
 
 - `RED`: You must add a new test or some new code to an ongoing test, which causes the test to fail.
-- `GREEN`: You must add the code needed to make the test pass.
-- `REFACTOR`: You must clean up both the code and the test to make them more readable, before moving on to the next test.
+- `GREEN`: You must add the code needed to make the failing test pass.
+- `REFACTOR`: You must clean up the code, including test code, to make them more readable; must do before moving on to writing the next test.
 
-General Rules to follow (TDD Rules):
+Use the red-green-refactor prop as you work through this activity to help you internalize the process.
+
+**General Rules to follow (TDD Rules)**:
 
 1. You are not allowed to write any production code unless it is to make a failing unit test pass.
 2. You are not allowed to write any more of a unit test than is sufficient to fail; and not compiling is failing.
@@ -25,6 +31,8 @@ General Rules to follow (TDD Rules):
 9. More rolls may occur after all 10 frames are completed, to account for the extra points allotted to spares/strikes on the last frame.
 10. Your score is the sum of your scores in all the frames.
 
+&nbsp;
+
 #### Example: Typical game
 
 Frame    Roll 1  Roll 2   Special   Extra Points  Frame Score  Game Score
@@ -40,6 +48,8 @@ Frame    Roll 1  Roll 2   Special   Extra Points  Frame Score  Game Score
 9        **10**            Strike         **10**           20         117
 10        **2**   **8**    Spare           **6**           16         133
           **6**                                                       133
+
+&nbsp;
 
 #### Example: Perfect game
 
@@ -59,7 +69,7 @@ Frame    Roll 1  Roll 2   Special   Extra Points  Frame Score  Game Score
 
 ## Development Steps
 
-These are the steps we will need to do in
+These are the steps (as represented by test cases) that you will be going through to develop the bowling game scorer.
 
 1. Getting empty test to compile
 2. Can create game

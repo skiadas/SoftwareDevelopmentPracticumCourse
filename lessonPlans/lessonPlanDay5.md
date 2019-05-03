@@ -2,34 +2,24 @@
 
 ## Activity 1:
 
-- [code smells](../activities/activity5-1codeSmells.md)
+- [Code Smells](../activities/activity5-1codeSmells.md)
 
 ## Activity 2:
 
-Version control basics, git
-Activities with git "stuff"
-
-git scavenger hunt?
-git game?
-
-Git cheatsheet
+- [OOP Design Case Study 1](../activities/activity4-4oopDesign.md)
 
 ## Lunch
 
-- Get Lunch
-- TDD video part 2?
+30 min
 
 ## Activity 3:
 
-- Explain what TDD is and what are its rules
-- Explain why TDD
+- TDD video part 2
 
 ## Activity 4:
 
-TDD step-by-step example for them (see web apps course lab 4)
-
-Yes, bowling example, but like "red, green refactor" on TDD part 2 video.
+- [TDD practice 1: bowling](../activities/activity5-4bowlingTDD.md): "Red, Green, Refactor!"
 
 ## Activity 5:
 
-Summarize?
+- Summarize and review main topics from the week.
