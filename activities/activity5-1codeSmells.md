@@ -1,116 +1,153 @@
-# Code Smells
+# Activity 5-1: Code Smells
 
-A **code smell** is a feature of the code that suggests something is wrong. They were introduced in the [refactoring](https://learning.oreilly.com/library/view/refactoring-improving-the/9780134757681/ch03.xhtml) book (chapter 3), and also extended and discussed in the [clean code](https://learning.oreilly.com/library/view/clean-code/9780136083238/chapter17.html) book, chapter 17.
+A **code smell** is a characteristic of the code that suggests something is wrong, typically a weakness or funamental problem with the *design*.  Code smells are not usually bugs or any obvious problem that prevents the code from running.  
 
-Typically we would remedy a code smell through a series of refactoring steps.
+***Typically the remedy for code smells is refactoring.***
 
 Comment smells
-  ~ - Obsolete comments or comments that hold information better maintained by other means like a version control system. For example information about when changes were made, or the version number.
+  ~ - **Obsolete comments** or comments holding information that should be maintained elsewhere, like in the version control system. 
 
-        Remedy: Delete them! Give Git a chance!
-    - Redundant comments that do little more than restate what the code says. Not useful, and might not change when the code changes, resulting to misleading comments.
+        ***Example:*** information about the version number or when changes where made
 
-        Remedy: Delete them!
-    - Commented-out code. By now probably totally out of sync with the system.
+        ***Remedy:*** Delete them! Give Git a chance!
 
-        Remedy: Terminate with extreme prejudice!
+    - **Redundant comments** that do little more than restate what the code says. Not useful, and might not change when the code changes, resulting in misleading comments.
+
+        ***Remedy:*** Delete them!
+
+    - **Commented-out code**. By now probably totally out of sync with the system.
+
+        ***Remedy:*** Terminate with extreme prejudice!
 
 Naming smells
-  ~ - Non-descriptive names.
-    - Names at wrong levels of abstractions.
-    - Ambiguous names.
-    - Type encoding in names.
-    - Names that hide side-effects.
-    - Function names that don't correctly say what the functions do.
+  ~ - **Non-descriptive** or ambiguous names.
+    - Names at the **wrong level of abstraction**.
+    - **Type encoding** in names.
+    - Names that **hide side-effects**.
+    - Names that **disinform**.
 
-        Remedy for all: Rename them, until you find a good name.
+        ***Example:*** function name that does not correctly say what the function does
+
+        ***Remedy for all:*** Rename them until you find a good name.
 
 Function smells
-  ~ - Too many arguments on a function.
+  ~ - **Too many arguments.**
 
-        Remedy: If some arguments often go together, extract them into a parameter object.
-    - Flag arguments (booleans). These suggest a function is doing too many things.
+        ***Remedy:*** Extract arguments that often go together into a parameter object. 
 
-        Remedy: Possibly create separate functions. Maybe convert the booleans to some kind of enum if that is more appropriate?
-    - Wrong Levels of Abstraction. The code in each method should be at the same level of abstraction.
+    - **Flag arguments (booleans).** These suggest a function is doing too many things.
 
-        Remedy: Extract method, giving suitable names to the new methods.
-    - Feature Envy. A function that uses more methods from another class than its own possibly belongs to that other class.
+        ***Remedy:*** Create separate functions or convert the booleans into to some kind of enum if that is more appropriate.
 
-        Remedy: Move the function to the other class.
-    - Inappropriate Static functions. When creating static functions, make sure they would not more naturally be housed in the class of one of their parameters.
+    - **Wrong level of abstraction**. The code in each method should be at the same level of abstraction.
 
-        Remedy: Move the function to the other class.
-    - Long function. Probably means it is doing way too much.
+        ***Remedy:*** Extract methods, giving suitable names to the new methods.
 
-        Remedy: Extract till you drop!
+    - **Feature envy.** A function that uses more methods from another class than its own possibly belongs to that other class.
+
+        ***Remedy:*** Move the function to the other class.
+
+    - **Inappropriate static functions.** When creating static functions, make sure they would not more naturally be housed in the class of one of their parameters.
+
+        ***Remedy:*** Move the function to the other class.
+
+    - **Long function**. Probably means the function is doing way too much.
+
+        ***Remedy:*** Extract till you drop!
 
 Behavioral smells
-  ~ - Obvious behavior not implemented: Functions should implement reasonably expected behavior.
+  ~ - **Obvious behavior not implemented:** Functions should implement reasonably expected behavior.
 
-        Remedy: Add tests for this behavior and change your function to match.
-    - Incorrect Behavior at the Boundaries.
+        ***Remedy:*** Add tests for this behavior and change your function to match.
 
-        Remedy: Add tests for this behavior and change your function to match.
-    - Code Duplication should be avoided (Don't Repeat Yourself)
+    - **Incorrect behavior at boundaries.**
 
-        Remedy: Extract Method.
-    - Parts of the code that have too much knowledge.
+        ***Remedy:*** Add tests for this behavior and change your function to match.
 
-        Remedy: Find ways to reduce the coupling between classes!
-    - Dead code. It cannot be reached. IntelliJ will actually complain about that.
+    - **Duplicate code.** Try not to repeat yourself; you never want to have to change the same code in multiple places.
 
-        Remedy: Figure out what's wrong!
-    - Artificial Coupling. Don't make parts of your application know about each other if they don't have to.
+        ***Remedy:*** Extract Method.
 
-        Remedy: Remove the unnecessary dependencies. Might require moving some functions around.
-    - Misplaced Responsibility. Code should go where it is most expected to be found, not where it is most convenient for the programmer.
+    - **Too much knowledge.** Parts of the code know more than they need to.
 
-        Remedy: Move functions around, or extract methods to create new wrappers. And keep thinking of your user.
-    - Hidden temporal couplings. A sequence of statements needs to happen in a particular order, but nothing in the code forces this to happen.
+        ***Remedy:*** Find ways to reduce the coupling between classes!
 
-        Remedy: Make each statement depend on some output from the previous statement.
-    - Transitive Navigation / Train wrecks. A sequence of getting calls, like: `o.getA().getB().getC().doSomething()`. The object `o` needs to know too much about the system that way.
+    - **Dead code.** Code that will never be reached. IntelliJ will actually complain about that.
 
-        Remedy: Hide the chain behind a method that expresses more directly what you are doing, and/or make some of the classes in the middle do the same.
-    - Divergent Change. When a module changes for many different reasons. It is a sign that this module is doing too many disparate things.
+        ***Remedy:*** Figure out what's wrong!
 
-        Remedy: Find a subset of the methods that have common functionality, and extract them as a delegate or a superclass.
-    - Shotgun Surgery. When we have to change many modules to effect a single behavioral change. This means that functionality that changes for the same reasons has been needlessly spread across many classes.
+    - **Artificial coupling.** Similar to *too much knowlege*. Different parts of your application should not know about each other if they do not have to.
 
-        Remedy: Move the relevant functionality around to where it should be.
-    - Data Clumps. Data that tends to stick together should be in a class.
+        ***Remedy:*** Remove unnecessary dependencies. Might require moving some functions around.
 
-        Remedy: Extract a new class out of those common elements.
-    - Primitive Obsession. The overuse of primitive types.
+    - **Misplaced responsibility.** Code should go where you expect to find it, not where it is most convenient for the programmer.
 
-        Remedy: Create a new class to host the functionality related to those primitive types.
-    - Speculative Generality. Unneeded abstractions that make the code harder to read.
+        ***Remedy:*** Move functions around, or extract methods to create new wrappers. And keep thinking of your user.
 
-        Remedy: Eliminate with Extreme Prejudice! YAGNI!
+    - **Hidden temporal couplings.** A sequence of statements needs to happen in a particular order, but nothing in the code forces this to happen.
+
+        ***Remedy:*** Make each statement depend on some output from the previous statement.
+
+    - **Transitive navigation / Train wrecks.** A sequence of getting calls, like: `o.getA().getB().getC().doSomething()`. The object `o` needs to know too much about the system that way.
+
+        ***Remedy:*** Hide the chain behind a method that expresses more directly what you are doing, and/or make some of the classes in the middle do the same.
+
+    - **Divergent change.** When a module changes for many different reasons. It is a sign that this module is doing too many different things.
+
+        ***Remedy:*** Find a subset of the methods with common functionality; extract them as a delegate or a superclass.
+
+    - **Shotgun surgery.** When many modules must be changed to effect a single behavioral change. This means that functionality that changes for the same reasons has been needlessly spread across many classes.
+
+        **Remedy:** Move the relevant functionality around to where it should be.
+
+    - **Data clumps.** Data that tends to stick together should be in a class.
+
+        ***Remedy:*** Extract a new class out of those common elements.
+
+    - **Primitive obsession.** The overuse of primitive types.
+
+        ***Remedy:*** Create a new class to host the functionality related to those primitive types.
+
+    - **Speculative generality.** Unneeded abstractions that make the code harder to read.
+
+        ***Remedy:*** Eliminate with Extreme Prejudice! YAGNI!
 
 Form
-  ~ - Vertical Separation. Variables and functions should be close to their use.
+  ~ - **Vertical Separation.** Variables and functions should be close to their use.
 
-        Remedy: Move them closer to each other.
-    - Inconsistency. Similar tasks are performed differently, or similar variables are named differently.
+        ***Remedy:*** Move them closer to each other.
 
-        Remedy: Use Rename, Extract Method and other refactorings to do things in similar ways when possible.
-    - Obscured Intent. Various aspects of the code make it hard to discern the code's intent. Lack of Explanatory Variables.
+    - **Inconsistency.** Similar tasks are performed differently, or similar variables are named differently.
 
-        Remedy: Extract Methods/Variables to give names to things, and renaming to give them better names.
-    - Magic constants. Used as is in the text, without clear meaning.
+        ***Remedy:*** Use rename, extract method and other refactorings to do things in a similar ways when possible.
 
-        Remedy: Extract Constant. Choose a good name for it.
-    - Complex conditional tests.
+    - **Obscured intent.** Various aspects of the code make it hard to discern the code's intent, e.g., lack of explanatory variables.
 
-        Remedy: Extract Methods for them to make them more readable. And find ways to simplify the code.
-    - Temporary field. A field that is not always set/used.
+        ***Remedy:*** Extract methods/variables to give names to things; rename as needed to give them better names.
 
-        Remedy: It may belong to a different class.
+    - **Magic constants.** Literal values used "as is" in the text, without clear meaning.
 
-    - Null checks all over the code.
+        ***Remedy:*** Extract constant. Choose a good name for it.
 
-        Remedy: Separate your public methods from your internal methods, and only allow null inputs from outside calls.
+    - **Complex conditional tests.**
 
-        Consider creating a "Null Object" class, to represent meaningful functionality for a "null object" and pass it around.
+        ***Remedy:*** Extract methods for them to make them more readable. And find ways to simplify the code.
+
+    - **Temporary field.** A field that is not always set/used.
+
+        ***Remedy:*** It may belong to a different class.
+
+    - **Null checks** all over the code.
+
+        ***Remedy:*** Separate your public methods from your internal methods, and only allow null inputs from outside calls.
+
+        ***Remedy:*** Consider creating a "Null Object" class to represent meaningful functionality for a "null object"; pass this around instead of the value null.
+
+_______________________________
+
+For more on code smells see:
+
+- [*Refactoring: Improving the Design of Existing Code*, chapter 3](https://learning.oreilly.com/library/view/refactoring-improving-the/9780134757681/ch03.xhtml) by Martin Fowler. 
+
+- [*Clean Code*, chapter 17](https://learning.oreilly.com/library/view/clean-code/9780136083238/chapter17.html) by Robert Martin.
+
