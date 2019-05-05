@@ -76,9 +76,9 @@ These are the steps (as represented by test cases) that you will be going throug
 3. Can roll
 4. Score a gutter game
 5. Score all ones game
-8. Score game with one spare and rest gutter balls
-9. Score game with one strike and rest gutter balls
-10. Score a perfect game
+6. Score game with one spare and rest gutter balls
+7. Score game with one strike and rest gutter balls
+8. Score a perfect game
 
 ### Step 1: Getting empty test to compile
 
@@ -163,7 +163,7 @@ These are the steps (as represented by test cases) that you will be going throug
     - Confirm tests still pass.
 
 
-### Step 8: Score game with one spare and rest gutter balls
+### Step 6: Score game with one spare and rest gutter balls
 
 `PRE-REFACTOR`
   ~ - Create field `rolls` in `Game`, to store array of ints. Initialize it to an array of length 21.
@@ -188,7 +188,7 @@ These are the steps (as represented by test cases) that you will be going throug
   ~ - Extract the test in the `if` into a method `isSpare`.
     - Extract the two 5 rolls in the test method into a `rollSpare` method.
 
-### Step 9: Score game with one strike and rest gutter balls
+### Step 7: Score game with one strike and rest gutter balls
 
 `RED`
   ~ - Add a `oneStrike` test, on which you roll 10, then 3 and 4, then 17 zeroes.
@@ -206,7 +206,7 @@ These are the steps (as represented by test cases) that you will be going throug
     - Extract the `rolls[firstInFrame + 2]` part of the spare conditional branch into a `nextBallForSpare` method (don't process duplicates).
     - Extract the `rolls[firstInFrame] + rolls[firstInFrame + 1];` part of the normal frame part into a `twoBallsInFrame` method.
 
-### Step 10: Score a perfect game
+### Step 8: Score a perfect game
 
 `RED`
   ~ - Add a `perfectGame` test, on which you roll twelve 10s.
