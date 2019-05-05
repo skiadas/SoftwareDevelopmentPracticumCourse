@@ -3,6 +3,8 @@ TEXTEMPLATE = template.tex
 CURR:=$(shell pwd)
 MDFILES := $(shell find . -name \*.md | grep -v -e "/exams/")
 HTMLFILES := $(MDFILES:./%.md=docs/%.html)
+PLANTUMLFILES := $(shell find images -name \*.plantuml)
+PLANTUMLIMAGES := $(PLANTUMLFILES:%.plantuml=%.png)
 # ASSIGNMENTS := $(filter ./assignments/%.md,$(MDFILES))
 PDFS := $(MDFILES:./%.md=docs/%.pdf)
 # TEXS := $(ASSIGNMENTS:./%.md=docs/%.tex)
@@ -26,6 +28,9 @@ $(IMGFILES): docs/images/%.png: images/%.png
 	mkdir -p $(@D)
 	cp $< $@
 
+$(PLANTUMLIMAGES): images/%.png: images/%.plantuml
+	java -jar plantuml.jar $<
+
 checklinks:
 	@grep --include=*.md -E -r "\[.*?\]\(.*?md\)" . | sed -E 's/((.*\/)?[^\/]*\.md):.*\[.*\]\((.*md)\).*/\1 \3 \2\/\3/g' > tempfile.txt
 	@while read -r file ref link; do \
@@ -41,7 +46,7 @@ clean:
 email:
 	open "mailto:`cat students.txt`"
 
-site: $(HTMLFILES) $(PDFS) $(IMGFILES)
+site: $(HTMLFILES) $(PDFS) $(PLANTUMLIMAGES) $(IMGFILES)
 
 pdf: $(PDFS) $(IMGFILES)
 
