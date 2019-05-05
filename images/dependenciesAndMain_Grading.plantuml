@@ -1,0 +1,45 @@
+@startuml
+
+  package sdp {
+    class Grade {
+        - letter : String
+        + Grade()
+        + getPoints()
+        + countsForCredit()
+    }
+  }
+
+
+  package main {
+    class Main {
+        {static} + main()
+        {static} - processGrades()
+    }
+  }
+
+
+  package sdp {
+    class Processor {
+        - scanner : Scanner
+        + Processor()
+        + hasNext()
+        + getNext()
+    }
+  }
+
+
+  package sdp {
+    class Summary {
+        - courses : int
+        - total : double
+        + addGrade()
+        + format()
+    }
+  }
+
+Main --> Processor : <<creates>>
+Main --> Summary : <<creates>>
+Processor --> Grade : <<creates>>
+Summary --> Grade
+
+@enduml

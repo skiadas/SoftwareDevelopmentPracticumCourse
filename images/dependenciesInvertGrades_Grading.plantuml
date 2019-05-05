@@ -1,0 +1,65 @@
+@startuml
+  package sdp {
+    class Summary {
+        - courses : int
+        - total : double
+        + addGrade()
+        + format()
+    }
+
+    class Processor {
+        - scanner : Scanner
+        - gradeFactory : GradeFactory
+        + Processor()
+        + hasNext()
+        + getNext()
+        - getGradeForLetter(String letter)
+    }
+
+    interface Grade {
+        + getPoints()
+        + countsForCredit()
+    }
+    interface GradeFactory {
+      + getGradeForLetter(String letter) : Grade
+      + isValidGradeLetter(String letter) : boolean
+    }
+  }
+
+  package sdp.hanover {
+    class HanoverGradeFactory {
+      + getGradeForLetter(String letter) : HanoverGrade
+      + isValidGradeLetter(String letter) : boolean
+    }
+
+    class HanoverGrade {
+        - letter : String
+        + HanoverGrade()
+        + getPoints()
+        + countsForCredit()
+    }
+  }
+
+
+  package main {
+    class Main {
+        {static} + main()
+        {static} - processGrades()
+    }
+  }
+
+
+
+Main --> Summary : <<creates>>
+Main --> Processor : <<creates>>
+Main --> HanoverGradeFactory : <<creates>>
+Summary -[hidden]> Processor
+Summary --> Grade
+Processor --> Grade : <<creates>>
+Processor -> GradeFactory
+GradeFactory --> Grade
+HanoverGradeFactory --> HanoverGrade
+HanoverGrade -|> Grade
+HanoverGradeFactory -|> GradeFactory
+
+@enduml

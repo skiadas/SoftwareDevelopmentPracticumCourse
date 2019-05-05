@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity6-3solid</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="activity-6-3-introduction-to-the-solid-principles">Activity 6-3: Introduction to the SOLID principles</h1>
+<p>Interjecting segments of the <a href="../videos/09-solid_principles.html">SOLID principles video</a> (only available in class or by purchase).</p>
+<h2 id="overview">Overview</h2>
+<ul>
+<li>00:50-04:45 overview of previous video</li>
+</ul>
+<ol type="1">
+<li>A system’s architecture is based on its …</li>
+<li>How do we separate databases and graphical interfaces from the core application?</li>
+<li>How do we manage the dependencies on the system boundaries?</li>
+<li>Details should depend on …</li>
+<li>A good architecture maximizes …</li>
+</ol>
+<p>TODO: Add visual example</p>
+<h2 id="design-vs-building">Design vs Building</h2>
+<p>11:15-20:05 the source code is the design</p>
+<ol type="1">
+<li>What is the design document produced by engineers? What is the product?</li>
+<li>In what way do the costs of design and building differ in software engineering vs other engineering fields?</li>
+</ol>
+<h2 id="design-smells">Design Smells</h2>
+<p><strong>20:05-30:35 design smells</strong>: ridigity, fragility, immobility, viscosity, needless complexity</p>
+<ol type="1">
+<li>What are examples of rigidity in a system?</li>
+<li>What are examples of fragility in a system?</li>
+<li>What is another name for fragility?</li>
+<li>What are examples of immobility?</li>
+<li>What are examples of viscosity?</li>
+<li>What is the main cause of unnecessary complexity?</li>
+</ol>
+<h2 id="code-rots">Code Rots</h2>
+<p>30:35-37:30 examples of code rot</p>
+<ol type="1">
+<li>What is the problem with the code presented in the video? In what way is it going to get worse over time?</li>
+</ol>
+<p><strong>37:30-39:19</strong> how to prevent the code from rotting</p>
+<ol type="1">
+<li>What is the mechanism that allows this version to read from multiple sources?</li>
+</ol>
+<h2 id="dependency-inversion-and-oo">Dependency Inversion and OO</h2>
+<p>39:15-43:35 dependency inversion</p>
+<ol type="1">
+<li>How does dependency inversion prevent the code from rotting?</li>
+</ol>
+<p>This is the initial version of our grading app in diagram form.</p>
+<p><img src="../images/dependenciesAndMain_Grading.png" /></p>
+<p>Let us change the code a little bit. Instead of having <code>Main</code> do some of the work in its <code>processGrades</code> method, we want <code>Main</code> to simply create a <code>ReportPrinter</code> object, which will then create a <code>Processor</code> class instance and a <code>Summary</code> class instance, and it is then uses the processor to process grades and add them to a summary, then finally print out the summary. The diagram might look as follows:</p>
+<p><img src="../images/gradingDependencies_AddingReportPrinter.png" /></p>
+<p>As it stands, we cannot really change where the input is coming from and where the output is going to. In order to do that, we would need to change our <code>ReportPrinter</code> class. But imagine we have a <code>UI</code> class, which contains a pair of input and output streams. Then <code>Main</code> could pass this pair to the <code>ReportPrinter</code> as an argument, then the reportPrinter can use the streams there instead of relying on standard input and output. This is how it would look like in diagram form:</p>
+<p><img src="../images/gradingDependencies_ReportPrinterTakingUIParam.png" /></p>
+<p>We can now freely change the UI for a <code>ReportPrinter</code> by changing the parameter we pass to the <code>ReportPrinter</code>.</p>
+<p><strong>Question</strong>: Can we use this system in a situation where our data entries are stored in some HTML file? What design change do we need to make to allow that to happen?</p>
+<p>What if we want to be able to “print” the report in various forms, e.g. in Excel, or to a graphical interface, or in speech form?</p>
+<p>43:35-46:45 the truth about OO</p>
+<ol type="1">
+<li>What is the significance of the notation <code>o.f(x)</code>, compared to <code>f(o, x)</code>? How should we be interpreting it?</li>
+</ol>
+<p>46:45-48:48 dependency management</p>
+<ol type="1">
+<li>What are the SOLID principles about?</li>
+</ol>
+<p>48:48-51:23 summary</p>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>

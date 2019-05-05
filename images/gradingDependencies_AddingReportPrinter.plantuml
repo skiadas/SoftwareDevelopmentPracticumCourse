@@ -1,0 +1,53 @@
+@startuml
+  package main {
+    class Main {
+        {static} + main()
+        {static} - processGrades()
+    }
+  }
+
+  package sdp {
+    class ReportPrinter {
+        - summary : Summary
+        - processor : Processor
+        + printGradeReport()
+    }
+
+    class Summary {
+        - courses : int
+        - total : double
+        + addGrade()
+        + format()
+    }
+
+    class Processor {
+        - scanner : Scanner
+        - gradeFactory : GradeFactory
+        + Processor(Scanner)
+        + hasNext()
+        + getNext()
+        - getGradeForLetter(String)
+    }
+
+    class Grade {
+        + {static} forLetter(String)
+        + getPoints()
+        + countsForCredit()
+    }
+  }
+
+
+   class java.lang.System {
+    + {static} out : PrintStream
+    + {static} in : InputStream
+   }
+
+Main --> ReportPrinter : <<creates>>
+ReportPrinter --> Summary : <<creates>>
+ReportPrinter --> Processor : <<creates>>
+ReportPrinter --> Grade
+ReportPrinter -up-> java.lang.System
+Summary --> Grade
+Processor --> Grade : <<creates>>
+
+@enduml
