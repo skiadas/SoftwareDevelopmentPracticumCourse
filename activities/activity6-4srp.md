@@ -74,12 +74,12 @@ Break?
 
 **53:45-57:00** Details on Mastermind game implementation
 
-![](mastermindResponsibilities.plantuml)
+![](../images/mastermindResponsibilities.png)
 
 **57:00-1:00:15** Faking a rational design process
 
 1. How did Uncle Bob come about his design for the Mastermind Game?
 2. Why do unit tests tend to align with actors? What is the advantage of this?
-3. When should we drop design diagrams?
+3. When should we draw design diagrams?
 
-- 1:00:15-1:02:50 summary (may skip)
+- **1:00:15-1:02:50 summary**
