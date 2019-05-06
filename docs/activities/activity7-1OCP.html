@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity7-1OCP</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="activity-7-1-the-open-closed-principle">Activity 7-1: The Open-Closed Principle</h1>
+<p>Interjecting segments of the <a href="../videos/11-ocp.html">OCP video</a> (only available in class or by purchase).</p>
+<h2 id="overview">Overview</h2>
+<p><strong>01:00-04:10 overview</strong></p>
+<h2 id="open-and-closed">Open and Closed</h2>
+<p><strong>11:40-18:20 open and closed</strong></p>
+<ol type="1">
+<li>What <em>is</em> the Open-Closed Principle?</li>
+<li>What does it mean for a module to be <em>open to extension</em>?</li>
+<li>What does it mean for a module to be <em>closed to modification</em>?</li>
+<li>What does it mean to <em>separate out extensible behavior using an abstraction</em>?</li>
+<li>What does it mean to <em>invert a dependency</em>?</li>
+<li>How does the combination of <em>abstraction</em> and <em>inversion</em> allow for the behavior of a module to be extended without modifying its source code?</li>
+<li>What is the main implication of conforming to the open-closed principle?</li>
+</ol>
+<h2 id="feasibility-of-open-closed-principle">Feasibility of Open-Closed Principle</h2>
+<p>**18:20- feasibility of open-closed principle 1. Is is <em>possible</em> to always write your code so that it conforms to the open-closed principle? 2. Is it <em>practical</em> to always write your code to conformm to the open-closed principle?</p>
+<h2 id="example-point-of-sale-system">Example: Point of Sale System</h2>
+<p><strong>15:05-20:00 point of sale system</strong></p>
+<ol type="1">
+<li>What is the secondary value of software? When is it achieved?</li>
+<li>What is the primary value of software? When is it achieved?</li>
+<li>What is the primary responsibility of programmers?</li>
+</ol>
+<p><strong>20:00-27:50 Friction</strong></p>
+<ol type="1">
+<li>What discipline would make software easier to maintain and enhance?</li>
+<li>What is the problem with a module that has too many responsibilities?</li>
+<li>What is the <em>fan out</em> of a class? What is the <em>fan in</em>?</li>
+<li>Why is it important to reduce the fan-out of a class?</li>
+<li>What is one way to achieve reduce the fan-out of a class?</li>
+<li>What is <strong>collocation of responsibilities</strong>? How does it affect the various actors?</li>
+<li>What code smell is the likely result of this collocation of responsibilities?</li>
+</ol>
+<h2 id="the-single-responsibility-principle">The Single Responsibility Principle</h2>
+<p><strong>27:50-30:21 single responsibility principle</strong> (SRP)</p>
+<ol type="1">
+<li>What does the SRP say? What are some examples of this?</li>
+</ol>
+<ul>
+<li><strong>30:21-32:10 Example 1</strong> Discussion</li>
+<li><strong>32:10-33:27 Example 2</strong> Discussion</li>
+<li><strong>33:27-35:52 Example 3</strong> Discussion</li>
+<li><strong>35:52-41:15 Example 4</strong> Discussion</li>
+</ul>
+<ol start="2" type="1">
+<li>(Group discussion) Does our grading application have any violations of the SRP?</li>
+<li>What is the overall solution to resolving SRP violations?</li>
+</ol>
+<p>Break?</p>
+<h2 id="resolving-srp-violations">Resolving SRP violations</h2>
+<p><strong>41:15-48:05 solutions</strong></p>
+<ol type="1">
+<li>In problems related to SRP, there are a number of competing interests:
+<ul>
+<li>Separating responsibilities into different classes</li>
+<li>Separating actors from the concrete implementations of their responsibilities</li>
+<li>Avoiding transitive dependencies between actors</li>
+<li>Making functions easy to find</li>
+</ul>
+How do the following techniques balance these interests out: <strong>dependency inversion</strong>, <strong>extracting classes</strong>, the <strong>facade</strong> pattern, <strong>interface segregation</strong></li>
+</ol>
+<h2 id="mastermind-a-case-study">Mastermind: A case study</h2>
+<p><strong>48:05-51:50</strong> The game of mastermind</p>
+<ol type="1">
+<li>What are the actors and responsibilities in this game?</li>
+</ol>
+<p><strong>51:50-53:45</strong> Discussing the three actors</p>
+<ol type="1">
+<li>List the actors presented in the video and describe the corresponding responsibilities.</li>
+</ol>
+<p><strong>53:45-57:00</strong> Details on Mastermind game implementation</p>
+<p><img src="../images/mastermindResponsibilities.png" /></p>
+<p><strong>57:00-1:00:15</strong> Faking a rational design process</p>
+<ol type="1">
+<li>How did Uncle Bob come about his design for the Mastermind Game?</li>
+<li>Why do unit tests tend to align with actors? What is the advantage of this?</li>
+<li>When should we draw design diagrams?</li>
+</ol>
+<ul>
+<li><strong>1:00:15-1:02:50 summary</strong></li>
+</ul>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>
