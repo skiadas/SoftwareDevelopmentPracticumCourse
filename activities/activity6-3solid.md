@@ -53,7 +53,7 @@ This is the initial version of our grading app in diagram form.
 
 ![](../images/dependenciesAndMain_Grading.png)
 
-Let us change the code a little bit. Instead of having `Main` do some of the work in its `processGrades` method, we want `Main` to simply create a `ReportPrinter` object, which will then create a `Processor` class instance and a `Summary` class instance, and it is then uses the processor to process grades and add them to a summary, then finally print out the summary. The diagram might look as follows:
+Let us change the code a little bit. Instead of having `Main` do some of the work in its `processGrades` method, we want `Main` to simply create a `ReportPrinter` object, which will then create a `Processor` class instance and a `Summary` class instance, and it then uses the processor to process grades and add them to a summary, then finally print out the summary. The diagram might look as follows:
 
 ![](../images/gradingDependencies_AddingReportPrinter.png)
 
