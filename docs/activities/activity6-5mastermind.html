@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity6-5mastermind</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="activity-6-5-practice-on-the-mastermind-code">Activity 6-5: Practice on the Mastermind code</h1>
+<p>We will spend some time looking around at the completed code for the Mastermind game. Recall the diagram describing the structure of the code.</p>
+<p><img src="../images/mastermindResponsibilities.png" /></p>
+<h2 id="load-the-code-in-intellij">Load the code in IntelliJ</h2>
+<ol type="1">
+<li>Go to our Moodle class page, and download the <strong>Mastermind Code</strong> zip file.</li>
+<li>Extract the contents of the zip file into the directory where you save your CS321 projects. The zip file contains a <code>MasterMind</code> folder in it, so you don’t need to create any special folders.</li>
+<li>Start IntelliJ, and use the “File -&gt; New Project from Sources” option to start a new project based on the <code>MasterMind</code> folder that you just extracted.</li>
+<li>Once the project is open, navigate into one of the test classes, and use the “Add JUnit 4 to classpath” intention on any of the red “junit” references in the imports section of the test.</li>
+<li>Run all the tests by right-clicking on the green <code>test</code> directory and choosing “Run all tests”, make sure your tests pass.</li>
+<li>Find and run the <code>Game</code> class’ <code>main</code> method in the <code>src</code> directory, and play the game once, to make sure it all works.</li>
+</ol>
+<h2 id="questions-to-answer">Questions to answer</h2>
+<ol start="0" type="1">
+<li><p>Are the classes and interfaces separated in modules according to the diagram?</p></li>
+<li><p>Identify which parts/lines of the code establish each of the arrows we have in the diagram, namely:</p>
+<ul>
+<li>Arrow from <code>Game</code> to <code>GameConsole</code></li>
+<li>Arrow from <code>Game</code> to <code>GameEngine</code></li>
+<li>Arrow from <code>GameConsole</code> to <code>Console</code></li>
+<li>Arrow from <code>GameEngine</code> to <code>Console</code></li>
+<li>Arrow from <code>GameEngine</code> to <code>Guesser</code></li>
+<li>Arrow from <code>Guesser</code> to <code>GuessChecker</code></li>
+<li>Arrow from <code>RememberingGuessChecker</code> to <code>GuessChecker</code></li>
+<li>Arrow from <code>Scorer</code> to <code>RememberingGuessChecker</code></li>
+</ul></li>
+<li><p>What are the methods specified in the <code>Console</code> interface? What method is missing from there that we would have expected?</p></li>
+<li><p>What are the private methods of the <code>GameConsole</code> class, and what do they do?</p></li>
+<li><p>If we want to move the <code>GameConsole</code> class to the upper level, what prevents us from doing that? How can we fix it?</p></li>
+<li><p>What are the methods specified in the <code>GuessChecker</code> interface? What do they do? Are their names appropriate?</p></li>
+<li><p>How does the <code>RememberingGuessChecker</code> implement the methods in the <code>GuessChecker</code> interface?</p></li>
+<li><p>When are new instances of the <code>Scorer</code> class created?</p></li>
+<li><p>If we want to change the set of letters that the game is based on, which files would that affect?</p></li>
+<li><p>How is the <code>Guesser</code> generating new guesses?</p></li>
+<li><p>The <code>Score</code> and <code>ScoreRecord</code> classes are not in our diagram yet.</p></li>
+</ol>
+<ul>
+<li>Why do you think they were omitted?</li>
+<li>Where would they be added in the diagram?</li>
+<li>What arrows/relationships will they have with the other parts of the diagram?</li>
+</ul>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>

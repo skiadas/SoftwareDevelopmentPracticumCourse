@@ -15,19 +15,11 @@
 ## Activity 3 (90 min):
 
 - [The SOLID principles](../activities/activity6-3solid.md)
-- Group activity to help concepts sink in.
 
 ## Activity 4:
 
 - [Single Responsibility Principle](../activities/activity6-4srp.md)
-- Group activity to help concepts sink in.
 
 ## Activity 5:
 
-- Introduce concept: User Role/Actor
-	-From User Stories: "A user role is a collection of definiting attributes that
-	characterize a population of users an their intended interactions with the system."
-- Group Activity: Brainstorming initial user roles for grading app.
-(see User Stories Applied, p. 33)
-
-
+- [SRP Practice: The Mastermind case study](../activities/activity6-5mastermind.md)
