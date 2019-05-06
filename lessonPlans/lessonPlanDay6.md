@@ -25,7 +25,3 @@
 ## Activity 4:
 
 - [Single Responsibility Principle](../activities/activity6-4srp.md)
-
-## Activity 5:
-
-- [SRP Practice: The Mastermind case study](../activities/activity6-5mastermind.md)

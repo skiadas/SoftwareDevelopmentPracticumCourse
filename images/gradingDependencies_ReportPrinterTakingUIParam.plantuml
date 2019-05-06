@@ -7,7 +7,7 @@
   }
 
   package sdp {
-    class UI {
+    interface UI {
         - in : InputStream
         - out : OutputStream
         + {static} UI(InputStream, OutputStream)

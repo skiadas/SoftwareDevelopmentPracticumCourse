@@ -1,33 +1,24 @@
 # Day 7 Lesson Plan
 
-## Activity 1 (60):
+## Activity 1:
 
-- Introduce interfaces and the idea of dependency inversion.
+- [Single Responsibility Principle](../activities/activity6-4srp.md)
+- [SRP Practice: The Mastermind case study](../activities/activity6-5mastermind.md)
 
-## Activity 2 (90):
+## Activity 2:
 
-- Video & Discussion/Activity: The Open-Closed Video (Clean Code #10)
+- [The Open-Closed Principle](../activities/activity7-1openClosed.md)
 
 ## Lunch
 
 ## Activity 3:
 
-- Video & Discussion/Activity: Liskov Substitution Principle (Clean Code #11)
-
+- [Liskov Substitution Principle](../activities/activity7-2liskov.md)
 
 ## Activity 4:
 
-- Return to grading app? Proposed list of extension.
+- [Interface Segregation Principle](../activities/activity7-3isp.md)
 
 ## Activity 5:
 
-- Introduce concept: User Role/Actor
-    -From User Stories: "A user role is a collection of definiting attributes that
-    characterize a population of users an their intended interactions with the system."
-- Group Activity: Brainstorming initial user roles for grading app.
-(see User Stories Applied, p. 33)
-
-
-
-
-
+- [Dependency Inversion Principle](../activities/activity7-4dependencyInversion.md)

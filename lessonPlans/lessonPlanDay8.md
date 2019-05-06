@@ -2,25 +2,31 @@
 
 ## Activity 1:
 
-- Video & Discussion/Activity: Interface Segregation Principle Video (Clean Code #10)
+- Introduce concept: User Role/Actor
+    -From User Stories: "A user role is a collection of definiting attributes that
+    characterize a population of users an their intended interactions with the system."
+- Group Activity: Brainstorming initial user roles for grading app.
+(see User Stories Applied, p. 33)
+
 
 ## Activity 2:
 
-- Video & Discussion/Activity: Dependency Inversion Principle Video (Clean Code #10)
+- SOLID Principles Use Case (as in Clean Code video #14) (guided)
+- SOLID Principles Use Case (grading app) (independent)
 
-## Lunch 
+## Lunch
 
 ## Activity 3:
 
-- SOLID Principles Use Case (as in Clean Code video #14) (guided)
+- Meet with clients, part 1
 
 ## Activity 4:
 
-- SOLID Principles Use Case (grading app) (independent)
+- Meet with clients, part 2
 
 ## Activity 5:
 
-- ???
+- The planning game
 
 
 
