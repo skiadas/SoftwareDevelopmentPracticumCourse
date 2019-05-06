@@ -29,13 +29,14 @@ We will spend some time looking around at the completed code for the Mastermind 
 
 2. What are the methods specified in the `Console` interface? What method is missing from there that we would have expected?
 3. What are the private methods of the `GameConsole` class, and what do they do?
-4. If we want to move the `GameConsole` class to the upper level, what prevents us from doing that? How can we fix it?
-5. What are the methods specified in the `GuessChecker` interface? What do they do? Are their names appropriate?
-6. How does the `RememberingGuessChecker` implement the methods in the `GuessChecker` interface?
-7. When are new instances of the `Scorer` class created?
-8. If we want to change the set of letters that the game is based on, which files would that affect?
-9. How is the `Guesser` generating new guesses?
-10. The `Score` and `ScoreRecord` classes are not in our diagram yet.
-  - Why do you think they were omitted?
-  - Where would they be added in the diagram?
-  - What arrows/relationships will they have with the other parts of the diagram?
+4. How are the `console` and `gameChecker` provided to the `GameEngine` class?
+5. If we want to move the `GameConsole` class to the upper level, what prevents us from doing that? How can we fix it?
+6. What are the methods specified in the `GuessChecker` interface? What do they do? Are their names appropriate?
+7. How does the `RememberingGuessChecker` implement the methods in the `GuessChecker` interface?
+8. When are new instances of the `Scorer` class created?
+9. If we want to change the set of letters that the game is based on, which files would that affect?
+10. How is the `Guesser` generating new guesses?
+11. The `Score` and `ScoreRecord` classes are not in our diagram yet.
+    - Why do you think they were omitted?
+    - Where would they be added in the diagram?
+    - What arrows/relationships will they have with the other parts of the diagram?
