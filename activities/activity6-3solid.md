@@ -12,9 +12,6 @@ Interjecting segments of the [SOLID principles video](../videos/09-solid_princip
 4. Details should depend on ...
 5. A good architecture maximizes ...
 
-
-TODO: Add visual example
-
 ## Design vs Building
 
 11:15-20:05 the source code is the design
