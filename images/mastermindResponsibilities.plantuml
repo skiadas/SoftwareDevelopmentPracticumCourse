@@ -1,0 +1,28 @@
+@startuml
+
+package gamePlay {
+    class GameEngine
+    interface Console
+    class Guesser
+    interface GuessChecker
+}
+
+package strategy {
+    class RememberingGuessChecker
+    class Scorer
+}
+
+package gameInterface {
+    class Game
+    class GameConsole
+}
+
+Guesser <- GameEngine : uses
+GameEngine --> Console
+Guesser --> GuessChecker
+GuessChecker <|-- RememberingGuessChecker
+RememberingGuessChecker <- Scorer
+GameEngine <- Game
+Console  <|- GameConsole
+Game --> GameConsole : uses
+@enduml

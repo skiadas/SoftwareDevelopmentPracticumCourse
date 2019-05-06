@@ -66,9 +66,6 @@ Fri
     - [Activities for Day 5](lessonPlans/lessonPlanDay5.md)
     - Lunchtime Video: [TDD Part 2](videos/08-tdd_part2.md)
 
-For Later
-  ~ - Video: Advanced TDD Part 1?
-
 ### Week 2
 
 Mon
@@ -80,8 +77,9 @@ Mon
     - (Practices) Principles of Agile Development
         - Discussion of XP methodologies (pair programming, tests first etc)
     - (Principles) Single Responsibility Principle
-        - Reading: ASD chapters 8
-        - Video: In class
+        - Reading: ASD chapters 7, 8
+        - Videos: In class: notes #1 and #2
+    - [Activities for Day 6](lessonPlans/lessonPlanDay6.md)
 	- Prep:
         - Reading: ASD chapters 1-4
 
@@ -118,12 +116,14 @@ Thur
 		- Advanced TDD
 	    - Clean Tests
 		- Test Design
+    - Video: Advanced TDD Part 1?
 
 Fri
   ~ - Goals:
 		- Test Process
 	    - Mocking
 		- Code Review
+
 
 ### Week 3
 

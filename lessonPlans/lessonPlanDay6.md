@@ -19,7 +19,7 @@
 
 ## Activity 4:
 
-- Video & Discussion: Single Responsibility Principle (SRP) (Clean Code #9)
+- [Single Responsibility Principle](../activities/activity6-4srp.md)
 - Group activity to help concepts sink in.
 
 ## Activity 5:
