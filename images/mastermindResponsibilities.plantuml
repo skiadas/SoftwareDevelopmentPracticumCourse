@@ -21,7 +21,7 @@ Guesser <- GameEngine : uses
 GameEngine --> Console
 Guesser --> GuessChecker
 GuessChecker <|-- RememberingGuessChecker
-RememberingGuessChecker <- Scorer
+RememberingGuessChecker -> Scorer
 GameEngine <- Game
 Console  <|- GameConsole
 Game --> GameConsole : uses
