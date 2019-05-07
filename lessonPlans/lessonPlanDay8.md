@@ -8,7 +8,6 @@
 - Group Activity: Brainstorming initial user roles for grading app.
 (see User Stories Applied, p. 33)
 
-
 ## Activity 2:
 
 - SOLID Principles Use Case (as in Clean Code video #14) (guided)
@@ -19,10 +18,12 @@
 ## Activity 3:
 
 - Meet with clients, part 1
+  - Jen Duplaga, crowdsourcing archival image annotation
 
 ## Activity 4:
 
 - Meet with clients, part 2
+  - Kay Stokes and Kate Johnson, faculty committee voting system
 
 ## Activity 5:
 

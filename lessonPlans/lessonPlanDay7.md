@@ -14,12 +14,10 @@
 
 ## Activity 3:
 
-- [Liskov Substitution Principle](../activities/activity7-2liskov.md)
+- [Interface Segregation Principle](../activities/activity7-3isp.md)
 
 ## Activity 4:
 
-- [Interface Segregation Principle](../activities/activity7-3isp.md)
-
-## Activity 5:
-
 - [Dependency Inversion Principle](../activities/activity7-4dependencyInversion.md)
+
+
