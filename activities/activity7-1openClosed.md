@@ -44,9 +44,9 @@ A module or component conforms to the **Open-Closed Principle** if its both *ope
    - We could extract out methods for each bit of functionality, but it won't help. Why?
 6. Stop at 35:23
    - Rewind to show printReport diagram.
-   - Go over handout with new system design. 
-     a. What does the "&lt;I&gt;" on the `ExpenseName` box mean?
-     b. What does the "&lt;A&gt;" on the `Expense` box mean? 
+   - Go over handout with new system design.
+     a. What does the "`<I>`" on the `ExpenseName` box mean?
+     b. What does the "`<A>`" on the `Expense` box mean?
      c. What is the difference between the dotted line and the solid line?
      d. Where are the abstractions in the diagram?
 7. Skip forward to 38:40
