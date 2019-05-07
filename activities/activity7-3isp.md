@@ -35,7 +35,7 @@ Question: If the TransferTransaction needs a new method added to the interface, 
 
 Alternative setup, solves this problem.
 
-![](../images/fatClassesAtmExampleSegregated.png)
+![](../images/fatClassesATMExampleSegregated.png)
 
 ## The Interface Segregation Principle
 
