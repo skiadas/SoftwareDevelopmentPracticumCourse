@@ -18,7 +18,7 @@
 **24:40-33:42  fat classes example: the job class**
 **33:42-36:30 the problem with fat classes**
 
-1. Fat classes have large fan-...
+1. Fat classes have large fan-____
 2. Fat classes can be protected from their clients by creating a separate interface for each client.
 
 TODO: Discuss how to prevent classes coupled to each other because of they depend on the same large class.
