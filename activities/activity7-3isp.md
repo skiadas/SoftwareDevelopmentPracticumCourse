@@ -23,7 +23,7 @@
 
 Consider the following example from an ATM application.
 
-![](../images/fatClassesAtmExample.png)
+![](../images/fatClassesATMExample.png)
 
 Each of the different transactions uses different parts of the interface. However as it stands they all depend on the interface.
 

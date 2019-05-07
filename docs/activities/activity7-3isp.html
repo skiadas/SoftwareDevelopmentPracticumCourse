@@ -32,7 +32,7 @@
 <li>Fat classes can be protected from their clients by creating a separate interface for each client.</li>
 </ol>
 <p>Consider the following example from an ATM application.</p>
-<p><img src="../images/fatClassesAtmExample.png" /></p>
+<p><img src="../images/fatClassesATMExample.png" /></p>
 <p>Each of the different transactions uses different parts of the interface. However as it stands they all depend on the interface.</p>
 <p>Question: If the TransferTransaction needs a new method added to the interface, which parts of the system will need to be recompiled?</p>
 <p><strong>Conclusion</strong>: A module that knows about more than it needs to may end up being affected by changes to other modules that it does <em>not</em> depend on, because those modules may ask for changes to other modules that they both depend on.</p>
