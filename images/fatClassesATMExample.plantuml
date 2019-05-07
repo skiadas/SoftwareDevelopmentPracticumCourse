@@ -1,0 +1,27 @@
+@startuml
+
+    interface UI {
+        + RequestDepositAmount()
+        + RequestWithdrawalAmount()
+        + RequestTransferAmount()
+        + InformInsufficientFunds()
+    }
+
+
+    class ScreenUI extends UI
+    class BrailleUI extends UI
+    class SpeechUI extends UI
+
+    abstract class  Transaction {
+        + Execute()
+    }
+
+    class DepositTransaction extends Transaction
+    class WithdrawalTransaction extends Transaction
+    class TransferTransaction extends Transaction
+
+DepositTransaction --> UI
+WithdrawalTransaction --> UI
+TransferTransaction --> UI
+
+@enduml
