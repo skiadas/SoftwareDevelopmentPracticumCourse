@@ -21,7 +21,7 @@ A module or component conforms to the **Open-Closed Principle** if its both *ope
 
 ## Feasibility of Open-Closed Principle
 
-**18:20-20:40 feasibility of open-closed principle
+**18:20-20:40 feasibility of open-closed principle**
 1. Is is *possible* to always write your code so that it conforms to the open-closed principle?
 2. Is it *practical* to always write your code to conform to the open-closed principle?
 3. What is the "crystal ball" problem?
@@ -34,10 +34,10 @@ A module or component conforms to the **Open-Closed Principle** if its both *ope
 1. Stop at 24:40
    - Go over code handout and what is being accomplished by each part of the `printReport` and the `Expense` class.
 2. Skip forward to 27:30
-3. Pause at "business rules":
+3. Pause at "business rules" (28:00):
    - What does he mean by *business rules*?
    - Where are the business rules in the code?
-4. Pause after "new meal type: lunch or snack":
+4. Pause after "new meal type: lunch or snack" (28:47):
    - What is the first line of code that we would have to change?
    - How places just in `printReport` would we need to change?
 5. Pause at 34:30
