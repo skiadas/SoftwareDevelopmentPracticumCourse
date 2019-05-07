@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity7-1codeHandout</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="accounting-example-expense-report-original-design">Accounting Example: Expense Report Original Design</h1>
+<pre class="java"><code>public class Expense {
+  public enum Type {DINNER, BREAKFAST, CAR_RENTAL};
+  public Type type;
+  public int amount;
+
+  public Expense(Type type, int amount) {
+    this.type = type;
+    this.amount = amount;
+  }
+}</code></pre>
+<pre class="java"><code>public class printReport {
+
+  public void printReport(ReportPrinter printer) {
+    int total = 0;
+    int mealExpenses = 0;
+
+    printer.print(&quot;Expenses &quot; + getDate() + &quot;\n&quot;);
+
+    for (Expense expense : expenses) {
+      if (expense.type == BREAKFAST || expense.type == DINNER)
+        mealExpenses += expense.amount;
+
+      String name = &quot;TILT&quot;;
+      switch (expense.type) {
+        case DINNER: name = &quot;Dinner&quot;; break;
+        case BREAKFAST: name = &quot;Breakfast&quot;; break;
+        case CAR_RENTAL: name = &quot;Car Rental&quot;; break;
+      }
+
+      printer.print(String.format(&quot;%s\t%s\t$%.02f\n&quot;,
+              (  (expense.type == DINNER &amp;&amp; expense.amount &gt; 5000)
+              || (expense.type == BREAKFAST &amp;&amp; expense.amount &gt; 1000)) ? &quot;X&quot; : &quot; &quot;),
+              name, expense.amount / 100.0);
+
+      total += expense.amount;
+    }
+    printer.print(String.format(&quot;\nMeal Expenses $%.02f&quot;, mealExpenses / 100.0));
+    printer.print(String.format(&quot;\nTotal $%.02f&quot;, total / 100.0));
+  }
+}</code></pre>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>
