@@ -25,11 +25,11 @@ We will spend some time looking around at the completed code for the Mastermind 
     - Arrow from `GameEngine` to `Guesser`
     - Arrow from `Guesser` to `GuessChecker`
     - Arrow from `RememberingGuessChecker` to `GuessChecker`
-    - Arrow from `Scorer` to `RememberingGuessChecker`
+    - Arrow from `RememberingGuessChecker` to `Scorer`
 
 2. What are the methods specified in the `Console` interface? What method is missing from there that we would have expected?
 3. What are the private methods of the `GameConsole` class, and what do they do?
-4. How are the `console` and `gameChecker` provided to the `GameEngine` class?
+4. How are the `console` and `guessChecker` provided to the `GameEngine` class?
 5. If we want to move the `GameConsole` class to the upper level, what prevents us from doing that? How can we fix it?
 6. What are the methods specified in the `GuessChecker` interface? What do they do? Are their names appropriate?
 7. How does the `RememberingGuessChecker` implement the methods in the `GuessChecker` interface?
