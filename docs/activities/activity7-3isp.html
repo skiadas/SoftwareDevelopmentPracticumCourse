@@ -15,6 +15,29 @@
 </head>
 <body>
 <h1 id="activity-7-3-the-interface-segregation-principle">Activity 7-3: The Interface Segregation Principle</h1>
+<h2 id="introduction">Introduction</h2>
+<p><strong>03:24-06:50 overview</strong></p>
+<h2 id="interfaces">Interfaces</h2>
+<p><strong>14:28-21:00 interfaces</strong></p>
+<ol type="1">
+<li>What is the problem with the <code>Switch -&gt; Light</code> dependency?</li>
+<li>What do interfaces have more in commmon with? Their users <em>or</em> their clients?</li>
+<li>Explain the terms <strong>physical coupling</strong> and <strong>logical coupling</strong> and the phrase ``Inheritance is the strongest of the physical couplings but the weakest of the logical couplings’’.</li>
+<li>How should we <em>name</em> interfaces?</li>
+</ol>
+<h2 id="fat-classes">Fat classes</h2>
+<p><strong>24:40-33:42 fat classes example: the job class</strong> <strong>33:42-36:30 the problem with fat classes</strong></p>
+<ol type="1">
+<li>Fat classes have large fan-…</li>
+<li>Fat classes can be protected from their clients by creating a separate interface for each client.</li>
+</ol>
+<p>TODO: Discuss how to prevent classes coupled to each other because of they depend on the same large class.</p>
+<p><strong>45:00- 50:00 the interface segregation principle</strong></p>
+<ol type="1">
+<li>What does the interface segregation principle say?</li>
+<li>How can a change to a module affect other modules that don’t depend on it?</li>
+</ol>
+<p><strong>54:00-58:25 the need to know</strong></p>
 <script type="text/javascript">
 let els = document.getElementsByTagName("pre");
 for (const el of els) {
