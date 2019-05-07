@@ -10,84 +10,72 @@ Interjecting segments of the [OCP video](../videos/11-ocp.md) (only available in
 
 **11:40-18:20 open and closed**
 
-1. What *is* the Open-Closed Principle?
-2. What does it mean for a module to be *open to extension*?
-3. What does it mean for a module to be *closed to modification*?
-4. What does it mean to *separate out extensible behavior using an abstraction*?
-5. What does it mean to *invert a dependency*?
-6. How does the combination of *abstraction* and *inversion* allow for the behavior of a module to be extended without modifying its source code?
-7. What is the main implication of conforming to the open-closed principle?
+A module or component conforms to the **Open-Closed Principle** if its both *open to extension* and *closed to modification*.  These two things seem contradictory, until you dig deeper into what these phrases mean.
+
+1. What does it mean for a module to be *open to extension*?
+2. What does it mean for a module to be *closed to modification*?
+3. What does it mean to *separate out extensible behavior using an abstraction*?
+4. What is a *software dependency*, and what does it mean to *invert* that dependency*?
+5. How does the combination of *abstraction* and *inversion* allow for the behavior of a module to be extended without modifying its source code?
+6. What is the main implication of conforming to the open-closed principle?
 
 ## Feasibility of Open-Closed Principle
 
-**18:20- feasibility of open-closed principle
+**18:20-20:40 feasibility of open-closed principle
 1. Is is *possible* to always write your code so that it conforms to the open-closed principle?
-2. Is it *practical* to always write your code to conformm to the open-closed principle?
+2. Is it *practical* to always write your code to conform to the open-closed principle?
+3. What is the "crystal ball" problem?
+4. Is a single class easier to make conform to the open-closed principle than a large system component composed of many different classes? Why or why not?
 
-## Example: Point of Sale System
+## Example: Accounting System
 
-**15:05-20:00 point of sale system**
+**20:40-42:45 accounting system example**
 
-1. What is the secondary value of software? When is it achieved?
-2. What is the primary value of software? When is it achieved?
-3. What is the primary responsibility of programmers?
+1. Stop at 24:40
+   - Go over code handout and what is being accomplished by each part of the `printReport` and the `Expense` class.
+2. Skip forward to 27:30
+3. Pause at "business rules":
+   - What does he mean by *business rules*?
+   - Where are the business rules in the code?
+4. Pause after "new meal type: lunch or snack":
+   - What is the first line of code that we would have to change?
+   - How places just in `printReport` would we need to change?
+5. Pause at 34:30
+   - We could extract out methods for each bit of functionality, but it won't help. Why?
+6. Stop at 35:23
+   - Rewind to show printReport diagram.
+   - Go over handout with new system design. 
+     a. What does the "<I>" on the `ExpenseName` box mean?
+     b. What does the "<A>" on the `Expense` box mean? 
+     c. What is the difference between the dotted line and the solid line?
+     d. Where are the abstractions in the diagram?
+7. Skip forward to 38:40
+8. Pause at 40:55
+   - Where does he mean by *derivitive*?
 
-**20:00-27:50 Friction**
+## The Lie ##
 
-1. What discipline would make software easier to maintain and enhance?
-2. What is the problem with a module that has too many responsibilities?
-3. What is the *fan out* of a class? What is the *fan in*?
-4. Why is it important to reduce the fan-out of a class?
-5. What is one way to achieve reduce the fan-out of a class?
-6. What is **collocation of responsibilities**? How does it affect the various actors?
-7. What code smell is the likely result of this collocation of responsibilities?
+**42:45-46:55 the lie**
 
-## The Single Responsibility Principle
+## Two Solutions ##
 
-**27:50-30:21 single responsibility principle** (SRP)
+**46:55-52:12 two solutions**
 
-1. What does the SRP say? What are some examples of this?
+- Pause at 48:20
+   - What is the problem with "big design upfront"?
 
-- **30:21-32:10 Example 1** Discussion
-- **32:10-33:27 Example 2** Discussion
-- **33:27-35:52 Example 3** Discussion
-- **35:52-41:15 Example 4** Discussion
+## Agile Design in Practice  ##
 
-2. (Group discussion) Does our grading application have any violations of the SRP?
-3. What is the overall solution to resolving SRP violations?
+**52:10-56:15 agile design in practice**
 
-Break?
+- Pause at 52:12
+   - What does a development team do during "iteration 0"?
+   - What is the goal of iteration 0?
 
-## Resolving SRP violations
+## Reprise
 
-**41:15-48:05 solutions**
+**56:15-57:25 reprise**
 
-1. In problems related to SRP, there are a number of competing interests:
-    - Separating responsibilities into different classes
-    - Separating actors from the concrete implementations of their responsibilities
-    - Avoiding transitive dependencies between actors
-    - Making functions easy to find
+## Summary and Closing Credits
 
-    How do the following techniques balance these interests out: **dependency inversion**, **extracting classes**, the **facade** pattern, **interface segregation**
-
-## Mastermind: A case study
-
-**48:05-51:50** The game of mastermind
-
-1. What are the actors and responsibilities in this game?
-
-**51:50-53:45** Discussing the three actors
-
-1. List the actors presented in the video and describe the corresponding responsibilities.
-
-**53:45-57:00** Details on Mastermind game implementation
-
-![](../images/mastermindResponsibilities.png)
-
-**57:00-1:00:15** Faking a rational design process
-
-1. How did Uncle Bob come about his design for the Mastermind Game?
-2. Why do unit tests tend to align with actors? What is the advantage of this?
-3. When should we draw design diagrams?
-
-- **1:00:15-1:02:50 summary**
+**57:25-1:02:17 summary/credits** SKIP
