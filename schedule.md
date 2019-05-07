@@ -96,6 +96,7 @@ Tue
         - Video: In class
         - Reading: ASD chapter 10
     - (Practices) SOLID Principles Use Case (as in Clean Code video #14)
+    - [Activities for Day 7](lessonPlans/lessonPlanDay7.md)
 	- Prep:
         - Reading: ASD chapters 7-8
 
