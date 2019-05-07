@@ -22,6 +22,7 @@ A module or component conforms to the **Open-Closed Principle** if its both *ope
 ## Feasibility of Open-Closed Principle
 
 **18:20-20:40 feasibility of open-closed principle**
+
 1. Is is *possible* to always write your code so that it conforms to the open-closed principle?
 2. Is it *practical* to always write your code to conform to the open-closed principle?
 3. What is the "crystal ball" problem?
