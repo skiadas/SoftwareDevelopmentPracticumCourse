@@ -9,13 +9,14 @@
 **14:28-21:00    interfaces**
 
 1. What is the problem with the `Switch -> Light` dependency?
-2. What do interfaces have more in commmon with? Their users *or* their clients?
-3. Explain the terms **physical coupling** and **logical coupling** and the phrase ``Inheritance is the strongest of the physical couplings but the weakest of the logical couplings''.
+2. What do interfaces have more in common with? Their users *or* their clients?
+3. Explain the terms **physical coupling** and **logical coupling** and the phrase "Inheritance is the strongest of the physical couplings but the weakest of the logical couplings".
 4. How should we *name* interfaces?
 
 ## Fat classes
 
 **24:40-33:42  fat classes example: the job class**
+
 **33:42-36:30 the problem with fat classes**
 
 1. Fat classes have large fan-____

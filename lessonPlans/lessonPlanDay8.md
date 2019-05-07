@@ -2,9 +2,7 @@
 
 ## Activity 1:
 
-- Introduce concept: User Role/Actor
-    -From User Stories: "A user role is a collection of definiting attributes that
-    characterize a population of users an their intended interactions with the system."
+- [User Roles](../activities/activity8-1userRoles.md)
 - Group Activity: Brainstorming initial user roles for grading app.
 (see User Stories Applied, p. 33)
 

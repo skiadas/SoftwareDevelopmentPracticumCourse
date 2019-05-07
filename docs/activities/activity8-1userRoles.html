@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity8-1userRoles</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="activity-8-1-user-roles">Activity 8-1: User Roles</h1>
+<ul>
+<li><p>When considering stories to implement, we must keep in mind our users.</p></li>
+<li><p>Users differ a lot from each other. They have different backgrounds/experiences/desires/needs.</p></li>
+<li><p>We <em>can</em> aggregate users into <strong>user roles</strong>.</p>
+<p>A user role is a collection of <em>defining attributes</em> that characterize a population of users and their <em>intended interactions</em> with the system.</p></li>
+<li><p>So user roles help us group our users together into groups that use the system in similar ways. When we think of adding functionality to a system, we do so to serve a particular role.</p></li>
+<li><p>Users might use a system for many different reasons and in many different ways. Therefore <em>a user may have many different user roles</em>.</p></li>
+</ul>
+<p>When trying to find the user roles for our application, the standard process would consist of the following steps:</p>
+<ul>
+<li><em>Brainstorm an initial set</em> of user roles. Everyone thinks of roles, crystalizes them in a short 1-2 word phrase, then writes it on an index card and placing it on the wall. No discussion takes place during this phase.</li>
+<li><em>Organize the initial set</em> by moving closer to each other roles that are similar. User move cards around to have similar roles overlap with others.</li>
+<li><em>Consolidate roles</em> by eliminating roles that are too similar to each other, or perhaps finding new names for these “super-roles”. During this phase discussion happens between the authors of the various role cards. They describe what they have in mind with their name choice, and discuss how to consolidate roles. At the end of this process, we may still have roles that overlap with each other, and that is OK.</li>
+<li><em>Refine the roles</em> by specifying the attributes that make each role distinct from the other roles (e.g. frequency of use, level of expertise in the domain, general technical proficiency etc). At this point notes may be added to the back of the card, to record these attributes.</li>
+</ul>
+<h2 id="grading-application-example">Grading Application Example</h2>
+<p>Let’s revisit our running example of creating an application for managing student grades. Here are some examples of possible users:</p>
+<ul>
+<li>Joshua is a junior. He is going to be applying for summer internships soon, and he needs to be able to get a transcript record of all his classes.</li>
+<li>Kendra is a sophomore. She had a rough first year and is currently in probation. She regularly checks her grades for her courses this semester, as she needs to reach a certain GPA goal to avoid being dismissed.</li>
+<li>Ashley is a first year student. She had some problems with her schedule in the Fall with courses not showing up, so she now frequently checks her current class list to make sure she is registered for all the classes that she wanted to.</li>
+<li>Kevin is a Computer Science major. Keeping track of all the major requirements is quite tricky. Kevin wants to be able to find out what more he needs to do in order to complete his major and graduate. He also wants to keep track of his major GPA, as that determines some departmental honors that he is hoping to receive.</li>
+<li>Professor Smith is a Computer Science professor. Prof. Smith has had many problems with enrollments in his classes, so he uses the system to check his class rosters.</li>
+<li>Professor Ross is a Biology professor. She is the advisor for a large number of pre-med majors, and is particularly interested in being able to efficiently monitor their current courses as well as grades.</li>
+<li>Mr. Giver works in the registrar’s office. He is responsible for adding new students into the system, and to handle any course add/drop requests that the students bring forward.</li>
+<li>Mrs. Swan also works in the registrar’s office. She is responsible for making sure that rules are correctly implemented (e.g. are the requirements spelled out for someone’s major correctly tracked?).</li>
+<li>Professor Lam is the Dean of Academic Affairs. He regularly needs information about average grades across all courses, as well as information about which classes are over-enrolled etc.</li>
+</ul>
+<p>These are just some examples, to give you some idea of the diversity of users of the system.</p>
+<p>Your task is as follows:</p>
+<ol type="1">
+<li>Brainstorming phase:
+<ul>
+<li>In groups of 4, come up with a list of user-roles; don’t judge them or try to refine them, just generate as many as you can. Use a 2-3 word phrase for each. Write each role in a separate piece.</li>
+<li>We come together and share our user-roles. Each group reads out their roles; other groups add cards for these extra roles to their piles, and can ask for clarification if they are not sure what the role represent.</li>
+</ul></li>
+<li>Organization:
+<ul>
+<li>With all groups having the same set of roles, each group organizes these roles, by placing similar roles closer to each other.</li>
+<li>We come together and each group discusses what they did. We come to some common agreement.</li>
+</ul></li>
+<li>Consolidation:
+<ul>
+<li>Each group decides how to consolidate the roles into a smaller set of roles, by either eliminating roles or creating a new role out of existing roles.</li>
+<li>We come together to discuss the choices.</li>
+</ul></li>
+<li>Refinement:
+<ul>
+<li>With a common agreement on roles, each group adds to each role the attributes that they think characterize that role.</li>
+<li>We come together to discuss these attributes.</li>
+</ul></li>
+</ol>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>

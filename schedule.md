@@ -95,22 +95,30 @@ Tue
     - (Principles) Liskov Substitution Principle
         - Video: In class
         - Reading: ASD chapter 10
-    - (Practices) SOLID Principles Use Case (as in Clean Code video #14)
-    - [Activities for Day 7](lessonPlans/lessonPlanDay7.md)
-	- Prep:
-        - Reading: ASD chapters 7-8
-
-Wed
-  ~ - Goals:
-		- Dependency Inversion Principle
-		- Interface Segragation Principle
-		- SOLID Principles Wrap-up Example
+    - Goals:
+        - Dependency Inversion Principle
+        - Interface Segragation Principle
+        - SOLID Principles Wrap-up Example
     - (Principles) Dependency Inversion Principle
         - Video: In class
         - Reading: ASD chapter 11
     - (Principles) Interface Segregation Principle
         - Video: In class
         - Reading: ASD chapter 12
+    - [Activities for Day 7](lessonPlans/lessonPlanDay7.md)
+	- Prep:
+        - Reading: ASD chapters 7-8
+
+Wed
+  ~ - Goals:
+        - Reinforce the SOLID Principles understanding with a use case example.
+        - Become comfortable with user roles and user stories
+        - Be introduced to the projects and meets with clients to create initial requirements and user stories.
+    - (Practices) SOLID Principles Use Case (as in Clean Code video #14)
+    - [Activities for Day 8](lessonPlans/lessonPlanDay8.md)
+    - Meet with clients
+    - Prep:
+        - Reading: From "User Stories Applied": Chapters 2, 3, 4
 
 Thur
   ~ - Goals:
