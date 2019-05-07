@@ -8,6 +8,7 @@
 ## Activity 2:
 
 - [The Open-Closed Principle](../activities/activity7-1openClosed.md)
+- [Handout](../activities/activity7-1umlHandout.md)
 
 ## Lunch
 
