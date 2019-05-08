@@ -10,7 +10,7 @@ Mon
     	- (Java/OOP) classes, fields, constructors, encapsulation
     	- (Java/OOP) methods, parameters, local variables, constants/final
     	- (Java/OOP) static methods
-	- [Activities for Day 1](lessonPlans/lessonPlanDay1.md)
+	- [Activities for Day 1](lessonPlans/lessonPlanDay01.md)
     - Lunchtime Video: [Clean Code-Remake (54m)](videos/01-clean_code.md)
 
 Tue
@@ -24,7 +24,7 @@ Tue
 	- Topics:
     	- (Coding) naming variables and methods
     	- (Coding) extracting code into small functions
-    - [Activities for Day 2](lessonPlans/lessonPlanDay2.md)
+    - [Activities for Day 2](lessonPlans/lessonPlanDay02.md)
     - Lunchtime Video: [Refactoring screencast "2": Prime generator](videos/04-prime_gen_screencast.md)
 
 Wed
@@ -37,7 +37,7 @@ Wed
 	- Topics:
     	- (Coding) function parameters, command-query separation
     	- (Coding) comments and formatting
-    - [Activities for Day 3](lessonPlans/lessonPlanDay3.md)
+    - [Activities for Day 3](lessonPlans/lessonPlanDay03.md)
     - Lunchtime Video: [Form](videos/06-form.md)
 
 Thu
@@ -51,7 +51,7 @@ Thu
 	- Topics:
     	- (Java/OOP) Inheritance vs Composition
 	    - (Coding) Law of Demeter (Tell, don't ask)
-    - [Activities for Day 4](lessonPlans/lessonPlanDay4.md)
+    - [Activities for Day 4](lessonPlans/lessonPlanDay04.md)
     - Lunchtime Video: [TDD Part 1](videos/07-tdd_part1.md)
 
 Fri
@@ -63,7 +63,7 @@ Fri
 	- Topics:
     	- (Practices) Version Control Basics
 	    - (Practices) Test-Driven Development
-    - [Activities for Day 5](lessonPlans/lessonPlanDay5.md)
+    - [Activities for Day 5](lessonPlans/lessonPlanDay05.md)
     - Lunchtime Video: [TDD Part 2](videos/08-tdd_part2.md)
 
 ### Week 2
@@ -79,7 +79,7 @@ Mon
     - (Principles) Single Responsibility Principle
         - Reading: ASD chapters 7, 8
         - Videos: In class: notes #1 and #2
-    - [Activities for Day 6](lessonPlans/lessonPlanDay6.md)
+    - [Activities for Day 6](lessonPlans/lessonPlanDay06.md)
 	- Prep:
         - Reading: ASD chapters 1-4
 
@@ -105,7 +105,7 @@ Tue
     - (Principles) Interface Segregation Principle
         - Video: In class
         - Reading: ASD chapter 12
-    - [Activities for Day 7](lessonPlans/lessonPlanDay7.md)
+    - [Activities for Day 7](lessonPlans/lessonPlanDay07.md)
 	- Prep:
         - Reading: ASD chapters 7-8
 
@@ -115,24 +115,25 @@ Wed
         - Become comfortable with user roles and user stories
         - Be introduced to the projects and meets with clients to create initial requirements and user stories.
     - (Practices) SOLID Principles Use Case (as in Clean Code video #14)
-    - [Activities for Day 8](lessonPlans/lessonPlanDay8.md)
-    - Meet with clients
+    - [Activities for Day 8](lessonPlans/lessonPlanDay08.md)
+    - (Project) Initial client meetings
     - Prep:
         - Reading: From "User Stories Applied": Chapters 2, 3, 4
 
 Thur
   ~ - Goals:
-		- Advanced TDD
+		- Liskov Substitution Principle and SOLID Principles wrap-up
 	    - Clean Tests
-		- Test Design
-    - Video: Advanced TDD Part 1?
+		- Test Design 
+		- Test Process
+    - [Activities for Day 9](lessonPlans/lessonPlanDay09.md)
 
 Fri
   ~ - Goals:
-		- Test Process
 	    - Mocking
 		- Code Review
-
+    - [Activities for Day 10](lessonPlans/lessonPlanDay10.md)
+    - (Project) Iteration 0 with clients
 
 ### Week 3
 
