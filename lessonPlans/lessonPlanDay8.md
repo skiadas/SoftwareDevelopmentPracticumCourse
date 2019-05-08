@@ -8,24 +8,45 @@
 
 ## Activity 2:
 
-- SOLID Principles Use Case (as in Clean Code video #14) (guided)
-- SOLID Principles Use Case (grading app) (independent)
+- Beginning of 2nd Planning Game Video. (timings?)
+- I.N.V.E.S.T.
+- Work through user stories for grading app.
 
 ## Lunch
 
+- Video: Last 5 mins of Open-Closed Principle
+
+	**52:10-56:15 agile design in practice**
+
+    - Pause at 52:12
+    - What does a development team do during "iteration 0"?
+    - What is the goal of iteration 0?
+
+- Video: Planning Game, part 1 (1.25 speed, timings?)
+
 ## Activity 3:
 
-- Meet with clients, part 1
-  - Jen Duplaga, crowdsourcing archival image annotation
+- Client meeting for Project 1
+
+    - Jen Duplaga, crowdsourcing archival image annotation
+
+    a. Overview of problem followed by Q & A (15 min)
+    b. Brainstorm user roles (15 min)
+    c. Develop user stories (45 min)
+    
+    Collect student interest (1 - 5) in working on project.
 
 ## Activity 4:
 
-- Meet with clients, part 2
-  - Kay Stokes and Kate Johnson, faculty committee voting system
+- Client meeting for Project 2
 
-## Activity 5:
+    - Kay Stokes and Kate Johnson, faculty committee voting system
 
-- The planning game
+    a. Overview of problem followed by Q & A (15 min)
+    b. Brainstorm user roles (15 min)
+    c. Develop user stories (45 min)
+
+    Collect student interest (1 - 5) in working on project.
 
 
 
