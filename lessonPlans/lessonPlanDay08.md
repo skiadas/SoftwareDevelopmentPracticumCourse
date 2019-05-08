@@ -9,8 +9,7 @@
 ## Activity 2:
 
 - Clean Code, Episode 48: The Planning Game II (1.25 speed)
-
-	**11:40-28:55 initial project meeting**
+	- **11:40-28:55 initial project meeting**
 
 - I.N.V.E.S.T. for user stories
 - Group Activity: Work through user stories for grading app.
@@ -22,12 +21,11 @@
 	**52:10-56:15 agile design in practice**
 
 - Clean Code, Episode 47: The Planning Game (1.25 speed)
-
-    **11:15-15:15 the iron cross**
-    **15:15-22:20 velocity**
-    **22:20-37:40 iterations**
-    **37:40-46:40 scope management**
-	**46:40-50:18 the circle of life**
+    - **11:15-15:15 the iron cross**
+    - **15:15-22:20 velocity**
+    - **22:20-37:40 iterations**
+    - **37:40-46:40 scope management**
+	- **46:40-50:18 the circle of life**
 
 ## Activity 3:
 
