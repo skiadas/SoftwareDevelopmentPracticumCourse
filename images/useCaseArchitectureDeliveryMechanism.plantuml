@@ -1,0 +1,60 @@
+@startuml
+
+skinparam shadowing false
+
+skinparam class {
+  BackgroundColor White
+  BorderThickness 3
+  ArrowThickness 2
+  ArrowColor Maroon
+  BorderColor Maroon
+  FontColor Maroon
+  BorderColor<<boundary>> DarkTurquoise
+  FontColor<<boundary>> DarkTurquoise
+  BorderColor<<entity>> Green
+  FontColor<<entity>> Green
+}
+
+together {
+class RequestModel << (D,orchid) >>
+class ResponseModel << (D,orchid) >>
+Interface B1 <<boundary>>
+Interface B2 <<boundary>>
+}
+
+together {
+class Interactor1
+}
+
+together {
+class E1 <<entity>>
+class E2 <<entity>>
+class E3 <<entity>>
+}
+
+package DeliveryMech <<Cloud>> {
+    class Controller
+    class Presenter
+}
+
+
+Controller --> B1
+Presenter --|> B2
+Interactor1 -up-|> B1
+B2 <-- Interactor1
+Interactor1 --> E1
+Interactor1 --> E2
+Interactor1 --> E3
+RequestModel <- B1
+B2 -> ResponseModel
+Presenter --> ResponseModel
+Interactor1 -up-> ResponseModel
+Interactor1 -up-> RequestModel
+Controller --> RequestModel
+
+B1 -[hidden]> B2
+E1 -[hidden]> E2
+E2 -[hidden]> E3
+Controller -[hidden]>Presenter
+
+@enduml

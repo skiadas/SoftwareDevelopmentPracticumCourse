@@ -7,6 +7,7 @@
 
 ## Activity 2:
 
+- [Use-case architectures](../activities/activity9-2useCaseArchitectures.md)
 - SOLID Principles Use Case (grading app) (independent)
 
 ## Lunch

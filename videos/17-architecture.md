@@ -15,7 +15,7 @@ Timing:
 - 46:12-52:45 isolation
 - 52:45-57:12 database
 - 57:12-1:12:55 case study
-- 1:12:55-1:15:45 summary 
+- 1:12:55-1:15:45 summary
 - 1:15:45-1:17:08 big ball of mud
-- 1:17:08-1:19:27 who is the arthitect
+- 1:17:08-1:19:27 who is the architect
 - 1:19:27-1:21:54 end and credits (may skip)

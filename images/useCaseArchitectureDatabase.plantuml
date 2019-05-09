@@ -1,0 +1,52 @@
+@startuml
+
+skinparam linetype polyline
+skinparam shadowing false
+
+skinparam class {
+  BackgroundColor White
+  BorderThickness 3
+  ArrowThickness 2
+  ArrowColor Maroon
+  BorderColor Maroon
+  FontColor Maroon
+  BorderColor<<boundary>> DarkTurquoise
+  FontColor<<boundary>> DarkTurquoise
+  BorderColor<<entity>> Green
+  FontColor<<entity>> Green
+}
+
+together {
+interface EntityGateway
+}
+
+together {
+class Interactor1
+}
+
+together {
+class E1 <<entity>>
+class E2 <<entity>>
+class E3 <<entity>>
+}
+
+package DeliveryMech <<Cloud>> {
+    class EntityGatewayImpl
+    class DatabaseAPI
+}
+
+
+Interactor1 --> E1
+Interactor1 --> E2
+Interactor1 --> E3
+Interactor1 --> EntityGateway
+EntityGateway <|-EntityGatewayImpl
+EntityGatewayImpl -> DatabaseAPI
+E1 <--- EntityGatewayImpl
+E2 <--- EntityGatewayImpl
+E3 <--- EntityGatewayImpl
+
+E1 -[hidden]> E2
+E2 -[hidden]> E3
+
+@enduml

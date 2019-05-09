@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity9-1useCaseArchitecture</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="activity-9-1-use-case-architectures">Activity 9-1 Use-case architectures</h1>
+<p>Following along with <a href="../videos/17-architecture.html">video 7: Architecture</a></p>
+<ul>
+<li>The architecture of a system should be based on its <em>use cases</em>.</li>
+<li>A <strong>use case</strong> is a formal description of the way a user interacts with the system in order to achieve a certain goal, phrased in a delivery-independent way.</li>
+<li>Architecture allows you to defer decisions (like databases and GUIs).</li>
+</ul>
+<p><strong>31:32-40:20 use cases</strong></p>
+<p><strong>40:20-46:12 partitioning</strong></p>
+<h2 id="components-of-use-case-architectures">Components of use-case architectures</h2>
+<p>Use case architecture is composed of 3 kinds of objects:</p>
+<dl>
+<dt>Entities</dt>
+<dd>are “business objects”. They carry application-independent business rules about the elements of our system. Its methods should be useful to <em>all</em> applications that might need this kind of object, but no methods that are specific to the application.
+</dd>
+<dt>Interactors</dt>
+<dd>are “use case objects”. They carry all the application-dependent business rules, and their methods are specific to the application we are working on.
+</dd>
+<dt>Boundaries</dt>
+<dd>are “user interface objects”. They separate the use cases from the delivery mechanism and provide a communications pathway between the two sides.
+</dd>
+</dl>
+<p>Methods in the interactors implement their tasks by calling application-independent methods in the entities and manipulating entities according to their use case.</p>
+<h2 id="interacting-with-the-user">Interacting with the user</h2>
+<ol type="1">
+<li>The delivery mechanism prepares a request from the user in a canonical form,</li>
+<li>passes it through the boundary to the interactor,</li>
+<li>which invoke the application-specific business rules and manipulate the entity objects,</li>
+<li>then compute the result and wrap it into a result model, which is then passed back to the delivery mechanism via another boundary object.</li>
+</ol>
+<p><img src="../images/useCaseArchitectureDeliveryMechanism.png" /></p>
+<h2 id="modelview-and-use-cases">Model/View and use cases</h2>
+<p><strong>46:12-52:45 isolation</strong></p>
+<h2 id="interacting-with-the-database">Interacting with the database</h2>
+<p><strong>52:45-57:12 database</strong></p>
+<p><img src="../images/useCaseArchitectureDatabase.png" /></p>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>
