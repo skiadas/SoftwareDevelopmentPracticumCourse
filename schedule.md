@@ -161,14 +161,9 @@ Mon
     - (Patterns) Facade, Mediator
         - Video: Clean Code: Pattern Roundup
         - Reading: ASD chapter 15
-    - (Practices) UML Class Diagrams
     - (Patterns) Factory
         - Video: Clean Code: Factories
         - Reading: ASD chapter 21
-    - TODO: Refactoring earlier
-    - (Coding) Refactoring: Basic extractions, Inline
-        - Video: Function Screencast, Prime Number Generation
-        - Reading: ASD chapter 5
     - Work on Project
 
 Tue
@@ -178,12 +173,10 @@ Tue
     - (Patterns) Singleton, Monostate
         - Video: Clean Code: Pile O'Patterns
         - Reading: ASD chapter 17
-    - (Coding) Refactoring: Moving, signature change
     - Work on Project
 
 Wed
-  ~ - Reading: Clean Code, chapter 17 (smells/heuristics)
-    - Work on Project
+  ~ - Work on Project
 
 Thu
   ~ - (Patterns) Observer
