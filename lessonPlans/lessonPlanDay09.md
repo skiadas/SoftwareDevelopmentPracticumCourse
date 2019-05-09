@@ -16,16 +16,8 @@
 
 ## Activity 3:
 
-- Liskov Substitution Principle
-- Short review of SOLID Principles
+- Estimating story points for grading project
 
 ## Activity 4:
 
 - Estimating story points for the stories in our project
-
-## Activity 5:
-
-- Test Process (video 22)
-    - Write the test that will force you to write the code that you really want to write.
-    - Triangulation to force generalization.
-    - Test mechanics

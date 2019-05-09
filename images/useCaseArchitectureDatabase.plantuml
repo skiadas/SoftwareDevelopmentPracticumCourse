@@ -30,7 +30,7 @@ class E2 <<entity>>
 class E3 <<entity>>
 }
 
-package DeliveryMech <<Cloud>> {
+package DataStorageMech <<Cloud>> {
     class EntityGatewayImpl
     class DatabaseAPI
 }
