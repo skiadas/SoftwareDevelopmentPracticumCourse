@@ -21,7 +21,7 @@
 
 ## Activity 4:
 
-More mocking
+[Practice on reading test code](../activities/activity10-4loginInteractor.md)
 
 ## Activity 5:
 

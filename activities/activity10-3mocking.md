@@ -8,8 +8,6 @@ Following along with [video: Mocking](../videos/20-mocking1.md)
 
 ![](../images/useCaseArchitectureLogin.png)
 
-TODO: Do more with example?
-
 ## Test doubles
 
 39:30-61:00  test doubles classification

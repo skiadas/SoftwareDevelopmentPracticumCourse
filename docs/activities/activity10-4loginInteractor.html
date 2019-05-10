@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity10-4loginInteractor</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="activity-10-4-the-login-interactor-code">Activity 10-4: The Login-Interactor code</h1>
+<p>We will spend some time looking at the testing for the Login Interactor. Recall the diagram describing the structure of the Login Interactor.</p>
+<p><img src="../images/useCaseArchitectureLogin.png" /></p>
+<h2 id="load-the-code-in-intellij">Load the code in IntelliJ</h2>
+<ol type="1">
+<li>Go to our Moodle class page, and download the <strong>Login Interactor</strong> zip file.</li>
+<li>Extract the contents of the zip file into the directory where you save your CS321 projects. The zip file contains a <code>LoginInteractor</code> folder in it, so you don’t need to create any special folders.</li>
+<li>Start IntelliJ, and use the “Open” option to open the folder <code>LoginInteractor</code> that you just extracted. It is recognized as a project already because of the <code>.iml</code> file contained in it, so we do NOT want to use the “New -&gt; …” menu for it.</li>
+<li>You should be seeing a blue ribbon near the top, with a “setup SDK” menu on its right. Click it to select an SDK, then click OK.</li>
+<li>The <code>LoginInteractorTest</code> files should already be open. Use the “Add JUnit 4 to classpath” intention on any of the red “junit” references in the imports section of the test.</li>
+<li>There are some remaining items that are still red. This is because we need to load a library. In order to do so, follow these steps:
+<ul>
+<li>Open the “File -&gt; Project Structure” menu, and make sure you are in the Modules section.</li>
+<li>Near the bottom of the window, use the “plus” button then choose “Library” and then “From maven”, then enter the following in the search box: <code>junit-hierarchicalcontextrunner</code></li>
+<li>Click the magnifying glass on the right to start a search, and wait for the results to show.</li>
+<li>Select the 4.12.2 version, should be the first option that shows up.</li>
+<li>Click OK until you are back on the Project Structure Window. You should now be seeing a new “Hierarchical context runner” item in the dependencies list. Set the “Scope” option for this new item to “Test”.</li>
+<li>Click OK to get back to the test code.</li>
+<li>Place your cursor on the <code>HierarchicalContextRunner</code> in the <code>@RunWith</code> section, and use the “Import Class” intention. Then remove the unnecessary grayed-out import statement.</li>
+</ul></li>
+<li>Use the “Projects” button on the left side to bring out the Project tree, then navigate to the <code>test</code> folder, and right-click it to “Run all tests”, make sure your tests pass.</li>
+</ol>
+<h2 id="questions-to-answer">Questions to answer</h2>
+<p>Remember that you can use “ctrl-B” to go back and forth between the definition of a symbol and its uses. It can be a convenient way to navigate the code.</p>
+<ol type="1">
+<li>Look at the <code>Authorizer</code> interface.
+<ul>
+<li>What are all the classes that implement the <code>Authorizer</code> interface?</li>
+<li>Which of them are test doubles and what kinds of test doubles are they? Don’t rely on their name alone, look at what they do.</li>
+<li>Are any of these classes abstract? Then make sure you look at <em>their</em> subclasses as well.</li>
+<li>Which tests are using these classes? Does it make sense, based on what those tests are trying to do?</li>
+</ul></li>
+<li>In what ways does the <code>UserStub</code> class differ from its superclass, <code>User</code>? Does this match what you would expect a “stub” to do?</li>
+<li>How do the <code>GatewayStub</code> and the <code>GatewaySpy</code> differ from each other?</li>
+<li>In order for the <code>normalLogin</code> test method to run, which setup methods will end up running first? Keep in mind this is using the hierarchical context runner.</li>
+<li>The <code>LoginInteractorImpl</code> class needs to keep track of the number of failed attempts for each username. What structure does it use to do that? Which lines of code manage this structure (create, add elements, check elements)?</li>
+<li>There are some things wrong with the <code>countInvalidLoginAttempts</code> method (not mistakes, but bad code smells). Can you spot them? What suggestions would you have about fixing them?</li>
+<li>Consider the <code>login</code> method. Are there any refactorings you would suggest? Try to perform them.</li>
+<li>The <code>login</code> method uses a local variable <code>request</code>. Can we turn this variable into a field?</li>
+<li>There is one statement/line of code in <code>login</code> that is not being tested by the tests.
+<ul>
+<li>Try to comment out one statement at a time, and take a look at the failing tests. Make sure you look at the actual tests and what they do, and understand how the tests correctly check what is going on at that line.</li>
+<li>Which line is the one not picked up by the tests? How would you modify the tests so that they pick that line up? Add the corresponding part(s) to the test and confirm that now the tests would fail without that line.</li>
+</ul></li>
+</ol>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>
