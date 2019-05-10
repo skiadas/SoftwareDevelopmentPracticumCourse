@@ -7,20 +7,21 @@
 
 ## Activity 2:
 
-Mocking
+- Test Process (video 22)
+    - Write the test that will force you to write the code that you really want to write.
+    - Triangulation to force generalization.
+    - Test mechanics
 
 ## Lunch
 
 ## Activity 3:
 
-More mocking
+[Mocking](../activities/activity10-3mocking.md)
+
 
 ## Activity 4:
 
-- Test Process (video 22)
-    - Write the test that will force you to write the code that you really want to write.
-    - Triangulation to force generalization.
-    - Test mechanics
+More mocking
 
 ## Activity 5:
 
