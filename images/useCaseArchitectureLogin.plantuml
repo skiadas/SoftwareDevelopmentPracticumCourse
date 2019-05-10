@@ -1,0 +1,59 @@
+@startuml
+
+skinparam shadowing false
+
+skinparam class {
+  BackgroundColor White
+  BorderThickness 3
+  ArrowThickness 2
+  ArrowColor Maroon
+  BorderColor Maroon
+  FontColor Maroon
+  BorderColor<<boundary>> DarkTurquoise
+  FontColor<<boundary>> DarkTurquoise
+  BorderColor<<entity>> Green
+  FontColor<<entity>> Green
+}
+
+package " " <<cloud>> {
+class "Login Interactor Impl" as LoginImpl
+interface "Login Interactor" as LoginInteractor
+interface Authorizer
+interface User
+interface UserGateway
+interface "Login Presenter" as LoginPresenter
+class LoginRequest <<(D,Green)>>
+class LoginResponse <<(D,Green)>>
+}
+
+package UI <<cloud>> {
+   class LoginController
+   class LoginPresenterImpl
+}
+
+class AuthorizerImpl
+
+package DB <<cloud>> {
+class UserImpl
+class UserGatewayImpl
+}
+
+Authorizer <|- AuthorizerImpl
+User  <|.. UserImpl
+UserGatewayImpl .> UserImpl
+UserGateway <|-- UserGatewayImpl
+LoginInteractor <|-- LoginImpl
+LoginImpl -> Authorizer
+LoginImpl --> UserGateway
+LoginPresenter <-- LoginImpl
+LoginImpl -> User
+LoginController -> LoginInteractor
+LoginPresenterImpl -|> LoginPresenter
+LoginPresenterImpl ..> LoginResponse
+LoginResponse <.. LoginImpl
+LoginController ..> LoginRequest
+LoginRequest <.. LoginImpl
+
+Authorizer <-[hidden]- User
+
+@enduml
