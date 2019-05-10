@@ -124,14 +124,13 @@ Thur
   ~ - Goals:
 		- Liskov Substitution Principle and SOLID Principles wrap-up
 	    - Clean Tests
-		- Test Design 
+		- Test Design
 		- Test Process
     - [Activities for Day 9](lessonPlans/lessonPlanDay09.md)
 
 Fri
   ~ - Goals:
 	    - Mocking
-		- Code Review
     - [Activities for Day 10](lessonPlans/lessonPlanDay10.md)
     - (Project) Iteration 0 with clients
 
@@ -139,34 +138,33 @@ Fri
 
 Design Patterns in the morning; Work on project in the afternoon
 
-Not sure where these goes:
-  ~ - (Java/OOP) Inner classes
-    - (Coding) Exception Handling
-        - Reading: Clean Code chapter 7
-
-  ~ - Goals:
-        - Planning: User Stories, CRC Cards, Acceptance Tests (Move to Later)
-    - (Practices) User Stories
-        - Video: Clean Code, Architecture, Use Cases and High Level design
-    - (Practices) CRC Cards
-
-
 Mon
+  ~ - Goals:
+        - Planning: CRC Cards, Acceptance Tests
+
+Tue
+  ~ - Exam 2
+    - Work on Project
+
+Wed
   ~ - (Patterns) Command
         - Video: Clean Code: Design Patterns
         - Reading: ASD chapter 13
     - (Patterns) Template Method, Strategy
         - Video: Strategy and Template Method Patterns
         - Reading: ASD chapter 14
+    - Work on Project
+
+Thu
+  ~ - (Patterns) Factory
+        - Video: Clean Code: Factories
+        - Reading: ASD chapter 21
     - (Patterns) Facade, Mediator
         - Video: Clean Code: Pattern Roundup
         - Reading: ASD chapter 15
-    - (Patterns) Factory
-        - Video: Clean Code: Factories
-        - Reading: ASD chapter 21
     - Work on Project
 
-Tue
+Fri
   ~ - (Patterns) Null Object
         - Video: Clean Code: Pile O'Patterns
         - Reading: ASD chapter 16
@@ -175,10 +173,9 @@ Tue
         - Reading: ASD chapter 17
     - Work on Project
 
-Wed
-  ~ - Work on Project
+### Week 4
 
-Thu
+Mon
   ~ - (Patterns) Observer
         - Video: The Observer Pattern
         - Reading: ASD chapter 24
@@ -187,31 +184,24 @@ Thu
         - Reading: ASD chapters 25, 26
     - Work on Project
 
-Fri
+Tue
   ~ - (Patterns) Composite
         - Reading: ASD chapter 23
-    - (Practices) UML Sequence Diagrams
-    - Work on Project
-
-### Week 4
-
-Mon
-  ~ - (Java/OOP) packages, modules (earlier?)
     - (Patterns) Visitor
         - Reading: ASD chapter 28
     - Work on Project
 
-Tue
+Wed
+  ~ - Exam
+    - Work on Project
+
+Thu
   ~ - (Patterns) State
         - Video: Finite State Machines and State Pattern
         - Reading: ASD chapter 29
     - Work on Project
-
-Wed
-  ~ - Work on Project
-
-Thu
-  ~ - Work on Project
+    - Work on Project
 
 Fri
   ~ - Work on Project
+    - End early, final demo
