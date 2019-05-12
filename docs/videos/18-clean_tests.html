@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>18-clean_tests</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="clean-tests">Clean Tests</h1>
+<h2 id="clean-code-episode-20">Clean Code, Episode 20</h2>
+<p><a href="https://www.safaribooksonline.com/videos/clean-code/9780134661742/9780134661742-CODE_01_05_01">Link</a></p>
+<h3 id="timing">Timing:</h3>
+<ul>
+<li>00:00-05:50 introduction</li>
+<li>05:50-08:30 overview</li>
+<li>08:30-20:50 astronomy lesson: history of the earth (may skip)</li>
+<li>20:50-29:50 anatomy of a test</li>
+<li>29:50-40:57 the arrange</li>
+<li>40:57-52:55 setup struggles</li>
+<li>52:55-1:06:05 test hierarchy</li>
+<li>1:06:05-1:10:30 clean composition</li>
+<li>1:10:30-1:20:55 the assertion</li>
+<li>1:20:55-1:23:10 summary</li>
+<li>1:23:10-1:24:10 end and credits (may skip)</li>
+</ul>
+<h3 id="vocabulary">Vocabulary:</h3>
+<ul>
+<li><strong>degenerate test</strong></li>
+<li><strong>setup function</strong> - used when there is a group of test functions that share a common arrangement</li>
+<li><strong>teardown function</strong> - used when there is a group of test functions that share a common teardown</li>
+<li><strong>fixture</strong> - system state needed to run a test</li>
+<li><strong>transient fixture</strong> - fixture created and destroyed for a single test</li>
+<li><strong>persistent fixture</strong> - fixture that survives from test to test (i.e., shared)</li>
+<li><strong>fresh fixture</strong> - fixture that is initialized every time it is used</li>
+<li><strong>shared fixture</strong> - fixture that allows some state to accumulate from test to test</li>
+<li><strong>test hierarchy</strong></li>
+<li><strong>composed action</strong></li>
+<li><strong>composed assert</strong></li>
+</ul>
+<h3 id="concepts">Concepts:</h3>
+<ul>
+<li><p>Four phases of every test function (The Four A’s):</p>
+<ol type="1">
+<li>arrange (setup) - set the system into the state necessary to run the test (a.k.a., test fixture)</li>
+<li>act (execute)</li>
+<li>assert (check)</li>
+<li>annihilate (teardown) - undo everything done in the arrange</li>
+</ol>
+<p>Also: given, when, then</p></li>
+<li><p>Types of fixtures:</p>
+<ol type="a">
+<li><strong>transient fresh</strong> - fixture that will be newly created at the beginning of a test method; no teardown is needed (preferred)
+<ul>
+<li>Means test methods cannot communicate with each other and can be run in any order</li>
+</ul></li>
+<li><strong>persistent fresh</strong> - fixture that will be newly created at the beginning of a test method, but that has some persistent state (e.g., open file or other OS resources) that must be managed in the teardown</li>
+<li><strong>persistent shared</strong> - fixture created and then used by multiple tests (e.g., database connection)</li>
+</ol></li>
+<li><p>The Single Assert Rule</p></li>
+</ul>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>
