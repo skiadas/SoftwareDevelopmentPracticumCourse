@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>20-test_process</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="clean-tests">Clean Tests</h1>
+<h2 id="test-process-episode-22">Test Process, Episode 22</h2>
+<h3 id="timing">Timing:</h3>
+<ul>
+<li>00:00-00:45 intro</li>
+<li>00:45-03:45 overview</li>
+<li>03:45-10:45 astronomy lesson: the great galaxy debate</li>
+<li>10:45-53:10 simple techniques
+<ul>
+<li>16:40 stairstep tests</li>
+<li>24:40 assert first</li>
+<li>31:40 triangulation</li>
+<li>47:05 one to many</li>
+</ul></li>
+<li>53:10-1:10:10 refactoring tests
+<ul>
+<li>56:25 the two disks</li>
+</ul></li>
+<li>1:10:10-1:15:10 tests come first</li>
+<li>1:15:10-1:18:00 heresy</li>
+<li>1:18:00-1:20:30 summary</li>
+<li>1:20:30-1:22:50 ending credits</li>
+</ul>
+<h3 id="concepts">Concepts:</h3>
+<ul>
+<li>“Fake it ’til you make it” - make a test case pass by faking it, e.g., just returning 0 to test an edge case.</li>
+<li>Stairstep tests - tests whose sole purpose is to enable you to write the next step in sequence (usually delete when no longer needed)</li>
+<li>Assert first - write test backwards, starting with the assert; i.e., write the assert, then iteratively fix one error at a time by adding only the code needed to make that one error go away.</li>
+<li>Triangulation - adding a second specific test that will force you to modify the code you are currently testing to be more general (two tests + code being testeed = triangle); may lead to extracting an abstract class.</li>
+<li>One to many -</li>
+<li>Trap door function</li>
+<li>Golden rule of writing tests</li>
+<li>Test behavior, not APIs.</li>
+<li>Four rules of simple design:</li>
+</ul>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>
