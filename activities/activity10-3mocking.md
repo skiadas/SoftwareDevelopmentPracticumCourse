@@ -1,6 +1,6 @@
 # Activity 10-3 Mocking
 
-Following along with [video: Mocking](../videos/20-mocking1.md)
+Following along with [video: Mocking](../videos/21-mocking1.md)
 
 ## An extended example of mocking
 
