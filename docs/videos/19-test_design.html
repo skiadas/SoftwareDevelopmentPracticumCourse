@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>19-test_design</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="clean-tests">Clean Tests</h1>
+<h2 id="test-design-episode-21">Test Design, Episode 21</h2>
+<h3 id="timing">Timing:</h3>
+<ul>
+<li>00:00-03:10 overview</li>
+<li>03:10-08:05 test location</li>
+<li>08:05-13:12 test files</li>
+<li>13:12-15:25 test suites</li>
+<li>15:25-31:26 SOLID tests
+<ul>
+<li>19:00 SRP for tests</li>
+<li>21:15 OCP for tests</li>
+<li>24:55 LSP for tests</li>
+<li>26:10 ISP for tests</li>
+<li>27:42 DIP for tests</li>
+<li>29:35 testing privates</li>
+</ul></li>
+<li>31:26-50:55 writing tests (“test location” on video)</li>
+<li>50:55-53:30 summary</li>
+<li>53:30-56:31 ending credits (may skip)</li>
+</ul>
+<h3 id="concepts">Concepts:</h3>
+<ul>
+<li>What test to write first? Write the test that forces you to write the code that you already know you want to write.</li>
+<li>Given, When, Then</li>
+<li>One way to name tests is to use the Action (the When) and the Assertion (the Then). Example: whenPayrollIsRun_thenPaymasterWillHoldCheckForHoursWorkedTimesHourlyRate</li>
+</ul>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>
