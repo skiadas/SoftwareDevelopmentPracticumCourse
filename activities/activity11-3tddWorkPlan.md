@@ -11,7 +11,7 @@
 
 **Date:** _________________________________________________
 
-## Iteration Planning
+## Part 1 - Iteration Planning
 
 1. **With your teammates**, discuss the initial design of your system with respect to the features that you will be working on for this (and maybe the next) iteration.
 
@@ -78,13 +78,13 @@ before any others.
 	**You are now ready to start the iteration!**
 
 
-## Iteration Extreme Programming
+## Part 2 - Extreme Programming
 
 1. Get a "Red-Green-Refactor" (RGR) pyramid and sit down at a lab computer with your partner. Make sure you have the following:
 
 	a. these planning notes
 	b. your feature TODO list
-	c. scrap paper and something erasable to write with OR a whiteboard in easy reach
+	c. scrap paper and something erasable to write with 
 
 2. Whoever owns the feature should now login. 
 
@@ -99,29 +99,30 @@ before any others.
 			- https://github.com/sdp-resources/FacultyElectionsProject
 			- https://github.com/sdp-resources/HanoverArchiveProject
 			
-	- If you already have a local copy of the project that you have been working off of, you will need to start by pulling down any changes that your other team members have checked in.
+	- **If you already have a local copy of the project**, you will need to start by **pulling down** any changes that your other team members have checked in.
 
 		- *VCS -> Git -> Pull*
 
-3. Turn the RGR pyramid o that the red, "write a failing test" side is facing you and your partner.
+3. Turn the RGR pyramid so that the red, "write a failing test" side is facing you and your partner.
 
 4. Use the feature TODO list to remind yourself about the next test you plan to write.
 
 	- Right click on the "test" folder and create a new Java class.
 
-	- Begin writing your test. (If you need a reminder about what a JUnit test looks like, open the Bowing project and look at the tests there.)
+	- Begin writing your test. (If you need a reminder about what a JUnit test looks like, open the Bowling project and look at the tests there.)
 
-5. Continue the "Red-Green-Refactor" process, **being dilligent about maintaining the feature TODO List!**
+5. Continue the "Red-Green-Refactor" cycle: 
 
 	- Each time you finish a "Red-Green-Refactor" cycle, check off the test and any related tasks you have completed. 
-	- Every time you think of a new test or something you want to try, write it down on the feature TODO list (even if it is just the very next test you decide  to write).
-	- Write down things that you do not know now to do and will need to figure out, for example, "Figure out how to open and display an image from within a java program."
+	- **Maintain your TODO List:**
+		- Every time you think of a new test or something you want to try, write it down on the feature TODO list. 
+		- Write down things that you do not know now to do and will need to figure out, for example, "Figure out how to open and display an image from within a java program."
+		- Use the TODO list not only to keep track of task backlog, but also to help keep yourself on track. Jot down ideas and questions rather than getting distracted from your current task. Address these questions and items AFTER you have completed your current task.
+	- **After every RGR cycle:**
+		a. Pull (*VCS -> Git -> Pull*)
+		b. **Resolve conflicts** - *ask for help, and do not move on until conflicts are resolved*
+		c. Commit (*VCS -> Commit*)
+		d. Push (*VCS -> Git -> Push*)
 
-6. Use your last tomato working as partners to make sure the code you have written is clean, refactored, and that all tests are running.
-
-7. Push your changes to the project repository:
-
-	- *VCS -> Commit*
-	- *VCS -> Git -> Push*
-	- Ask if you need help resolving any conflicts.
+6. During your last tomato, plan your tomato so that you can end on as clean a slate as possible.
 

@@ -19,7 +19,7 @@
 <p><strong>Feature:</strong> ______________________________________________</p>
 <p><strong>Feature Owner:</strong> _______________________________________</p>
 <p><strong>Date:</strong> _________________________________________________</p>
-<h2 id="iteration-planning">Iteration Planning</h2>
+<h2 id="part-1---iteration-planning">Part 1 - Iteration Planning</h2>
 <ol type="1">
 <li><p><strong>With your teammates</strong>, discuss the initial design of your system with respect to the features that you will be working on for this (and maybe the next) iteration.</p>
 <ol type="a">
@@ -71,13 +71,13 @@
 <p>As you work on developing your feature, you will use the feature TODO List as a way to keep track of what you have completed and also as a place to write down additional tasks when you think of them.</p>
 <p><strong>You are now ready to start the iteration!</strong></p></li>
 </ol>
-<h2 id="iteration-extreme-programming">Iteration Extreme Programming</h2>
+<h2 id="part-2---extreme-programming">Part 2 - Extreme Programming</h2>
 <ol type="1">
 <li><p>Get a “Red-Green-Refactor” (RGR) pyramid and sit down at a lab computer with your partner. Make sure you have the following:</p>
 <ol type="a">
 <li>these planning notes</li>
 <li>your feature TODO list</li>
-<li>scrap paper and something erasable to write with OR a whiteboard in easy reach</li>
+<li>scrap paper and something erasable to write with</li>
 </ol></li>
 <li><p>Whoever owns the feature should now login.</p></li>
 <li><p>Start IntelliJ.</p>
@@ -91,30 +91,35 @@
 <li>https://github.com/sdp-resources/HanoverArchiveProject</li>
 </ul></li>
 </ol></li>
-<li><p>If you already have a local copy of the project that you have been working off of, you will need to start by pulling down any changes that your other team members have checked in.</p>
+<li><p><strong>If you already have a local copy of the project</strong>, you will need to start by <strong>pulling down</strong> any changes that your other team members have checked in.</p>
 <ul>
 <li><em>VCS -&gt; Git -&gt; Pull</em></li>
 </ul></li>
 </ul></li>
-<li><p>Turn the RGR pyramid o that the red, “write a failing test” side is facing you and your partner.</p></li>
+<li><p>Turn the RGR pyramid so that the red, “write a failing test” side is facing you and your partner.</p></li>
 <li><p>Use the feature TODO list to remind yourself about the next test you plan to write.</p>
 <ul>
 <li><p>Right click on the “test” folder and create a new Java class.</p></li>
-<li><p>Begin writing your test. (If you need a reminder about what a JUnit test looks like, open the Bowing project and look at the tests there.)</p></li>
+<li><p>Begin writing your test. (If you need a reminder about what a JUnit test looks like, open the Bowling project and look at the tests there.)</p></li>
 </ul></li>
-<li><p>Continue the “Red-Green-Refactor” process, <strong>being dilligent about maintaining the feature TODO List!</strong></p>
+<li><p>Continue the “Red-Green-Refactor” cycle:</p>
 <ul>
 <li>Each time you finish a “Red-Green-Refactor” cycle, check off the test and any related tasks you have completed.</li>
-<li>Every time you think of a new test or something you want to try, write it down on the feature TODO list (even if it is just the very next test you decide to write).</li>
-<li>Write down things that you do not know now to do and will need to figure out, for example, “Figure out how to open and display an image from within a java program.”</li>
-</ul></li>
-<li><p>Use your last tomato working as partners to make sure the code you have written is clean, refactored, and that all tests are running.</p></li>
-<li><p>Push your changes to the project repository:</p>
+<li><strong>Maintain your TODO List:</strong>
 <ul>
-<li><em>VCS -&gt; Commit</em></li>
-<li><em>VCS -&gt; Git -&gt; Push</em></li>
-<li>Ask if you need help resolving any conflicts.</li>
+<li>Every time you think of a new test or something you want to try, write it down on the feature TODO list.</li>
+<li>Write down things that you do not know now to do and will need to figure out, for example, “Figure out how to open and display an image from within a java program.”</li>
+<li>Use the TODO list not only to keep track of task backlog, but also to help keep yourself on track. Jot down ideas and questions rather than getting distracted from your current task. Address these questions and items AFTER you have completed your current task.</li>
 </ul></li>
+<li><strong>After every RGR cycle:</strong>
+<ol type="a">
+<li>Pull (<em>VCS -&gt; Git -&gt; Pull</em>)</li>
+<li><strong>Resolve conflicts</strong> - <em>ask for help, and do not move on until conflicts are resolved</em></li>
+<li>Commit (<em>VCS -&gt; Commit</em>)</li>
+<li>Push (<em>VCS -&gt; Git -&gt; Push</em>)</li>
+</ol></li>
+</ul></li>
+<li><p>During your last tomato, plan your tomato so that you can end on as clean a slate as possible.</p></li>
 </ol>
 <script type="text/javascript">
 let els = document.getElementsByTagName("pre");
