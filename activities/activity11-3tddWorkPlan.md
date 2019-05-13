@@ -1,4 +1,4 @@
-# Activity 11-3: TDD Work Plan
+# Activity 11-3: Design and Iteration Planning
 
 **Project:** ______________________________________________
 
@@ -11,7 +11,7 @@
 
 **Date:** _________________________________________________
 
-## Initial Planning
+## Iteration Planning
 
 1. **With your teammates**, discuss the initial design of your system with respect to the features that you will be working on for this (and maybe the next) iteration.
 
@@ -41,7 +41,8 @@
 
 	ANSWERSPACE
 
-\pagebreak
+    \pagebreak
+
 	g. What additional classes do you think will be needed to support the implementation of the features for this iteration?
 
 	ANSWERSPACE
@@ -56,7 +57,9 @@ before any others.
 	ANSWERSPACE
 	ANSWERSPACE
 
-3. **With your coding partner**, decide on the first 1-3 tests that you will need to write to drive the implementation of the class. Write down names for these tests.
+3. **With your coding partner**, decide on the first 1-2 tests that you will need to write to drive the implementation of each needed class for your feature. 
+
+	Write down names for these tests.
 
 	When thinking of what tests to write, remember the strategies discussed so far:
 
@@ -68,16 +71,57 @@ before any others.
 	ANSWERSPACE
 	ANSWERSPACE
 
-4. Prioritize the tests that you have listed so far. Starting with the first test you plan to write, list each test along with the class it is testing on the sheet entitled "TODO List for Feature _____________".
+4. Starting with the first test you plan to write, list each test along with the class it is testing on the TODO sheet for your feature.
 
-	**As you and your partner are working, you must be dilligent about maintaining your backlog.** After you finish a test, mark it off on the TOOO list. Everytime you think of a new test, write it down on the TOOO list (even if it is the very next test you plan to write).
+	As you work on developing your feature, you will use the feature TODO List as a way to keep track of what you have completed and also as a place to write down additional tasks when you think of them.
 
-5. Get a "Red-Green-Refactor" pyramid and sit down at a lab computer with your partner. Make sure you have these planning notes, your TOOO list, something to write with, and some scrap paper. **Whoever is in charge of the feature should login.**
+	**You are now ready to start the iteration!**
 
-6. Start intelliJ, then *File -> New -> Project from Version Control -> Git*.
 
-	TODO: Need a few more instructions here about getting the project setup.
+## Iteration Extreme Programming
 
-## Test-Driven Development with Paired Programming
+1. Get a "Red-Green-Refactor" (RGR) pyramid and sit down at a lab computer with your partner. Make sure you have the following:
 
-TODO: Additional information here, including committing changes to the repository.
+	a. these planning notes
+	b. your feature TODO list
+	c. scrap paper and something erasable to write with OR a whiteboard in easy reach
+
+2. Whoever owns the feature should now login. 
+
+3. Start IntelliJ.
+
+	- **If this is your first time taking the lead on a feature for this project**, you will need to create a new project in IntelliJ from the GitHub repository for the project:
+
+		a. Go to *File -> New -> Project from Version Control -> Git*.
+
+		b. Enter the URL for your project repository when asked. The two project repositories are:
+
+			- https://github.com/sdp-resources/FacultyElectionsProject
+			- https://github.com/sdp-resources/HanoverArchiveProject
+			
+	- If you already have a local copy of the project that you have been working off of, you will need to start by pulling down any changes that your other team members have checked in.
+
+		- *VCS -> Git -> Pull*
+
+3. Turn the RGR pyramid o that the red, "write a failing test" side is facing you and your partner.
+
+4. Use the feature TODO list to remind yourself about the next test you plan to write.
+
+	- Right click on the "test" folder and create a new Java class.
+
+	- Begin writing your test. (If you need a reminder about what a JUnit test looks like, open the Bowing project and look at the tests there.)
+
+5. Continue the "Red-Green-Refactor" process, **being dilligent about maintaining the feature TODO List!**
+
+	- Each time you finish a "Red-Green-Refactor" cycle, check off the test and any related tasks you have completed. 
+	- Every time you think of a new test or something you want to try, write it down on the feature TODO list (even if it is just the very next test you decide  to write).
+	- Write down things that you do not know now to do and will need to figure out, for example, "Figure out how to open and display an image from within a java program."
+
+6. Use your last tomato working as partners to make sure the code you have written is clean, refactored, and that all tests are running.
+
+7. Push your changes to the project repository:
+
+	- *VCS -> Commit*
+	- *VCS -> Git -> Push*
+	- Ask if you need help resolving any conflicts.
+
