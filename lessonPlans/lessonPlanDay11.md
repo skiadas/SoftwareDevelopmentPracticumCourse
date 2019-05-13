@@ -17,11 +17,11 @@ Short review of the SOLID principles and TDD
 45 min
 
 - [Project rules and regulations.](../activities/activity11-2projectRulesHandout.md)
-- Short design session.
+- [Design session](../activities/activity11-3tddWorkPlan.md)
 
 ## Lunch
 
-until 12:45
+- until 12:45
 
 ## Afternoon - Project Development
 
