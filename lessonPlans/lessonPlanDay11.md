@@ -16,7 +16,7 @@ Short review of the SOLID principles and TDD
 
 45 min
 
-- Project rules and regulations.
+- [Project rules and regulations.](../activities/activity11-2projectRulesHandout.md)
 - Short design session.
 
 ## Lunch
@@ -28,4 +28,3 @@ until 12:45
 - 12:45-2:45 pair-programming session 1
 - 15-minute break
 - 3:00-5:00  pair-programming session 2
-

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity11-1integrationTests</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="activity-11-1-integration-and-acceptance-tests">Activity 11-1 Integration and Acceptance Tests</h1>
+<p>Integration tests and acceptance tests are closely related.</p>
+<ul>
+<li><strong>Integration Tests</strong> test how the different components of the program work together. They are in essence end-to-end tests, that test the application in conditions extremely similar to its deployment, only abstracting away the UI and possibly the database.</li>
+<li><strong>Acceptance Tests</strong> are tests which, when they pass, confirm that the required feature is fully implemented. They are in effect your “contract” with the client. They are invariably integration tests themselves, but they have this more specific goal, and they are typically written in a language that the client can understand.</li>
+</ul>
+<p>We will mostly concern ourselves with integration tests for now.</p>
+<h2 id="integration-tests-for-a-login-interactor">Integration Tests for a login interactor</h2>
+<p>For an integration test we must also consider the overall structure of our system. Let’s start by considering the external components of our application, which we want to separate behind <strong>boundaries</strong>:</p>
+<ul>
+<li>There is some web server or something similar as a <em>delivery mechanism</em>, which needs to forward <em>requests</em> to our application and receive <em>responses</em> in return. We are going to need two <em>data-structures</em> (data-transfer-objects) <strong>Request</strong> and <strong>Response</strong> to represent those.</li>
+<li>We will also need some kind of <strong>Handler</strong> interface, which the delivery mechanism interacts with. It would need to have at least a method with signature <code>Response handle(Request req)</code> to handle the requests coming from the delivery mechanism. It would probably also be nice for it to have a <code>boolean canHandle(Request req)</code> mechanism to determine if it can handle a certain request.</li>
+<li>We will probably have many different handlers for different kinds of requests, and there is probably a main <strong>RoutingHandler</strong> which is the one visible to the delivery mechanism, and simply redirects traffic to the appropriate specific handler (like a login interactor).</li>
+<li>We will need some <strong>Main</strong> class to prepare this routing handler with all the other handlers that it can route requests to. We often call this the <strong>Context</strong>, but we’ll just call it Main for now.</li>
+<li>There is likely some authorizing and authenticating service, represented by some <strong>Authorizer</strong> class, which also needs to be a plugin to our main application. We’ll need to be setting it up in the Main context.</li>
+<li>We’ll need to have some <strong>Gateway</strong> interface which forms our connection to a storage mechanism like a database. Again Main will be responsible for setting that up.</li>
+</ul>
+<p><img src="../images/integrationTestsOverallArchitecture.png" /></p>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>

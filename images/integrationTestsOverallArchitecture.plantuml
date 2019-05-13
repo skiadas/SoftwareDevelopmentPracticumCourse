@@ -1,0 +1,56 @@
+@startuml
+
+skinparam shadowing false
+
+skinparam class {
+  BackgroundColor White
+  BorderThickness 3
+  ArrowThickness 2
+  ArrowColor Maroon
+  BorderColor Maroon
+  FontColor Maroon
+  BorderColor<<boundary>> DarkTurquoise
+  FontColor<<boundary>> DarkTurquoise
+  BorderColor<<entity>> Green
+  FontColor<<entity>> Green
+}
+
+package " " <<cloud>> {
+class "Routing Handler" as Router
+class "Login Handler" as LoginHandler
+interface Authorizer
+interface Gateway
+interface Handler
+}
+
+package UI <<cloud>> {
+   class UIController
+}
+
+package "auth" <<cloud>> {
+    class AuthorizerImpl
+}
+
+package DB <<cloud>> {
+    class GatewayImpl
+}
+
+AuthorizerImpl --|> Authorizer
+GatewayImpl --|> Gateway
+Authorizer <-- LoginHandler
+Gateway <-- LoginHandler
+Router -> LoginHandler
+UIController --> Handler : > request
+Handler <|-- Router
+UIController -- Handler : < response
+
+
+UIController -[hidden]> AuthorizerImpl
+
+
+Main ..> Router
+Main ..> AuthorizerImpl
+Main ..> GatewayImpl
+Main .> LoginHandler
+Main .> UIController
+@enduml
