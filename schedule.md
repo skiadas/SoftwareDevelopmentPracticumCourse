@@ -125,7 +125,6 @@ Thur
 		- Liskov Substitution Principle and SOLID Principles wrap-up
 	    - Clean Tests
 		- Test Design
-		- Test Process
     - [Activities for Day 9](lessonPlans/lessonPlanDay09.md)
 
 Fri
@@ -140,7 +139,10 @@ Design Patterns in the morning; Work on project in the afternoon
 
 Mon
   ~ - Goals:
-        - Planning: CRC Cards, Acceptance Tests
+        - Test Process
+		- Review Project Rules & Regulations
+    - [Activities for Day 11](lessonPlans/lessonPlanDay11.md)
+    - (Project) Start iteration 1
 
 Tue
   ~ - Exam 2

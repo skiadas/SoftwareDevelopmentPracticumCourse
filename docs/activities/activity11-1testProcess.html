@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity11-1testProcess</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="activity-11-2---test-process">Activity 11-2 - Test Process</h1>
+<h2 id="remember-the-three-rules-of-tdd">Remember the Three Rules of TDD?</h2>
+<ol type="1">
+<li>You are not allowed to write any prouction code unless it is to make a failing test pass.</li>
+<li>You are not allowed to write any more of a test than is sufficient to fail; compilation errors are failures.</li>
+<li>You are not allowed to write any more production code than is sufficient to pass the one failing test.</li>
+</ol>
+<p><strong>Because it is by writing tests that you drive the development of your prouduction code, TDD requires you to spend a lot of time thinking about what the next test is that you should write.</strong></p>
+<p><em>So how do we do this?</em></p>
+<h2 id="techniques-and-strategies-for-the-process-of-writing-tests">Techniques and Strategies for the Process of Writing Tests</h2>
+<h3 id="fake-it-til-you-make-it">1. Fake it ’til you make it</h3>
+<p>When you start to write a function, instead of writing a correct implementation, just return the result needed to make the test pass.</p>
+<ul>
+<li><p>Where have we seen an example of this?</p></li>
+<li><p>Which rule(s) of TDD does this help to enforce?</p></li>
+<li><p><strong>Useful for getting you started.</strong></p></li>
+</ul>
+<h3 id="stairstep-tests">2. Stairstep tests</h3>
+<p>Tests can be like stairs – sometimes the whole purpose of a test is to allow you to write the next test. Once the first test leads you to where you are going, you can delete it.</p>
+<ul>
+<li><p>Example: video at 20:00</p>
+<ul>
+<li>Want to start testing a class, but class is not yet written. So write a test that uses the class ==&gt; failure to compile forces you to write enough of the class to at least get your code to compile.</li>
+</ul></li>
+<li><p>Which rule(s) of TDD does this help to enforce?</p></li>
+<li><p><strong>Useful for getting you started.</strong></p></li>
+</ul>
+<h3 id="assert-first">3. Assert first</h3>
+<p>Write test backwards – first write the assert, then iteratively fix one error at a time by adding only enough code needed to make the error go away.</p>
+<ul>
+<li><p>Example: video at 27:55</p></li>
+<li><p>Which rule(s) of TDD does this help to enforce?</p></li>
+<li><p>Useful if you need help figuring out the setup for a test</p></li>
+</ul>
+<h3 id="triangulation">4. Triangulation</h3>
+<p>Add a second specific test that will force you to modify the code you are currently testing to be more general.</p>
+<ul>
+<li><p>Example: video at 34:17</p></li>
+<li><p>two tests + code being tested = triangle</p></li>
+<li><p>May lead to extracting an abstract class.</p></li>
+<li><p>Which rule(s) of TDD does this help to enforce?</p></li>
+</ul>
+<h2 id="thought-experiment">Thought Experiment</h2>
+<p>Your team has just completed a large project using TDD. All the production source code is on one hard drive, and all the testing code is on a second hard drive.</p>
+<p>One hard drive has a catestrophic failure.</p>
+<p>Which drive is the one you would hope would crash? The one with the production code? Or the one with the testing code?</p>
+<ul>
+<li><p><strong>Discuss</strong></p></li>
+<li><p>Uncle Bob’s answer at 59:10</p></li>
+</ul>
+<h2 id="final-thoughts">Final thoughts</h2>
+<ul>
+<li><p>What does a good test look like?</p>
+<ul>
+<li><strong>The best tests read like well-written specifications.</strong></li>
+</ul></li>
+<li><p>Golden Rule of Writing Tests:</p>
+<ul>
+<li><strong>Write the test that you’d like to read.</strong></li>
+</ul></li>
+<li><p>Test behavior, not APIs.</p>
+<ul>
+<li><strong>Write tests to express the behavior of the system, independent of the API, and design the API based on the behaviour that your tests expect.</strong></li>
+</ul></li>
+<li><p>Four rules of simple design:</p>
+<ol type="1">
+<li>Code must pass all its tests.</li>
+<li>Contains no duplicate code.</li>
+<li>Expresses all author’s ideas.</li>
+<li>Minimize classes and variables.</li>
+</ol>
+<p>Or in other words,</p>
+<p><strong>“First make it work, then make it right, then make it fast and small.” –Kent Beck</strong></p></li>
+</ul>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>
