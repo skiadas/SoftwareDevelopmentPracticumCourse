@@ -155,7 +155,8 @@ Wed
     - (Patterns) Template Method, Strategy
         - Video: Strategy and Template Method Patterns
         - Reading: ASD chapter 14
-    - Work on Project
+    - [Activities for Day 13](lessonPlans/lessonPlanDay13.md)
+- Work on Project
 
 Thu
   ~ - (Patterns) Factory
