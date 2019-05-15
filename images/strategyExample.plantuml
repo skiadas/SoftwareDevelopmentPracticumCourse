@@ -13,11 +13,11 @@ interface  PacketProtocol {
     sendPacket(Packet packet)
 }
 
-class XModemFTP implements PacketProtocol {
+class XModemPP implements PacketProtocol {
     sendPacket(Packet packet)
 }
 
-class YModemFTP implements PacketProtocol {
+class YModemPP implements PacketProtocol {
     sendPacket(Packet packet)
 }
 

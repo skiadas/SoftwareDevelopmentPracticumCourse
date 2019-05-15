@@ -165,6 +165,7 @@ Thu
     - (Patterns) Facade, Mediator
         - Video: Clean Code: Pattern Roundup
         - Reading: ASD chapter 15
+    - [Activities for Day 14](lessonPlans/lessonPlanDay14.md)
     - Work on Project
 
 Fri

@@ -1,24 +1,4 @@
-![](../images/templateMethodExample.png)
-
-```java
-abstract class FTP {
-	public void sendFile(File file) {
-		List<Packet> packets = breakFileInPackets(File file);
-		for (Packet packet : packets) {
-			sendPacket(packet);
-		}
-	}
-	public abstract void sendPacket(Packet packet);
-}
-
-class XModemFTP extends FTP {
-	public void sendPacket(Packet packet) {
-		...
-	}
-}
-```
-
-![](../images/templateMethodExample.png)
+![](../images/strategyExample.png)
 
 ```java
 // Many different implementations of it exist
@@ -38,6 +18,26 @@ class FTP {
 		for (Packet packet : packets) {
 			pp.sendPacket(packet);
 		}
+	}
+}
+```
+
+![](../images/templateMethodExample.png)
+
+```java
+abstract class FTP {
+	public void sendFile(File file) {
+		List<Packet> packets = breakFileInPackets(File file);
+		for (Packet packet : packets) {
+			sendPacket(packet);
+		}
+	}
+	public abstract void sendPacket(Packet packet);
+}
+
+class XModemFTP extends FTP {
+	public void sendPacket(Packet packet) {
+		...
 	}
 }
 ```

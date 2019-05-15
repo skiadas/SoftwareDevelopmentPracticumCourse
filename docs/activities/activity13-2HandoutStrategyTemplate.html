@@ -14,23 +14,7 @@
 </script>
 </head>
 <body>
-<p><img src="../images/templateMethodExample.png" /></p>
-<pre class="java"><code>abstract class FTP {
-    public void sendFile(File file) {
-        List&lt;Packet&gt; packets = breakFileInPackets(File file);
-        for (Packet packet : packets) {
-            sendPacket(packet);
-        }
-    }
-    public abstract void sendPacket(Packet packet);
-}
-
-class XModemFTP extends FTP {
-    public void sendPacket(Packet packet) {
-        ...
-    }
-}</code></pre>
-<p><img src="../images/templateMethodExample.png" /></p>
+<p><img src="../images/strategyExample.png" /></p>
 <pre class="java"><code>// Many different implementations of it exist
 interface PacketProtocol {
     void sendPacket(Packet pp);
@@ -48,6 +32,22 @@ class FTP {
         for (Packet packet : packets) {
             pp.sendPacket(packet);
         }
+    }
+}</code></pre>
+<p><img src="../images/templateMethodExample.png" /></p>
+<pre class="java"><code>abstract class FTP {
+    public void sendFile(File file) {
+        List&lt;Packet&gt; packets = breakFileInPackets(File file);
+        for (Packet packet : packets) {
+            sendPacket(packet);
+        }
+    }
+    public abstract void sendPacket(Packet packet);
+}
+
+class XModemFTP extends FTP {
+    public void sendPacket(Packet packet) {
+        ...
     }
 }</code></pre>
 <script type="text/javascript">
