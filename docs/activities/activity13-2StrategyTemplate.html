@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity13-2StrategyTemplate</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="activity-13-2-strategy-and-design-patterns">Activity 13-2: Strategy and Design Patterns</h1>
+<h2 id="introducing-the-patterns">Introducing the Patterns</h2>
+<p>Look at handout:</p>
+<ul>
+<li>14:37-17:20 : Definition of the problem: Strategy separates high level policy from set of low level details. Example of File Transfer.</li>
+<li>20:30-23:10 : Example of Template method in the File Transfer example.</li>
+</ul>
+<h2 id="comparison-of-strategy-and-template-method">Comparison of strategy and template method</h2>
+<ul>
+<li><p>23:10-27:50 : Discussion of strategy vs template</p></li>
+<li><p>Template method is <em>internal polymorphism</em>, strategy is <em>external polymorphism</em>.</p></li>
+<li><p>In Template method there is only one instance/object (but 2 classes), in Strategy there are two objects.</p></li>
+<li><p>Template method is <em>smaller</em> and a bit <em>faster</em> (no reference traversal needed).</p></li>
+<li><p>Strategy is more <em>flexible</em> (the two parts can be created at different times and at different places).</p></li>
+<li><p>Strategies can be <em>hot-swapped</em> while the program is running.</p></li>
+<li><p>In strategy, high level policy and low level details are independent of each other. In template method, the low level details strongly depend on the high level policy.</p></li>
+</ul>
+<h2 id="example-tree-traversals">Example: Tree traversals</h2>
+<p>Imagine a tree class in Java, with accompanying node interface and classes (just one way of implementing it, not the best but it will do for now – do you notice the Liskov Substitution principle violation in it?):</p>
+<pre class="java"><code>// E is the type of the elements stored at the nodes.
+interface Node&lt;E&gt; {
+    boolean isEmpty();
+    E getElement();
+    Node leftChild();
+    Node rightChild();
+}
+
+class EmptyNode&lt;E&gt; implements Node&lt;E&gt; { ... }
+class NonEmptyNode&lt;E&gt; implements Node&lt;E&gt; { ... }
+
+class Tree&lt;E&gt; {
+    private Node&lt;E&gt; head = new EmptyNode();
+}</code></pre>
+<p>We want to define another class which will perform a traversal of the tree. There are two completely independent questions here:</p>
+<ul>
+<li>What kind of traversal to perform (preorder, inorder, postorder).</li>
+<li>What to do on each node.</li>
+</ul>
+<p>This is a perfect example of the strategy and template method patterns: We can separate the two operations in the two classes involved in those patterns. For example, here is the strategy pattern solution to it:</p>
+<pre class="java"><code>interface NodeStrategy&lt;E&gt; {
+    void accept(E element);
+}
+
+class InorderTraversal&lt;E&gt; {
+    private NodeStrategy strategy;
+    private Tree tree;
+    public InorderTraversal&lt;E&gt;(Tree t) {
+        tree = t;
+    }
+
+    public void traverse() {
+        traverseNode(tree.getHead());
+    }
+
+    public void traverseNode(Node&lt;E&gt; n) {
+        if (n.isEmpty()) { return; }
+        traverseNode(n.leftChild());
+        strategy.accept(n.getElement());
+        traverseNode(n.leftChild());
+    }
+}</code></pre>
+<p>The <code>InorderTraversal</code> class knows how to navigate the tree, but it delegates to the <code>NodeStrategy</code> class in order to handle what happens to each element. This way the “looping” logic remains the same while the details on what to do with each element differ.</p>
+<p>Here is the same example with the Template Method approach:</p>
+<pre><code>abstract class InorderTraversal&lt;E&gt; {
+    private Tree tree;
+    public InorderTraversal&lt;E&gt;(Tree t) {
+        tree = t;
+    }
+
+    public void traverse() {
+        traverseNode(tree.getHead());
+    }
+
+    public void traverseNode(Node&lt;E&gt; n) {
+        if (n.isEmpty()) { return; }
+        traverseNode(n.leftChild());
+        accept(n.getElement());
+        traverseNode(n.leftChild());
+    }
+
+    abstract void accept(E element);
+}
+
+class PrintInorderTraversal&lt;E&gt; extends InorderTraversal&lt;E&gt; {
+    void accept(E element) {
+        System.out.println(element);
+    }
+}</code></pre>
+<p><strong>NOTE</strong>: This exhibits the one of the limitations of the template method pattern: The printing mechanism is here intimately related to the traversal strategy; we can’t just take that printing code and apply it to the PreorderTraversal strategy, we would need to create a new class for it.</p>
+<p>In general, imagine we wanted to work with all 3 traversals, and there were 4 different kinds of operations we wanted to do with the trees (print, add, find max, append to list). We would then need 12 different classes: 3 abstract classes for the 3 different kinds of traversals, and 4 subclasses of each for the different operations.</p>
+<p>On the other hand, the strategy pattern would need just 3+4=7 classes: 3 for the different traversal kinds, and 4 for the different operation kinds. The strategy pattern then tells us how to mix them together to get any of the desired 12 combinations.</p>
+<h2 id="the-ets-drawing-example">The ETS drawing example</h2>
+<ul>
+<li>32:40-34:00: Features (show)</li>
+<li>34:00-36:30: Description of data structure (show)</li>
+<li>36:30-41:10: Using the template method (show)</li>
+</ul>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+@startuml
+
+skinparam linetype ortho
+
+title Template Method Pattern
+
+abstract class FTP {
+    sendFile(File file)
+    {abstract} sendPacket(Packet packet)
+}
+
+class XModemFTP extends FTP {
+    sendPacket(Packet packet)
+}
+
+class YModemFTP extends FTP {
+    sendPacket(Packet packet)
+}
+
+@enduml

@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title>lessonPlanDay13</title>
+  <title>activity13-2HandoutStrategyTemplate</title>
   <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
 <script type="text/javascript" async
@@ -14,23 +14,42 @@
 </script>
 </head>
 <body>
-<h1 id="day-13-lesson-plan">Day 13 Lesson Plan</h1>
-<h2 id="activity-1">Activity 1:</h2>
-<ul>
-<li>Introduction to design patterns</li>
-</ul>
-<h2 id="activity-2">Activity 2:</h2>
-<ul>
-<li><a href="../activities/activity13-2StrategyTemplate.html">Template and Strategy patterns</a></li>
-</ul>
-<h2 id="lunch">Lunch</h2>
-<p>until 12:45</p>
-<h2 id="afternoon---project-development">Afternoon - Project Development</h2>
-<ul>
-<li>12:45-2:45 pair-programming session 3</li>
-<li>15-minute break</li>
-<li>3:00-4:40 pair-programming session 4</li>
-</ul>
+<p><img src="../images/templateMethodExample.png" /></p>
+<pre class="java"><code>abstract class FTP {
+    public void sendFile(File file) {
+        List&lt;Packet&gt; packets = breakFileInPackets(File file);
+        for (Packet packet : packets) {
+            sendPacket(packet);
+        }
+    }
+    public abstract void sendPacket(Packet packet);
+}
+
+class XModemFTP extends FTP {
+    public void sendPacket(Packet packet) {
+        ...
+    }
+}</code></pre>
+<p><img src="../images/templateMethodExample.png" /></p>
+<pre class="java"><code>// Many different implementations of it exist
+interface PacketProtocol {
+    void sendPacket(Packet pp);
+}
+
+class FTP {
+    PacketProtocol pp;
+
+    public FTP(PacketProtocol pp) { this.pp = pp; }
+
+    public void setPacketProtocol(PacketProtocol pp) { this.pp = pp; }
+
+    public void sendFile(File file) {
+        List&lt;Packet&gt; packets = breakFileInPackets(File file);
+        for (Packet packet : packets) {
+            pp.sendPacket(packet);
+        }
+    }
+}</code></pre>
 <script type="text/javascript">
 let els = document.getElementsByTagName("pre");
 for (const el of els) {

@@ -6,7 +6,7 @@
 
 ## Activity 2:
 
-- Template and Strategy patterns.
+- [Template and Strategy patterns](../activities/activity13-2StrategyTemplate.md)
 
 ## Lunch
 
