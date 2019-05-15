@@ -2,7 +2,7 @@
 
 ## Activity 1:
 
-- Introduction to design patterns
+- [Introduction to design patterns](../activities/activity13-1designPatterns.md)
 
 ## Activity 2:
 
