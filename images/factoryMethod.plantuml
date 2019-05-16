@@ -1,0 +1,29 @@
+@startuml
+
+
+title Factory Method
+
+package " " <<cloud>> {
+
+    abstract class App {
+        {abstract} makeCircle() : Shape
+        {abstract} makeSquare() : Shape
+    }
+
+    interface Shape
+}
+
+package "" <<cloud>> {
+class AppImpl implements App {
+        makeCircle() : Shape
+        makeSquare() : Shape
+}
+class Square implements Shape
+class Circle implements Shape
+}
+
+App -> Shape
+Circle  <- AppImpl : <<creates>>
+Square <- AppImpl : <<creates>>
+
+@enduml

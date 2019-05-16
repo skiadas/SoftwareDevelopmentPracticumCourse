@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity14-1factories</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="activity-14-1-factory-patterns">Activity 14-1 Factory Patterns</h1>
+<p>Factory patterns concern themselves with object creation.</p>
+<h2 id="abstract-factory">abstract factory</h2>
+<ul>
+<li><p>11:50-15:10 factory patterns: What problem they solve</p></li>
+<li><p>16:20-19:50 the abstract factory solution</p></li>
+</ul>
+<p><img src="../images/abstractFactory.png" /></p>
+<p>Using one make method.</p>
+<ul>
+<li>24:30-36:50 the boundary dilemma
+<ul>
+<li>32:10-33:00 type safety relies upon coupling, and cannot be used across architectural boundaries.</li>
+<li>33:00-36:50 type safety vs independent developability</li>
+</ul></li>
+<li>47:26-47:50 Test-driven development protects you from the small amount of type safety lost by using one method with string parameter.</li>
+</ul>
+<h2 id="variations-factory-method">Variations: Factory Method</h2>
+<ul>
+<li>47:50-50:30 Pattern variations: The factory method</li>
+<li>50:30-51:30 factory method vs abstract factory tradeoffs</li>
+</ul>
+<p><img src="../images/factoryMethod.png" /></p>
+<h2 id="the-problem-of-initialization">The problem of initialization</h2>
+<ul>
+<li>57:00-60:00 the problem of initialization</li>
+<li>60:00-61:30 rant about XML</li>
+<li>61:30-64:10 conclusion (rant continues)</li>
+</ul>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>

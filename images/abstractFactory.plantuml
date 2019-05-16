@@ -1,0 +1,29 @@
+@startuml
+
+
+title Abstract Factory
+
+package " " <<cloud>> {
+
+    class App
+
+    interface Shape
+
+    interface ShapeFactory {
+        makeCircle() : Shape
+        makeSquare() : Shape
+    }
+}
+
+package "" <<cloud>> {
+class ShapeFactoryImpl implements ShapeFactory
+class Square implements Shape
+class Circle implements Shape
+}
+
+App --> ShapeFactory
+App -> Shape
+Circle  <-- ShapeFactoryImpl : <<creates>>
+Square <-- ShapeFactoryImpl : <<creates>>
+
+@enduml

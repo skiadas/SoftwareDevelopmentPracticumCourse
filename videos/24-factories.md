@@ -1,0 +1,21 @@
+# Factories
+
+- 00:45-03:30 introduction
+- 03:30-11:50 astronomy lesson: black holes
+- 11:50-15:10 factory patterns: What problem they solve
+- 15:10-16:20 the dependency injection framework solution (skip)
+- 16:20-19:50 the abstract factory solution
+- 19:50-24:30 the problem: they both know about 2! (skip)
+- 24:30-36:50 the boundary dilemma
+    - 32:10-33:00 type safety relies upon coupling, and cannot be used across architectural boundaries.
+    - 33:00-36:50 type safety vs independent developability
+- 36:50-47:20 Type safety wars (skip)
+- 47:26-47:50 Test-driven development protects you from the small amount of type safety lost by using one method with string parameter.
+- 47:50-50:30 Pattern variations: The factory method
+- 50:30-51:30 factory method vs abstract factory tradeoffs
+- 51:30-53:00 rant about protected in Java
+- 53:00-57:00 the prototype pattern (skip)
+- 57:00-60:00 the problem of initialization
+- 60:00-61:30 rant about XML
+- 61:30-64:10 conclusion (rant continues)
+- 64:10-65:13 end credits (skip)
