@@ -175,6 +175,7 @@ Fri
     - (Patterns) Singleton, Monostate
         - Video: Clean Code: Pile O'Patterns
         - Reading: ASD chapter 17
+    - [Activities for Day 15](lessonPlans/lessonPlanDay15.md)
     - Work on Project
 
 ### Week 4

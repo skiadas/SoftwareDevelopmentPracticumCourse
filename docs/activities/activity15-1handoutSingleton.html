@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity15-1handoutSingleton</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<p><strong>Static singleton</strong></p>
+<pre class="java"><code>public class StaticSingleton {
+  public int theAnswer;
+
+  // Private constructor
+  private StaticSingleton() { theAnswer = 42; }
+  // The one instance
+  public static StaticSingleton instance = new StaticSingleton();
+
+  public static StaticSingleton getInstance() { return instance; }
+}</code></pre>
+<p><strong>Lazy/Dynamic singleton</strong></p>
+<pre class="java"><code>public class LazySingleton {
+  public int theAnswer;
+
+  // Private constructor
+  private LazySingleton() { theAnswer = 42; }
+  // The one instance
+  private static instance = null;
+
+  public static LazySingleton getInstance() {
+    if (instance == null)
+      instance = new LazySingleton();
+    return instance;
+  }
+}</code></pre>
+<p><strong>Slow Thread-Safe singleton</strong></p>
+<pre class="java"><code>public class SlowThreadSafeSingleton {
+  public int theAnswer;
+
+  // Private constructor
+  private SlowThreadSafeSingleton() { theAnswer = 42; }
+  // The one instance
+  private static instance = null;
+
+  synchronized public static SlowThreadSafeSingleton getInstance() {
+    if (instance == null)
+      instance = new SlowThreadSafeSingleton();
+    return instance;
+  }
+}</code></pre>
+<p><strong>Faster Thread-Safe singleton</strong></p>
+<pre class="java"><code>public class FasterThreadSafeSingleton {
+  public int volatile theAnswer;
+
+  // Private constructor
+  private FasterThreadSafeSingleton() { theAnswer = 42; }
+  // The one instance
+  private static instance = null;
+
+  synchronized public static FasterThreadSafeSingleton getInstance() {
+    if (instance == null) {
+      synchronized (Lock.class) {
+        if (instance == null) {
+          instance = new FasterThreadSafeSingleton();
+        }
+      }
+    }
+    return instance;
+  }
+}</code></pre>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>

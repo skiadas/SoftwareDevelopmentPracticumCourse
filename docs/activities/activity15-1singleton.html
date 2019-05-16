@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity15-1singleton</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="activity-15-1-singleton-pattern">Activity 15-1 Singleton Pattern</h1>
+<h2 id="the-need-for-a-single-instance">The need for a single instance</h2>
+<ul>
+<li>09:25-11:50 the need for one instance of a class</li>
+</ul>
+<p>Single instances can be used to allow an application to provide services, and have different components of your application access those services.</p>
+<p>Example: We could be setting up the gateway in our applications thus (we’ll talk about the “instance” part):</p>
+<pre class="java"><code>ServiceLocator.getInstance().registerService(&quot;ProfileGateway&quot;, new MySQLGateway());
+// ...
+// much much later on ... in our interactors
+// We need to do a downcast
+ProfileGateway g = (ProfileGateway) ServiceLocator.getInstance().getService(&quot;ProfileGateway&quot;);</code></pre>
+<p>In order for this to work effectively, we must make sure that the code that adds the services and the code that uses the services are both referencing the same instance of <code>ServiceLocator</code>.</p>
+<p>We have effectively three ways to address this:</p>
+<ul>
+<li>Simply create only one instance, and pass it to everyone that needs to know about it.</li>
+<li>Arrange your code to ensure that only one instance can be created (Singleton pattern).</li>
+<li>Store the “instance” information in static properties, accessed from non-static methods (Monostate pattern).</li>
+</ul>
+<h2 id="the-singleton-pattern">The singleton pattern</h2>
+<ul>
+<li>11:50-13:20 the static singleton pattern</li>
+</ul>
+<p>Code at handout</p>
+<ul>
+<li>13:20-16:00 the problem with static initialization and cyclic dependencies</li>
+<li>16:00-17:10 using a dynamic singleton</li>
+</ul>
+<p>Code at handout</p>
+<ul>
+<li><p>17:10-18:20 the problem with threads</p></li>
+<li><p>18:20-19:20 using synchronized</p></li>
+<li><p>19:20-21:40 timing the cost of adding synchronized</p></li>
+<li><p>21:40-23:40 double-checked locking and compiler optimization</p></li>
+<li><p>23:40-24:10 making instance variable volatile</p></li>
+<li><p>24:10-26:00 when to use each singleton pattern</p></li>
+<li><p>26:00-26:40 singletons and testing</p></li>
+</ul>
+<h2 id="monostate">Monostate</h2>
+<p>Monostate prevents users of knowing that they are using a static variable.</p>
+<p>Monostate uses static fields and non-static methods operating on those static fields. All methods operate on the same fields.</p>
+<ul>
+<li>26:40-34:00 The monostate pattern</li>
+</ul>
+<h2 id="null-object-pattern">Null Object Pattern</h2>
+<p>How to handle returns from methods that “may fail”.</p>
+<ul>
+<li>34:00-35:40 the problem with null checks</li>
+<li>35:40-44:00 the “null object” pattern</li>
+</ul>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>
