@@ -6,6 +6,7 @@
 
 ## Activity 2:
 
+- [Null Object Pattern](../activities/activity15-2nullObject.md)
 
 ## Lunch
 

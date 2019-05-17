@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity15-2nullObject</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="activity-15-2-null-object-pattern">Activity 15-2: Null Object Pattern</h1>
+<h2 id="null-pointer-exception">Null Pointer Exception</h2>
+<ul>
+<li><p>Who so far has gotten a <strong>null pointer exception</strong>?</p></li>
+<li><p>Behind the scenes in Java, all variables are pointers. What are the implications of this for when we are designing and writing code?</p>
+<ul>
+<li>Problem:</li>
+</ul>
+<p>Suppose you have a container class (list, dictionary, set, etc.) that contains <code>Items</code>. An obvious method you would want is <code>getItem</code>.</p>
+<p>What are the ways you might handle a <code>getItem(item)</code> called when the requested item is not in the container?</p></li>
+</ul>
+<h2 id="null-object-pattern-example">Null Object Pattern Example</h2>
+<ul>
+<li><code>empty_node</code> class from CS223 binary search tree lab.</li>
+</ul>
+<h2 id="null-objects">Null Objects</h2>
+<ul>
+<li><p>Null Objects have methods that implement “nothing” in just the right way.</p></li>
+<li><p>In this context: “nothing” =&gt; “inconsequential”</p>
+<ul>
+<li>A Null Object must be able to pass through the system without consequence.</li>
+<li>Ensuring this requires careful thought and planning about how exactly the Null Object should behave for each method.</li>
+</ul></li>
+<li><p>The Null Object Pattern is an elegant solution to help eliminate the need null pointer checks.</p></li>
+</ul>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>

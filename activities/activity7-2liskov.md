@@ -1,2 +1,2 @@
-# Activity 7-2: The Liskov Substitution Principle
+# Activity 15-2: The Liskov Substitution Principle
 
