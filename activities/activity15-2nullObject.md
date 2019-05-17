@@ -8,9 +8,9 @@
 
 	- Problem: 
 
-	Suppose you have a container class (list, dictionary, set, etc.) that contains `Items`. An obvious method you would want is `getItem`.
+		- Suppose you have a container class (list, dictionary, set, etc.) that contains `Items`. An obvious method you would want is `getItem`.
 
-	What are the ways you might handle a `getItem(item)` called when the requested item is not in the container?
+		- What are the ways you might handle a `getItem(item)` called when the requested item is not in the container?
 
 
 ## Null Object Pattern Example
