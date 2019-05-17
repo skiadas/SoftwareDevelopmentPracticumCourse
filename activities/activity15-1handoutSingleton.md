@@ -55,7 +55,7 @@ public class FasterThreadSafeSingleton {
   // The one instance
   private static instance = null;
 
-  synchronized public static FasterThreadSafeSingleton getInstance() {
+  public static FasterThreadSafeSingleton getInstance() {
     if (instance == null) {
       synchronized (Lock.class) {
         if (instance == null) {
