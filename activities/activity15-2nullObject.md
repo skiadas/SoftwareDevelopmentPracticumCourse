@@ -2,7 +2,7 @@
 
 ## Null Pointer Exception
 
-- Who so far has gotten a **null pointer exception**?
+- Who has encountered a **null pointer exception**?
 
 - Behind the scenes in Java, all variables are pointers.  What are the implications of this for when we are designing and writing code? 
 
