@@ -2,7 +2,7 @@
 
 ## Activity 1:
 
-- [Singleton and Monostate](../activities/activity15-1singletons.md)
+- [Singleton and Monostate](../activities/activity15-1singleton.md)
 
 ## Activity 2:
 
