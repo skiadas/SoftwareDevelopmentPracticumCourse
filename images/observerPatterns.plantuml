@@ -1,0 +1,171 @@
+@startuml
+
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam package {
+    BackgroundColor Gainsboro
+}
+
+skinparam class {
+  BackgroundColor White
+  BorderThickness 3
+  ArrowThickness 2
+  ArrowColor Maroon
+  BorderColor Maroon
+  FontColor Maroon
+  BorderColor<<boundary>> DarkTurquoise
+  FontColor<<boundary>> DarkTurquoise
+  BorderColor<<entity>> Green
+  FontColor<<entity>> Green
+}
+
+
+package Attempt1 {
+    class Clock1 as "Clock" {
+        + tick()
+        + getTime()
+    }
+
+    class RealTimeDisplay1 as "RealTime\nDisplay" {
+        - clock : Clock
+        + showTime()
+
+    }
+
+    Clock1 <- RealTimeDisplay1
+
+    note top of RealTimeDisplay1 : while (true) clock.getTime()
+}
+
+package Attempt2 {
+    class Clock2 as "Clock" {
+        - display
+        + tick()
+        + getTime()
+    }
+
+    class RealTimeDisplay2 as "RealTime\nDisplay" {
+        + showTime(time)
+
+    }
+
+    Clock2 -> RealTimeDisplay2
+
+    note top of Clock2 : display.showTime(time)
+}
+
+package Attempt3 {
+    class Clock3 as "Clock" {
+        - observers
+        - register(observer)
+        - notify()
+        --
+        + tick()
+        + getTime()
+    }
+
+    interface Observer3 as "Observer" {
+        + update()
+    }
+    class RealTimeDisplay3 as "RealTime\nDisplay" implements Observer3 {
+        + showTime(time)
+
+    }
+
+    Observer3 <-- Clock3
+}
+
+package Attempt4 as "Normal Observer" {
+    class Subject4 as "Subject" {
+        - observers
+        - register(observer)
+        - notify()
+    }
+    class Clock4 as "Clock" extends Subject4 {
+        + tick()
+        + getTime()
+    }
+
+    interface Observer4 as "Observer" {
+        + update()
+    }
+    class RealTimeDisplay4 as "RealTime\nDisplay" implements Observer4 {
+        + showTime(time)
+
+    }
+
+    Subject4 -> Observer4
+}
+
+package Attempt5 as "Multiple Inheritance Observer" {
+    class Subject5 as "Subject" {
+        - observers
+        - register(observer)
+        - notify()
+    }
+    class Clock5 as "Clock" {
+        + tick()
+        + getTime()
+    }
+
+    class ObservableClock5 as "ObservableClock"  extends Subject5 {
+
+    }
+
+    interface Observer5 as "Observer" {
+        + update()
+    }
+    class RealTimeDisplay5 as "RealTime\nDisplay" implements Observer5 {
+        + showTime(time)
+
+    }
+
+    Clock5 <|-- ObservableClock5
+    Subject5 -> Observer5
+}
+
+package Attempt6 as "Observer with Delegation" {
+    class Subject6 as "Subject" {
+        - observers
+        - register(observer)
+        - notify()
+    }
+    class Clock6 as "Clock" {
+        + tick()
+        + getTime()
+    }
+
+    class ObservableClock6 as "ObservableClock"  extends Subject6 {
+        clock : Clock
+    }
+
+    interface Observer6 as "Observer" {
+        + update()
+    }
+    class RealTimeDisplay6 as "RealTime\nDisplay" implements Observer6 {
+        + showTime(time)
+
+    }
+
+    Clock6 <- ObservableClock6 : <<delegate>>
+    Subject6 -> Observer6
+}
+
+Clock2 -[hidden]-> Clock5
+Clock1 -[hidden]-> Subject4
+Clock1 -[hidden]> Clock2
+Clock2 -[hidden]> Clock3
+RealTimeDisplay1 -[hidden]-> Observer4
+RealTimeDisplay2 -[hidden]> Clock3
+RealTimeDisplay2 -[hidden]-> Observer5
+RealTimeDisplay1 -[hidden]> Clock2
+RealTimeDisplay3 -[hidden]-> Observer6
+RealTimeDisplay5 -[hidden]> Clock6
+Observer4 -[hidden]> Clock5
+Clock5 -[hidden]> Subject5
+Observer5 -[hidden]> Subject6
+Clock2 -[hidden]-> Clock5
+Clock3 -[hidden]> RealTimeDisplay3
+
+@enduml
+

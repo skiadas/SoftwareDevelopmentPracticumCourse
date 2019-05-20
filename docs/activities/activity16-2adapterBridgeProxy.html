@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity16-2adapterBridgeProxy</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="activity-16-2-adapter-bridge-and-proxy-patterns">Activity 16-2: Adapter, Bridge and Proxy Patterns</h1>
+<h2 id="proxy">Proxy</h2>
+<p>Video segment from: <a href="https://learning.oreilly.com/videos/design-patterns-clean/9780135485965/9780135485965-DPCC_E32">Pile’o’patterns</a></p>
+<ul>
+<li>44:00-46:50 The proxy pattern: Basic example</li>
+<li>46:50-52:50 The proxy pattern and the database</li>
+</ul>
+<p>Proxy pattern allows two objects to communicate along a communications boundary, without knowing that the boundary exists.</p>
+<p><img src="../images/proxy.png" /></p>
+<h2 id="adapter">Adapter</h2>
+<p>The adapter pattern allows us to connect a client to a service without the two knowing about each other.</p>
+<ul>
+<li>66:20-73:00 The button-light problem</li>
+<li>73:00-75:00 The adapter pattern (object form)</li>
+<li>75:00-78:00 The adapter pattern (class form)</li>
+</ul>
+<p><img src="../images/adapter.png" /></p>
+<h2 id="bridge">Bridge</h2>
+<p>Video segment from: <a href="https://learning.oreilly.com/videos/clean-code/9780134661742/9780134661742-CODE_E34">Pattern apocalypse</a></p>
+<p>Bridge pattern is useful when a set of objects can be expressed via multiple inheritance hierarchies.</p>
+<p>Example: Employees have different payment schedules and different payment classifications.</p>
+<p>The Bridge pattern is essentially a “bunch of strategies”.</p>
+<ul>
+<li>10:10-13:40 Motivation for the Bridge pattern: The m times n problem</li>
+<li>13:40-23:30 The Bridge pattern</li>
+</ul>
+<p>As time permits:</p>
+<ul>
+<li>24:00-26:40 Motivation for chain of responsibility pattern</li>
+<li>26:40-35:00 Chain of responsibility pattern</li>
+</ul>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>

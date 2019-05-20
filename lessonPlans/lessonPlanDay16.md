@@ -1,12 +1,12 @@
-# Day 15 Lesson Plan
+# Day 16 Lesson Plan
 
 ## Activity 1:
 
-- [Singleton and Monostate Patterns](../activities/activity15-1singleton.md)
+- [The Observer Pattern](../activities/activity16-1observerPattern.md)
 
 ## Activity 2:
 
-- [Null Object Pattern](../activities/activity15-2nullObject.md)
+- [Adapter, Bridge, Proxy](../activities/activity16-2adapterBridgeProxy.md)
 
 ## Lunch
 

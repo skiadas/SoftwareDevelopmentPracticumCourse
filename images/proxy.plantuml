@@ -1,0 +1,39 @@
+@startuml
+
+skinparam shadowing false
+skinparam packageStyle rectangle
+
+skinparam class {
+  BackgroundColor White
+  BorderThickness 3
+  ArrowThickness 2
+  ArrowColor Maroon
+  BorderColor Maroon
+  FontColor Maroon
+}
+
+package app {
+  class Payroll
+  interface Employee {
+    + calcPay()
+  }
+}
+
+package DB {
+  class DBAPI
+  class RealEmployee {
+    + calcPay()
+  }
+}
+
+class EmployeeProxy {
+   + calcPay()
+}
+
+Employee <|.. EmployeeProxy
+Payroll -> Employee
+Employee <|.. RealEmployee
+EmployeeProxy --> RealEmployee : <<delegate>>
+EmployeeProxy -> DBAPI
+
+@enduml

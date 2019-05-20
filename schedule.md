@@ -197,14 +197,14 @@ Tue
     - Work on Project
 
 Wed
-  ~ - Exam
-    - Work on Project
-
-Thu
   ~ - (Patterns) State
         - Video: Finite State Machines and State Pattern
         - Reading: ASD chapter 29
     - Work on Project
+    - Work on Project
+
+Thu
+  ~ - Exam
     - Work on Project
 
 Fri
