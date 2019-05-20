@@ -12,28 +12,45 @@ skinparam class {
   FontColor Maroon
 }
 
-package app {
-  class Payroll
-  interface Employee {
-    + calcPay()
-  }
+package objectForm {
+
+class Switch
+    interface Switchable {
+        + turn(boolean)
+      }
+
+    Switch -> Switchable
+
+    class Light {
+        + turnOn()
+        + turnOff()
+    }
+
+    class LightAdapter {
+        + setLight(light)
+    }
+
+    Switchable <|-- LightAdapter
+    Light <- LightAdapter
 }
 
-package DB {
-  class DBAPI
-  class RealEmployee {
-    + calcPay()
-  }
+package classForm {
+
+class Switch2 as "Switch"
+    interface Switchable2 as "Switchable" {
+        + turn(boolean)
+      }
+
+    Switch2 -> Switchable2
+
+    class Light2 as "Light" {
+        + turnOn()
+        + turnOff()
+    }
+
+    class LightAdapter2 as "LightAdapter"
+
+    Switchable2 <|-- LightAdapter2
+    Light2 <|- LightAdapter2
 }
-
-class EmployeeProxy {
-   + calcPay()
-}
-
-Employee <|.. EmployeeProxy
-Payroll -> Employee
-Employee <|.. RealEmployee
-EmployeeProxy --> RealEmployee : <<delegate>>
-EmployeeProxy -> DBAPI
-
 @enduml

@@ -187,6 +187,7 @@ Mon
     - (Patterns) Adapter, Bridge, Proxy
         - Video: Clean Code: Pile O'Patterns
         - Reading: ASD chapters 25, 26
+    - [Activities for Day 16](lessonPlans/lessonPlanDay16.md)
     - Work on Project
 
 Tue
