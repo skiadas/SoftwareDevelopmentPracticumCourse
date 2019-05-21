@@ -195,6 +195,7 @@ Tue
         - Reading: ASD chapter 23
     - (Patterns) Visitor
         - Reading: ASD chapter 28
+    - [Activities for Day 17](lessonPlans/lessonPlanDay17.md)
     - Work on Project
 
 Wed
