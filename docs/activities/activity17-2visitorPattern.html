@@ -17,8 +17,67 @@
 <h1 id="activity-17-2-visitor-pattern">Activity 17-2: Visitor Pattern</h1>
 <p>Video segments from: <a href="https://learning.oreilly.com/videos/clean-code/9780134661742/9780134661742-CODE_E30">SMC Generator</a></p>
 <h2 id="the-visitor-pattern">The visitor pattern</h2>
+<p>The visitor pattern is useful when we want a behavior in a hierarchy, but we don’t want to add methods to the hierarchy in order to achieve the behavior.</p>
+<p>Example: Imagine an <code>Expression</code> superclass/interface that presents arithmetic expressions. It has subclasses like <code>PlusExpression</code>, <code>TimesExpression</code>, <code>NumberExpression</code>. For example the expression 4 + 5 would be presented as a <code>PlusExpression</code> object, whose <code>term1</code> entry would be a <code>NumberExpression</code> object containing the value 4, and its <code>term2</code> entry would be a <code>NumberExpression</code> object containing the value 5.</p>
+<p><img src="../images/expressionHierarchy.png" /></p>
+<p>We want to do numerous operations on objects of type <code>Expression</code>:</p>
 <ul>
-<li>52:22- The visitor pattern</li>
+<li>Compute the sum</li>
+<li>Count the number of additions</li>
+<li>Count the number of negative values</li>
+<li>Change every addition to a multiplication etc</li>
+</ul>
+<p>But we do NOT want to keep adding new methods to the <code>Expression</code> interface every time we come up with a new idea. So we need to have some other class for each of these responsibilities, and that other class needs to somehow traverse the expression hierarchy. The fancy way of saying this is that we can “add polymorphic behaviors to an existing hierarchy without changing the hierarchy”.</p>
+<p>Solution 1 (type checks and typecasts):</p>
+<pre class="java"><code>class Calculator {
+    double calculate(Expression e) {
+        if (e instanceof NumberExpression) {
+            return ((NumberExpression) e).value;
+        } else if (e instanceof PlusExpression) {
+            PlusExpression ePlus = (PlusExpression) e;
+            return calculate(ePlus.term1) + calculate(ePlus.term2);
+        } else if (e instanceof TimesExpression) {
+            ...
+        }
+    }
+}</code></pre>
+<p>Problems with this approach:</p>
+<ul>
+<li>We keep repeating the conditional logic each time.</li>
+<li>A lot of typechecks and typecasts.</li>
+<li>It is not “object-oriented”</li>
+</ul>
+<p>Solution 2 (observer, part 1):</p>
+<pre class="java"><code>class NumberExpression {
+    ...
+    void accept(Visitor v) { v.visitNumber(this); }
+}
+class PlusExpression {
+    ...
+    void accept(Visitor v) { v.visitPlus(this); }
+}
+...
+interface Visitor {
+    void visitNumber(NumberExpression e);
+    void visitPlus(PlusExpression e);
+    void visitTimes(PlusExpression e);
+}
+class Calculator implements Visitor {
+    void visitNumber(NumberExpression e) {
+        return e.value;
+    }
+    void visitPlus(PlusExpression e) {
+        return e.term1.accept(this) + e.term2.accept(this);
+    }
+    void visitTimes(TimesExpression e) {
+        return e.term1.accept(this) + e.term2.accept(this);
+    }
+}</code></pre>
+<p>Timings:</p>
+<ul>
+<li>52:22-62:00 The visitor pattern</li>
+<li>62:00-63:00 Adding a new derivative to the modem hierarchy</li>
+<li>63:00- Another 90 degree rotation (skip)</li>
 </ul>
 <script type="text/javascript">
 let els = document.getElementsByTagName("pre");

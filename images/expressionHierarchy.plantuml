@@ -1,0 +1,37 @@
+@startuml
+
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam package {
+    BackgroundColor Gainsboro
+}
+
+skinparam class {
+  BackgroundColor White
+  BorderThickness 3
+  ArrowThickness 2
+  ArrowColor Maroon
+  BorderColor Maroon
+  FontColor Maroon
+  BorderColor<<boundary>> DarkTurquoise
+  FontColor<<boundary>> DarkTurquoise
+  BorderColor<<entity>> Green
+  FontColor<<entity>> Green
+}
+
+
+interface Expression
+class PlusExpression extends Expression {
+    + term1 : Expression
+    + term2 : Expression
+}
+class TimesExpression extends Expression {
+    + term1 : Expression
+    + term2 : Expression
+}
+class numberExpression extends Expression {
+    + value : Double
+}
+
+
+@enduml
