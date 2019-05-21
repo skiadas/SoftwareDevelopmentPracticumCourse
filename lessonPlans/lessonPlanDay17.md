@@ -6,7 +6,7 @@
 
 ## Activity 2:
 
-- [Visitor Pattern](activity17-2visitorPattern.md)
+- [Visitor Pattern](../activities/activity17-2visitorPattern.md)
 
 ## Lunch
 
