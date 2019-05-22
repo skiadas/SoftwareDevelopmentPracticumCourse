@@ -199,9 +199,7 @@ Tue
     - Work on Project
 
 Wed
-  ~ - (Patterns) State
-        - Video: Finite State Machines and State Pattern
-        - Reading: ASD chapter 29
+  ~ - (Patterns) Design Pattern Review
     - Work on Project
     - Work on Project
 
