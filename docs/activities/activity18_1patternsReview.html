@@ -15,7 +15,7 @@
 </head>
 <body>
 <h1 id="activity-18-1-design-patterns-review">Activity 18-1: Design Patterns Review</h1>
-<h2 id="a.-what-are-design-pattens-10-min">A. What are design pattens? (10 min)</h2>
+<h2 id="a.-what-are-design-pattens">A. What are design pattens?</h2>
 <p>Discuss the following statements and come to an agreement about whether each statement is true or false.</p>
 <ol type="1">
 <li><p>A software design pattern is a general, reusable solution to a problem that commonly occurrs in a given context when designing software.</p></li>
@@ -26,13 +26,69 @@
 <li><p>Design patterns typically make code less flexible.</p></li>
 <li><p>Code that solves a problem using a design pattern will be easy to plug in and reuse in other software projects to solve similar problems.</p></li>
 </ol>
-<h2 id="b.-design-pattern-roundup-20-min">B. Design pattern roundup (20 min)</h2>
-<p>The leftmost column of the table below has descriptions of different design patterns, and the rightmost column describes example contexts when design patterns might be used. Match the descriptions on the left and the right to the column in the middle.</p>
-<p>Command - Encapsulates information to perform an action so that the system can invoke the action without knowing anything specifics about the it.</p>
-<ul>
-<li>Useful for abstracting away details about the specific methods invoked by toolbar buttons or menu items so that their content can be easily changed.</li>
-</ul>
-<p>Template Method Pattern Strategy Pattern Factory Pattern Facade Pattern Mediator Pattern Null Object Pattern Singleton Pattern Observer Pattern Adapter Pattern Proxy Pattern Bridge Pattern Visitor Pattern</p>
+<h2 id="b.-design-pattern-roundup">B. Design pattern roundup</h2>
+<p>The leftmost column of the table below has descriptions of different design patterns, and the rightmost column describes example contexts when design patterns might be used. Match the descriptions on the left and the right to the patterns. Discuss any disagreements until you come to a consensus.</p>
+<table>
+<colgroup>
+<col style="width: 41%" />
+<col style="width: 13%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Pattern Description</th>
+<th style="text-align: center;">Pattern Name</th>
+<th>Example Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Provides a simpler, unified interface that hides the complexity of working with a group of objects.</td>
+<td style="text-align: center;">Command</td>
+<td>Creating a base class that implements a list sorting algorithm with subclasses that contain the specifics for sorting different types of objects (e.g., ints, doubles, Persons).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Provides a generic way of creating different types of related objects by using an interface to abstract away the concrete class implementations.</td>
+<td style="text-align: center;">Template Method</td>
+<td>Creating an empty_node class to represent empty subtrees in a tree ADT.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A subclass that implements a “nothing” version of a base class.</td>
+<td style="text-align: center;">Factory</td>
+<td>Allowing a program for playing a game of scrabble to have only one game board object.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Uses a base to define a general algorithm with subclases being used to specify variants of the general algorithm.</td>
+<td style="text-align: center;">Facade</td>
+<td>Treating files and collections of files (i.e., directories) the same way in a system for managing a file system.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Encapsulates the communication between two or more objects so that the objects no longer communicate directly with each other.</td>
+<td style="text-align: center;">Mediator</td>
+<td>Abstracting away details about the specific methods invoked by toolbar buttons or menu items so that their content can be easily changed.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Allows for multiple objects with the same interface to be treated as if they were a single object.</td>
+<td style="text-align: center;">Null Object</td>
+<td>Event handling systems.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Objects sign up with a special object tasked with watch for something to change; when the change happens, the object that is watching notifies other objects of the change.</td>
+<td style="text-align: center;">Singleton</td>
+<td>Writing a library of functions to wrap-around and simplify the use of a complex graphics library.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Encapsulates information to perform an action so that the system can invoke the action without knowing anything specifics about the it.</td>
+<td style="text-align: center;">Observer</td>
+<td>Defining an interface for the generic creation of different types of monsters for a dungeon-crawl game.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ensures that a class never has more than one instance at any given time.</td>
+<td style="text-align: center;">Composite</td>
+<td>Creating one or more classes to manage the user connections and interactions in a chat room.</td>
+</tr>
+</tbody>
+</table>
 <script type="text/javascript">
 let els = document.getElementsByTagName("pre");
 for (const el of els) {

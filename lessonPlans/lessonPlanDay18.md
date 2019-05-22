@@ -2,7 +2,7 @@
 
 ## Activity 1:
 
-- Design Pattern Review
+- [Design Pattern Review](../activities/activity18_1patternsReview)
 
 ## Lunch
 
