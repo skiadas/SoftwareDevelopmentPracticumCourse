@@ -24,7 +24,10 @@
 <li>For example, <code>new Cat("Ziggy")</code> would call the constructor for the <code>Cat</code> class. Doing this <em>instantiates</em> a new <code>Cat</code> object.</li>
 <li><strong>instantiate</strong> - to make an instance of</li>
 </ul></li>
-<li>Classes can <strong>extend</strong> other classes, which means that they inherit all the functionality from those other classes (but they can also overwrite some of it). In this case we call the extended class the <em>superclass</em> and the extending class the <em>subclass</em>.</li>
+<li>Classes can <strong>extend</strong> other classes, which means that they inherit all the functionality from those other classes (but they can also overwrite some of the functionality). In this case we call the extended class the <em>superclass</em> and the extending class the <em>subclass</em>.
+<ul>
+<li>For example, the <code>Cat</code> class may extend a <code>Pet</code> class. It may have some same functionality, e.g. weight, number of legs, age fields and accessors, but it may also have its own methods, e.g. <code>purr</code>.</li>
+</ul></li>
 <li>An <strong>interface</strong> is a set of <strong>method signatures</strong> (i.e., function prototypes). A class can <strong>implement</strong> an interface if it has implementations for all the methods indicated in the interface.</li>
 <li>The keyword <code>this</code> can be used in a method to refer to the object itself, and to provide access to the object’s <strong>data fields</strong>.</li>
 <li>As an OOP language, much of Java programming boils down to calling object <strong>methods</strong>.</li>
@@ -75,6 +78,46 @@ public class Foo {
 <dd>Sometimes called <strong>arguments</strong>. Parameters are declared in a method’s signature. The values for parameters are passed to the method from its caller. A parameter may be referenced anywhere inside the method where it is defined, and its value only extends to the end of the specific method call.
 </dd>
 </dl>
+<p>A quick summary:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Scope</th>
+<th style="text-align: left;">Lifetime</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Instance</td>
+<td style="text-align: left;">each object</td>
+<td style="text-align: left;">as long as object is around</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Static</td>
+<td style="text-align: left;">any object of the class</td>
+<td style="text-align: left;">always there</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Local</td>
+<td style="text-align: left;">innermost {…}</td>
+<td style="text-align: left;">only within the {..}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Parameter</td>
+<td style="text-align: left;">method</td>
+<td style="text-align: left;">duration of method call</td>
+</tr>
+</tbody>
+</table>
+<h4 id="practice">Practice</h4>
+<p>Imagine a <code>Student</code> class. Which type of variable is best to use for each of the following pieces of information?</p>
+<ol type="1">
+<li>The variable holding the maximum allowed length for student last names.</li>
+<li>The variable holding a student’s current age</li>
+<li>In a method called <code>isOlderThan</code>, which compares a student’s current age to a provided target age, the variable that holds the provided age with which to compare the student’s current age.</li>
+<li>In the method <code>isOlderThan</code>, the boolean variable that holds the result of comparing the two ages.</li>
+</ol>
 <h3 id="type-of-a-variable">Type of a variable</h3>
 <ul>
 <li>Every variable needs to be <strong>declared</strong> before it can be used. This declaration specifies the type and scope of the variable.</li>
@@ -104,7 +147,7 @@ import graphics.Rectangle.*;</code></pre>
 <h3 id="class-definitions">Class definitions</h3>
 <p>Class definitions have the keyword <code>class</code>, possibly preceded by an <em>access modifier</em> and followed by the class name. In Java, it is conventional to <em>capitalize</em> class names. <em>Top-level classes must be contained in a file that has the same name as the class</em>.</p>
 <p>The class name may be followed by <code>extends ...</code> and/or <code>implements ...</code> clauses, if the class is a subclass of another class or if it implements a certain interface. For example,</p>
-<pre class="java"><code>public class Circle extends AbstractShape implements drawable {
+<pre class="java"><code>public class Circle extends AbstractShape implements Drawable {
     ...
 }</code></pre>
 <p>The interior of a class definition may contain any of the following, in any order:</p>
@@ -116,7 +159,8 @@ import graphics.Rectangle.*;</code></pre>
 </ul>
 <p><strong>Interface</strong> definitions are similar to class definitions with the following exceptions:</p>
 <ul>
-<li>They cannot contain an <code>extends</code> part.</li>
+<li>They cannot contain an <code>extends</code> part, unless it is to extend another interface.</li>
+<li>They cannot contain an <code>implements</code> part.</li>
 <li>They cannot have constructors.</li>
 <li>They have <strong>method declarations</strong> instead of method definitions.</li>
 </ul>

@@ -24,7 +24,7 @@ F    0
 W    The course should not count at all towards the total or the GPA calculation.
 ```
 
-You are given some start code to help you get started. You will need to:
+You are given some code to help you get started. You will need to:
 
 1. Check out (clone) the `grades` project from GitHub: [https://github.com/sdp-resources/grades](https://github.com/sdp-resources/grades)
 2. Start a new IntelliJ project based off of the directory where you cloned the project.

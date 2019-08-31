@@ -62,30 +62,17 @@ public class PalindromeChecker {
 
 ### Questions:
 
-1. What does it mean that the `WHITESPACE_PATTERN` field has been declared *static*? 
-
-#. What does it mean that `WHITESPACE_PATTERN` has been declared *final*? 
-
-#. How many constructors does the `PalindromeChecker` class have?
-
-#. What does it mean that the `clean` method has been declared *private*?
-
-#. What is the scope of the `isPalindrome` method?
-
-#. Can the signature of the `main` method be changed?
-
-#. Which class methods do not take any parameters?
-
-#. Which class methods do not declare any local variables?
-
-#. How many `PalinromeChecker` objects will be created when the program executes?
-
-#. Translate the body of `generateResultMessage` into an if-then statement.
-
-#. What does `clean(s).split(WHITESPACE_PATTERN)` in `PalindromeChecker` accomplish?
-
-#. What method is used to print to standard output?
-
-#. What is the scope of variable `i` in the `isPalindrome` method?
-
-#. Translate the for loop from `isPalindrome` into English.
+1. What does it mean that the `WHITESPACE_PATTERN` field has been declared *static*?
+2. What does it mean that `WHITESPACE_PATTERN` has been declared *final*?
+3. How many constructors does the `PalindromeChecker` class have?
+4. What does it mean that the `clean` method has been declared *private*?
+5. What is the scope of the `isPalindrome` method?
+6. Can the signature of the `main` method be changed?
+7. Which class methods do not take any parameters?
+8. Which class methods do not declare any local variables?
+9. How many `PalinromeChecker` objects will be created when the program executes?
+10. Translate the body of `generateResultMessage` into an if-then statement.
+11. What does `clean(s).split(WHITESPACE_PATTERN)` in `PalindromeChecker` accomplish?
+12. What method is used to print to standard output?
+13. What is the scope of variable `i` in the `isPalindrome` method?
+14. Translate the for loop from `isPalindrome` into English.

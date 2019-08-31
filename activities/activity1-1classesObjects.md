@@ -1,4 +1,4 @@
-# Activity 1 - Classes and Objects 
+# Activity 1 - Classes and Objects
 
 ## Classes and Objects
 
@@ -8,7 +8,7 @@ store their *data* in **fields** defined by the object's class. Objects also hav
 *functionality* that can be activated by calling the **methods** that belong to its class.
 
 A **UML diagram** is a graphical summary of the data and methods in a class.  Below is the
-UML diagram for the Retangle class from the Simple Java Graphics[^1] library written by Cay S. Horstmann.
+UML diagram for the Rectangle class from the Simple Java Graphics[^1] library written by Cay S. Horstmann.
 
 ![](../images/uml_rectangle.png){ width=80% }
 
@@ -19,21 +19,21 @@ UML diagram for the Retangle class from the Simple Java Graphics[^1] library wri
 	a. What is the variable name of the data field?
 	b. What is the data type of the data field?
 
-#. Identify one example of a Rectangle class method that takes no arguments.
+2. Identify one example of a Rectangle class method that takes no arguments.
 
 	a. What is the method name?
 	b. How do you know that the method does not take any arguments?
 	c. Does the method return a value? If so, what type of value will it return?
 	d. Do you think this method will modify one or more of the object's data fields? Why or why not?
 
-#. Identify one example of a Rectangle class method that takes one or more parameters.
+3. Identify one example of a Rectangle class method that takes one or more parameters.
 
 	a. What is the method name?
 	b. What is the name and data type of each parameter for the method?
 	c. Does the method return a value? How do you know?
 	d. Do you think this method will modify one or more of the the object's data fields? Why or why not?
 
-#. Imagine that you have a code segment that creates a rectangle (`rect1`) with the following values for each of its fields:
+4. Imagine that you have a code segment that creates a rectangle (`rect1`) with the following values for each of its fields:
 
 	- color: Magenta
 	- filled: false
@@ -51,10 +51,12 @@ UML diagram for the Retangle class from the Simple Java Graphics[^1] library wri
 
 	What values do you think will be returned by part d?
 
+5. There is something unusual about those `get...` methods compared to the fields they correspond to, what is that?
+
 **Terminology Note**
 
 - Methods that return data about the object are called **accessors**.
 - Methods that change an object's data are called **mutators**.
 
 A method should do *one thing*, either provide access to object data values or mutate data values.
-Never both!
+Never both (with some exceptions)!

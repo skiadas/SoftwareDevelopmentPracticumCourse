@@ -15,7 +15,7 @@
 </head>
 <body>
 <h1 id="variables-and-designing-a-java-class">Variables and Designing a Java Class</h1>
-<p>Your team has been tasked with designing a simple <code>Circle</code> class. After some back and forth, your agree that <code>Circle</code> objects should be able to do the following:</p>
+<p>Your team has been tasked with designing a simple <code>Circle</code> class. After some back and forth, you agree that <code>Circle</code> objects should be able to do the following:</p>
 <ul>
 <li>create new circle given a center point and a radius</li>
 <li>calculate the area</li>
@@ -48,12 +48,24 @@
     x += xChange;
     y += yChange;
   }
+
+  public Point shiftedBy(int xChange, int yChange) {
+    return new Point(x + xChange, y + yChange);
+  }
+
+  public int squaredDistanceFrom(Point p) {
+    int deltax = x - p.x;
+    int deltay = y - p.y;
+    return deltax * deltax + deltay * deltay;
+  }
 }</code></pre>
 <h2 id="design-questions">Design Questions</h2>
 <p>As a team, discuss and come to a consensus on your answers to the questions below.</p>
 <ol type="1">
-<li>What data fields does the <code>Circle</code> class need to have?</li>
-<li>What values should be passed to the constructor so that it can initialize the fields of a newly created <code>Circle</code> object?</li>
+<li>What is the key difference between the methods <code>shift</code> and <code>shiftedBy</code> of the <code>Point</code> class?</li>
+<li>What data fields does the <code>Circle</code> class need to have? The are fundamentally two choices here, discuss the differences between them.</li>
+<li>What arguments should be passed to the constructor so that it can initialize the fields of a newly created <code>Circle</code> object?</li>
+<li>Can you think of a “no-argument” constructor? What would it produce?</li>
 <li>Which items in the list of <code>Circle</code> functionality given above describe accessors?</li>
 <li>Decide on names for your accessors, then write the complete definition for each method.</li>
 <li>The value of <span class="math inline">\(\pi\)</span> is needed to calculate the area and perimeter of a circle. Of the four possible kinds of Java variables, what should <span class="math inline">\(\pi\)</span> be?</li>
@@ -73,8 +85,7 @@
 <li>create a new <code>Point</code> object of its own based on the provided <code>Point</code> object.</li>
 </ol>
 What are the advantages and disadvantages of each approach?</li>
-<li>If the <code>Point</code> class did not have a <code>shift</code> method, would this cause any problems for your <code>Circle</code> class implementation?</li>
-<li>Suppose that instead of changing the fields of the existing object, calling <code>shift</code> on a <code>Point</code> returned a new <code>Point</code> at the shifted location. How would your <code>Circle</code> class implementation need to change?</li>
+<li>Ify our implementation uses the <code>shift</code> or <code>shiftedBy</code> methods, how would it have to change if one of those methods did not exist?</li>
 <li>Suppose that instead of changing the existing object, the <code>shift</code> and <code>rescale</code> methods for the <code>Circle</code> class are changed so that they return a new <code>Circle</code> object.
 <ul>
 <li>Could the fields for the <code>Circle</code> class be changed to <em>final</em>?</li>

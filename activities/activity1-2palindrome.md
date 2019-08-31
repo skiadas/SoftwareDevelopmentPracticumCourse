@@ -22,7 +22,7 @@ You are now looking at the main IntelliJ window. The left side has what we call 
 ## Testing it out
 
 - Save your file if it is not saved already.
-- Right-click the class and choose "Run". This will bring up a "Run" window at the bottom.
+- Right-click the class name and choose "Run". This will bring up a "Run" window at the bottom.
 - If there were errors during compilation, you will instead see them under a Messages tab. Fix your errors and run again.
 - Click in the "Run" window to shift your focus there.
 - You should now be able to type in a phrase and press Enter, and the program will tell you if it is a word palindrome or not.

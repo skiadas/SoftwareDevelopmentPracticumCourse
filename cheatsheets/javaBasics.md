@@ -7,7 +7,8 @@
 - An **object** is created when we **instantiate** a class. We do this using the keyword "new", which calls the class **constructor**.
 	- For example, `new Cat("Ziggy")` would call the constructor for the `Cat` class. Doing this *instantiates* a new `Cat` object.
 	- **instantiate** - to make an instance of
-- Classes can **extend** other classes, which means that they inherit all the functionality from those other classes (but they can also overwrite some of it). In this case we call the extended class the *superclass* and the extending class the *subclass*.
+- Classes can **extend** other classes, which means that they inherit all the functionality from those other classes (but they can also overwrite some of the functionality). In this case we call the extended class the *superclass* and the extending class the *subclass*.
+  - For example, the `Cat` class may extend a `Pet` class. It may have some same functionality, e.g. weight, number of legs, age fields and accessors, but it may also have its own methods, e.g. `purr`.
 - An **interface** is a set of **method signatures** (i.e., function prototypes). A class can **implement** an interface if it has implementations for all the methods indicated in the interface.
 - The keyword `this` can be used in a method to refer to the object itself, and to provide access to the object's **data fields**.
 - As an OOP language, much of Java programming boils down to calling object **methods**.
@@ -69,6 +70,25 @@ public class Foo {
 **Parameters**
   ~ Sometimes called **arguments**. Parameters are declared in a method's signature. The values for parameters are passed to the method from its caller. A parameter may be referenced anywhere inside the method where it is defined, and its value only extends to the end of the specific method call.
 
+
+A quick summary:
+
+Variable       Scope                       Lifetime
+-------------  ------------------------    ----------------------------
+Instance       each object                 as long as object is around
+Static         any object of the class     always there
+Local          innermost {...}             only within the {..}
+Parameter      method                      duration of method call
+
+#### Practice
+
+Imagine a `Student` class. Which type of variable is best to use for each of the following pieces of information?
+
+1. The variable holding the maximum allowed length for student last names.
+2. The variable holding a student's current age
+3. In a method called `isOlderThan`, which compares a student's current age to a provided target age, the variable that holds the provided age with which to compare the student's current age.
+4. In the method `isOlderThan`, the boolean variable that holds the result of comparing the two ages.
+
 ### Type of a variable
 
 - Every variable needs to be **declared** before it can be used. This declaration specifies the type and scope of the variable.
@@ -108,7 +128,7 @@ Class definitions have the keyword `class`, possibly preceded by an *access modi
 
 The class name may be followed by `extends ...` and/or `implements ...` clauses, if the class is a subclass of another class or if it implements a certain interface. For example,
 ```java
-public class Circle extends AbstractShape implements drawable {
+public class Circle extends AbstractShape implements Drawable {
     ...
 }
 ```
@@ -122,7 +142,8 @@ The interior of a class definition may contain any of the following, in any orde
 
 **Interface** definitions are similar to class definitions with the following exceptions:
 
-- They cannot contain an `extends` part.
+- They cannot contain an `extends` part, unless it is to extend another interface.
+- They cannot contain an `implements` part.
 - They cannot have constructors.
 - They have **method declarations** instead of method definitions.
 
