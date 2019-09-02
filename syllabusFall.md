@@ -15,7 +15,7 @@ Offices
   ~ LYN 102
 
 Office Hours
-  ~ MWF 10:30am-11:30am, and by appointment
+  ~ MWF 10:30am-11:30am in SCH111, and by appointment
 
 Book
   ~ - *Agile Software Development, Principles, Patterns, and Practices*, by Robert Martin
@@ -23,7 +23,7 @@ Book
 
 Websites
   ~ - [https://skiadas.github.io/SoftwareDevelopmentPracticumCourse/](https://skiadas.github.io/SoftwareDevelopmentPracticumCourse/) (for most course materials)
-    - [https://moodle.hanover.edu](https://moodle.hanover.edu/course/view.php?id=825)
+    - [https://moodle.hanover.edu](https://moodle.hanover.edu/course/view.php?id=1471)
 
 Class times
   ~ MWF 2:40pm-3:50pm, in LYN120A
@@ -72,7 +72,7 @@ The various resources are organized in two playlists:
 
 ### Class Preparation
 
-In the [class schedule page](skiadas.github.io/SoftwareDevelopmentPracticumCourse/site/schedule.html) for each class day you will find a list of links to "prep" items. These may be videos to watch or book sections to read, possibly with a short assignment to help you learn the material. You are expected to do this prep work before coming to the next class.
+In the [class schedule page](skiadas.github.io/SoftwareDevelopmentPracticumCourse/scheduleFall.html) for each class day you will find a list of links to "prep" items. These may be videos to watch or book sections to read, possibly with a short assignment to help you learn the material. You are expected to do this prep work before coming to the next class.
 
 ### Class Participation
 
@@ -80,7 +80,7 @@ You are expected to attend every class meeting. This course will cover a lot of 
 
 ### Meeting outside of class
 
-You will be expected to work with your classmates at prescribed times outside of the scheduled  class times. We will work to find some common schedule that can work for everyone. The expected time commitment for a 4-credit course is 4*2*50=400 minutes a week, or about 6.5 hours a week. You should expect to spend close to that amount of time for this class, work time towards the project will be a part of it.
+You will be expected to work with your classmates at prescribed times outside of the scheduled  class times. We will work to find some common schedule that can work for everyone. The expected time commitment for a 4-credit course is 4 * 2  * 50 = 400 minutes a week, or about 6.5 hours a week. You should expect to spend close to that amount of time for this class, and time working on the project will be a part of it.
 
 ### Exams
 
