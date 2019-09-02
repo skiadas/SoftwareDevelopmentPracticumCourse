@@ -3,6 +3,8 @@ Software Development Practicum
 
 Web site for CS321 Software Development Practicum
 
+- [Fall Term Syllabus](syllabusFall.md)
+- [Fall Term Schedule/Notes](scheduleFall.md)
 - [Syllabus](syllabus.md)
 - [Schedule/Notes](schedule.md)
 - [Books](books.md)
@@ -20,4 +22,4 @@ Code Examples:
 
 - [ComparableStudent](codeExamples/ComparableStudent.java.md) (web friendly)
     - [java file](codeExamples/ComparableStudent.java)
-- 
+-

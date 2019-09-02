@@ -1,6 +1,8 @@
 # Object-Oriented-Programming Basics
 
-Code references are to: [OOP Example code: Numbers](https://github.com/sdp-resources/expressions)
+Code references are to: [OOP Example code: Expressions](https://github.com/sdp-resources/expressions)
+
+Find it on a single page [here](expressionsExample.md)
 
 ## Objects
 
@@ -25,7 +27,7 @@ Code references are to: [OOP Example code: Numbers](https://github.com/sdp-resou
             return term1.getValue() + term2.getValue();
         }
         ```
-        Here `term1` and `term2` are `Expression` objects, and we call their `getValue` method. These could be `IntegerExpression` objects or `SumExpression` objects; we don't know, and we don't  care. We are simply asking them to response to the `getValue` message. Objects of different classes will respond in different ways.
+        Here `term1` and `term2` are `Expression` objects, and we call their `getValue` method. These could be `IntegerExpression` objects or `SumExpression` objects; we don't know, and we don't  care. We are simply asking them to respond to the `getValue` message. Objects of different classes will likely respond in different ways.
 
 ## Types
 

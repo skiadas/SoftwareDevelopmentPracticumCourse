@@ -11,7 +11,7 @@ Watch recap of [Names++ video](../videos/02-names.md).
 ## More on object-oriented programming basics
 
 - [OOP Basics notes](../cheatsheets/OOPBasics.md)
-- [OOP Example code: Numbers](https://github.com/sdp-resources/expressions)
+- [OOP Example code: Expressions](https://github.com/sdp-resources/expressions)
 - [OOP Extension mechanisms](../cheatsheets/OOPExtensions.md)
 
 ## Homework 2

@@ -70,7 +70,7 @@ public class PalindromeChecker {
 6. Can the signature of the `main` method be changed?
 7. Which class methods do not take any parameters?
 8. Which class methods do not declare any local variables?
-9. How many `PalinromeChecker` objects will be created when the program executes?
+9. How many `PalindromeChecker` objects will be created when the program executes?
 10. Translate the body of `generateResultMessage` into an if-then statement.
 11. What does `clean(s).split(WHITESPACE_PATTERN)` in `PalindromeChecker` accomplish?
 12. What method is used to print to standard output?

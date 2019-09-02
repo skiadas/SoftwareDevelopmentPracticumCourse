@@ -8,7 +8,7 @@ store their *data* in **fields** defined by the object's class. Objects also hav
 *functionality* that can be activated by calling the **methods** that belong to its class.
 
 A **UML diagram** is a graphical summary of the data and methods in a class.  Below is the
-UML diagram for the Rectangle class from the Simple Java Graphics[^1] library written by Cay S. Horstmann.
+UML diagram for the Rectangle class from the [Simple Java Graphics library](http://horstmann.com/sjsu/graphics/) written by Cay S. Horstmann.
 
 ![](../images/uml_rectangle.png){ width=80% }
 

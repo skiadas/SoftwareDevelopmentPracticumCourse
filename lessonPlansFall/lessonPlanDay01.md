@@ -23,7 +23,7 @@
 - [Clean code chapter 2: names](https://learning.oreilly.com/library/view/clean-code/9780136083238/chapter02.html#ch2)
     - Can skip the "avoid encodings" section.
 - List 5 useful advices about naming that you learned from this section.
-- What is the most fundamental property of the name we choose for an object, class or method?
+- What is the most fundamental thing name we choose for an object, class or method should do?
 - Identify problems with the following names:
     - `d`
     - `numbersList`

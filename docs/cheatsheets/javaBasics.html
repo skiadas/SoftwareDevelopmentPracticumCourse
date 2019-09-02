@@ -18,7 +18,8 @@
 <h2 id="key-terms-and-concepts">Key Terms and Concepts</h2>
 <ul>
 <li>Java is an Object Oriented Programming (OOP) language.</li>
-<li>Programs in Java are organized around <strong>classes</strong>, with related classes being grouped together into <strong>packages</strong>.</li>
+<li>Programs in Java are organized around <strong>classes</strong>. You can think of classes a bit like blueprints that specify how an object is to be created.</li>
+<li>Related classes are grouped together into <strong>packages</strong>.</li>
 <li>An <strong>object</strong> is created when we <strong>instantiate</strong> a class. We do this using the keyword “new”, which calls the class <strong>constructor</strong>.
 <ul>
 <li>For example, <code>new Cat("Ziggy")</code> would call the constructor for the <code>Cat</code> class. Doing this <em>instantiates</em> a new <code>Cat</code> object.</li>
@@ -28,9 +29,12 @@
 <ul>
 <li>For example, the <code>Cat</code> class may extend a <code>Pet</code> class. It may have some same functionality, e.g. weight, number of legs, age fields and accessors, but it may also have its own methods, e.g. <code>purr</code>.</li>
 </ul></li>
-<li>An <strong>interface</strong> is a set of <strong>method signatures</strong> (i.e., function prototypes). A class can <strong>implement</strong> an interface if it has implementations for all the methods indicated in the interface.</li>
-<li>The keyword <code>this</code> can be used in a method to refer to the object itself, and to provide access to the object’s <strong>data fields</strong>.</li>
-<li>As an OOP language, much of Java programming boils down to calling object <strong>methods</strong>.</li>
+<li>An <strong>interface</strong> is a set of <strong>method signatures</strong> (i.e., function prototypes). A class can <strong>implement</strong> an interface if it has implementations for all the methods indicated in the interface.
+<ul>
+<li>A good example of that is Java’s <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html">List interface</a>. It contains specifications for a rich set of operations revolving around maintaining a list of elements. But it does not provide any implementation for these operations; the implementing subclasses do that.</li>
+</ul></li>
+<li>The keyword <code>this</code> can be used in a method to refer to the object itself, and to provide access to the object’s <strong>data fields</strong>. If there is no ambiguity, you can also refer to the data fields directly.</li>
+<li>As an OOP language, much of Java programming boils down to calling object <strong>methods</strong>, or in pure OOP terms <em>“passing messages to objects”</em>.</li>
 </ul>
 <h2 id="access-modifiers">Access Modifiers</h2>
 <p>The <strong>scope</strong> of a class, method, or variable refers to the part of the program where the class/method/variable is <em>visible</em> and can be accessed. In Java, the scope of a class and the scope of each class attribute (method or data field) is specified using the following <strong>access modifiers</strong>:</p>
@@ -78,6 +82,12 @@ public class Foo {
 <dd>Sometimes called <strong>arguments</strong>. Parameters are declared in a method’s signature. The values for parameters are passed to the method from its caller. A parameter may be referenced anywhere inside the method where it is defined, and its value only extends to the end of the specific method call.
 </dd>
 </dl>
+<h3 id="type-of-a-variable">Type of a variable</h3>
+<ul>
+<li>Every variable needs to be <strong>declared</strong> before it can be used. This declaration specifies the type and scope of the variable.</li>
+<li>This <strong>type</strong> can be a built-in datatype like <code>int</code> or <code>char</code>, or it can be a class or interface.</li>
+<li>When assigning a value to a variable, the type of the value must match the type of the variable.</li>
+</ul>
 <p>A quick summary:</p>
 <table>
 <thead>
@@ -85,6 +95,8 @@ public class Foo {
 <th style="text-align: left;">Variable</th>
 <th style="text-align: left;">Scope</th>
 <th style="text-align: left;">Lifetime</th>
+<th style="text-align: left;">Type Declaration</th>
+<th style="text-align: left;">Initialization</th>
 </tr>
 </thead>
 <tbody>
@@ -92,21 +104,29 @@ public class Foo {
 <td style="text-align: left;">Instance</td>
 <td style="text-align: left;">each object</td>
 <td style="text-align: left;">as long as object is around</td>
+<td style="text-align: left;">top of class file</td>
+<td style="text-align: left;">constructor</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Static</td>
 <td style="text-align: left;">any object of the class</td>
 <td style="text-align: left;">always there</td>
+<td style="text-align: left;">top of class file</td>
+<td style="text-align: left;">declaration</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Local</td>
 <td style="text-align: left;">innermost {…}</td>
 <td style="text-align: left;">only within the {..}</td>
+<td style="text-align: left;">method body</td>
+<td style="text-align: left;">declaration</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Parameter</td>
 <td style="text-align: left;">method</td>
 <td style="text-align: left;">duration of method call</td>
+<td style="text-align: left;">method signature</td>
+<td style="text-align: left;">method call</td>
 </tr>
 </tbody>
 </table>
@@ -118,12 +138,6 @@ public class Foo {
 <li>In a method called <code>isOlderThan</code>, which compares a student’s current age to a provided target age, the variable that holds the provided age with which to compare the student’s current age.</li>
 <li>In the method <code>isOlderThan</code>, the boolean variable that holds the result of comparing the two ages.</li>
 </ol>
-<h3 id="type-of-a-variable">Type of a variable</h3>
-<ul>
-<li>Every variable needs to be <strong>declared</strong> before it can be used. This declaration specifies the type and scope of the variable.</li>
-<li>This <strong>type</strong> can be a built-in datatype like <code>int</code> or <code>char</code>, or it can be a class or interface.</li>
-<li>When assigning a value to a variable, the type of the value must match the type of the variable.</li>
-</ul>
 <h2 id="syntax-elements">Syntax elements</h2>
 <h3 id="java-program-files">Java program files</h3>
 <p>Java files use the extension <code>.java</code>. They consist of the following:</p>
@@ -177,11 +191,11 @@ import graphics.Rectangle.*;</code></pre>
 <ul>
 <li><code>private String firstName;</code>
 <ul>
-<li>Specifies a private field called <code>firstname</code> that is of type <code>String</code>. This field will likely be initialized in the constructor.</li>
+<li>Specifies a private field called <code>firstName</code> that is of type <code>String</code>. This field will likely be initialized in the constructor.</li>
 </ul></li>
 <li><code>static final int MAX_CAPACITY = 40;</code>
 <ul>
-<li>Specifies what is effectively a <em>class constant</em>. <code>MAX_CAPACITY</code> is visible within the package (hence no access modifier in front). It is of type <code>int</code> and has been declared <strong>final</strong>, meaning its value cannot be change.</li>
+<li>Specifies what is effectively a <em>class constant</em>. <code>MAX_CAPACITY</code> is visible within the package (hence no access modifier in front). It is of type <code>int</code> and has been declared <strong>final</strong>, meaning its value cannot be changed.</li>
 </ul></li>
 <li><code>public static String hostname;</code>
 <ul>
@@ -198,7 +212,7 @@ public String getFirstName() {
     ...
 }
 
-private static boolean isValidName(firstName, lastName) {
+private static boolean isValidName(String firstName, String lastName) {
     ...
 }</code></pre>
 <p>Note that if your program has a <strong>main method</strong>, this method has a specific required signature. For example:</p>
@@ -221,6 +235,7 @@ public Person(String firstName, String lastName) {
     this(firstName, lastName, 0);
 }</code></pre>
 <p>Constructors are called when the keyword <code>new</code> is used to create a class instance. For example, <code>Person p = new Person("Peter", "Doe", 26);</code> will automatically call the <code>Person</code> class constructor.</p>
+<p>It also common practice to create static methods for classes that might have multiple constructors. These methods then provide a name for <em>how</em> you are constructing the object.</p>
 <h3 id="control-structures">Control structures</h3>
 <p>Java contains many of the standard control elements you may have seen in other languages to control the flow of execution:</p>
 <ul>

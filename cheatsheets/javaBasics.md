@@ -3,15 +3,17 @@
 ## Key Terms and Concepts
 
 - Java is an Object Oriented Programming (OOP) language.
-- Programs in Java are organized around **classes**, with related classes being grouped together into **packages**.
+- Programs in Java are organized around **classes**. You can think of classes a bit like blueprints that specify how an object is to be created.
+- Related classes are grouped together into **packages**.
 - An **object** is created when we **instantiate** a class. We do this using the keyword "new", which calls the class **constructor**.
 	- For example, `new Cat("Ziggy")` would call the constructor for the `Cat` class. Doing this *instantiates* a new `Cat` object.
 	- **instantiate** - to make an instance of
 - Classes can **extend** other classes, which means that they inherit all the functionality from those other classes (but they can also overwrite some of the functionality). In this case we call the extended class the *superclass* and the extending class the *subclass*.
   - For example, the `Cat` class may extend a `Pet` class. It may have some same functionality, e.g. weight, number of legs, age fields and accessors, but it may also have its own methods, e.g. `purr`.
 - An **interface** is a set of **method signatures** (i.e., function prototypes). A class can **implement** an interface if it has implementations for all the methods indicated in the interface.
-- The keyword `this` can be used in a method to refer to the object itself, and to provide access to the object's **data fields**.
-- As an OOP language, much of Java programming boils down to calling object **methods**.
+  - A good example of that is Java's [List interface](https://docs.oracle.com/javase/8/docs/api/java/util/List.html). It contains specifications for a rich set of operations revolving around maintaining a list of elements. But it does not provide any implementation for these operations; the implementing subclasses do that.
+- The keyword `this` can be used in a method to refer to the object itself, and to provide access to the object's **data fields**. If there is no ambiguity, you can also refer to the data fields directly.
+- As an OOP language, much of Java programming boils down to calling object **methods**, or in pure OOP terms *"passing messages to objects"*.
 
 ## Access Modifiers
 
@@ -70,15 +72,21 @@ public class Foo {
 **Parameters**
   ~ Sometimes called **arguments**. Parameters are declared in a method's signature. The values for parameters are passed to the method from its caller. A parameter may be referenced anywhere inside the method where it is defined, and its value only extends to the end of the specific method call.
 
+### Type of a variable
+
+- Every variable needs to be **declared** before it can be used. This declaration specifies the type and scope of the variable.
+- This **type** can be a built-in datatype like `int` or `char`, or it can be a class or interface.
+- When assigning a value to a variable, the type of the value must match the type of the variable.
+
 
 A quick summary:
 
-Variable       Scope                       Lifetime
--------------  ------------------------    ----------------------------
-Instance       each object                 as long as object is around
-Static         any object of the class     always there
-Local          innermost {...}             only within the {..}
-Parameter      method                      duration of method call
+Variable       Scope                       Lifetime                       Type Declaration      Initialization
+-------------  ------------------------    ----------------------------   --------------------  ------------------
+Instance       each object                 as long as object is around    top of class file     constructor
+Static         any object of the class     always there                   top of class file     declaration
+Local          innermost {...}             only within the {..}           method body           declaration
+Parameter      method                      duration of method call        method signature      method call
 
 #### Practice
 
@@ -88,12 +96,6 @@ Imagine a `Student` class. Which type of variable is best to use for each of the
 2. The variable holding a student's current age
 3. In a method called `isOlderThan`, which compares a student's current age to a provided target age, the variable that holds the provided age with which to compare the student's current age.
 4. In the method `isOlderThan`, the boolean variable that holds the result of comparing the two ages.
-
-### Type of a variable
-
-- Every variable needs to be **declared** before it can be used. This declaration specifies the type and scope of the variable.
-- This **type** can be a built-in datatype like `int` or `char`, or it can be a class or interface.
-- When assigning a value to a variable, the type of the value must match the type of the variable.
 
 ## Syntax elements
 
@@ -164,13 +166,13 @@ A field declaration specifies the visibility of the field, its data type, and po
 initial value. Below are some examples:
 
 - `private String firstName;`
-  - Specifies a private field called `firstname` that is of type `String`. This field
+  - Specifies a private field called `firstName` that is of type `String`. This field
     will likely be initialized in the constructor.
 
 - `static final int MAX_CAPACITY = 40;`
   - Specifies what is effectively a *class constant*. `MAX_CAPACITY` is visible within the package
     (hence no access modifier in front). It is of type `int` and has been declared **final**,
-    meaning its value cannot be change.
+    meaning its value cannot be changed.
 
 - `public static String hostname;`
   - Specifies a field called `hostname` that is visible everywhere. Using the `static` keyword
@@ -189,7 +191,7 @@ public String getFirstName() {
     ...
 }
 
-private static boolean isValidName(firstName, lastName) {
+private static boolean isValidName(String firstName, String lastName) {
     ...
 }
 ```
@@ -225,6 +227,8 @@ public Person(String firstName, String lastName) {
 ```
 
 Constructors are called when the keyword `new` is used to create a class instance. For example, `Person p = new Person("Peter", "Doe", 26);` will automatically call the `Person` class constructor.
+
+It also common practice to create static methods for classes that might have multiple constructors. These methods then provide a name for *how* you are constructing the object.
 
 ### Control structures
 

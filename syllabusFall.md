@@ -15,7 +15,7 @@ Offices
   ~ LYN 102
 
 Office Hours
-  ~ MWF 10:30-11:30
+  ~ MWF 10:30am-11:30am, and by appointment
 
 Book
   ~ - *Agile Software Development, Principles, Patterns, and Practices*, by Robert Martin
@@ -84,7 +84,7 @@ You will be expected to work with your classmates at prescribed times outside of
 
 ### Exams
 
-There will be three exams tentatively schedule for: Friday 10/4, Friday 11/8 and during exam week.
+There will be three exams tentatively scheduled for: Friday 10/4, Friday 11/8 and during exam week.
 
 ### Project
 
