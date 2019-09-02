@@ -80,7 +80,7 @@ You are expected to attend every class meeting. This course will cover a lot of 
 
 ### Meeting outside of class
 
-You will be expected to work with your classmates at prescribed times outside of the scheduled  class times. We will work to find some common schedule that can work for everyone. The expected time commitment for a 4-credit course is 4 * 2  * 50 = 400 minutes a week, or about 6.5 hours a week. You should expect to spend close to that amount of time for this class, and time working on the project will be a part of it.
+You will be expected to work with your classmates at prescribed times outside of the scheduled  class times. We will work to find some common schedule that can work for everyone. The out-of-class time commitment for a 4-credit course is 4 * 2  * 50 = 400 minutes a week, or about 6.5 hours a week. You should expect to spend close to that amount of time for this class, and time working on the project will be a part of it.
 
 ### Exams
 
