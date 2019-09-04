@@ -8,15 +8,11 @@
 - [Clean Code Introduction (6 mins)](https://learning.oreilly.com/videos/clean-code/9780134661742/9780134661742-CODE_01_00_00)
 - Questions?
 
-## Activity 1: Basic Java Syntax
+## Activity 1: Refresher on objects
 
 50 mins
 
 - [Brief introduction to classes and objects](../activities/activity1-1classesObjects.md) (work with neighbor(s))
-- Short lecture with handouts:
-    - [Java Language Overview](../cheatsheets/javaBasics.md)
-    - [Example program](../activities/activity1-1basicJavaSyntax.md)
-- Q/A
 
 ## Reading before next class:
 
