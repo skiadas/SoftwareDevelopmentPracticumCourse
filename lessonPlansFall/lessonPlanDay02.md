@@ -9,18 +9,8 @@
 
 ## Recap of naming rules
 
-Watch recap of [Names++ video](../videos/02-names.md).
-
-## In-class work: Variables and Designing a Java Class
-
-- [Design a Circle class](../activities/activity1-3circleClass.md) (work in groups of 3)
-
-## Homework 2
-
-More practice using IntelliJ. On your own or with partner.
-
-- [Code Circle class from Activity 3](../activities/activity1-4codeCircleClass.md)
-- [source code](https://github.com/sdp-resources/basicGraphing/releases/tag/WritingCircleAssignment)
+- Watch recap of [Names++ video](../videos/02-names.md).
+- Quiz from the Names++ video.
 
 ## Pair homework 2
 
