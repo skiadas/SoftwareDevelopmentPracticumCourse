@@ -9,5 +9,11 @@
 
 Work with partner
 
+- [Activity 2-3](../activities/activity2-3refactoring.md)
+
+## Paired Homework Assignment
+
+Work with partner
+
 - [Third part of prime generator refactoring.](../activities/activity2-5bRefactoringPrimesGeneratorPart3.md)
 

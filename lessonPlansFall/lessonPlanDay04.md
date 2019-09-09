@@ -1,11 +1,8 @@
 # Day 4 Lesson Plan
 
-## In-class work: Reading code and UML diagrams
+## Discussion of inheritance and composition
 
-Work in groups, pick a computer close to a board.
-
-- [Exploring OOP Code and some UML diagrams](../activities/activity1-6objectsAndBasicUML.md)
-- As time permits, [OOP Design Case Study 1](../activities/activity4-4oopDesign.md)
+- [OOP Extension mechanisms](../cheatsheets/OOPExtensions.md)
 
 ## Reading
 

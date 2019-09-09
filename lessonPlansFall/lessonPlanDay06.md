@@ -1,8 +1,11 @@
 # Day 6 Lesson Plan
 
-## Further Refactoring Practice
+## In-class work: Reading code and UML diagrams
 
-- [Activity 2-3](../activities/activity2-3refactoring.md)
+Work in groups, pick a computer close to a board.
+
+- [Exploring OOP Code and some UML diagrams](../activities/activity1-6objectsAndBasicUML.md)
+- As time permits, [OOP Design Case Study 1](../activities/activity4-4oopDesign.md)
 
 ## Reading
 
