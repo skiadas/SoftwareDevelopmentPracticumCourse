@@ -6,7 +6,7 @@
 
 ## Reading
 
-- Watch [Function Structure video selected parts](videos/05-function_structure.md)
+- Watch [Function Structure video selected parts](../videos/05-function_structure.md)
 - Read [Function Structure notes](../activities/activity3-2functionStructure.md)
 - Optional read: [Clean Code, chapter 3](https://learning.oreilly.com/library/view/clean-code/9780136083238/chapter03.html#ch3)
 - Points to get:
