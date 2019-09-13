@@ -35,7 +35,7 @@ In order to address the problems, we are going to have a small refactoring sessi
     - Systematically update the new structure wherever the corresponding old structure elements are updated.
     - Systematically introduce extra parameters passing the new structure around along with the old structure.
 - Teardown:
-    - Systermatically replace accesses to the old structures with accesses to the new structure, until there are no accesses of the old structures.
+    - Systematically replace accesses to the old structures with accesses to the new structure, until there are no accesses of the old structures.
     - Systematically eliminate no-longer-used parameters that refer to the old structures.
     - Systematically eliminate old structure updates.
     - Eliminate the old no-longer-used structures.

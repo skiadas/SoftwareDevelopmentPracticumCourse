@@ -1,5 +1,9 @@
 # Day 6 Lesson Plan
 
+## Refactoring example continues
+
+- [Activity 2-2 notes](../activities/activity2-2refactoringIntro.md)
+
 ## In-class work: Reading code and UML diagrams
 
 Work in groups, pick a computer close to a board.

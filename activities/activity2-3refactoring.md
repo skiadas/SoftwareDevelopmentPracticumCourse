@@ -22,7 +22,7 @@ int total = adder.addAllSquaresOfOddsUp(theNumbers);
 
 #### Extract method tasks
 
-Each of the following tasks asks you to extract some part of the presented code into a method.There are 5 questions to answer each time:
+Each of the following tasks asks you to extract some part of the presented code into a method. There are 5 questions to answer each time:
 
 - Is it even possible to do this? Is the code in question changing more than 1 local variable? Do we need to change its form a bit (i.e. not simply a method call, but maybe assigning to a variable the result of a method call)?
 - What would be a good name for this method?
