@@ -19,31 +19,32 @@
 <h2 id="step-9-initial-steps">Step 9: Initial steps</h2>
 <p>For this file we will take a slightly different approach to what we did in the previous file. We will start by turning all the local variables into fields. This will allow us to freely break the algorithm up into smaller pieces. Then we’ll see where that takes us, and hopefully eliminate some fields or turn them back into local variables.</p>
 <ul>
-<li>Go through each local variable and perform “Extract Field” on it. This includes <code>primes</code>, <code>ord</code>, <code>square</code>, <code>candidate</code>, <code>primeIndex</code>, <code>ordmax</code>, <code>multiple</code>, <code>possiblyPrime</code>.</li>
-<li>Now we break our code up into smaller chunks. Let’s start with the field initializations near the top of the <code>generate</code> method. Move that section into the constructor, and run your tests to make sure we did not break anything.</li>
-<li>The comparison in the big while loop test looks to see if we need to compute more primes. Let’s extract that into a method <code>needMorePrimes</code>. Don’t accept the signature change.</li>
+<li>Go through each local variable and perform “Extract Field” on it. This includes <code>primes</code>, <code>ord</code>, <code>square</code>, <code>candidate</code>, <code>primeIndex</code>, <code>ordmax</code>, <code>multiples</code>, <code>possiblyPrime</code>.</li>
+<li>Now we break our code up into smaller chunks. Let’s start with the field initializations near the top of the <code>generate</code> method. Move that section into the constructor, so that only the <code>while</code> loop remains in the <code>generate</code> method, and run your tests to make sure we did not break anything.</li>
+<li>We should move some of these initializations to the declarations of the fields above. Do this for <code>n</code>, <code>ord</code>, <code>ordmax</code>, <code>multiples</code>, <code>candidatePrime</code> and <code>lastPrimeIndex</code>. Your constructor should now initialize only the <code>numPrimes</code> and <code>primes</code> fields.</li>
+<li>The comparison in the <code>while</code> loop conditional looks to see if we need to compute more primes. Let’s extract that into a method <code>needMorePrimes</code>. Don’t accept the signature change.</li>
 <li>Now the whole body of that while loop can be extracted to a method <code>computeAndStoreNextPrime</code>. You can even go ahead and use the “remove braces” intention on that while loop, as it now contains a single statement.</li>
 <li>This certainly made our <code>generate</code> method simple, only 2-3 lines. Of course now the work happens in <code>computeAndStoreNextPrime</code>.</li>
-<li>Let’s take a look at the first if conditional in <code>computeAndStoreNextPrime</code>. It seems to be doing something with <code>square</code>: It’s looking to see if the candidate prime is a square, and if it is then it computes the next prime square. In fact from the looks of it, that’s the only place where <code>square</code> is being used, so replace the <code>square</code> in <code>candidate == square</code> with the value <code>primes[ord] * primes[ord]</code>, and check your tests to make sure they still pass.</li>
+<li>Let’s take a look at the first <code>if</code> conditional in <code>computeAndStoreNextPrime</code>. It seems to be doing something with <code>nextPrimeSquare</code>: It’s looking to see if the candidate prime is a square, and if it is then it computes the next prime square. In fact from the looks of it, that’s the only place where <code>nextPrimeSquare</code> is being used, so replace the <code>nextPrimeSquare</code> in <code>candidate == nextPrimeSquare</code> with the value <code>primes[ord] * primes[ord]</code>, and check your tests to make sure they still pass.</li>
 <li>If you scroll up now, you will notice that the declaration of <code>square</code> is grayed out. That’s because now we don’t <em>use</em> the value of <code>square</code> anywhere, we just set it. So go ahead and perform the “Remove field” intention.</li>
 </ul>
-<p>Before we move on, we need to understand a bit more what this algorithm is doing. In order to check if a number is prime, it will have to check the multiples of primes less than it, but it does not need to worry about all such multiples: If a number is not a prime, then it will have a prime divisor that’s no more than the square root of the number.</p>
-<p>This is what the “square” check is all about: <code>ord</code> keeps track of the index of the next possible prime divisor: If a candidate is not prime then it will be a multiple of one of the primes up to index <code>ord</code>. But when we reach the square of the prime that is at location <code>ord</code>, then this prime also becomes a possible factor and therefore we increment <code>ord</code>, and add this entry to the <code>multiple</code> array.</p>
+<p>Before we move on, we need to understand a bit more what this algorithm is doing. In order to check if a number is prime, it will have to check the multiples of primes less than it, but it does not need to worry about all such multiples: If a number is not a prime, then it will have a prime divisor that’s no more than the square root of the number. For example if we want to find out what numbers divide <span class="math inline">\(30\)</span>, we only need to worry about the prime numbers up to <span class="math inline">\(5\)</span>, since the square root of <span class="math inline">\(30\)</span> is between <span class="math inline">\(5\)</span> and <span class="math inline">\(6\)</span>. We don’t have to check all the primes up to <span class="math inline">\(30\)</span>, we can stop a lot sooner.</p>
+<p>This is what the “nextPrimeSquare” check is all about: <code>ord</code> keeps track of the index of the next possible prime divisor: If a candidate is not prime then it will be a multiple of one of the primes up to index <code>ord</code>. But when we reach the square of the prime that is at location <code>ord</code>, then this prime also becomes a possible factor and therefore we increment <code>ord</code>, and add this entry to the <code>multiples</code> array.</p>
 <ul>
-<li>With that in mind, let’s extract the whole if conditional to a method called <code>addNextMultipleEntryIfReachedNextPrimeSquare</code> (if you can find a better name for it please share).</li>
+<li>With that in mind, let’s extract the whole 4 lines of the <code>if</code> conditional to a method called <code>addNextMultipleEntryIfReachedNextPrimeSquare</code> (if you can find a better name for it please share).</li>
 <li>Now go into that method, and notice the body of the <code>if</code>: It first increments <code>ord</code>, and then refers to the previous entry in the array. Let’s merge the two: take the <code>ord++</code> part and place it as the index instead of <code>ord-1</code>, and run your checks to make sure they still work. Now you should be able to eliminate the braces from the if conditional (intention).</li>
 </ul>
 <p>Now let’s go back to our <code>computeAndStoreNextPrime</code> method. The next thing that happens is that the index <code>n</code> starts at <code>2</code> and continues until <code>ord</code>, and for each of those indices we increment the <code>multiple[n]</code> entry until it is at least as big as the <code>candidate</code>. The multiple is incremented by adding two times the corresponding prime. What this effectively does is compute <code>k*p</code> for odd numbers <code>k</code> only (since our target is always odd). This process stops if we discover that the candidate does equal one of these multiples, meaning that it is definitely not prime and we should move to the next candidate.</p>
 <p>With a small cost in efficiency, we can separate those actions: We can increase the multiples to their next step, namely make them all reach at least the candidate, in one simple loop. Then we can have another loop that checks if any of those multiples equal the candidate. This will take some manual work:</p>
 <ul>
-<li>Right after the call to <code>addNextMultipleEntryIfReachedNextPrimeSquare();</code> build a <code>for</code> loop for a variable <code>n</code> going from 2 up to <code>ord</code> by 1.</li>
+<li>Right after the call to <code>addNextMultipleEntryIfReachedNextPrimeSquare();</code> build a <code>for</code> loop for a <em>local variable</em> <code>n</code> going from 2 up to (but not including) <code>ord</code>, increasing by 1. Make sure your <code>for</code> loop declares this variable (even though there is a field with the same name.</li>
 <li>In its body move the <code>while (multiple[n] &lt; candidate) { ...</code> part (3 lines). Run your tests to make sure they still run.</li>
-<li>Use “Extract Method” to turn this body into a <code>updateMultiplesToReachCandidate</code> method.</li>
+<li>Use “Extract Method” on this whole <code>for</code> loop to turn it into a <code>updateMultiplesToReachCandidate</code> method.</li>
 <li>Now the remaining part, starting with the <code>n=2</code> assignment and going just before the end of the big do-while loop, should be its own function. So extract it to a function called <code>checkIfCandidateIsMultiple</code> (we’ll find a better name later).</li>
 <li>Thinking about it, the <code>n</code> field is now really only used in this one method, and it feels like it is just a looping variable. We should really have it as a local variable instead. Find the field declaration for <code>n</code> near the top of the file, and use the “Convert to local” intention. Make sure your tests still pass.</li>
 <li>Next let’s think through this <code>checkIfCandidateIsMultiple</code> method. It seems to be updating this <code>possiblyPrime</code> field, which is used only in one place outside of the function, in the <code>while (!possiblyPrime)</code> entry. Why don’t we simply have the function return a boolean instead, and make that actually return the opposite of <code>possiblyPrime</code>, namely <code>candidateIsComposite</code>. Let’s see how we will do that:
 <ul>
-<li>Change the <code>return</code> time of <code>checkIfCandidateIsMultiple</code> to <code>boolean</code>.</li>
+<li>Change the <code>return</code> type of <code>checkIfCandidateIsMultiple</code> to <code>boolean</code>.</li>
 <li>At the bottom of the method, have it <code>return !possiblyPrime</code>. We’ll improve on this later, but for now this will keep things working.</li>
 <li>Find the place where <code>checkIfCandidateIsMultiple</code> is called, and perform “Extract Variable” on the call to store it to a value called <code>candidateIsComposite</code>. While we are at it, perform a “rename” on the function to have it called <code>candidateIsComposite</code> as well. Run your tests to check they pass.</li>
 <li>Replace the <code>while (!possiblyPrime)</code> call to <code>while (candidateIsComposite)</code>. You will see it all red, that’s because the variable we created is declared inside the <code>while</code> scope. Perform the “bring boolean … into scope” intention. Make sure our tests still pass.</li>
@@ -52,9 +53,9 @@
 <li>Now it is time to simplify the <code>candidateIsComposite</code> method.
 <ul>
 <li>First of all, <code>possiblyPrime</code> is now only used within this method, so find the field declaration and perform the “Convert to local” intention.</li>
-<li>Now it seems that instead of setting <code>possiblyPrime</code> to <code>false</code>, we could simply return <code>true</code>, so let’s do that then check our tests.</li>
+<li>Now it seems that instead of setting <code>possiblyPrime</code> to <code>false</code> inside the <code>if</code> in the <code>while</code> loop, we could simply <code>return true</code>, so let’s do that then check our tests.</li>
 <li>Now you should see <code>possiblyPrime</code> light up. That’s because the compiler has determined that <code>possiblyPrime</code> is going to always be true, and it offers to simplify the code for you. So go ahead and do the “Simplify possiblyPrime to true” intention in both places where it occurs. And you can further simplify the last return from <code>!true</code> to <code>false</code>. Finally, you can remove the <code>possiblyPrime</code> variable which is not used any more. Check the tests.</li>
-<li>Now this <code>while</code> loop is clearly a <code>for</code> loop. Go ahead and rewrite it that way and check the tests again. You should now also be able to remove the braces from the <code>if</code> part.</li>
+<li>Now this <code>while</code> loop is clearly a <code>for</code> loop. Go ahead and manually rewrite it that way and check the tests again. You should now also be able to remove the braces from the <code>if</code> part.</li>
 </ul></li>
 </ul>
 <h2 id="step-10-more-cleanup">Step 10: More cleanup</h2>
@@ -62,11 +63,11 @@
 <ul>
 <li>In the <code>updateMultiplesToReachCandidate</code> method, perform “Extract Method” on the <code>while</code> loop to a method called <code>updateNthMultiple</code>. You can then remove the braces from the <code>for</code> loop.</li>
 <li>In <code>candidateIsComposite</code>, perform “Extract Method” on the <code>multiple[n] == candidate</code> part, to a method <code>candidateIsNthMultiple</code> (make sure to NOT fold the parameters).</li>
-<li>Thinking about it, we should perform the <code>updateNthMultiple</code> work inside <code>candidateIsNthMultiple</code>, so move it there from <code>updateMultiplesToReachCandidate</code> (leaving an empty loop in its place). Run your tests to make sure they still pass.</li>
+<li>Thinking about it, the call to <code>updateNthMultiple</code> that is currently inside the <code>for</code> loop in <code>updateMultiplesToReachCandidate</code> should instead be happening inside <code>candidateIsNthMultiple</code>, so move it there, (leaving an empty loop in its place in <code>updateMultiplesToReachCandidate</code>). Run your tests to make sure they still pass.</li>
 <li>Since <code>updateMultiplesToReachCandidate();</code> now doesn’t do anything, remove it from <code>computeAndStoreNextPrime</code>, and run your tests again. You can now also “Safe delete” the unused grayed-out method.</li>
 <li>Back in the <code>computeAndStoreNextPrime</code> method, perform “Extract Method” on the <code>do-while</code> loop to a method called <code>computeNextPrime</code>.</li>
-<li>Now it feels that this method should return this next prime, so have the method <code>return candidate</code>, and change its return time to <code>int</code>.</li>
-<li>Back in the <code>computeAndStoreNextPrime</code> method, use <code>computeNextPrime();</code> instead of <code>candidate</code> in the assignment. Check your tests.</li>
+<li>Now it feels that this method <code>computeAndStoreNextPrime</code> should return this next prime, so have the method <code>return candidatePrime</code>, and change its return time to <code>int</code>.</li>
+<li>Back in the <code>computeAndStoreNextPrime</code> method, more the <code>computeNextPrime();</code> call to take the place of the <code>candidatePrime</code> in the right-hand-side of the assignment on the last line. Check your tests.</li>
 <li>Finally, instead of incrementing the index and then making the assignment, change the index in the assignment to <code>++primeIndex</code> and eliminate the <code>primeIndex++;</code> line. This now turned into a nice one-liner!</li>
 <li>Now let’s turn this <code>computeNextPrime()</code> call inside <code>computeAndStoreNextPrime</code> into a parameter using the “Extract Parameter” refactoring. Call the parameter <code>nextPrime</code>. Then rename the method to <code>storeNextPrime</code>.</li>
 </ul>
@@ -82,62 +83,64 @@
 <li><code>candidateIsNthMultiple</code></li>
 <li><code>updateNthMultiple</code></li>
 </ul>
+<p>Make a commit.</p>
 <h2 id="step-11-from-arrays-to-arraylists">Step 11: From arrays to arraylists</h2>
-<p>Now that our code is nice and compartmentalized, let’s see if we can use dynamic array lists instead of arrays, at least instead of the <code>multiple</code> array. The advantage is that we would not need the <code>ordmax</code> field at all, and we might be able to even eliminate the <code>ord</code> field. Since the <code>primes</code> array has a predetermined length anyway, we won’t gain much from changing that (other than eliminating the <code>primeIndex</code> method perhaps).</p>
+<p>Now that our code is nice and compartmentalized, let’s see if we can use dynamic array lists instead of arrays, at least instead of the <code>multiples</code> array. The advantage is that we would not need the <code>ordmax</code> field at all, and we might be able to even eliminate the <code>ord</code> field. Since the <code>primes</code> array has a predetermined length anyway, we won’t gain much from changing that (other than eliminating the <code>primeIndex</code> method perhaps).</p>
 <p>In order to achieve this, the first step is to “encapsulate” access to the array elements behind getter and setter methods:</p>
 <ul>
-<li>Find the <code>multiple[n]</code> use in <code>candidateIsNthMultiple</code>, and “Extract Method” on it to a method called <code>getNthMultiple</code> (don’t fold the parameters). Replace the one instance suggested.</li>
-<li>Find the <code>multiple[ord++] = candidate;</code> line in <code>addNextMultipleEntryIfReachedNextPrimeSquare</code> and “Extract Method” on it to a method <code>addNewMultiple</code>.</li>
-<li>In theory we would also need to do something about <code>multiple[n] += primes[n] + primes[n];</code>, but since it is the only occurence we will do our changes where it is.</li>
+<li>We start with places where a value is accessed, and will put those behind a getter: Find the <code>multiples[n]</code> use in <code>candidateIsNthMultiple</code>, and “Extract Method” on it to a method called <code>getNthMultiple</code> (don’t fold the parameters). Replace the one instance suggested.</li>
+<li>We then find places where a new value is being added, and isolate those behind a function as well: Find the <code>multiples[ord++] = candidate;</code> line in <code>addNextMultipleEntryIfReachedNextPrimeSquare</code> and “Extract Method” on it to a method <code>addNewMultiple</code>.</li>
+<li>Lastly, we would in theory also need to do something about places where the value is being updated, like <code>multiples[n] += primes[n] + primes[n];</code>, but since it is the only occurence we will do our changes where it is.</li>
 </ul>
-<p>Now we will perform our transformation steps in a specific order, in order to avoid breaking our tests. So we will do the following:</p>
+<p>Now we will perform our transformation steps in a specific order, in order to avoid breaking our tests. So we will do the following (overview of the steps):</p>
 <ul>
-<li>Create a new field <code>multipleList</code>. We initialize it next to the <code>multiple</code> array.</li>
-<li>Whenever the <code>multiple</code> array gets updated, we <em>also</em> update the <code>multipleList</code>. Once that is done:</li>
-<li>Wherever the <code>multiple</code> array gets used, we change its usage to a usage of <code>multipleList</code> instead, and run our tests to make sure they did not break.</li>
-<li>Once the <code>multiple</code> array is not used any more, we eliminate it.</li>
+<li>Create a new field <code>multiplesList</code>. We initialize it next to the <code>multiples</code> array.</li>
+<li>Whenever the <code>multiples</code> array gets updated, we <em>also</em> update the <code>multiplesList</code>. Once that is done:</li>
+<li>Wherever the <code>multiples</code> array gets used, we change its usage to a usage of <code>multiplesList</code> instead, and run our tests to make sure they did not break.</li>
+<li>Once the <code>multiples</code> array is not used any more, we eliminate it.</li>
 <li>We inline the getters and setters we created above.</li>
-<li>We will then look into the <code>ord</code> variable. This is related to how much of the array we are using, so it should be related to the size of the <code>multipleList</code>.</li>
+<li>We will then look into the <code>ord</code> variable. This is related to how much of the array we are using, so it should be related to the size of the <code>multiplesList</code>.</li>
 </ul>
 <p>Ok so let’s follow these steps one at a time:</p>
 <ul>
-<li>Right below the <code>multiple = new int[ordmax + 1];</code> line that initialized the <code>multiple</code> array, type <code>new ArrayList&lt;Integer&gt;()</code> then “Extract Field” from it to a field called <code>multipleList</code>.</li>
+<li>Right below the <code>multiples = new int[ordmax + 1];</code> line that initialized the <code>multiples</code> array, type <code>new ArrayList&lt;Integer&gt;()</code> then “Extract Field” from it to a field called <code>multiplesList</code>.</li>
 <li>Perform the “import class” intention to import the <code>ArrayList</code> module.</li>
-<li>Next, go to the <code>addNewMultiple</code> method, and add to it a line <code>multipleList.add(candidate);</code>.</li>
-<li>In the <code>updateNthMultiple</code> method, within the <code>while</code> loop, in addition to the current line, also add the lines <code>int index = n - 2;</code> and <code>multipleList.set(index, multipleList.get(index) + primes[n] + primes[n]);</code>. Check that our tests should still pass.</li>
-<li>Now we will start trying to use this class. In the <code>getNthMultiple</code> method, we want to return the “nth value” from the list. Since the <code>multiple</code> array started from the 2nd entry while our list starts from the 0th, we have an “off by 2” index factor to account. Comment out the current return value, and replace it with <code>return multipleList.get(n - 2);</code>. Make sure the tests pass, and then delete the commented out line.</li>
-<li>Now that the new list is used, let’s start removing usages of the <code>multiple</code> array. Start with its use in <code>updateNthMultiple</code>, and run your tests.</li>
+<li>Next, go to the <code>addNewMultiple</code> method, and add to it a line <code>multiplesList.add(candidatePrime);</code>.</li>
+<li>In the <code>updateNthMultiple</code> method, within the <code>while</code> loop, in addition to the current line, also add the lines <code>int index = n - 2;</code> and <code>multiplesList.set(index, multiplesList.get(index) + primes[n] + primes[n]);</code>. Check that our tests should still pass.</li>
+<li>Now we will start trying to use this new variable <code>multiplesList</code> instead of the array <code>multiples</code>. In the <code>getNthMultiple</code> method, we want to return the “nth value” from the list. Since the <code>multiples</code> array started from the 2nd entry while our list starts from the 0th, we have an “off by 2” index factor to account. Comment out the current return value, and replace it with <code>return multiplesList.get(n - 2);</code>. Make sure the tests pass, and then delete the commented out line.</li>
+<li>Now that the new list is used, let’s start removing usages of the <code>multiples</code> array. Start with its use in <code>updateNthMultiple</code>, and run your tests.</li>
 <li>Then we need to do the same in <code>addNewMultiple</code>. Note however the <code>ord++</code> part. As we are not ready to deal with that, replace the <code>multiple[ord++] = candidate;</code> mention with just <code>ord++</code>. Check that our tests still pass.</li>
-<li>Now the <code>multiple</code> field near the top should be grayed out, go ahead and remove it.</li>
+<li>Now the <code>multiples</code> field near the top should be grayed out, go ahead and remove it.</li>
 <li>You should now see <code>ordmax</code> also grayed out, so go ahead and remove that as well.</li>
-<li>Let’s now rename our <code>multipleList</code> list to simply <code>multiples</code>.</li>
+<li>Let’s now rename our <code>multiplesList</code> list to simply <code>multiples</code>.</li>
 <li>Next let’s handle the issue of <code>ord</code>. Find a usage of <code>ord</code>, and “Extract Method” to <code>getOrd()</code>. Change all occurences.</li>
 <li>Now look at <code>getOrd</code>. Instead of it returning <code>ord</code>, change it to return <code>multiples.size() + 2</code>. Then make sure our tests still pass.</li>
 <li>Now see that <code>ord</code> is grayed out near the top of the file, and remove it and check our tests again.</li>
 </ul>
 <h2 id="step-12-a-class-for-multiples">Step 12: A class for multiples</h2>
 <p>If you look through the code now, you will find some weird indexing issues. Part of the reason is that when we think of how to update the value of a multiple, we need to look up in the primes array for the correct prime to use. And since the list and the primes array are indexed differently, it’s a bit awkward.</p>
-<p>What we will try to do here is avoid some of these problems by creating a small inner class called <code>Multiple</code>. It is meant to represent an entry in the <code>multiples</code> list, but it remembers the prime that needs to be added each time as well as its current value. The flip side to this is that we’ll need to get the values in and out of that class. But let’s try it out and see how it looks.</p>
+<p>What we will try to do here is avoid some of these problems by creating a small inner class called <code>Multiples</code>. It is meant to represent an entry in the <code>multiples</code> list, but it remembers the prime that needs to be added each time as well as its current value. The flip side to this is that we’ll need to get the values in and out of that class. But let’s try it out and see how it looks.</p>
 <p>As before, we will do this by creating a new list to operate in parallel to the <code>multiplesList</code>. Then we’ll gradually migrate from using one list to using the other.</p>
 <ul>
-<li>In the <code>PrimeGenerator</code> constructor add a call <code>new ArrayList&lt;Multiple&gt;();</code> then “Extract Field” from it. Call it <code>newMultiples</code>.</li>
-<li>Then use the “Create inner class” intention on the red <code>Multiple</code> word to create this new inner class. Check that your tests still pass.</li>
-<li>The first place we need to change is where we add a new entry to the <code>multiples</code> list. In the <code>addNewMultiple</code> method, add the line <code>newMultiples.add(new Multiple(primes[getOrd()]));</code>. The idea is that will initialize the new object with the prime that it is responsible for.
+<li><p>Right after the <code>multiples</code> list definition, add the line:</p>
+<pre class="java"><code>private ArrayList&lt;Multiple&gt; newMultiples = new ArrayList&lt;Multiple&gt;();</code></pre></li>
+<li><p>Then use the “Create inner class” intention on the red <code>Multiples</code> word to create this new inner class. Check that your tests still pass.</p></li>
+<li><p>The first place we need to change is where we add a new entry to the <code>multiples</code> list. In the <code>addNewMultiple</code> method, add the line <code>newMultiples.add(new Multiple(primes[getOrd()]));</code>. The idea is that this will initialize the new object with the prime that it is responsible for.</p>
 <ul>
 <li>Place your cursor on the red underline part, and perform the “Create constructor” intention. The parameter <code>prime</code> is well-named so leave it as is. However notice that it is grayed out. We must create a field out of it, so use the “Create field for parameter …” intention on it to create a field also named <code>prime</code>. Make sure it is set to be <code>final</code>.</li>
-<li>We will also need a <code>value</code> field. Create it as follows: In the constructor, add the line <code>prime * prime</code>, then do “Extract Field” from that expression, set it in the <code>Multiple</code> class, and name the field <code>value</code>.</li>
+<li>We will also need a <code>value</code> field. Create it as follows: In the constructor, add the line <code>prime * prime</code>, then do “Extract Field” from that expression, set it in the <code>Multiples</code> class, and name the field <code>value</code>.</li>
 <li>Back at <code>addNewMultiple</code>, it seems reasonable that <code>primes[getOrd()]</code> should be passed in as a parameter, so perform “Extract Parameter” to it to name the parameter <code>prime</code>.</li>
 </ul></li>
-<li>Next we need to find places where <code>multiples</code> elements change values, and do the analogous change to the <code>Multiple</code> objects we created. Look in <code>updateNthMultiple</code> at the <code>multiples.set</code> line. We need to add something similar for <code>newMultiples</code>, but the way that one will work will be to “get” the object and tell it to update its value.
+<li><p>Next we need to find places where <code>multiples</code> elements change values, and do the analogous change to the <code>Multiples</code> objects we created. Look in <code>updateNthMultiple</code> at the <code>multiples.set</code> line. We need to add something similar for <code>newMultiples</code>, but the way that one will work will be to “get” the object and tell it to update its value.</p>
 <ul>
 <li>Add <code>newMultiples.get(index).updateValue();</code> to the body of the <code>while</code> loop there.</li>
-<li>Now use the “Create method …” intention to add a method in the <code>Multiple</code> class. The body of that method should say <code>value += prime + prime;</code> to perform the analogous update.</li>
+<li>Now use the “Create method …” intention on the red method call, to add a method in the <code>Multiples</code> class. The body of that method should say <code>value += prime + prime;</code> to perform the analogous update.</li>
 </ul></li>
-<li>Now we need to change the uses of the <code>multiples</code> class, which happen in the <code>getNthMultiple</code> method. Change that method to return <code>newMultiples.get(n-2).getValue();</code> the use the “Create read-only property …” intention on the <code>getValue()</code> expression to create a <code>getValue</code> method to the <code>Multiple</code> class which simply returns <code>value</code>. Run your tests to make sure they pass, because we really changed the system behavior here.</li>
-<li>Change the <code>getOrd</code> method to use <code>newMultiples instead of</code>multiples`, and run your tests again.</li>
-<li>Now it is time to start removing the setting of values in <code>multiples</code>. Start with the <code>multiples.set(...)</code> line in <code>updateNthMultiple</code>, delete it and run the tests.</li>
-<li>Next, delete the <code>multiples.add(...)</code> from <code>addNewMultiple</code>, and run the tests.</li>
-<li>The <code>multiples</code> field declaration near the top should now be grayed out, so go ahead and do the “Remove field” intention on it then do a “Rename” refactoring on <code>newMultiples</code> to get them back to <code>multiples</code>.</li>
+<li><p>Now we need to change the uses of the <code>multiples</code> class, which happen in the <code>getNthMultiple</code> method. Change that method to return <code>newMultiples.get(n-2).getValue();</code> the use the “Create read-only property …” intention on the <code>getValue()</code> expression to create a <code>getValue</code> method to the <code>Multiples</code> class which simply returns <code>value</code>. Run your tests to make sure they pass, because we really changed the system behavior here. If they fail, make sure that your <code>getValue</code> method does indeed return the <code>value</code>.</p></li>
+<li><p>Change the <code>getOrd</code> method to use <code>newMultiples</code> instead of <code>multiples</code>, and run your tests again.</p></li>
+<li><p>Now it is time to start removing the setting of values in <code>multiples</code>. Start with the <code>multiples.set(...)</code> line in <code>updateNthMultiple</code>, delete it and run the tests.</p></li>
+<li><p>Next, delete the <code>multiples.add(...)</code> from <code>addNewMultiple</code>, and run the tests.</p></li>
+<li><p>The <code>multiples</code> field declaration near the top should now be grayed out, so go ahead and do the “Remove field” intention on it then do a “Rename” refactoring on <code>newMultiples</code> to get them back to <code>multiples</code>.</p></li>
 </ul>
 <p>Now we will reap the benefits of this: We should be able to gradually migrate from using <code>n</code> going from 2 to size+2 to using <code>index</code> going from 0 to size. We will employ a similar idea of gradually adding <code>index</code> handling next to the <code>n</code> handling until we can drop the <code>n</code>.</p>
 <ul>
@@ -149,7 +152,7 @@
 </ul>
 <p>Ok this is better, but looking at it more, is there really any reason to be passing in the index? Can’t we be passing the elements themselves? Let’s try that out:</p>
 <ul>
-<li>Start in the <code>getNthMultiple</code> method. Perform an “Extract Parameter” refactoring on the <code>multiples.get(index)</code> expression, to get a <code>multiple</code> parameter.</li>
+<li>Start in the <code>getNthMultiple</code> method. Perform an “Extract Parameter” refactoring on the <code>multiples.get(index)</code> expression, to get a <code>multiples</code> parameter.</li>
 <li>In <code>updateNthMultiple</code>, again select <code>multiples.get(index)</code> and “Extract Parameter” for it, telling it to replace both occurences.</li>
 <li>You checked that your tests are still passing, right?</li>
 <li>Now let’s do the same on <code>candidateIsNthMultiple</code>. Remember to tell it to replace all occurences.</li>
@@ -159,7 +162,7 @@
 <p>Well ok you are right, the methods below look a bit awkward, let’s see what we can do about them.</p>
 <ul>
 <li>The <code>getNthMultiple</code> method is not really needed any more, just perform an “Inline” on it to eliminate it.</li>
-<li>It feels as though <code>updateNthMultiple</code> should really be part of the <code>Multiple</code> class. So place your cursor on it, and perform the “Move” refactoring.</li>
+<li>It feels as though <code>updateNthMultiple</code> should really be part of the <code>Multiples</code> class. So place your cursor on it, and perform the “Move” refactoring.</li>
 <li>Hm its name is bad now, let’s “Rename” it to <code>updateToReach</code>, then select <code>primeGenerator.candidate</code> and “Extract Parameter” on it to have a <code>number</code> parameter.</li>
 <li>Go ahead and “Inline” the <code>getValue()</code> and <code>updateValue()</code> usages (and remove them).</li>
 <li>Now the <code>candidateIsNthMultiple</code> method should probably be moved also, do a “Move” refactoring on it, followed by the “Extract Parameter” (replace both occurences) and “Rename” the method to <code>becomes</code>.</li>
@@ -168,7 +171,7 @@
 <ul>
 <li>Start by doing “Extract Method” on <code>primes[getOrd()]</code> to a method named <code>nextPrimeFactor</code>, replace all occurences.</li>
 <li>Now you can inline and remove the <code>getOrd</code> method.</li>
-<li>Next, select one of the <code>nextPrimeFactor()</code> calls, and “Extract Parameter” on it to get a parameter <code>prime</code>.</li>
+<li>Next, select one of the <code>nextPrimeFactor()</code> calls, and “Extract Parameter (all occurences)” on it to get a parameter <code>prime</code>.</li>
 <li>Then let’s go ahead and “Rename” the <code>addNextMultipleEntryIfReachedNextPrimeSquare</code> method to <code>maybeAddNextMultiple</code>, which is a lot shorter and reasonably descriptive.</li>
 </ul>
 <p>As a final cleanup step, go to our <code>PrimeGenerator</code> constructor and perform the “Move assignment to field declaration” intention on all fields for which it is possible (all but <code>primes</code> and <code>numberOfPrimes</code>).</p>
@@ -181,11 +184,11 @@
 <li>Now we want to change access to the list to instead make use of this new list instead. Note that the indexing will be off by 2, which will work out well for us. Find the <code>nextPrimeFactor</code> method, and have it instead <code>return oddPrimes.get(multiples.size());</code>. Run your tests and notice that they fail! Something is going wrong here! So undo that last step, and let’s think about it some more.</li>
 </ul>
 <p>Notice the error we are getting: <code>java.lang.IndexOutOfBoundsException: Index 0 out-of-bounds for length 0</code>. This happens due to a call to <code>nextPrimeFactor</code>. That call is trying to get to the next available prime factor, but none has been created yet!</p>
-<p>The solution is simple: We will initialize our list with the first odd prime, and also add it to the <code>primes</code> array, then start our <code>candidate</code> from 3 instead of 1.</p>
+<p>The solution is simple: We will initialize our list with the first odd prime, and also add it to the <code>primes</code> array, then start our <code>candidatePrime</code> from 3 instead of 1.</p>
 <ul>
 <li><p>In the <code>PrimeGenerator</code> constructor, add lines <code>primes[2] = 3;</code> and <code>oddPrimes.add(3);</code>.</p></li>
-<li><p>In the declaration for <code>candidate</code>, initialize it at 3 rather than 1.</p></li>
-<li><p>Also <code>primeIndex</code> should start at 2 rather than 1. Run your tests to make sure they pass.</p></li>
+<li><p>In the declaration for <code>candidatePrime</code>, initialize it at 3 rather than 1.</p></li>
+<li><p>Also <code>lastPrimeIndex</code> should start at 2 rather than 1. Run your tests to make sure they pass.</p></li>
 <li><p>Now try to replace the return in the method <code>nextPrimeFactor</code> with <code>return oddPrimes.get(multiples.size());</code> and your tests should now pass.</p></li>
 <li><p>Now we need to gradually remove uses of <code>primes</code>. The biggest use is what we return from <code>generate</code>. Perform “Extract Method” on that return to form a method <code>getPrimesArray</code> instead. Don’t change the other occurences here, we’ll end up deleting them shortly.</p></li>
 <li><p>Now we need to implement <code>getPrimesArray</code> to instead build an array of primes from this <code>oddPrimes</code> list, together with the prime 2, and starting from index <code>1</code>. First we need to initialize the array, which must have size 2 more than the list size. Then we do the appropriate copies, and finally return the array.</p>
@@ -196,11 +199,12 @@ for (int i = 0; i &lt; oddPrimes.size(); i++) {
 }
 return primes;</code></pre>
 <p>Make sure your tests still pass.</p></li>
-<li><p>In <code>storeNextPrime</code> replace the line <code>primes[++primeIndex] = nextPrime;</code> with simply <code>++primeIndex</code>. We’ll fix that variable later, but this way we’ll keep the effect there while removing the use of the <code>primes</code> array. Make sure your tests still pass.</p></li>
-<li><p>Now, <code>primeIndex</code> is still used in one place, namely in <code>needMorePrimes</code>. We should instead be using the <code>oddPrimes</code> list size, which should be 1 less than <code>primeIndex</code>. so replace <code>primeIndex</code> in that method with <code>oddPrimes.size() + 1</code>. Make sure your tests still pass.</p></li>
-<li><p>Now you should be able to eliminate the field <code>primeIndex</code>, and also remove the <code>primes</code> field. Check that your tests still pass.</p></li>
+<li><p>In <code>storeNextPrime</code> replace the line <code>primes[++lastPrimeIndex] = nextPrime;</code> with simply <code>++lastPrimeIndex</code>. We’ll fix that variable later, but this way we’ll keep the effect there while removing the use of the <code>primes</code> array. Make sure your tests still pass.</p></li>
+<li><p>Now, <code>lastPrimeIndex</code> is still used in one place, namely in <code>needMorePrimes</code>. We should instead be using the <code>oddPrimes</code> list size, which should be 1 less than <code>lastPrimeIndex</code>. so replace <code>lastPrimeIndex</code> in that method with <code>oddPrimes.size() + 1</code>. Make sure your tests still pass.</p></li>
+<li><p>Now you should be able to eliminate the field <code>lastPrimeIndex</code>, and also remove the <code>primes</code> field. Check that your tests still pass.</p></li>
 </ul>
 <p>And we’re done! We could maybe do something more with the <code>candidate += 2</code> bit, but this is more than good enough. The code should be easy to read at this point.</p>
+<p>Make sure you make a final commit of your work.</p>
 <script type="text/javascript">
 let els = document.getElementsByTagName("pre");
 for (const el of els) {

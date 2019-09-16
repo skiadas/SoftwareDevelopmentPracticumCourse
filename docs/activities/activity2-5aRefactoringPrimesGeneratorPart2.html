@@ -23,7 +23,7 @@
 <li><p>Although the second parameters is called <code>primes</code>, in theory it could be any array of numbers. Perform a <strong>Rename</strong> refactoring to change the name of <code>primes</code> to <code>numbers</code>.</p></li>
 <li><p>The parameter <code>numPrimes</code> indicates how many numbers to print. We can just use the length of the <code>numbers</code> array instead, which makes the <code>numPrimes</code> parameter unnecessary. Fix this in a stepwise fashion as follows:</p>
 <ul>
-<li><p>Find the first use of the <code>numPrimes</code> variable.</p></li>
+<li><p>Find the first use of the <code>numPrimes</code> parameter.</p></li>
 <li><p>Use <strong>Extract Variable</strong> refactoring to create a local variable called <code>numberOfNumbers</code>. When asked, be sure to replace all 3 occurences. Also, renaming the variable will be the last thing you do.</p></li>
 <li><p>Change the <code>numberOfNumbers = ...</code> assignment to instead be</p>
 <pre class="java"><code>numberOfNumbers = numbers.length - 1</code></pre>
@@ -35,13 +35,19 @@
 <li>Select the parameter.</li>
 <li>Use <code>&lt;alt&gt;-ENTER</code> to show the available intentions and select <strong>Safe Delete</strong>.</li>
 <li>Run tests again.</li>
+<li>You should verify that the first parameter of <code>1000</code> in the call to <code>print</code> from <code>PrimePrinter.java</code> has also been removed.</li>
+</ul></li>
+<li><p>At this point you should notice that the top few lines of the <code>while</code> loop have changed: The old <code>pageOffset &lt;= numPrimes</code> check has now been moved to a new <code>if</code> statement, which includes a <code>break</code>. We would like to move it back, but in order to do that we will need to increase the visibility of the <code>numberOfNumbers</code> variable to be outside of the loop.</p>
+<ul>
+<li>Select the <code>numberOfNumbers</code> definition line and move it up a line so that it is outside of the <code>while</code> loop.</li>
+<li>You should see the <code>while</code> keyword change color, suggesting there is an intention available. Hit <code>&lt;alt&gt;-ENTER</code> on the keyword, and choose “move condition to loop”. This should place the conditional back in its proper place.</li>
 </ul></li>
 </ol></li>
 <li><p>The next thing to do is simplify the <code>while</code> loop by extracting various methods.</p>
 <ol type="a">
 <li><p>The first five lines of the <code>while</code> loop are <code>System.out</code> calls. Together these lines print the header for a page. Select these lines and extract them into a method called <code>printHeader</code>.</p></li>
-<li><p>Next inside the <code>while</code> loop is the double for loop that is responsible for actually printing the numbers on the page. Extract a method called <code>printNumbersOnPage</code> from the double for loop.</p></li>
-<li><p>The last three lines of the <code>while</code> loop update the <code>pageNumber</code> and <code>pageOffset</code> counters as we advance through each page. These three lines also need to be turned into a method, but you notice that, <code>pageNumber</code> is being used by the <code>printHeader</code> method, and <code>pageOffset</code> is being used by the <code>printNumbersOnPage</code> method. Also, the variable <code>numberOfNumbers</code> is being used by both those methods. Before turning the last three lines into a method, <code>pageNumber</code>, <code>pageOffset</code>, and <code>numberOfNumbers</code> need to beneed to be elevated from local variables into class fields.</p>
+<li><p>Next, inside the <code>while</code> loop is the double <code>for</code> loop that is responsible for actually printing the numbers on the page. Extract a method called <code>printNumbersOnPage</code> from the double <code>for</code> loop.</p></li>
+<li><p>The last three lines of the <code>while</code> loop update the <code>pageNumber</code> and <code>pageOffset</code> counters as we advance through each page. These three lines also need to be turned into a method, but you notice that, <code>pageNumber</code> is being used by the <code>printHeader</code> method, and <code>pageOffset</code> is being used by the <code>printNumbersOnPage</code> method. Also, the variable <code>numberOfNumbers</code> is being used by both those methods. Before turning the last three lines into a method, <code>pageNumber</code>, <code>pageOffset</code>, and <code>numberOfNumbers</code> need to be elevated from local variables into class fields / instance variables, so that they are visible throughout the file.</p>
 <ul>
 <li>Select any one of the <code>pageNumber</code> references and refactor to <strong>Extract Field</strong>. Keep the same name for the name of the field.</li>
 <li>Repeat the process to extract <code>pageOffset</code> and <code>numberOfNumbers</code> into fields as well.</li>
@@ -50,7 +56,7 @@
 </ol></li>
 <li><p>Clean up the parameters of the newly created methods.</p>
 <ol type="a">
-<li><p>Because <code>pageNumber</code> and <code>numberOfNumbers</code> are now fields, they no longer nee to be passed into the <code>printHeader</code> method.</p>
+<li><p>Because <code>pageNumber</code> and <code>numberOfNumbers</code> are now fields, they no longer need to be passed into the <code>printHeader</code> method.</p>
 <ul>
 <li>Go down to where the <code>printHeader</code> method is being defined.</li>
 <li>Select <code>pageNumber</code> in the parameter list.</li>
@@ -60,32 +66,31 @@
 <li>Run tests.</li>
 </ul></li>
 <li><p>Repeat the steps above to inline the <code>pageOffset</code> and <code>numberOfNumbers</code> parameters used by the <code>printNumbersOnPage</code> method. If a line is created initializing <code>pageOffset</code> as a local variable, delete this line.</p></li>
-<li><p><code>numbers</code> is now the only parameter that remains for <code>printNumbersOfPage</code>, an it makes sense to also extract <code>numbers</code> into a field.</p>
+<li><p><code>numbers</code> is now the only parameter that remains for <code>printNumbersOfPage</code>, and it makes sense to also extract <code>numbers</code> into a field.</p>
 <ul>
 <li>Go back to the <code>print</code> method.</li>
 <li>Select <code>numbers</code> in the line initializing <code>numberOfNumbers</code>, and extract it as a field. Be sure to check the box to replace all occurences.</li>
-<li>Now if you run your tests, they should now fail, because IntelliJ did not actually add a statement to initialize <code>this.numbers</code> to equal the parameter <code>numbers</code>. Add the line <code>this.numbers = numbers</code> to the top of the <code>print</code> method.</li>
+<li>Now if you run your tests, they should fail, because IntelliJ did not actually add a statement to initialize <code>this.numbers</code> to equal the parameter <code>numbers</code>. Add the line <code>this.numbers = numbers</code> to the top of the <code>print</code> method.</li>
 <li>Run tests to verify they are again passing.</li>
 <li>Back in the <code>printNumbersOnPage</code> method, use <strong>Safe Delete</strong> to delete <code>numbers</code> from the parameter list, and remove the superfluous <code>self.</code> in the next-to-last line of the method.</li>
 </ul></li>
 </ol></li>
 <li><p>The first four lines of the <code>print</code> method are now all about initializing fields. Extract these lines into a method called <code>initialize</code>.</p></li>
-<li><p>The boolean expression in the <code>while</code> loop is determining if there are still more numbers to print. Select this expresssion an extract it into a metho called <code>needToPrintMore</code>. Keep the original signature when asked, and <em>do not</em> replace other occurrences when asked.</p></li>
+<li><p>The boolean expression in the <code>while</code> loop is determining if there are still more numbers to print. Select this expresssion an extract it into a metho called <code>needToPrintMore</code>. Keep the original signature when asked, and <em>do not</em> replace other occurrences when asked.</p>
+<p>Your <code>print</code> method should now be extremely readable and straightforward.</p></li>
 <li><p>The last thing to do is to clean up the <code>printNumbersOnPage</code> method.</p>
 <ol type="a">
-<li><p>Down to the <code>printNumbersOnPage</code> method, select the conditional inside the nested for loop and extract it as a method called <code>printNumberAt</code>.</p></li>
-<li><p>Go to the newly created <code>printNumbersAt</code> method. Although the method takes two parameters, in both places where the parameters are used in the method, they are used in the same expression: <code>rowOffset + col * rowsPerPage</code>.</p></li>
-</ol>
-<p>Instead of passing in two separate parameters, refactor and extract a parameter from the expression <code>rowOffset + col * rowsPerPage</code>. Check the box to replace both occurrences. The refactoring should clean up the original two parameters automatically.</p>
-<ol start="3" type="a">
-<li>Go back to the <code>printNumbersOnPage</code> method. <code>rowOffset</code> is being used as the loop variable for the outer loop. Both the initial value for <code>rowOffset</code> and the stopping condition are based on the value of <code>pageOffset</code>, which just makes the loop harder to understand. Clean this up as follows:
+<li><p>Down to the <code>printNumbersOnPage</code> method, select the three lines of the conditional inside the nested for loop and extract it as a method called <code>printNumberAt</code>.</p></li>
+<li><p>Go to the newly created <code>printNumbersAt</code> method. Although the method takes two parameters, in both places where the parameters are used in the method, they are used in the same expression: <code>rowOffset + col * rowsPerPage</code>.</p>
+<p>Instead of passing in two separate parameters, refactor and extract a parameter from the expression <code>rowOffset + col * rowsPerPage</code>. Check the box to replace both occurrences. The refactoring should clean up the original two parameters automatically. Call the new parameter <code>index</code>.</p></li>
+<li><p>Go back to the <code>printNumbersOnPage</code> method. <code>rowOffset</code> is being used as the loop variable for the outer loop. Both the initial value for <code>rowOffset</code> and the stopping condition are based on the value of <code>pageOffset</code>, which just makes the loop harder to understand. Clean this up as follows:</p>
 <ul>
 <li>Use refactoring to rename <code>rowOffset</code> to <code>row</code>.</li>
 <li>In the call to <code>printNumberAt</code>, change <code>row</code> to <code>row + pageOffset</code>.</li>
 <li>Change the outer loop so that <code>row</code> begins at 0 and ends at <code>rowsPerPage - 1</code>.</li>
 <li>Run the tests to make sure they still pass.</li>
 </ul></li>
-<li>Lastly, fix the stopping condition for each for loop to be a “less-than some value” comparison rather than a “less-than-or-equal-to some value minus one” comparison.</li>
+<li><p>Lastly, fix the stopping condition for each <code>for</code> loop to be a “less-than some value” comparison rather than a “less-than-or-equal-to some value minus one” comparison. Run your tests again.</p></li>
 </ol></li>
 </ol>
 <h2 id="step-5-reducing-the-number-of-fields">Step 5: Reducing the number of fields</h2>
@@ -94,7 +99,7 @@
 <li><p>Encapsulate <code>pageOffset</code> so that it is only accessible through an accessor method. This “encapsulate fields” refactoring will replace all direct accesses to the <code>pageOffset</code> field to calls to a getter instead.</p>
 <ol type="a">
 <li><p>Select <code>pageOffset</code> and refactor to <strong>Encapsulate Fields</strong>.</p></li>
-<li><p>Unckeck <em>Set access</em>. (The goal is to eliminate the need for this field, so it makes no sense to be creating a setter.)</p></li>
+<li><p>Uncheck <em>Set access</em>. (The goal is to eliminate the need for this field, so it makes no sense to be creating a setter.)</p></li>
 <li><p>Click “Refactor”, to replace all accesses to this field with a call the getter <code>getPageOffset()</code>.</p></li>
 <li><p>Run tests to make sure nothing was broken.</p></li>
 </ol></li>
@@ -106,25 +111,25 @@
 <li><p>Now that the <code>pageOffset</code> field is no longer being used in a calculation, you can remove any occurrences where <code>pageOffset</code> was being assigned a value.</p>
 <ul>
 <li>At the top of the class where <code>pageOffset</code> is grayed out, select the field, refactor and use <strong>Safe delete</strong> to remove the field.</li>
-<li>Safe delete should report about the getter you just created. <em>You should NOT delete this getter.</em></li>
-<li>When told about a usage that is not safe to delete, view the usage.</li>
-<li>The bottom panel should show that <code>pageOffset</code> is being used in the <code>moveToNextPage</code> metho. Double clicking on the usage that is show will take you to that spot in the code.</li>
+<li>Safe delete may report about the getter you just created. <em>You should NOT delete this getter.</em></li>
+<li>When told about usages that are not safe to delete, view the usage.</li>
+<li>The bottom panel should show that <code>pageOffset</code> is being used in the <code>moveToNextPage</code> method. Double clicking on the usage in that panel will take you to that spot in the code.</li>
 <li>Manually delete the line assigning a value to <code>pageOffset</code>.</li>
 <li>Back in the bottom pane, click “Rerun Safe Delete”. This time, no <code>pageOffset</code> usages should be found and the field should be deleted.</li>
 </ul></li>
 <li><p>Run the tests.</p></li>
 </ol></li>
-<li><p>The <code>numberOfNumbers</code> field can also be removed with a bit of refactoring. It is not used much, an it can be computed easily from the <code>numbers</code> array.</p>
+<li><p>The <code>numberOfNumbers</code> field can also be removed with a bit of refactoring. It is not used much, and it can be computed easily from the <code>numbers</code> array.</p>
 <ol type="a">
 <li><p>Use refactoring on <code>numberOfNumbers</code> to encapsulate the field. Again, you only need to create a getter for this field, not a setter.</p></li>
-<li><p>Replace the body of the new getter to instead return the length of the numbers array minus one.</p></li>
+<li><p>Replace the body of the new getter to instead return the length of the <code>numbers</code> array minus one.</p></li>
 <li><p>Run the tests to make sure nothing is broken.</p></li>
 <li><p>Remove the <code>numberOfNumbers</code> field from the class using <strong>Safe Delete</strong>.</p></li>
 <li><p>Run tests.</p></li>
 </ol></li>
 </ol>
 <h2 id="step-6-parameterizing-the-title">Step 6: Parameterizing the title</h2>
-<p>Printing the numbers includes printing the header information, title and page number, for each page. Ideally, the title should be a parameter that the method caller can provide – there is no way of knowing what <em>kinds</em> of numbers the caller will ask the method. The logic for calculating the page number can remain unchanged.</p>
+<p>Printing the numbers includes printing the header information, title and page number, for each page. Ideally, the title should be a parameter that the method caller can provide – there is no way of knowing what <em>kinds</em> of numbers the caller will ask of the method. The logic for calculating the page number can remain unchanged.</p>
 <ol type="1">
 <li><p>Edit the <code>printHeader</code> method so that contains two calls: <code>System.out.print</code> to output the title and <code>System.out.println</code> to output the page number.</p>
 <ol type="a">
@@ -134,22 +139,27 @@
 <pre class="java"><code>private void printHeader() {
   System.out.print(&quot;The First &quot; + getNumberOfNumbers() + &quot; Prime Numbers &quot;);
   System.out.println(&quot;--- Page &quot; + pageNumber + &quot;\n&quot;);
-}</code></pre></li>
+}</code></pre>
+<p>Run your tests to make sure nothing got broken in the process.</p></li>
 </ol></li>
 <li><p>Select everything that is being passed to the first <code>Sytem.out...</code> call. Use refactoring to extract this into a parameter with the name <code>title</code>.</p></li>
 <li><p>Go up to the <code>print</code> method. Repeat the process of extracting</p>
 <pre class="java"><code>&quot;The First &quot; + getNumberOfNumbers() + &quot; Prime Numbers &quot;</code></pre>
 <p>into a parameter called <code>title</code>.</p></li>
-<li><p>Run your tests, and you will discover that they are failing, which means something is now broken. Go to the <code>PrimePrinter</code> method in <code>PrimePrinter.java</code> and change the <code>numberPrinter.getNumberOfNumbers</code> call into a reference to the <code>numPrimes</code> field. This should fix the broken test.</p></li>
+<li><p>Run your tests, and you will discover that they are failing, which means something is now broken. Go to the <code>PrimePrinter</code> method in <code>PrimePrinter.java</code> and change the <code>numberPrinter.getNumberOfNumbers</code> call into a reference to the <code>numPrimes</code> field. This should fix the broken test.</p>
+<p><strong>NOTE</strong>: Make sure you understand why this last move we made broke the tests. What was wrong with trying to access <code>numberPrinter.getNumberOfNumbers</code>?</p></li>
 <li><p>Go back to <code>NumberPrinter.java</code> to the <code>printHeader</code> method.</p>
 <ol type="a">
-<li><p>Add <code>title</code> to the second <code>Sytem.out...</code> call and delete first <code>Sytem.out...</code> call, which is no longer needed.</p></li>
-<li><p>Click anywhere in the argument to the <code>Sytem.out...</code> call and check available intentions. Choose <strong>Replace “+” with String.format</strong>.</p></li>
+<li><p>Add <code>title</code> to the second <code>System.out...</code> call and delete the first <code>System.out...</code> call, which is no longer needed.</p></li>
+<li><p>Click anywhere in the argument to the <code>System.out...</code> call and check available intentions. Choose <strong>Replace “+” with String.format</strong>. You should see the line change to a call to <code>printf</code>. If you are not familiar with the syntax of <code>printf</code> and <code>String.format</code>, look them up.</p></li>
 </ol></li>
 </ol>
 <h2 id="step-7-clarify-the-while-loop-in-the-print-method">Step 7: Clarify the <code>while</code> loop in the <code>print</code> method</h2>
 <p>Back in the <code>print</code> method, consider the current structure of the <code>while</code> loop. This loop should be printing the next page every time it iterates, but its current structure does not allow for that.</p>
-<p>Part of the problem is that the page number is represented by a field, and it is mysterious how it is getting updated: - It gets an initial value in the <code>initialize</code> method, but nothing in the name of that method tells you that explicitly suggests. - Then, the page number is being upated in the <code>moveToNextPage</code> method at the end of the loop, which feels a bit backward. is updated at the end of the <code>while</code> loop, which feels a bit backwards. Ideally, the loop should have the following structure:</p>
+<p>Part of the problem is that the page number is represented by a field, and it is mysterious how it is getting updated:</p>
+<pre><code>- It gets an initial value in the `initialize` method, but nothing in the name of that method suggests that. And let&#39;s phase it, initialization belonds more to a constructor.
+- Then, the page number is being upated in the `moveToNextPage` method at the end of the `while` loop, which feels a bit backwards.</code></pre>
+<p>Ideally, the loop should have the following structure:</p>
 <pre><code>```
 while there is a next page:
     print the next page
@@ -177,9 +187,9 @@ for (int page : getPages())
 <li><p>Repeat the inline and remove refactor on the <code>initialize</code> method.</p></li>
 <li><p>Go to the <code>getPageOffset</code> method. Find the use of <code>pageNumber</code> and extract it as a parameter.</p></li>
 <li><p>Go to the <code>printNumbersOnPage</code> method and repeat the process of extracting <code>pageNumber</code> as a parameter.</p></li>
-<li><p>Finally, go to the <code>needToPrintMore</code> method. This method uses <code>pageNumber</code> in its call to <code>getPageOffset</code>; again extract <code>pageNumber</code> as a parameter.</p></li>
-<li><p>All changes to the <code>pageNumber</code> field should now be isolated to the <code>print</code> method. At the beginning of method, <code>pageNumber</code> is set to 1, and <code>pageNumber</code> is being incremented at a natural spot at the end of the <code>while</code> loop. You can confirm that the <code>pageNumber</code> field is not used elsewhere by moving your cursor over the field declaration and using the <em>Navigate -&gt; Declaration</em> menu item. This action should show you all the places <code>pageNumber</code> i sbeing used..</p></li>
-<li><p>With the cursor on the <code>pageNumber</code> field declaration, choose the <strong>Convert to local</strong> intention.</p></li>
+<li><p>Finally, go to the <code>needToPrintMore</code> method. This method uses <code>pageNumber</code> in its call to <code>getPageOffset</code>; again extract <code>pageNumber</code> as a parameter. Run your tests.</p></li>
+<li><p>All changes to the <code>pageNumber</code> field should now be isolated to the <code>print</code> method. At the beginning of method, <code>pageNumber</code> is set to 1, and <code>pageNumber</code> is being incremented at a natural spot at the end of the <code>while</code> loop. You can confirm that the <code>pageNumber</code> field is not used elsewhere by moving your cursor over the field declaration and using the <em>Navigate -&gt; Declaration</em> menu item. This action should show you all the places <code>pageNumber</code> is being used, and they should all be in the few lines of code of the <code>print</code> method.</p></li>
+<li><p>Notice also that the <code>pageNumber</code> field is grayed out in its definition. This often suggests that you can restrict its visibility, by making it private or turning it into a local variable, and we will do the latter. With the cursor on the <code>pageNumber</code> field declaration, choose the <strong>Convert to local</strong> intention.</p></li>
 <li><p>Run your tests again to make sure everything is still working.</p></li>
 </ol>
 <h2 id="step-8-extracting-a-page-class">Step 8: Extracting a Page class</h2>
@@ -189,13 +199,13 @@ for (int page : getPages())
 <li>It needs to know the row/column dimensions.</li>
 <li>It needs to know the actual numbers array to be able to index into it.</li>
 </ul>
-<p>This class will kind of end up knowing almost all the same stuff as the pretty-printer (except for the title for example). But it does not concern itself with headers and footers for example, or where to output the values. Later we might consider other ways to paginate the page (e.g. numbers going row first). The steps below give this refactoring a try.</p>
+<p>This class will kind of end up knowing almost all the same stuff as the pretty-printer (except for the title for example). But it does not concern itself with headers and footers for example, or where to output the values. Later we might consider other ways to paginate the page (e.g. numbers going row-first). The steps below give this refactoring a try.</p>
 <ol type="1">
 <li><p>Turn the <code>pageNumber</code> local variable back into a field (extract field). This prepares you to do an <strong>Extract Delegate</strong> refactoring, which works best with fields.</p></li>
 <li><p>With the cursor anywhere in the <code>NumberPrinter</code> method, refactor to <strong>Extract Delegate</strong>. This refactoring will allow you to pull fields and methods of one class to create another class.</p>
 <ol type="a">
 <li><p>Name the new class <code>Page</code>.</p></li>
-<li><p>Include all members in the <code>Page</code> class except for <code>print</code>, <code>printHeader</code> and <code>printNumberOnPage</code>. Make sure to select the “generate accessors” box.</p></li>
+<li><p>Include all members in the <code>Page</code> class except for <code>print</code>, <code>printHeader</code> and <code>printNumbersOnPage</code>. Make sure to select the “generate accessors” box.</p></li>
 </ol></li>
 <li><p>If you run your tests now, they should fail, complaining that <code>rowsPerPage</code> and <code>columnsPerPage</code> are marked as final. This is actually correct, since these fields should really only be set once in the constructor. However, that is not how these fields are currently being set.</p>
 <ol type="a">
@@ -221,9 +231,9 @@ for (int page : getPages())
 <li>Run tests!</li>
 </ul></li>
 <li><p>Use the <strong>Safe delete</strong> intention to remove <code>pageNumber</code> as a parameter for the <code>needToPrintMore</code> method, then use refactoring to rename the method to <code>hasNext</code>.</p></li>
-<li><p>Go back to <code>NumberPrinter.java</code>. Note the last line of the while loop in <code>print</code> is using the <code>setPageNumber</code> method to increments the page number by 1. This really should be a method of the <code>Page</code> class.</p>
+<li><p>Go back to <code>NumberPrinter.java</code>. Note the last line of the while loop in <code>print</code> is using the <code>setPageNumber</code> method to increment the page number by 1. This really should be a method of the <code>Page</code> class.</p>
 <ul>
-<li>Select the whole expression (<code>page.setPageNumber(page.getPageNumber() + 1)</code>) and use “Extract method” refactoring turn it into a new method called <code>nextPage</code>.</li>
+<li>Select the whole expression (<code>page.setPageNumber(page.getPageNumber() + 1)</code>) and use “Extract method” refactoring to turn it into a new method called <code>nextPage</code>.</li>
 <li>Accept the suggested signature change and the change to the line of code.</li>
 <li>Go to the <code>nextPage</code> method that was just created, and use refactoring to move the method into the <code>Page</code> class.</li>
 <li>Go find <code>nextPage</code> in the <code>Page</code> class. In the body of this function, select <code>setPageNumber</code>. Use refactoring to inline <strong>this only and keep the method</strong>.</li>
@@ -237,7 +247,7 @@ for (int page : getPages())
 </ul></li>
 <li><p>Go to the <code>printNumberAt</code> method. This method is not quite doing what it should be doing for this class. We want this class to be about computing, for example to compute the index, leaving the actual printing to the <code>NumberPrinter</code> class. To fix this you need to start at the <code>print</code> method in the <code>NumberPrinter</code> class.</p>
 <ul>
-<li>The <code>print</code> method calls <code>printNumbersOfPage</code>. Go to the <code>printNumbersOnPage</code> method and Look at the index computation in the argument to the <code>printNumberAt</code> call inside the inner for loop. Select that whole argument and extract a method called <code>getIndexFor</code>.</li>
+<li>The <code>print</code> method calls <code>printNumbersOfPage</code>. Go to the <code>printNumbersOnPage</code> method and look at the index computation in the argument to the <code>printNumberAt</code> call inside the inner for loop. Select that whole argument and extract a method called <code>getIndexFor</code>.</li>
 <li>Move the <code>getIndexFor</code> method to the <code>Page</code> class; inline the call to <code>getRowsPerPage</code> after you have moved the function.</li>
 <li>Back in the <code>printNumbersOnPage</code> method, inline the call to <code>printNumberAt</code> (which will remove the method as this is its only occurence).</li>
 <li>At this point the system created a local variable (<code>i</code> or possibly <code>index</code>). Inline this variable to eliminate it.</li>
@@ -246,17 +256,16 @@ for (int page : getPages())
 <li>As a final cleanup, <strong>Safe delete</strong> the <code>pageNumber</code> parameter in the <code>printNumbersOnPage</code> method.</li>
 </ul></li>
 </ol></li>
-<li><p>Go back to the <code>print</code> method. Remember that the goal was to simplify the loop in this method. Start by extracting a new method out of the the function calls that make up the body of the <code>while</code> loop. Call the new method <code>printPage</code>. The <code>while</code> loop should looke much simpler!</p></li>
-<li><p>There are still some things off about the order things are happening in the new <code>printPage</code> method. We should be going to the “next page” first. Move the <code>page.nextPage()</code> line up a step so that it is the first line in the method body. This change, unfortunately, causes the tests to fail. To fix this requires <code>pageNumber</code> to be adjuted in a number of ways:</p></li>
-</ol>
+<li><p>Go back to the <code>print</code> method. Remember that the goal was to simplify the loop in this method. Start by extracting a new method out of the function calls that make up the body of the <code>while</code> loop. Call the new method <code>printPage</code>. The <code>while</code> loop should look much simpler!</p></li>
+<li><p>There are still some things off about the order in which things are happening in the new <code>printPage</code> method. We should be going to the “next page” first. Move the <code>page.nextPage()</code> line up a bit so that it is the first line in the method body. This change, unfortunately, causes the tests to fail. To fix this requires <code>pageNumber</code> to be adjusted in a number of ways:</p>
 <ul>
-<li><code>pageNumber</code> should start 0 instead of 1; fix this in the field declaraction at the top of the <code>Page</code> class.</li>
+<li><code>pageNumber</code> should start at 0 instead of 1; fix this in the field declaration at the top of the <code>Page</code> class.</li>
 <li><code>hasNext</code> should use a new method called <code>getNextPageOffset</code> instead of <code>getPageOffset</code>; this new method is like <code>getPageOffset</code> but uses <code>pageNumber</code> instead of <code>pageNumber - 1</code>.</li>
 </ul>
-<p>After you have made those changes and created the new method, your tests should again pass.</p>
-<ol start="7" type="1">
-<li>One final cleanup before calling it a day: The second parameter to <code>printHeader</code> can be inlined. Do that. And the <code>System.out.println("\f");</code> line should really be a method called <code>printFooter</code>, so extract that, then rearrange the methods so that they follow the stepdown rule.</li>
+<p>After you have made those changes and created the new method, your tests should again pass.</p></li>
+<li><p>One final cleanup before calling it a day: The second parameter to <code>printHeader</code> can be inlined. Do that. And the <code>System.out.println("\f");</code> line should really be a method called <code>printFooter</code>, so extract that, then rearrange the methods so that they follow the stepdown rule.</p></li>
 </ol>
+<p>You should at this point commit your work.</p>
 <p>This activity continues in <a href="activity2-5bRefactoringPrimesGeneratorPart3.html">refactoring activity 3</a>.</p>
 <script type="text/javascript">
 let els = document.getElementsByTagName("pre");
