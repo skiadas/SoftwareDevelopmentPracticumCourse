@@ -78,12 +78,11 @@
 </ol>
 <p>Instead of passing in two separate parameters, refactor and extract a parameter from the expression <code>rowOffset + col * rowsPerPage</code>. Check the box to replace both occurrences. The refactoring should clean up the original two parameters automatically.</p>
 <ol start="3" type="a">
-<li>Go back to the <code>printNumbersOnPage</code> method. <code>rowOffset</code> is being used as the loop variable for the outer loop. Both the initial value for <code>rowOffset</code> and the stopping condition are based on the value of <code>getPageOffset()</code>, which just makes the loop harder to understand. Clean this up as follows:
+<li>Go back to the <code>printNumbersOnPage</code> method. <code>rowOffset</code> is being used as the loop variable for the outer loop. Both the initial value for <code>rowOffset</code> and the stopping condition are based on the value of <code>pageOffset</code>, which just makes the loop harder to understand. Clean this up as follows:
 <ul>
 <li>Use refactoring to rename <code>rowOffset</code> to <code>row</code>.</li>
-<li>In the call to <code>printNumberAt</code>, change <code>row</code> to <code>row + getPageOffset()</code>.</li>
-<li>Change the outer loop so that <code>row</code> begins at 0 and ends at <code>rowsPerPage - 1</code>.<br />
-</li>
+<li>In the call to <code>printNumberAt</code>, change <code>row</code> to <code>row + pageOffset</code>.</li>
+<li>Change the outer loop so that <code>row</code> begins at 0 and ends at <code>rowsPerPage - 1</code>.</li>
 <li>Run the tests to make sure they still pass.</li>
 </ul></li>
 <li>Lastly, fix the stopping condition for each for loop to be a “less-than some value” comparison rather than a “less-than-or-equal-to some value minus one” comparison.</li>
@@ -92,14 +91,14 @@
 <h2 id="step-5-reducing-the-number-of-fields">Step 5: Reducing the number of fields</h2>
 <p>The <code>NumberPrinter</code> class has quite a few fields. Some of these, like <code>pageOffset</code>, are not used in too many places and could be replaced by a simple calculation, e.g., calculating <code>pageOffset</code> from <code>pageNumber</code>.</p>
 <ol type="1">
-<li><p>Encapsulate <code>pageOffset</code> so that it is only accessible through an accessor method.</p>
+<li><p>Encapsulate <code>pageOffset</code> so that it is only accessible through an accessor method. This “encapsulate fields” refactoring will replace all direct accesses to the <code>pageOffset</code> field to calls to a getter instead.</p>
 <ol type="a">
 <li><p>Select <code>pageOffset</code> and refactor to <strong>Encapsulate Fields</strong>.</p></li>
 <li><p>Unckeck <em>Set access</em>. (The goal is to eliminate the need for this field, so it makes no sense to be creating a setter.)</p></li>
-<li><p>Refactor to replace all accesses to this field with a call to <code>getPageOffset()</code>.</p></li>
+<li><p>Click “Refactor”, to replace all accesses to this field with a call the getter <code>getPageOffset()</code>.</p></li>
 <li><p>Run tests to make sure nothing was broken.</p></li>
 </ol></li>
-<li><p>Change the <code>getPageOffset</code> method so that it computes the page offset from <code>pageNumber</code> and returns the result.</p>
+<li><p>Change the <code>getPageOffset()</code> method so that it computes the page offset from <code>pageNumber</code> and returns the result.</p>
 <ol type="a">
 <li><p>The computation should be:</p>
 <pre class="java"><code>(pageNumber - 1) * rowsPerPage * colsPerPage + 1</code></pre></li>

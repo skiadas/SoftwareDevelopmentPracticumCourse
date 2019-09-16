@@ -2,8 +2,7 @@
 
 ## Further Refactoring Activities
 
-- [Activity 3-1](../activities/activity3-1functionStructureExample.md)
-- [Activity 3-1 handout](../activities/activity3-1functionStructureHandout.md)
+- [Activity 2-2 notes](../activities/activity2-2refactoringIntro.md)
 
 ## Paired Homework Assignment
 

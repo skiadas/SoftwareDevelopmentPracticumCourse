@@ -12,7 +12,7 @@ Fri 09/13
   ~ - [Lesson plan Day 3](lessonPlansFall/lessonPlanDay03.md)
 
 
-## Week 2  Refactoring and Code Formatting
+## Week 2 Refactoring and Code Formatting
 
 Mon 09/16
   ~ - [Lesson plan Day 4](lessonPlansFall/lessonPlanDay04.md)
@@ -23,7 +23,7 @@ Wed 09/18
 Fri 09/20
   ~ - [Lesson plan Day 6](lessonPlansFall/lessonPlanDay06.md)
 
-## Week 3 Version Control and Test-Driven-Development
+## Week 3 More refactoring and Test-Driven-Development
 
 Mon 09/23
   ~ - [Lesson plan Day 7](lessonPlansFall/lessonPlanDay07.md)
@@ -34,7 +34,7 @@ Wed 09/25
 Fri 09/27
   ~ - [Lesson plan Day 9](lessonPlansFall/lessonPlanDay09.md)
 
-## Week 4 Agile, Intro to SOLID
+## Week 4 Version Control? Agile, Intro to SOLID
 
 Mon 09/30
   ~ - [Lesson plan Day 10](lessonPlansFall/lessonPlanDay10.md)
