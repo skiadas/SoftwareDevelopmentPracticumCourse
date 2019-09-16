@@ -220,7 +220,7 @@ for (int page : getPages())
 <li>Ignore the problem that is detected and continue.</li>
 <li>Run tests!</li>
 </ul></li>
-<li><p>Use the <strong>Safe delete</strong> intention to remove <code>pageNumber as a parameter for the</code>needToPrintMore<code>method, then use refactoring to rename the method to</code>hasNext`.</p></li>
+<li><p>Use the <strong>Safe delete</strong> intention to remove <code>pageNumber</code> as a parameter for the <code>needToPrintMore</code> method, then use refactoring to rename the method to <code>hasNext</code>.</p></li>
 <li><p>Go back to <code>NumberPrinter.java</code>. Note the last line of the while loop in <code>print</code> is using the <code>setPageNumber</code> method to increments the page number by 1. This really should be a method of the <code>Page</code> class.</p>
 <ul>
 <li>Select the whole expression (<code>page.setPageNumber(page.getPageNumber() + 1)</code>) and use “Extract method” refactoring turn it into a new method called <code>nextPage</code>.</li>

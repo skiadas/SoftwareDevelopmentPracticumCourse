@@ -259,7 +259,7 @@ This class will kind of end up knowing almost all the same stuff as the pretty-p
         - Ignore the problem that is detected and continue.
         - Run tests!
 
-    d. Use the **Safe delete** intention to remove `pageNumber as a parameter for the `needToPrintMore` method, then use refactoring to rename the method to `hasNext`.
+    d. Use the **Safe delete** intention to remove `pageNumber` as a parameter for the `needToPrintMore` method, then use refactoring to rename the method to `hasNext`.
 
     e. Go back to `NumberPrinter.java`. Note the last line of the while loop in `print` is using the `setPageNumber` method to increments the page number by 1. This really should be a method of the `Page` class.
         - Select the whole expression (`page.setPageNumber(page.getPageNumber() + 1)`) and use "Extract method" refactoring turn it into a new method called `nextPage`.
