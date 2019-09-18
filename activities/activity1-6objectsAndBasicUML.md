@@ -7,7 +7,7 @@ To load the project in to IntelliJ:
 3. Click "Clone". You should now be looking at the project.
 4. Select "VCS -> Git -> Branches", then pick the `origin/simpleClassStructure` option, and then "Checkout as..", then hit OK.
 5. At the bottom of the screen there should be a "Maven projects need to be imported" pop-up. Click "Enable Auto-import".
-6. Navigate into the `chat/source/main/java folder` in the project pane on the left. You should see 4 classes.
+6. Navigate into the `chat/source/main/java` folder in the project pane on the left. You should see 4 classes.
 
 # Task 1
 

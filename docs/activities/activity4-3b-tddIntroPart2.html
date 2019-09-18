@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>activity4-3b-tddIntroPart2</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="https://skiadas.github.io/css/course.css" type="text/css" />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+<h1 id="activity-4-3-introduction-to-test-driven-development">Activity 4-3 Introduction to Test-Driven-Development</h1>
+<p>Interjecting segments of the TDD video, part 2 <a href="https://learning.oreilly.com/videos/clean-code/9780134661742/9780134661742-CODE_01_05_02">Link</a>. ]</p>
+<h2 id="intro-to-tdd">Intro to TDD</h2>
+<p>Video segment: intro 00:50-3:00</p>
+<p>Video segment: The bowling game: 3:00-6:00</p>
+<ul>
+<li>How many frames are there in a bowling game?</li>
+<li>How many rolls are there on each frame?</li>
+<li>What is a spare? What is a strike? How are they scored?</li>
+<li>What is the maximum score in a bowling game?</li>
+</ul>
+<p>Video segment: The bowling game implementation plan: 6:00-8:30</p>
+<ul>
+<li>What are the classes involved in the planned design, and what are their relationships?</li>
+</ul>
+<p>Video segment: TDD approach to the bowling game: 8:30-42:30</p>
+<ul>
+<li>“What test do I need to write, that will force me to write the code I know I want to write?”</li>
+<li>“When you must write real code, write the simplest code that you possibly can.”</li>
+<li>“You must see your tests fail first, before you make them pass.”</li>
+</ul>
+<dl>
+<dt>RED PHASE</dt>
+<dd>Focus on writing a failing test.
+</dd>
+<dt>GREEN PHASE</dt>
+<dd>Write the code that makes the failing test pass.
+</dd>
+<dt>REFACTOR PHASE</dt>
+<dd>Refactor your code before moving to a new test.
+</dd>
+</dl>
+<ul>
+<li>“Misplaced responsibility”</li>
+<li>“Tests are as important as production code and you keep your tests clean!”</li>
+</ul>
+<p>Video segment: objections to TDD: 42:30-60:00</p>
+<ul>
+<li>“Tests are more code you have to write”</li>
+<li>“Managers might object”</li>
+<li>“Refactoring is rework, it would be better to write the code right the first time”</li>
+<li>“Maintaining the tests could become time-consuming”</li>
+<li>“No tests can prove the program fully correct”</li>
+<li>“It doesn’t matter when you write the tests”</li>
+<li>“How can we work with legacy code?”</li>
+<li>“How do you test the GUI?”</li>
+<li>“How do you test databases?”</li>
+<li>“Programmers are not testers”</li>
+<li>“Test-driven development is too hard”</li>
+</ul>
+<p>Video segment: Professionalism: 60:00-69:00</p>
+<ul>
+<li>Double-entry bookkeeping and sensitive industries</li>
+<li>QA should find nothing</li>
+<li>100% code coverage is the goal</li>
+</ul>
+<p>Conclusions: 69:00-75:00</p>
+<script type="text/javascript">
+let els = document.getElementsByTagName("pre");
+for (const el of els) {
+  const lang = el.getAttribute("class");
+  if (lang != "") {
+      el.children[0].setAttribute("class", "language-"+lang);
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.js"></script>
+</body>
+</html>
