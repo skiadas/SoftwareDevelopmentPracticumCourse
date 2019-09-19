@@ -1,14 +1,12 @@
 # Day 9 Lesson Plan
 
-## In Class
+## In class
 
-TDD Video 2?
+- The three laws of test-driven development
+- [TDD Video 2](../activities/activity4-3b-tddIntroPart2.md)
 
-## Paired Homework
+## Reading
 
-- Discuss with your partner(s), take notes.
-- [OOP Design Case Study 1](../activities/activity4-4oopDesign.md)
+- [User Role Modeling](https://learning.oreilly.com/library/view/user-stories-applied/0321205685/ch03.html)
+- [User Stories and INVEST](https://learning.oreilly.com/library/view/user-stories-applied/0321205685/ch02.html)
 
-## Paired Homework
-
-- [TDD practice 1: bowling](../activities/activity5-4bowlingTDD.md): "Red, Green, Refactor!"

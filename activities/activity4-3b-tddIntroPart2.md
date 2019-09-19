@@ -1,7 +1,6 @@
 # Activity 4-3 Introduction to Test-Driven-Development
 
 Interjecting segments of the TDD video, part 2 [Link](https://learning.oreilly.com/videos/clean-code/9780134661742/9780134661742-CODE_01_05_02).
-]
 
 ## Intro to TDD
 

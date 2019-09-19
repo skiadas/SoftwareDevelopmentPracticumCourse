@@ -10,8 +10,8 @@
 
 When trying to find the user roles for our application, the standard process would consist of the following steps:
 
-- *Brainstorm an initial set* of user roles. Everyone thinks of roles, crystalizes them in a short 1-2 word phrase, then writes it on an index card and placing it on the wall. No discussion takes place during this phase.
-- *Organize the initial set* by moving closer to each other roles that are similar. User move cards around to have similar roles overlap with others.
+- *Brainstorm an initial set* of user roles. Everyone thinks of roles, crystalizes them in a short 1-2 word phrase, then writes it on an index card and places it on the wall. No discussion takes place during this phase.
+- *Organize the initial set* by moving closer to each other roles that are similar. Users move cards around to have similar roles overlap with others.
 - *Consolidate roles* by eliminating roles that are too similar to each other, or perhaps finding new names for these "super-roles". During this phase discussion happens between the authors of the various role cards. They describe what they have in mind with their name choice, and discuss how to consolidate roles. At the end of this process, we may still have roles that overlap with each other, and that is OK.
 - *Refine the roles* by specifying the attributes that make each role distinct from the other roles (e.g. frequency of use, level of expertise in the domain, general technical proficiency etc). At this point notes may be added to the back of the card, to record these attributes.
 
