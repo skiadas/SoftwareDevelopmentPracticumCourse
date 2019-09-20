@@ -1,5 +1,6 @@
 # Agile Manifesto, Principles and Practices
 
+- [Agile Manifesto Handout](../resources/agileHandout.pdf)
 - Read: Class book, chapter 1 (Agile Practices)
 - Read [The Agile Manifesto](https://www.agilealliance.org/agile101/the-agile-manifesto/)
     - What are the four key statements of the manifesto?
