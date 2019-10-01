@@ -43,34 +43,34 @@ Wed 10/02
   ~ - [Lesson plan Day 11](lessonPlansFall/lessonPlanDay11.md)
 
 Fri 10/04
-  ~ Midterm 1
+  ~ - [Lesson plan Day 12](lessonPlansFall/lessonPlanDay12.md)
 
 ## Week 5 Agile Design and Client Meeting, Project Start
 
 Mon 10/07
-  ~ - [Lesson plan Day 12](lessonPlansFall/lessonPlanDay12.md)
-
-Wed 10/09
   ~ - [Lesson plan Day 13](lessonPlansFall/lessonPlanDay13.md)
 
-Fri 10/11
+Wed 10/09
   ~ - [Lesson plan Day 14](lessonPlansFall/lessonPlanDay14.md)
+
+Fri 10/11
+  ~ Midterm 1 ([study guide](notes/midterm1StudyGuide.md))
 
 ## Week 6 The SOLID principles
 
 Mon 10/14
-  ~ FALL BREAK
-
-Wed 10/16
   ~ - [Lesson plan Day 15](lessonPlansFall/lessonPlanDay15.md)
 
-Fri 10/18
+Wed 10/16
   ~ - [Lesson plan Day 16](lessonPlansFall/lessonPlanDay16.md)
+
+Fri 10/18
+  ~ - [Lesson plan Day 17](lessonPlansFall/lessonPlanDay17.md)
 
 ## Week 7 More SOLID
 
 Mon 10/21
-  ~ - [Lesson plan Day 17](lessonPlansFall/lessonPlanDay17.md)
+  ~ FALL BREAK
 
 Wed 10/23
   ~ - [Lesson plan Day 18](lessonPlansFall/lessonPlanDay18.md)
