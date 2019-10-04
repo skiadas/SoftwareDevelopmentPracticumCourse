@@ -2,6 +2,8 @@
 
 ## In Class
 
+User story estimation
+
 ## Reading
 
 - Do with partner:

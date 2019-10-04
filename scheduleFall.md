@@ -34,7 +34,7 @@ Wed 09/25
 Fri 09/27
   ~ - [Lesson plan Day 9](lessonPlansFall/lessonPlanDay09.md)
 
-## Week 4 Version Control? Agile, Intro to SOLID
+## Week 4 Agile Design and Client Meeting, Project Start
 
 Mon 09/30
   ~ - [Lesson plan Day 10](lessonPlansFall/lessonPlanDay10.md)
