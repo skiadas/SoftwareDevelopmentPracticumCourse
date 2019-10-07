@@ -56,7 +56,7 @@ Wed 10/09
 Fri 10/11
   ~ Midterm 1 ([study guide](notes/midterm1StudyGuide.md))
 
-## Week 6 The SOLID principles
+## Week 6 More Agile, Writing Clean Tests
 
 Mon 10/14
   ~ - [Lesson plan Day 15](lessonPlansFall/lessonPlanDay15.md)
@@ -67,7 +67,7 @@ Wed 10/16
 Fri 10/18
   ~ - [Lesson plan Day 17](lessonPlansFall/lessonPlanDay17.md)
 
-## Week 7 More SOLID
+## Week 7 The SOLID principles
 
 Mon 10/21
   ~ FALL BREAK
@@ -78,7 +78,7 @@ Wed 10/23
 Fri 10/25
   ~ - [Lesson plan Day 19](lessonPlansFall/lessonPlanDay19.md)
 
-## Week 8 Writing Clean Tests
+## Week 8 More SOLID
 
 Mon 10/28
   ~ - [Lesson plan Day 20](lessonPlansFall/lessonPlanDay20.md)
