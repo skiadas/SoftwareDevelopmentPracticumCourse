@@ -7,12 +7,12 @@
 - 00:00-05:50 introduction
 - 05:50-08:30 overview
 - 08:30-20:50 astronomy lesson: history of the earth (may skip)
-- 20:50-29:50 anatomy of a test
-- 29:50-40:57 the arrange
-- 40:57-52:55 setup struggles
-- 52:55-1:06:05 test hierarchy
-- 1:06:05-1:10:30 clean composition
-- 1:10:30-1:20:55 the assertion
+- 20:50-29:50 **anatomy of a test**
+- 29:50-40:57 **the arrange**
+- 40:57-52:55 setup struggles (may skip)
+- 52:55-1:06:05 test hierarchy (may skip)
+- 1:06:05-1:10:30 **clean composition**
+- 1:10:30-1:20:55 **the assertion**
 - 1:20:55-1:23:10 summary
 - 1:23:10-1:24:10 end and credits (may skip)
 
@@ -24,7 +24,7 @@
 - **fixture** - system state needed to run a test
 - **transient fixture** - fixture created and destroyed for a single test
 - **persistent fixture** - fixture that survives from test to test (i.e., shared)
-- **fresh fixture** - fixture that is initialized every time it is used 
+- **fresh fixture** - fixture that is initialized every time it is used
 - **shared fixture** - fixture that allows some state to accumulate from test to test
 - **test hierarchy**
 - **composed action**

@@ -2,11 +2,11 @@
 
 ## Remember the Three Rules of TDD?
 
-1. You are not allowed to write any prouction code unless it is to make a failing test pass.
+1. You are not allowed to write any production code unless it is to make a failing test pass.
 2. You are not allowed to write any more of a test than is sufficient to fail; compilation errors are failures.
 3. You are not allowed to write any more production code than is sufficient to pass the one failing test.
 
-**Because it is by writing tests that you drive the development of your prouduction code, TDD requires you to spend a lot of time thinking about what the next test is that you should write.**
+**Because it is by writing tests that you drive the development of your production code, TDD requires you to spend a lot of time thinking about what the next test is that you should write.**
 
 *So how do we do this?*
 
@@ -22,7 +22,7 @@ When you start to write a function, instead of writing a correct implementation,
 
 - **Useful for getting you started.**
 
-### 2. Stairstep tests 
+### 2. Stairstep tests
 
 Tests can be like stairs -- sometimes the whole purpose of a test is to allow you to write the next test. Once the first test leads you to where you are going, you can delete it.
 
@@ -36,7 +36,7 @@ Tests can be like stairs -- sometimes the whole purpose of a test is to allow yo
 
 ### 3. Assert first
 
-Write test backwards -- first write the assert, then iteratively fix one error at a time by adding only enough code needed to make the error go away. 
+Write test backwards -- first write the assert, then iteratively fix one error at a time by adding only enough code needed to make the error go away.
 
 - Example: video at 27:55
 
@@ -46,7 +46,7 @@ Write test backwards -- first write the assert, then iteratively fix one error a
 
 ### 4. Triangulation
 
-Add a second specific test that will force you to modify the code you are currently testing to be more general. 
+Add a second specific test that will force you to modify the code you are currently testing to be more general.
 
 - Example: video at 34:17
 
@@ -58,11 +58,11 @@ Add a second specific test that will force you to modify the code you are curren
 
 ## Thought Experiment
 
-Your team has just completed a large project using TDD. All the production source code is on one hard drive, and all the testing code is on a second hard drive.  
+Your team has just completed a large project using TDD. All the production source code is on one hard drive, and all the testing code is on a second hard drive.
 
-One hard drive has a catestrophic failure. 
+One hard drive has a catestrophic failure.
 
-Which drive is the one you would hope would crash? The one with the production code? Or the one with the testing code? 
+Which drive is the one you would hope would crash? The one with the production code? Or the one with the testing code?
 
 - **Discuss**
 
