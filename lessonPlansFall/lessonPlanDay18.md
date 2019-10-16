@@ -6,4 +6,5 @@
 
 ## Reading
 
+- Agile Software Development textbook, pages 148-150.
 - Agile Software Development textbook, chapter 18 (pages 193-203).
