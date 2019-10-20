@@ -15,7 +15,7 @@
 
 1. **With your teammates**, discuss the initial design of your system with respect to the features that you will be working on for this (and maybe the next) iteration.
 
-	a. What information will the system need to be able to implement the feature(s)?  
+	a. What information will the system need to be able to implement the feature(s)?
 
 	ANSWERSPACE
     ANSWERSPACE
@@ -24,7 +24,7 @@
 
 	ANSWERSPACE
 
-	c. Is any of this information *complex*, i.e., more than can be represented by a single primitive data type?  If so, explain what pieces of information are closely related and need to be grouped together.  
+	c. Is any of this information *complex*, i.e., more than can be represented by a single primitive data type?  If so, explain what pieces of information are closely related and need to be grouped together.
 
 	ANSWERSPACE
 	ANSWERSPACE
@@ -33,7 +33,7 @@
 
 	ANSWERSPACE
 
-	e. For each piece of information needed for a given feature, where is that information coming from?  Is it received from another system component (e.g., a database)? Is it information the user enters?  Does the feature produce the information? 
+	e. For each piece of information needed for a given feature, where is that information coming from?  Is it received from another system component (e.g., a database)? Is it information the user enters?  Does the feature produce the information?
 
 	ANSWERSPACE
 
@@ -47,17 +47,17 @@
 
 	ANSWERSPACE
 
-	h. Will any of the identified classes be used in the implementation of more than one feature?  If so, decide who will implement them. These classes will need to be implmenented 
+	h. Will any of the identified classes be used in the implementation of more than one feature?  If so, decide who will implement them. These classes will need to be implmenented
 before any others.
 
 	ANSWERSPACE
 
-2. Write down the name of each class identified so far that you will need to implement for the feature you are in charge of. 
+2. Write down the name of each class identified so far that you will need to implement for the feature you are in charge of.
 
 	ANSWERSPACE
 	ANSWERSPACE
 
-3. **With your coding partner**, decide on the first 1-2 tests that you will need to write to drive the implementation of each needed class for your feature. 
+3. **With your coding partner**, decide on the first 1-2 tests that you will need to write to drive the implementation of each needed class for your feature.
 
 	Write down names for these tests.
 
@@ -84,9 +84,9 @@ before any others.
 
 	a. these planning notes
 	b. your feature TODO list
-	c. scrap paper and something erasable to write with 
+	c. scrap paper and something erasable to write with
 
-2. Whoever owns the feature should now login. 
+2. Whoever owns the feature should now login.
 
 3. Start IntelliJ.
 
@@ -94,14 +94,13 @@ before any others.
 
 		a. Go to *File -> New -> Project from Version Control -> Git*.
 
-		b. Enter the URL for your project repository when asked. The two project repositories are:
+		b. Enter the URL for your project repository when asked. The  project repository is:
 
-			- https://github.com/sdp-resources/FacultyElectionsProject
-			- https://github.com/sdp-resources/HanoverArchiveProject
-			
-	- **If you already have a local copy of the project**, you will need to start by **pulling down** any changes that your other team members have checked in.
+			- https://github.com/sdp-resources/MajorPlanner.git
 
-		- *VCS -> Git -> Pull*
+	- **If you already have a local copy of the project**, you will need to start by **updating the project** with any changes that your other team members have checked in.
+
+		- *VCS -> Update Project*
 
 3. Turn the RGR pyramid so that the red, "write a failing test" side is facing you and your partner.
 
@@ -111,15 +110,15 @@ before any others.
 
 	- Begin writing your test. (If you need a reminder about what a JUnit test looks like, open the Bowling project and look at the tests there.)
 
-5. Continue the "Red-Green-Refactor" cycle: 
+5. Continue the "Red-Green-Refactor" cycle:
 
-	- Each time you finish a "Red-Green-Refactor" cycle, check off the test and any related tasks you have completed. 
+	- Each time you finish a "Red-Green-Refactor" cycle, check off the test and any related tasks you have completed.
 	- **Maintain your TODO List:**
-		- Every time you think of a new test or something you want to try, write it down on the feature TODO list. 
+		- Every time you think of a new test or something you want to try, write it down on the feature TODO list.
 		- Write down things that you do not know now to do and will need to figure out, for example, "Figure out how to open and display an image from within a java program."
 		- Use the TODO list not only to keep track of task backlog, but also to help keep yourself on track. Jot down ideas and questions rather than getting distracted from your current task. Address these questions and items AFTER you have completed your current task.
 	- **After every RGR cycle:**
-		a. Pull (*VCS -> Git -> Pull*)
+		a. Pull (*VCS -> Update Project*)
 		b. **Resolve conflicts** - *ask for help, and do not move on until conflicts are resolved*
 		c. Commit (*VCS -> Commit*)
 		d. Push (*VCS -> Git -> Push*)

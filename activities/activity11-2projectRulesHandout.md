@@ -23,7 +23,26 @@ The takeaways are:
 - Working on your own projects is just as valuable as helping others with their projects.
 - Keeping your codebase clean is at least as important as completing features, probably even more important.
 
-## Mechanics
+## Mechanics (Fall)
+
+- We will be working on 2-week iterations. This means that we have 2 weeks to complete features and produce something to show to our customer, however small.
+- You will be putting in 4 hours of work a week, split into two 2-hour sessions. You will work with a different partner for each session.
+- At any given point half of the team members will be leading their features, and the other half will be pairing up with them.
+- We will be working in 25-minute intervals of focused work, called "tomatoes" because of a tomato-shaped timer that the inventor of this technique used. During those 25 minutes you *protect the tomato* and don't let any distractions get in the way.
+- A tomato is followed by a 5-minute break, during which you should get up and walk around, and clear your mind in preparation of the next tomato.
+- We can carry out roughly 4 tomatoes on each 2-hour session.
+- When you pair up, one of you will be at the keyboard while the other will be observing and offering suggestions, and making sure that the "peripheral tools" we will discuss in a minute are properly maintained.
+- You should be logged in the system with the account of the owner of the feature you are working on.
+- You should switch roles with your partner after each tomato.
+- Peripherals: You should keep with you and maintain the following:
+    - The red-green-refactor pyramid. Make sure to advance it as you go through the items.
+    - A sheet holding your TODO list of things that you need to do. For example, tests that you need to write, refactorings that you need to do when you pass the green phase, other classes that you might need to create in the future, questions you have for the rest of the team, etc. *This sheet should be kept on the team's board.*
+    - One or more sheets where you can draw basic diagrams to communicate.
+- Working with the repository:
+    - Check out the newest version of the code at the beginning of your session, via the menu VCS -> Update Project. Make sure to select the options Rebase and Using Stash.
+    - As you do your work, create commits by using the VCS -> Commit option. Make sure only the changes you have made are included; IntelliJ will try to add some other files of its own.
+
+## Mechanics (Spring)
 
 - We will be working on 2-day iterations. This means that we have 2 afternoons to complete features and produce something to show to our customer, however small.
 - We will be starting each afternoon session at 12:45. The time in the afternoon will be divided into roughly half-hour intervals.

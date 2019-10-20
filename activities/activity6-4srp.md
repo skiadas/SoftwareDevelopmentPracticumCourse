@@ -30,7 +30,7 @@ Interjecting segments of the [SRP video](../videos/10-srp.md) (only available in
 2. What is the problem with a module that has too many responsibilities?
 3. What is the *fan out* of a class? What is the *fan in*?
 4. Why is it important to reduce the fan-out of a class?
-5. What is one way to achieve reduce the fan-out of a class?
+5. What is one way to reduce the fan-out of a class?
 6. What is **collocation of responsibilities**? How does it affect the various actors?
 7. What code smell is the likely result of this collocation of responsibilities?
 
