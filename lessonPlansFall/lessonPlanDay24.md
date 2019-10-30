@@ -6,4 +6,4 @@
 
 ## Reading
 
-- Agile Software Development textbook, chapter 9 (pages 99-109).
+- Agile Software Development textbook, chapter 10 (pages 111-125).
