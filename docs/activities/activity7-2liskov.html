@@ -14,7 +14,95 @@
 </script>
 </head>
 <body>
-<h1 id="activity-15-2-the-liskov-substitution-principle">Activity 15-2: The Liskov Substitution Principle</h1>
+<h1 id="activity-7-2-the-liskov-substitution-principle">Activity 7-2: The Liskov Substitution Principle</h1>
+<h2 id="types">Types</h2>
+<p>What are types, really?</p>
+<p>Video 1: 20:00-21:56</p>
+<ul>
+<li>A type is a “bag of operations”.</li>
+<li>Classes (and interfaces) are basically types: The methods specify what operations can be performed on objects of that “type”.</li>
+</ul>
+<p>Video 1: 21:56-24:40</p>
+<ul>
+<li>Data structures are not operations.</li>
+<li>Relation between classes and subclasses: point and described point.</li>
+<li>A <strong>subtype</strong> can be used in place of its parent type.</li>
+</ul>
+<h2 id="liskov-substitution-principle">Liskov Substitution Principle</h2>
+<p>Video 1: 25:50-28:00</p>
+<ul>
+<li>“Subtypes should be substitutable for their parent types”.</li>
+</ul>
+<p>Video 1: 29:00-32:10</p>
+<ul>
+<li>Duck typing: In dynamically typed languages, can still have subtypes of other types, via duck typing.</li>
+</ul>
+<h2 id="refused-bequests">Refused Bequests</h2>
+<p>Video 1: 32:10-32:30 Video 1: 33:06-34:24</p>
+<ul>
+<li>When LSP is violated, we usually have a “refused bequest”: We expect the object to respond to a method, but the object doesn’t have that method (usually throws an exception).</li>
+<li>More generally, a refused bequest happens when the object of a subclass does something that the users of the superclass did not expect.</li>
+</ul>
+<p>Video 1: 34:24-38:36</p>
+<ul>
+<li>The Rectangle and Square classes.</li>
+</ul>
+<p>Video 1: 38:36-40:40</p>
+<ul>
+<li>The problem with the expectations of the users of Rectangle.</li>
+</ul>
+<p>Video 1: 40:40-42:00</p>
+<ul>
+<li>LSP violations are latent violations of the OCP</li>
+</ul>
+<p>Video 1: 42:00-43:50</p>
+<ul>
+<li>Some solutions that don’t quite work out.</li>
+</ul>
+<p>Video 1: 43:50-46:14</p>
+<ul>
+<li>Solution: don’t expect a subtype relationship between rectangles and squares</li>
+<li>The Representative Rule: The representatives of objects don’t share the relationships of the objects they represent.</li>
+</ul>
+<p>Video 1: 48:20-50:10</p>
+<ul>
+<li>The problem with subtypes and lists.</li>
+</ul>
+<h2 id="heuristics-for-knowing-if-you-violate-lsp">Heuristics for knowing if you violate LSP</h2>
+<p>Video 2: 00:30-06:10</p>
+<ul>
+<li>Subtypes can do more, but cannot do less</li>
+<li>Be suspicious of degenerate implementations</li>
+<li>Derived functions that throw exceptions are almost always violations of LSP</li>
+<li>“if instanceof” statements are indications of violation of LSP</li>
+<li>you are allowed to check the type of an instance, if you already know what type it is (but the compiler has forgotten it)</li>
+<li>typecases should be replaced by polymorphic dispatch</li>
+</ul>
+<h2 id="static-vs-dynamic-languages">Static vs Dynamic languages</h2>
+<p>Video 2: 06:10-10:20</p>
+<ul>
+<li>Inheritance gives both flexibility and rigidity</li>
+<li>TDD can help detect the type errors that static typing would detect</li>
+</ul>
+<h2 id="an-example-the-modem-problem">An example: The modem problem</h2>
+<p>Video 2: 13:48-17:40</p>
+<ul>
+<li>The Modem interface and the FileMover programs</li>
+<li>Dedicated modem class</li>
+<li>Making ded modem extend modem</li>
+</ul>
+<p>Video 2: 17:40-23:55</p>
+<ul>
+<li>Problems with the extension</li>
+</ul>
+<p>Video 2: 23:55-25:20</p>
+<ul>
+<li>Long-distance fragility as a consequence of the LSP violation</li>
+</ul>
+<p>Video 2: 25:20-27:30</p>
+<ul>
+<li>Solution via adapter</li>
+</ul>
 <script type="text/javascript">
 let els = document.getElementsByTagName("pre");
 for (const el of els) {
