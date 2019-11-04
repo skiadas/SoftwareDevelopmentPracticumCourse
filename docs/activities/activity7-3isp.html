@@ -16,22 +16,31 @@
 <body>
 <h1 id="activity-7-3-the-interface-segregation-principle">Activity 7-3: The Interface Segregation Principle</h1>
 <h2 id="introduction">Introduction</h2>
-<p><strong>03:24-06:50 overview</strong></p>
+<p><strong>03:24-03:32</strong> Overview of last video (LSP)</p>
 <h2 id="interfaces">Interfaces</h2>
-<p><strong>14:28-21:00 interfaces</strong></p>
-<ol type="1">
+<p><strong>14:28-15:41</strong></p>
+<ul>
 <li>What is the problem with the <code>Switch -&gt; Light</code> dependency?</li>
-<li>What do interfaces have more in common with? Their users <em>or</em> their clients?</li>
-<li>Explain the terms <strong>physical coupling</strong> and <strong>logical coupling</strong> and the phrase “Inheritance is the strongest of the physical couplings but the weakest of the logical couplings”.</li>
-<li>How should we <em>name</em> interfaces?</li>
-</ol>
+</ul>
+<p><strong>15:41-19:35</strong></p>
+<ul>
+<li>Interfaces have more in common with their clients, not their implementers.</li>
+<li><strong>physical coupling</strong> and <strong>logical coupling</strong>. -“Inheritance is the strongest of the physical couplings but the weakest of the logical couplings”.</li>
+</ul>
+<p><strong>19:35-21:00</strong></p>
+<ul>
+<li>Name interfaces after their clients.</li>
+</ul>
+<p>21:00-24:40 (skip) rant about interfaces.</p>
 <h2 id="fat-classes">Fat classes</h2>
-<p><strong>24:40-33:42 fat classes example: the job class</strong></p>
+<p><strong>25:50-33:42 fat classes example: the job class</strong></p>
+<ul>
+<li>Fat classes have large fan-in.</li>
+</ul>
 <p><strong>33:42-36:30 the problem with fat classes</strong></p>
-<ol type="1">
-<li>Fat classes have large fan-____</li>
+<ul>
 <li>Fat classes can be protected from their clients by creating a separate interface for each client.</li>
-</ol>
+</ul>
 <p>Consider the following example from an ATM application.</p>
 <p><img src="../images/fatClassesATMExample.png" /></p>
 <p>Each of the different transactions uses different parts of the interface. However as it stands they all depend on the interface.</p>
@@ -42,9 +51,9 @@
 <p><img src="../images/fatClassesATMExampleSegregated.png" /></p>
 <h2 id="the-interface-segregation-principle">The Interface Segregation Principle</h2>
 <p><strong>45:00- 50:00 the interface segregation principle</strong></p>
-<ol type="1">
-<li>What does the interface segregation principle say?</li>
-</ol>
+<ul>
+<li>Interface Segregation Principle: Don’t depend on things you don’t need.</li>
+</ul>
 <p><strong>54:00-58:25 the need to know</strong></p>
 <script type="text/javascript">
 let els = document.getElementsByTagName("pre");
