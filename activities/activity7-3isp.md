@@ -2,7 +2,7 @@
 
 ## Introduction
 
-**03:24-03:32** Overview of last video (LSP)
+**03:24-...** Overview of last video (LSP)
 
 ## Interfaces
 
@@ -14,7 +14,7 @@
 
 - Interfaces have more in common with their clients, not their implementers.
 - **physical coupling** and **logical coupling**.
--"Inheritance is the strongest of the physical couplings but the weakest of the logical couplings".
+- "Inheritance is the strongest of the physical couplings but the weakest of the logical couplings".
 
 **19:35-21:00**
 

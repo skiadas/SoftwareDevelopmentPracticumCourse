@@ -98,7 +98,7 @@ Wed 11/06
   ~ - [Lesson plan Day 24](lessonPlansFall/lessonPlanDay24.md)
 
 Fri 11/08
-  ~ Midterm 2
+  ~ Continue lesson day 24
 
 
 ## Week 10 Design Patterns
@@ -116,18 +116,18 @@ Fri 11/15
 ## Week 11 More Design Patterns
 
 Mon 11/18
-  ~ - [Lesson plan Day 28](lessonPlansFall/lessonPlanDay28.md)
+  ~ - Midterm 2
 
 Wed 11/20
-  ~ - [Lesson plan Day 29](lessonPlansFall/lessonPlanDay29.md)
+  ~ - [Lesson plan Day 28](lessonPlansFall/lessonPlanDay28.md)
 
 Fri 11/22
-  ~ - [Lesson plan Day 30](lessonPlansFall/lessonPlanDay30.md)
+  ~ - [Lesson plan Day 29](lessonPlansFall/lessonPlanDay29.md)
 
 ## Week 12 Even More Design Patterns
 
 Mon 11/25
-  ~ - [Lesson plan Day 31](lessonPlansFall/lessonPlanDay31.md)
+  ~ - [Lesson plan Day 30](lessonPlansFall/lessonPlanDay30.md)
 
 Wed 11/27
   ~ THANKSGIVING BREAK
@@ -139,10 +139,10 @@ Fri 11/29
 ## Week 13 Project Work
 
 Mon 12/02
-  ~ - [Lesson plan Day 32](lessonPlansFall/lessonPlanDay32.md)
+  ~ - [Lesson plan Day 31](lessonPlansFall/lessonPlanDay31.md)
 
 Wed 12/04
-  ~ - [Lesson plan Day 33](lessonPlansFall/lessonPlanDay33.md)
+  ~ - [Lesson plan Day 32](lessonPlansFall/lessonPlanDay32.md)
 
 Fri 12/06
-  ~ - [Lesson plan Day 34](lessonPlansFall/lessonPlanDay34.md)
+  ~ - [Lesson plan Day 33](lessonPlansFall/lessonPlanDay33.md)
