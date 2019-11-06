@@ -116,7 +116,7 @@ Fri 11/15
 ## Week 11 More Design Patterns
 
 Mon 11/18
-  ~ - Midterm 2
+  ~ - [Midterm 2](notes/midterm2StudyGuide.md)
 
 Wed 11/20
   ~ - [Lesson plan Day 28](lessonPlansFall/lessonPlanDay28.md)
