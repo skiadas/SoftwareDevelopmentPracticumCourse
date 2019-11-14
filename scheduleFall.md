@@ -110,8 +110,7 @@ Wed 11/13
   ~ - [Lesson plan Day 26](lessonPlansFall/lessonPlanDay26.md)
 
 Fri 11/15
-  ~ - [Lesson plan Day 27](lessonPlansFall/lessonPlanDay27.md)
-
+  ~ View of our codebase in diagrams
 
 ## Week 11 More Design Patterns
 
@@ -119,30 +118,34 @@ Mon 11/18
   ~ - [Midterm 2](notes/midterm2StudyGuide.md)
 
 Wed 11/20
-  ~ - [Lesson plan Day 28](lessonPlansFall/lessonPlanDay28.md)
+  ~ - [Lesson plan Day 27](lessonPlansFall/lessonPlanDay27.md)
 
 Fri 11/22
-  ~ - [Lesson plan Day 29](lessonPlansFall/lessonPlanDay29.md)
+  ~ - [Lesson plan Day 28](lessonPlansFall/lessonPlanDay28.md)
 
-## Week 12 Even More Design Patterns
+## Week 13 Even More Design Patterns
 
 Mon 11/25
-  ~ - [Lesson plan Day 30](lessonPlansFall/lessonPlanDay30.md)
+  ~ - [Lesson plan Day 29](lessonPlansFall/lessonPlanDay29.md)
 
 Wed 11/27
-  ~ THANKSGIVING BREAK
-
+  ~ - [Lesson plan Day 30](lessonPlansFall/lessonPlanDay30.md)
 Fri 11/29
-  ~ THANKSGIVING BREAK
-
-
-## Week 13 Project Work
-
-Mon 12/02
   ~ - [Lesson plan Day 31](lessonPlansFall/lessonPlanDay31.md)
 
-Wed 12/04
+
+## Week 14 Project Work
+
+Mon 12/02
   ~ - [Lesson plan Day 32](lessonPlansFall/lessonPlanDay32.md)
 
+Wed 12/04
+  ~ THANKSGIVING BREAK
+
 Fri 12/06
+  ~ THANKSGIVING BREAK
+
+## Week 15
+
+Mon
   ~ - [Lesson plan Day 33](lessonPlansFall/lessonPlanDay33.md)
