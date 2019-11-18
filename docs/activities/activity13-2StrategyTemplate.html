@@ -18,7 +18,7 @@
 <h2 id="introducing-the-patterns">Introducing the Patterns</h2>
 <p>Look at handout:</p>
 <ul>
-<li>14:37-17:20 : Definition of the problem: Strategy separates high level policy from set of low level details. Example of File Transfer.</li>
+<li>14:30-17:20 : Definition of the problem: Strategy separates high level policy from set of low level details. Example of File Transfer.</li>
 <li>20:30-23:10 : Example of Template method in the File Transfer example.</li>
 </ul>
 <h2 id="comparison-of-strategy-and-template-method">Comparison of strategy and template method</h2>
@@ -102,14 +102,14 @@ class PrintInorderTraversal&lt;E&gt; extends InorderTraversal&lt;E&gt; {
         System.out.println(element);
     }
 }</code></pre>
-<p><strong>NOTE</strong>: This exhibits the one of the limitations of the template method pattern: The printing mechanism is here intimately related to the traversal strategy; we can’t just take that printing code and apply it to the PreorderTraversal strategy, we would need to create a new class for it.</p>
+<p><strong>NOTE</strong>: This exhibits one of the limitations of the template method pattern: The printing mechanism is here intimately related to the traversal strategy; we can’t just take that printing code and apply it to the PreorderTraversal strategy, we would need to create a new class for it.</p>
 <p>In general, imagine we wanted to work with all 3 traversals, and there were 4 different kinds of operations we wanted to do with the trees (print, add, find max, append to list). We would then need 12 different classes: 3 abstract classes for the 3 different kinds of traversals, and 4 subclasses of each for the different operations.</p>
 <p>On the other hand, the strategy pattern would need just 3+4=7 classes: 3 for the different traversal kinds, and 4 for the different operation kinds. The strategy pattern then tells us how to mix them together to get any of the desired 12 combinations.</p>
 <h2 id="the-ets-drawing-example">The ETS drawing example</h2>
 <ul>
 <li>32:40-34:00: Features (show)</li>
 <li>34:00-36:30: Description of data structure (show)</li>
-<li>36:30-41:10: Using the template method (show)</li>
+<li>36:30-42:50: Using the template method (show)</li>
 </ul>
 <script type="text/javascript">
 let els = document.getElementsByTagName("pre");

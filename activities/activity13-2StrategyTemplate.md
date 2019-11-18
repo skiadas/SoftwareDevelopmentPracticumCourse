@@ -4,9 +4,8 @@
 
 Look at handout:
 
-- 14:37-17:20 : Definition of the problem: Strategy separates high level policy from set of low level details. Example of File Transfer.
+- 14:30-17:20 : Definition of the problem: Strategy separates high level policy from set of low level details. Example of File Transfer.
 - 20:30-23:10 : Example of Template method in the File Transfer example.
-
 
 ## Comparison of strategy and template method
 
@@ -100,7 +99,7 @@ class PrintInorderTraversal<E> extends InorderTraversal<E> {
 }
 ```
 
-**NOTE**: This exhibits the one of the limitations of the template method pattern: The printing mechanism is here intimately related to the traversal strategy; we can't just take that printing code and apply it to the PreorderTraversal strategy, we would need to create a new class for it.
+**NOTE**: This exhibits one of the limitations of the template method pattern: The printing mechanism is here intimately related to the traversal strategy; we can't just take that printing code and apply it to the PreorderTraversal strategy, we would need to create a new class for it.
 
 In general, imagine we wanted to work with all 3 traversals, and there were 4 different kinds of operations we wanted to do with the trees (print, add, find max, append to list). We would then need 12 different classes: 3 abstract classes for the 3 different kinds of traversals, and 4 subclasses of each for the different operations.
 
@@ -110,4 +109,4 @@ On the other hand, the strategy pattern would need just 3+4=7 classes: 3 for the
 
 - 32:40-34:00: Features (show)
 - 34:00-36:30: Description of data structure (show)
-- 36:30-41:10: Using the template method (show)
+- 36:30-42:50: Using the template method (show)
