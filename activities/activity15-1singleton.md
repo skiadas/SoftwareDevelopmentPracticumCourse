@@ -1,5 +1,6 @@
 # Activity 15-1 Singleton Pattern
 
+(video segments from "Pile'o patterns")
 ## The need for a single instance
 
 - 09:25-11:50 the need for one instance of a class

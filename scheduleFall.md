@@ -130,6 +130,7 @@ Mon 11/25
 
 Wed 11/27
   ~ - [Lesson plan Day 30](lessonPlansFall/lessonPlanDay30.md)
+
 Fri 11/29
   ~ - [Lesson plan Day 31](lessonPlansFall/lessonPlanDay31.md)
 
