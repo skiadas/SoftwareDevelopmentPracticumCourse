@@ -13,6 +13,8 @@ Proxy pattern allows two objects to communicate along a communications boundary,
 
 ## Adapter
 
+Video segment from: [Pattern apocalypse](https://learning.oreilly.com/videos/clean-code/9780134661742/9780134661742-CODE_E34)
+
 The adapter pattern allows us to connect a client to a service without the two knowing about each other.
 
 - 66:20-73:00 The button-light problem
