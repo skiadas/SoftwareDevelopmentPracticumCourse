@@ -150,3 +150,10 @@ Fri 12/06
 
 Mon
   ~ - [Lesson plan Day 33](lessonPlansFall/lessonPlanDay33.md)
+
+Wed
+  ~ Guest lecture
+
+Fri
+  ~ - [Lesson plan Day 34](lessonPlansFall/lessonPlanDay34.md)
+    - [Midterm 3 / Final Exam study guide](notes/midterm3StudyGuide.md)
